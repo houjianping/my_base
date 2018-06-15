@@ -1,0 +1,11 @@
+# 忽略所有生成的xx类型的文件
+*.apk
+*.iml
+*.properties
+
+# 忽略所有的文件以及文件
+gen/
+build/
+.idea/
+.gradle/
+gradle/

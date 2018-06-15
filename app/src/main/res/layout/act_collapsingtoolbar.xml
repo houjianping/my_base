@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.androidapp.widget.CommonTitleBar
+        android:id="@+id/titlebar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:centerCustomView="@layout/layout_custom_left"
+        app:centerText="大厅"
+        app:centerType="textView"
+        app:rightCustomView="@layout/layout_custom_right"
+        app:rightType="customView" />
+
+    <com.androidapp.base.widget.AppSwipeRefreshLayout
+        android:id="@+id/swipe_refresh_widget"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.design.widget.CoordinatorLayout
+            android:id="@+id/collapsing_toolbar_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:contentScrim="#46a8ba"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+            <android.support.design.widget.AppBarLayout
+                android:id="@+id/app_bar_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+                app:elevation="0dp">
+
+                <LinearLayout
+                    android:id="@+id/login_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="240dp"
+                    android:background="@mipmap/ic_share_qq"
+                    android:orientation="vertical"
+                    android:paddingBottom="10dp"
+                    app:layout_collapseMode="pin"
+                    app:layout_collapseParallaxMultiplier="0.9"
+                    app:layout_scrollFlags="scroll|exitUntilCollapsed"></LinearLayout>
+
+                <android.support.design.widget.TabLayout
+                    android:id="@+id/toolbar_tab"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:background="@android:color/white"
+                    android:fillViewport="false"
+                    app:layout_scrollFlags="scroll"
+                    app:tabIndicatorColor="@color/color_primary"
+                    app:tabIndicatorHeight="2dp"
+                    app:tabSelectedTextColor="@color/color_primary"
+                    app:tabTextColor="@color/black_main">
+
+                    <android.support.design.widget.TabItem
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="A" />
+
+                    <android.support.design.widget.TabItem
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="B" />
+
+                    <android.support.design.widget.TabItem
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="C" />
+                </android.support.design.widget.TabLayout>
+            </android.support.design.widget.AppBarLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior">
+                <com.androidapp.base.widget.AppViewPager
+                    android:id="@+id/view_pager"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#ffffff" />
+                <com.androidapp.filter.FilterView
+                    android:id="@+id/filter_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                </com.androidapp.filter.FilterView>
+            </FrameLayout>
+        </android.support.design.widget.CoordinatorLayout>
+    </com.androidapp.base.widget.AppSwipeRefreshLayout>
+
+</LinearLayout>
+

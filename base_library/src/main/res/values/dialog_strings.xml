@@ -1,0 +1,10 @@
+<resources>
+
+    <!-- 常用词 -->
+    <string name="confirm">确定</string>
+    <string name="cancel">取消</string>
+
+    <string name="widget_alert_dialog__title">提示</string>
+    <!-- slide 动画的duration -->
+    <!-- scale 动画的duration -->
+</resources>

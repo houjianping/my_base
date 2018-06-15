@@ -1,0 +1,33 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 27
+
+    defaultConfig {
+        minSdkVersion 15
+        targetSdkVersion 25
+        //友盟
+        resValue "string", "UM_KEY", "5a1bc715f29d984c42000033"
+        //QQ平台
+        resValue "string", "QQ_ID", "1106790423"
+        resValue "string", "QQ_KEY", "wLOinLR5HjuFFjzb"
+        resValue "string", "QQ_UM_SCHEME", "tencent1104292263"
+        //微信
+        resValue "string", "WEIXIN_ID", "wxcf660fea21c2a868"
+        resValue "string", "WEIXIN_KEY", "203348ad01e32ccaf0e13ac9a8dc0910"
+        //微博
+        resValue "string", "WEIBO_ID", "1886074802"
+        resValue "string", "WEIBO_SECRET", "64ebbf6855898442d83e559c9ba89e0f"
+        resValue "string", "WEIBO_URL", "http://sns.whalecloud.com/sina2/callback"
+        manifestPlaceholders = [UMENG_CHANNEL_VALUE: "360"]
+    }
+    buildTypes {
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'com.android.support:support-v4:27.0.2'
+    compile 'com.android.support:recyclerview-v7:27.0.2'
+    compile 'com.android.support:appcompat-v7:27.0.2'
+}

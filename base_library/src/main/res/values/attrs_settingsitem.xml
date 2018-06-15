@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="SettingsItem">
+        <attr name="settingsShowTopDiv" format="boolean" />
+        <attr name="settingsShowBottomDiv" format="boolean" />
+        <attr name="settingsIcon" format="reference" />
+        <attr name="settingsTitle" format="string" />
+        <attr name="settingsTitleSize" format="dimension" />
+        <attr name="settingsTitleColor" format="color" />
+        <attr name="settingsSummary" format="string" />
+        <attr name="settingsSummaryColor" format="color" />
+        <attr name="settingsSummarySize" format="dimension" />
+        <attr name="settingsSummaryIcon" format="reference" />
+    </declare-styleable>
+</resources>

@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">案例APP</string>
+
+    <string name="title_activity_index_main">Refresh</string>
+
+    <string name="title_activity_example_snap_helper">SnapHelper</string>
+
+    <string name="description_set_default_creator">这是使用定制Header和Footer的第一种方法-全局默认\n\n
+        本方法是实际项目中最常用的方法，其特点有：\n\n
+        1.设置一次全部生效，不用多次写重复的代码\n
+        2.优先级最低，在特别页面可以轻松的覆盖替换\n\n
+        使用方法： \n
+        //设置全局的Header构建器 \n
+        SmartRefreshLayout.setDefaultRefreshHeaderCreator(new DefaultRefreshHeaderCreator() {\n
+        public RefreshHeader createRefreshHeader(Context context, RefreshLayout layout) {\n
+        return new ClassicsHeader(context);//指定为经典Header，默认是 贝塞尔雷达Header\n
+        }\n
+        });\n
+        //设置全局的Footer构建器\n
+        SmartRefreshLayout.setDefaultRefreshFooterCreator(new DefaultRefreshFooterCreator() {\n
+        public RefreshFooter createRefreshFooter(Context context, RefreshLayout layout) {\n
+        return new ClassicsFooter(context);//指定为经典Footer，默认是 BallPulseFooter\n
+        }\n
+        });\n\n
+        关键代码，需要在布局生成之前设置，建议代码放在 Application.onCreate 中
+    </string>
+</resources>

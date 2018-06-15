@@ -1,0 +1,1 @@
+include ':app', ':base_library', ':umeng_library', ':picture_library', ':pay_library', ':zxing_library'//, ':app-design'

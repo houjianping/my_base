@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.androidapp.roundview.RoundTextView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:rv="http://schemas.android.com/apk/res-auto"
+    android:ellipsize="end"
+    android:gravity="center"
+    android:layout_height="wrap_content"
+    android:layout_width="wrap_content"
+    android:padding="10dp"
+    android:singleLine="true"
+    android:textColor="@color/black_main"
+    android:textSize="12sp"
+    rv:rv_strokeWidth="0.5dp"
+    rv:rv_isRippleEnable="false"
+    rv:rv_backgroundColor="@android:color/white"
+    rv:rv_backgroundPressColor="@android:color/white"
+    rv:rv_cornerRadius="5dp" />

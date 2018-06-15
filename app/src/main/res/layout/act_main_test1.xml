@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:titlebar="http://schemas.android.com/apk/res-auto">
+    <com.androidapp.widget.CommonTitleBar
+        android:id="@+id/titlebar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        titlebar:centerCustomView="@layout/layout_custom_center"
+        titlebar:centerType="customView"
+        titlebar:rightCustomView="@layout/layout_custom_right"
+        titlebar:rightType="customView" />
+    <android.support.v4.view.ViewPager
+        android:id="@+id/order_viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/titlebar"
+        />
+</RelativeLayout>
