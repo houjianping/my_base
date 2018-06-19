@@ -9,72 +9,133 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 
 import com.androidapp.base.R;
 import com.androidapp.base.utils.ScreenUtil;
+import com.androidapp.base.utils.ToastUtils;
 import com.androidapp.filter.multiple.MultiPopupView;
 import com.androidapp.filter.multiple.bean.MultiBean;
 import com.androidapp.filter.single.SignalPopupView;
 import com.androidapp.filter.single.bean.SignalBean;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class FilterView extends LinearLayout {
 
     private View mBaseView;
     private Context mContext;
     private LinearLayout mHeaderLayout;
-    private View mSplitView;
-
-    private DropdownButton dropdownButton;
-    private DropdownButton dropdownButton1;
     private LinearLayout linearLayout;
+
+    private Map<String, DropdownButton> dropdownButtons = new HashMap();
+    private LayoutParams splitParams = null;
+
+    private List<FilterHeaderItem> items;
 
     public FilterView(Context context) {
         super(context);
         mContext = context;
+        splitParams = new LayoutParams(ScreenUtil.dip2px(mContext, 0.5f), ViewGroup.LayoutParams.MATCH_PARENT);
+        splitParams.setMargins(0, ScreenUtil.dip2px(mContext, 15), 0, ScreenUtil.dip2px(mContext, 15));
         initView();
     }
 
     public FilterView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         mContext = context;
+        splitParams = new LayoutParams(ScreenUtil.dip2px(mContext, 0.5f), ViewGroup.LayoutParams.MATCH_PARENT);
+        splitParams.setMargins(0, ScreenUtil.dip2px(mContext, 15), 0, ScreenUtil.dip2px(mContext, 15));
         initView();
     }
 
     private void initView() {
         mBaseView = LayoutInflater.from(getContext()).inflate(R.layout.filter_base_layout, this, true);
         linearLayout = mBaseView.findViewById(R.id.filter_container);
-        if (mSplitView == null) {
-            mSplitView = new View(mContext);
-            LayoutParams splitParams = new LayoutParams(ScreenUtil.dip2px(mContext, 0.5f), ViewGroup.LayoutParams.MATCH_PARENT);
-            splitParams.setMargins(0, ScreenUtil.dip2px(mContext, 15), 0, ScreenUtil.dip2px(mContext, 15));
-            mSplitView.setLayoutParams(splitParams);
-            mSplitView.setBackgroundResource(R.color.gray_B4B4B4);
-        }
-        initParam();
     }
 
-    public void addFilterData() {
+    public void setFilterItems(List<FilterHeaderItem> data) {
+        items = data;
+        if (items == null) {
+            items = getFilterItems();
+        }
         LayoutParams layoutParams = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT, 1);
         mHeaderLayout = mBaseView.findViewById(R.id.ll_filter_items);
-        dropdownButton = new DropdownButton(getContext());
-        dropdownButton.setText("测试11");
-        dropdownButton.setFilterAction(action, 0);
-        mHeaderLayout.addView(dropdownButton, layoutParams);
-        mHeaderLayout.addView(mSplitView);
+        dropdownButtons.clear();
+        for (int i = 0; i < items.size(); i++) {
+            FilterHeaderItem item = items.get(i);
+            DropdownButton button = new DropdownButton(getContext());
+            button.setText(item.getTitle());
+            button.setFilterAction(action, item);
+            button.setChecked(false, false);
+            mHeaderLayout.addView(button, layoutParams);
+            if (i != items.size() - 1) {
+                View mSplitView = new View(mContext);
+                mSplitView.setLayoutParams(splitParams);
+                mSplitView.setBackgroundResource(R.color.gray_B4B4B4);
+                mHeaderLayout.addView(mSplitView, splitParams);
+            }
 
-        dropdownButton1 = new DropdownButton(getContext());
-        dropdownButton1.setText("测试22");
-        dropdownButton1.setFilterAction(action, 1);
-        mHeaderLayout.addView(dropdownButton1, layoutParams);
+            dropdownButtons.put(item.getKey(), button);
+        }
     }
 
-    private List<MultiBean> dictList = new ArrayList<>();
+    FilterAction action = new FilterAction() {
+        @Override
+        public void onShowFilter(FilterHeaderItem item) {
+            if (item.isSelectable()) {
+                if (item.getmDictList() != null) {
+                    MultiPopupView multiPopupView = new MultiPopupView(mContext);
+                    multiPopupView.setViewData(item);
+                    multiPopupView.setFilterAction(action, onItemClick);
+                    linearLayout.removeAllViews();
+                    linearLayout.addView(multiPopupView);
 
-    //这些是假数据，真实项目中直接接口获取添加进来，FiltrateBean对象可根据自己需求更改
-    private void initParam() {
+                } else if (item.getmSignalBean() != null) {
+                    SignalPopupView dropdownType = new SignalPopupView(mContext);
+                    dropdownType.bind(item, dropdownButtons.get(item.getKey()), action, onItemClick);
+                    linearLayout.removeAllViews();
+                    linearLayout.addView(dropdownType);
+                }
+            } else {
+                linearLayout.removeAllViews();
+                onItemClick.doFilter(item);
+            }
+        }
+
+        @Override
+        public void onHideFilter(FilterHeaderItem item) {
+            linearLayout.removeAllViews();
+            for (Map.Entry<String, DropdownButton> entry : dropdownButtons.entrySet()) {
+                if (!item.getKey().equals(entry.getKey())) {
+                    entry.getValue().setChecked(false, false);
+                } else {
+                    entry.getValue().setChecked(true, false);
+                }
+            }
+        }
+    };
+
+    private OnItemClick onItemClick = new OnItemClick() {
+        @Override
+        public void doFilter(FilterHeaderItem item) {
+        }
+    };
+
+    public interface FilterAction {
+        void onShowFilter(FilterHeaderItem item);
+        void onHideFilter(FilterHeaderItem item);
+    }
+
+    public interface OnItemClick {
+        void doFilter(FilterHeaderItem item);
+    }
+
+    private FilterHeaderItem getMultiItem() {
+        List<MultiBean> dictList = new ArrayList<>();
         dictList.clear();
         String[] sexs = {"男", "女"};
         String[] colors = {"红色", "浅黄色", "橙子色", "鲜绿色", "青色", "天蓝色", "紫色", "黑曜石色", "白色", "五颜六色"};
@@ -109,76 +170,44 @@ public class FilterView extends LinearLayout {
             childrenList3.add(cd);
         }
         fb3.setChildren(childrenList3);
-
         dictList.add(fb1);
         dictList.add(fb2);
         dictList.add(fb3);
+        FilterHeaderItem headerItem = new FilterHeaderItem();
+        headerItem.setKey("11");
+        headerItem.setTitle("测试1");
+        headerItem.setmDictList(dictList);
+        return headerItem;
     }
 
-    List<SignalBean> chooseTypeData;
-    FilterAction action = new FilterAction() {
-        @Override
-        public void onShowFilter(int index) {
-            if (index == 0) {
-                MultiPopupView multiPopupView = new MultiPopupView(mContext);
-                multiPopupView.setViewData(dictList);
-                multiPopupView.setFilterAction(action, onItemClick);
-                linearLayout.removeAllViews();
-                linearLayout.addView(multiPopupView);
-            } else {
-                if (chooseTypeData == null) {
-                    chooseTypeData = new ArrayList<>();//选择类型
-                    chooseTypeData.add(new SignalBean("0", "全部分类"));
-                    chooseTypeData.add(new SignalBean("1", "分类1"));
-                    chooseTypeData.add(new SignalBean("2", "分类2"));
-                    chooseTypeData.add(new SignalBean("3", "分类3"));
-                    chooseTypeData.add(new SignalBean("4", "分类4"));
-                    chooseTypeData.get(0).setSelected(true);
-                }
-                SignalPopupView dropdownType = new SignalPopupView(mContext);
-                dropdownType.bind(chooseTypeData, dropdownButton1, action, onItemClick);
-                linearLayout.removeAllViews();
-                linearLayout.addView(dropdownType);
-            }
-        }
-
-        @Override
-        public void onHideFilter(int index) {
-            linearLayout.removeAllViews();
-            dropdownButton.setChecked(false);
-            dropdownButton1.setChecked(false);
-        }
-    };
-
-    private OnItemClick onItemClick = new OnItemClick() {
-        @Override
-        public void onSignalItemClick(SignalBean signalBean) {
-            Log.e("", "#######################" + signalBean.getText());
-        }
-
-        @Override
-        public void onMultiItemClick(List<MultiBean> multiBean) {
-            Log.e("", "#######################" + multiBean.size());
-        }
-    };
-
-    public interface FilterAction {
-        void onShowFilter(int index);
-
-        void onHideFilter(int index);
+    private FilterHeaderItem getSignalItem() {
+        List<SignalBean> chooseTypeData = new ArrayList<>();
+        chooseTypeData = new ArrayList<>();//选择类型
+        chooseTypeData.add(new SignalBean("0", "全部分类"));
+        chooseTypeData.add(new SignalBean("1", "分类1"));
+        chooseTypeData.add(new SignalBean("2", "分类2"));
+        chooseTypeData.add(new SignalBean("3", "分类3"));
+        chooseTypeData.add(new SignalBean("4", "分类4"));
+        chooseTypeData.get(0).setSelected(true);
+        FilterHeaderItem headerItem = new FilterHeaderItem();
+        headerItem.setKey("222");
+        headerItem.setTitle("测试12");
+        headerItem.setmSignalBean(chooseTypeData);
+        return headerItem;
     }
 
-    public interface OnItemClick {
-        void onSignalItemClick(SignalBean signalBean);
-
-        void onMultiItemClick(List<MultiBean> multiBean);
+    private FilterHeaderItem getEmptyItem() {
+        FilterHeaderItem headerItem = new FilterHeaderItem();
+        headerItem.setKey("333");
+        headerItem.setTitle("测试123");
+        return headerItem;
     }
 
-    @Override
-    public boolean onInterceptTouchEvent(MotionEvent ev) {
-        dropdownButton.dispatchTouchEvent(ev);
-        dropdownButton1.dispatchTouchEvent(ev);
-//        return super.onInterceptTouchEvent(ev);
-        return true;
+    private List<FilterHeaderItem> getFilterItems() {
+        List<FilterHeaderItem> items = new ArrayList<>();
+        items.add(getMultiItem());
+        items.add(getSignalItem());
+        items.add(getEmptyItem());
+        return items;
     }
 }

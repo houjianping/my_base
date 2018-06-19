@@ -13,10 +13,10 @@ import com.androidapp.base.R;
 import com.androidapp.base.utils.ToastUtils;
 
 public class DropdownButton extends RelativeLayout {
-    TextView textView;
-    View bottomLine;
-    FilterView.FilterAction mFilterAction;
-    private int mCurrentIndex;
+    private TextView textView;
+    private FilterView.FilterAction mFilterAction;
+    private FilterHeaderItem filterHeaderItem;
+    private boolean mChecked;
 
     public DropdownButton(Context context) {
         super(context);
@@ -24,55 +24,59 @@ public class DropdownButton extends RelativeLayout {
     }
 
     private void init() {
-        View view =  LayoutInflater.from(getContext()).inflate(R.layout.dropdown_tab_button,this, true);
-        view.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ToastUtils.showShortToast(getContext(), "############");
-            }
-        });
-        textView = (TextView) view.findViewById(R.id.textView);
-        bottomLine = view.findViewById(R.id.bottomLine);
+        View view = LayoutInflater.from(getContext()).inflate(R.layout.dropdown_tab_button, this, true);
+        textView = view.findViewById(R.id.textView);
         view.setOnClickListener(mOnClickListener);
     }
-
 
     public void setText(CharSequence text) {
         textView.setText(text);
     }
 
-    public void setChecked(boolean checked) {
+    public void setChecked(boolean hightLight, boolean up) {
         Drawable icon;
-        if (checked) {
-            icon = getResources().getDrawable(R.drawable.ic_dropdown_actived);
-            textView.setTextColor(Color.parseColor("#FF3BBD79"));
-            bottomLine.setVisibility(VISIBLE);
+        if (hightLight) {
+            textView.setTextColor(getResources().getColor(R.color.color_primary));
         } else {
-            icon = getResources().getDrawable(R.drawable.ic_dropdown_normal);
             textView.setTextColor(getResources().getColor(R.color.black_main));
-            bottomLine.setVisibility(GONE);
         }
-        textView.setCompoundDrawablesWithIntrinsicBounds(null, null, icon, null);
+        if (filterHeaderItem != null && !filterHeaderItem.isSelectable()) {
+            textView.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
+        } else {
+            if (up) {
+                if (hightLight) {
+                    icon = getResources().getDrawable(R.drawable.ic_dropdown_up_actived);
+                } else {
+                    icon = getResources().getDrawable(R.drawable.ic_dropdown_up_normal);
+                }
+            } else {
+                if (hightLight) {
+                    icon = getResources().getDrawable(R.drawable.ic_dropdown_down_actived);
+                } else {
+                    icon = getResources().getDrawable(R.drawable.ic_dropdown_down_normal);
+                }
+            }
+            textView.setCompoundDrawablesWithIntrinsicBounds(null, null, icon, null);
+        }
     }
 
-    public void setFilterAction(FilterView.FilterAction action, int index) {
+    public void setFilterAction(FilterView.FilterAction action, FilterHeaderItem item) {
         mFilterAction = action;
-        mCurrentIndex = index;
+        filterHeaderItem = item;
     }
 
     private OnClickListener mOnClickListener = new OnClickListener() {
         @Override
         public void onClick(View v) {
-            boolean currentVisable = bottomLine.getVisibility() == View.VISIBLE;
             if (mFilterAction != null) {
-                if (currentVisable) {
-                    mFilterAction.onHideFilter(mCurrentIndex);
+                if (mChecked) {
+                    mFilterAction.onHideFilter(filterHeaderItem);
                 } else {
-                    mFilterAction.onHideFilter(mCurrentIndex);
-                    mFilterAction.onShowFilter(mCurrentIndex);
+                    mFilterAction.onHideFilter(filterHeaderItem);
+                    mFilterAction.onShowFilter(filterHeaderItem);
                 }
             }
-            setChecked(!currentVisable);
+            setChecked(!mChecked, !mChecked);
         }
     };
 }

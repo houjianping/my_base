@@ -8,8 +8,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:drawablePadding="2dp"
-        android:drawableRight="@drawable/ic_dropdown_normal"
+        android:drawablePadding="5dp"
         android:ellipsize="end"
         android:maxLines="1"
         android:singleLine="true"
@@ -19,7 +18,7 @@
         android:id="@+id/bottomLine"
         android:layout_width="match_parent"
         android:layout_height="2dp"
-        android:background="#FF3BBD79"
+        android:background="@color/color_primary"
         android:layout_alignParentBottom="true"
         android:visibility="invisible"
         />

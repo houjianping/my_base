@@ -7,6 +7,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.androidapp.base.R;
+import com.androidapp.filter.FilterHeaderItem;
 import com.androidapp.filter.FilterView;
 import com.androidapp.filter.multiple.adapter.FlowPopListViewAdapter;
 import com.androidapp.filter.multiple.bean.MultiBean;
@@ -18,16 +19,16 @@ import java.util.List;
 public class MultiPopupView extends LinearLayout {
 
     private Context mContext;
-    private List<MultiBean> mDictList;
+    private FilterHeaderItem filterHeaderItem;
     private FlowPopListViewAdapter mDataAdapter;
     private View mContainer;
     private FilterView.FilterAction mFilterAction;
     private FilterView.OnItemClick mOnItemClick;
+    private List<MultiBean> mDictList = new ArrayList<>();
 
     public MultiPopupView(Context context) {
         super(context);
         mContext = context;
-        mDictList = new ArrayList<>();
         initView();
     }
 
@@ -62,9 +63,9 @@ public class MultiPopupView extends LinearLayout {
             @Override
             public void onClick(View view) {
                 mContainer.setVisibility(View.GONE);
-                mFilterAction.onHideFilter(-1);
+                mFilterAction.onHideFilter(filterHeaderItem);
                 if (mOnItemClick != null) {
-                    mOnItemClick.onMultiItemClick(mDictList);
+                    mOnItemClick.doFilter(filterHeaderItem);
                 }
             }
         });
@@ -72,14 +73,15 @@ public class MultiPopupView extends LinearLayout {
             @Override
             public void onClick(View view) {
                 mContainer.setVisibility(View.GONE);
-                mFilterAction.onHideFilter(-1);
+                mFilterAction.onHideFilter(filterHeaderItem);
             }
         });
     }
 
-    public void setViewData(List<MultiBean> items) {
+    public void setViewData(FilterHeaderItem item) {
         mDictList.clear();
-        mDictList.addAll(items);
+        mDictList.addAll(item.getmDictList());
+        filterHeaderItem = item;
         if (mDataAdapter != null) {
             mDataAdapter.notifyDataSetChanged();
         }

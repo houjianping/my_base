@@ -84,7 +84,7 @@ public class ActCollapsingToolBar extends AppCompatActivity {
         });
         initFragment();
         FilterView filter_view = findViewById(R.id.filter_view);
-        filter_view.addFilterData();
+        filter_view.setFilterItems(null);
     }
 
 

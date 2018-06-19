@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge  xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
     <LinearLayout
@@ -9,4 +10,9 @@
         android:orientation="vertical"
         >
     </LinearLayout>
-</merge >
+    <View
+        android:id="@+id/view_null"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+</LinearLayout >

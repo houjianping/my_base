@@ -2,13 +2,14 @@ package com.scwang.refreshlayout.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentTransaction;
 import android.text.TextUtils;
+import android.util.Log;
 
 import com.androidapp.base.activity.BaseActivity;
 import com.androidapp.base.utils.StatusBarUtil;
-import com.androidapp.base.utils.ToastUtils;
 import com.androidapp.share.bean.ShareContent;
 import com.androidapp.share.bean.ShareEnum;
 import com.androidapp.share.util.ShareUtil;
@@ -37,10 +38,26 @@ public class MainActivity extends BaseActivity {
     private OrderMainFragment mOrderMainFragment;
     private PersonalMainFragment videoMainFragment;
     private RoomMainFragment roomMainFragment;
+    private int currentTabPosition = 0;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        outState.putInt("currentTabPosition", currentTabPosition);
+        super.onSaveInstanceState(outState);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        int current = savedInstanceState.getInt("currentTabPosition");
+        if (current != currentTabPosition) {
+            switchTo(current);
+        }
     }
 
     @Override
@@ -102,7 +119,7 @@ public class MainActivity extends BaseActivity {
                     shareContent.setShareObject(1);
                     shareUtil.show(shareContent);
                 } else {
-                    SwitchTo(position);
+                    switchTo(position);
                 }
             }
 
@@ -117,13 +134,11 @@ public class MainActivity extends BaseActivity {
      */
     private void initFragment(Bundle savedInstanceState) {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        int currentTabPosition = 0;
         if (savedInstanceState != null) {
             mainFragment = (IndexMainFragment) getSupportFragmentManager().findFragmentByTag("IndexMainFragment");
             mOrderMainFragment = (OrderMainFragment) getSupportFragmentManager().findFragmentByTag("OrderFragment");
             videoMainFragment = (PersonalMainFragment) getSupportFragmentManager().findFragmentByTag("videoMainFragment");
             roomMainFragment = (RoomMainFragment) getSupportFragmentManager().findFragmentByTag("roomMainFragment");
-            currentTabPosition = 0;
         } else {
             mainFragment = new IndexMainFragment();
             mOrderMainFragment = new OrderMainFragment();
@@ -135,14 +150,15 @@ public class MainActivity extends BaseActivity {
             transaction.add(R.id.fl_body, roomMainFragment, "roomMainFragment");
         }
         transaction.commit();
-        SwitchTo(currentTabPosition);
+        switchTo(currentTabPosition);
         tabLayout.setCurrentTab(currentTabPosition);
     }
 
     /**
      * 切换
      */
-    private void SwitchTo(int position) {
+    private void switchTo(int position) {
+        currentTabPosition = position;
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         switch (position) {
             case 0:
