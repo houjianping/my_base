@@ -30,6 +30,7 @@ public class FilterView extends LinearLayout {
     private Context mContext;
     private LinearLayout mHeaderLayout;
     private LinearLayout linearLayout;
+    private OnItemClick onItemClick;
 
     private Map<String, DropdownButton> dropdownButtons = new HashMap();
     private LayoutParams splitParams = null;
@@ -86,6 +87,7 @@ public class FilterView extends LinearLayout {
     FilterAction action = new FilterAction() {
         @Override
         public void onShowFilter(FilterHeaderItem item) {
+            onItemClick.onItemClick();
             if (item.isSelectable()) {
                 if (item.getmDictList() != null) {
                     MultiPopupView multiPopupView = new MultiPopupView(mContext);
@@ -119,11 +121,9 @@ public class FilterView extends LinearLayout {
         }
     };
 
-    private OnItemClick onItemClick = new OnItemClick() {
-        @Override
-        public void doFilter(FilterHeaderItem item) {
-        }
-    };
+    public void setOnFilterItemClick(OnItemClick onFilterItemClick) {
+        onItemClick = onFilterItemClick;
+    }
 
     public interface FilterAction {
         void onShowFilter(FilterHeaderItem item);
@@ -132,6 +132,7 @@ public class FilterView extends LinearLayout {
 
     public interface OnItemClick {
         void doFilter(FilterHeaderItem item);
+        void onItemClick();
     }
 
     private FilterHeaderItem getMultiItem() {
@@ -147,6 +148,9 @@ public class FilterView extends LinearLayout {
         for (int x = 0; x < sexs.length; x++) {
             MultiBean.Children cd = new MultiBean.Children();
             cd.setValue(sexs[x]);
+            if (x == 0) {
+                cd.setSelected(true);
+            }
             childrenList.add(cd);
         }
         fb1.setChildren(childrenList);
@@ -157,6 +161,9 @@ public class FilterView extends LinearLayout {
         for (int x = 0; x < colors.length; x++) {
             MultiBean.Children cd = new MultiBean.Children();
             cd.setValue(colors[x]);
+            if (x == 0) {
+                cd.setSelected(true);
+            }
             childrenList2.add(cd);
         }
         fb2.setChildren(childrenList2);
@@ -167,6 +174,9 @@ public class FilterView extends LinearLayout {
         for (int x = 0; x < company.length; x++) {
             MultiBean.Children cd = new MultiBean.Children();
             cd.setValue(company[x]);
+            if (x == 0) {
+                cd.setSelected(true);
+            }
             childrenList3.add(cd);
         }
         fb3.setChildren(childrenList3);

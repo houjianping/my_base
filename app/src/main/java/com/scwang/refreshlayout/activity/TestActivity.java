@@ -9,6 +9,7 @@ import android.widget.Toast;
 
 import com.androidapp.banner.Banner;
 import com.androidapp.banner.listener.OnBannerClickListener;
+import com.androidapp.banner.listener.OnBannerListener;
 import com.androidapp.banner.loader.ImageLoader;
 import com.androidapp.base.activity.BaseListActivity;
 import com.androidapp.base.adapter.BaseQuickAdapter;
@@ -39,7 +40,7 @@ public class TestActivity extends BaseListActivity {
         Banner banner = (Banner) header;
         banner.setImageLoader(new GlideImageLoader());
         banner.setImages(BANNER_ITEMS);
-        banner.setOnBannerClickListener(new OnBannerClickListener() {
+        banner.setOnBannerListener(new OnBannerListener() {
             @Override
             public void OnBannerClick(int i) {
                 Toast.makeText(getBaseContext(), "si=" + i, Toast.LENGTH_SHORT).show();

@@ -17,8 +17,10 @@ import android.view.View;
 import android.widget.LinearLayout;
 
 import com.androidapp.base.utils.StatusBarUtil;
+import com.androidapp.base.utils.ToastUtils;
 import com.androidapp.base.widget.AppSwipeRefreshLayout;
 import com.androidapp.base.widget.AppViewPager;
+import com.androidapp.filter.FilterHeaderItem;
 import com.androidapp.filter.FilterView;
 import com.androidapp.filter.multiple.bean.MultiBean;
 import com.scwang.refreshlayout.R;
@@ -85,6 +87,16 @@ public class ActCollapsingToolBar extends AppCompatActivity {
         initFragment();
         FilterView filter_view = findViewById(R.id.filter_view);
         filter_view.setFilterItems(null);
+        filter_view.setOnFilterItemClick(new FilterView.OnItemClick() {
+            @Override
+            public void doFilter(FilterHeaderItem item) {
+                ToastUtils.showShortToast(getApplicationContext(), item.getKey());
+            }
+            @Override
+            public void onItemClick() {
+                mAppBarLayout.setExpanded(false);
+            }
+        });
     }
 
 

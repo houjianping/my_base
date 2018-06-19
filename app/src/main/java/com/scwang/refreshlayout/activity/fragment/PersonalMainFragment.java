@@ -21,6 +21,7 @@ import com.androidapp.smartrefresh.layout.listener.SimpleMultiPurposeListener;
 import com.androidapp.smartrefresh.layout.util.DensityUtil;
 import com.androidapp.upgrade.UpdateAppManager;
 import com.androidapp.widget.CustomAlertDialog;
+import com.androidapp.widget.LoadingDialog;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.luck.picture.lib.PictureSelector;
@@ -113,8 +114,12 @@ public class PersonalMainFragment extends BaseTabFragment {
         view.findViewById(R.id.my_redpack).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                doStartActivity(YuedanWebActivity.class, null);
-                ToastUtils.showShortToast(getContext(), "点击了留言");
+                LoadingDialog.Builder loadBuilder=new LoadingDialog.Builder(getContext())
+                        .setMessage("加载中...")
+                        .setCancelable(true)
+                        .setCancelOutside(true);
+                LoadingDialog dialog = loadBuilder.create();
+                dialog.show();
             }
         });
 
