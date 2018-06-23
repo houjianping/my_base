@@ -52,7 +52,8 @@ public abstract class BaseActivity extends AppCompatActivity {
      *
      * @param extras
      */
-    protected abstract void getBundleExtras(Bundle extras);
+    protected void getBundleExtras(Bundle extras) {
+    };
 
     protected void initTitle() {
         mTitleBar.setBackgroundColor(Color.WHITE);

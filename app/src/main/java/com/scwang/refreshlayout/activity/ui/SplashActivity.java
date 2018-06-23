@@ -1,4 +1,4 @@
-package com.scwang.refreshlayout.activity.splash;
+package com.scwang.refreshlayout.activity.ui;
 
 import android.os.Bundle;
 import android.os.Handler;
@@ -10,11 +10,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.androidapp.base.activity.BaseActivity;
-import com.androidapp.indicator.CirclePageIndicator;
 import com.bumptech.glide.Glide;
 import com.scwang.refreshlayout.R;
 import com.scwang.refreshlayout.activity.MainActivity;
-import com.scwang.refreshlayout.activity.YuedanWebActivity;
+import com.scwang.refreshlayout.activity.ui.common.YuedanWebActivity;
 
 public class SplashActivity extends BaseActivity {
 

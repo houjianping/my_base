@@ -1,4 +1,4 @@
-package com.scwang.refreshlayout.activity;
+package com.scwang.refreshlayout.activity.ui.common;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -6,11 +6,11 @@ import android.view.View;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
-import com.androidapp.base.activity.AppWebActivity;
+import com.androidapp.base.activity.BaseWebActivity;
 import com.androidapp.smartrefresh.layout.api.RefreshLayout;
 import com.androidapp.smartrefresh.layout.listener.OnRefreshListener;
 
-public class YuedanWebActivity extends AppWebActivity {
+public class YuedanWebActivity extends BaseWebActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -30,7 +30,7 @@ public class YuedanWebActivity extends AppWebActivity {
             }
         });
         addWebView(mWebView);
-        mWebView.loadUrl("https://github.com/scwang90/SmartRefreshLayout");
+        mWebView.loadUrl("https://www.baidu.com/");
         mCommonTitleBar.setTitle("浏览器标题");
         mLoadingLayout.setRetryListener(new View.OnClickListener() {
             @Override
@@ -47,4 +47,9 @@ public class YuedanWebActivity extends AppWebActivity {
         });
     }
 
+    @Override
+    protected void getBundleExtras(Bundle extras) {
+        super.getBundleExtras(extras);
+
+    }
 }

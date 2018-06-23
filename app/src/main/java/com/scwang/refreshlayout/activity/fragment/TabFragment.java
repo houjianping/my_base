@@ -14,7 +14,6 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.androidapp.banner.Banner;
-import com.androidapp.banner.listener.OnBannerClickListener;
 import com.androidapp.banner.listener.OnBannerListener;
 import com.androidapp.banner.loader.ImageLoader;
 import com.androidapp.base.adapter.BaseQuickAdapter;
@@ -30,7 +29,7 @@ import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.scwang.refreshlayout.R;
-import com.scwang.refreshlayout.activity.TestActivity;
+import com.scwang.refreshlayout.activity.ui.TestActivity;
 
 import java.util.ArrayList;
 import java.util.List;

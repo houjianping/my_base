@@ -12,7 +12,7 @@ import com.androidapp.smartrefresh.layout.SmartRefreshLayout;
 
 import ezy.ui.layout.LoadingLayout;
 
-public class AppWebActivity extends BaseActivity {
+public class BaseWebActivity extends BaseActivity {
 
     private LinearLayout mWebViewContainer;
     protected CommonTitleBar mCommonTitleBar;

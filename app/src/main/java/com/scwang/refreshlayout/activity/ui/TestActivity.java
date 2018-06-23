@@ -1,4 +1,4 @@
-package com.scwang.refreshlayout.activity;
+package com.scwang.refreshlayout.activity.ui;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -8,7 +8,6 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.androidapp.banner.Banner;
-import com.androidapp.banner.listener.OnBannerClickListener;
 import com.androidapp.banner.listener.OnBannerListener;
 import com.androidapp.banner.loader.ImageLoader;
 import com.androidapp.base.activity.BaseListActivity;

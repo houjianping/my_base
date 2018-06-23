@@ -2,24 +2,16 @@ package com.scwang.refreshlayout.activity.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.NestedScrollView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.androidapp.base.fragment.BaseTabFragment;
 import com.androidapp.base.utils.StatusBarUtil;
-import com.androidapp.base.utils.ToastUtils;
-import com.androidapp.widget.ActionSheet;
-import com.androidapp.smartrefresh.layout.api.RefreshHeader;
 import com.androidapp.smartrefresh.layout.api.RefreshLayout;
-import com.androidapp.smartrefresh.layout.listener.SimpleMultiPurposeListener;
 import com.androidapp.smartrefresh.layout.util.DensityUtil;
-import com.androidapp.upgrade.UpdateAppManager;
 import com.androidapp.widget.CustomAlertDialog;
 import com.androidapp.widget.LoadingDialog;
 import com.bumptech.glide.Glide;
@@ -29,11 +21,8 @@ import com.luck.picture.lib.config.PictureConfig;
 import com.luck.picture.lib.config.PictureMimeType;
 import com.luck.picture.lib.entity.LocalMedia;
 import com.scwang.refreshlayout.R;
-import com.scwang.refreshlayout.activity.YuedanWebActivity;
 import com.scwang.refreshlayout.activity.coll.ActCollapsingToolBar;
 import com.scwang.refreshlayout.util.GlideCircleTransform;
-import com.scwang.refreshlayout.util.OkGoUpdateHttpUtil;
-import com.yuedan.zxing.CaptureActivity;
 
 import java.util.List;
 
