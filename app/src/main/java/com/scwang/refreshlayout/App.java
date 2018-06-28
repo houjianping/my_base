@@ -5,6 +5,7 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatDelegate;
 
+import com.androidapp.cachewebviewlib.CacheWebView;
 import com.androidapp.share.ShareConfig;
 import com.facebook.stetho.Stetho;
 import com.scwang.refreshlayout.request.OkGoRequest;
@@ -15,7 +16,12 @@ import com.androidapp.smartrefresh.layout.api.RefreshLayout;
 import com.androidapp.smartrefresh.layout.header.ClassicsHeader;
 import com.scwang.refreshlayout.util.DynamicTimeFormat;
 
+import java.io.File;
+
 public class App extends Application {
+
+    private static final long MAX_DISK_SIZE = 1024 * 1024 * 100;
+    private static final long MAX_RAM_SIZE = 1024 * 1024 * 10;
 
     static {
         AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);//启用矢量图兼容
@@ -34,5 +40,8 @@ public class App extends Application {
         Stetho.initializeWithDefaults(this);
         OkGoRequest.initOkGo(this, true);
         ShareConfig.onCreate(this);
+        File cacheFile = new File(this.getCacheDir(), "webview_cache");
+        CacheWebView.getCacheConfig().init(this, cacheFile.getAbsolutePath(), MAX_DISK_SIZE, MAX_RAM_SIZE)
+                .enableDebug(true);//100M 磁盘缓存空间,10M 内存缓存空间
     }
 }

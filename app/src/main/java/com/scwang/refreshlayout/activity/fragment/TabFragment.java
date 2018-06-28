@@ -29,6 +29,7 @@ import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.scwang.refreshlayout.R;
+import com.scwang.refreshlayout.activity.SimplePlayer;
 import com.scwang.refreshlayout.activity.ui.TestActivity;
 
 import java.util.ArrayList;
@@ -88,6 +89,7 @@ public class TabFragment extends LazyLoadFragment {
                 public void onGridItemClick(Object item) {
                     GriedViewItem item1 = (GriedViewItem) item;
                     ToastUtils.showShortToast(getContext(),"####################" + item1.getTitle());
+                    doStartActivity(SimplePlayer.class, null);
                 }
             });
             List<GriedViewItem> list = new ArrayList<>();

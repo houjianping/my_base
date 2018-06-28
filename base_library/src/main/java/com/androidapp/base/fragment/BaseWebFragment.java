@@ -2,7 +2,6 @@ package com.androidapp.base.fragment;
 
 import android.os.Bundle;
 import android.view.View;
-import android.webkit.WebView;
 import android.widget.LinearLayout;
 
 import com.androidapp.base.R;
@@ -33,7 +32,7 @@ public class BaseWebFragment extends BaseFragment{
         return R.layout.app_browser_fragment;
     }
 
-    protected void addWebView(WebView mWebView) {
+    protected void addWebView(View mWebView) {
         mWebViewContainer.removeAllViews();
         mWebViewContainer.addView(mWebView);
     }

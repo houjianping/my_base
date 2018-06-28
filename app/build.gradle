@@ -52,4 +52,5 @@ dependencies {
     implementation project(':pay_library')
     implementation project(':zxing_library')
     compile "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation project(':video_library')
 }

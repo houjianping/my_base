@@ -42,8 +42,15 @@
             android:screenOrientation="portrait"
             android:label="@string/title_activity_index_main">
         </activity>
-        <activity android:name=".activity.ui.TestActivity" />
-        <activity android:name=".activity.coll.ActCollapsingToolBar" />
+        <activity
+            android:name=".activity.ui.TestActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".activity.coll.ActCollapsingToolBar"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".activity.SimplePlayer"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

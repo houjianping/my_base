@@ -1,0 +1,25 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 27
+
+    defaultConfig {
+        minSdkVersion 15
+        targetSdkVersion 27
+        versionCode 1
+        versionName "1.0"
+    }
+
+    buildTypes {
+        release {
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'com.shuyu:gsyVideoPlayer-java:5.0.0-beta'
+    compile 'com.shuyu:gsyVideoPlayer-armv7a:5.0.0-beta'
+    compile 'com.shuyu:gsyVideoPlayer-arm64:5.0.0-beta'
+}

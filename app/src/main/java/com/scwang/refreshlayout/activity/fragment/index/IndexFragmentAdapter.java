@@ -25,7 +25,7 @@ public class IndexFragmentAdapter extends FragmentPagerAdapter {
         if (position > 4) {
             Fragment fragment = new YuedanWebFragment();
             Bundle bundle = new Bundle();
-            bundle.putString(YuedanWebFragment.KEY_URL, "https://www.baidu.com/");
+            bundle.putString(YuedanWebFragment.KEY_URL, "http://www.sina.com.cn/");
             fragment.setArguments(bundle);
             return fragment;
         }

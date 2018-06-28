@@ -4,43 +4,36 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.webkit.WebView;
-import android.webkit.WebViewClient;
 
-import com.androidapp.base.activity.BaseWebActivity;
 import com.androidapp.base.fragment.BaseWebFragment;
 import com.androidapp.smartrefresh.layout.api.RefreshLayout;
 import com.androidapp.smartrefresh.layout.listener.OnRefreshListener;
+import com.scwang.refreshlayout.widget.AppWebView;
 
 public class YuedanWebFragment extends BaseWebFragment {
 
     public static final String KEY_URL = "h5url";
 
-    private WebView mWebView;
+    private AppWebView mWebView;
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         if (mWebView == null) {
-            mWebView = new WebView(getContext());
-            mWebView.setWebViewClient(new WebViewClient() {
+            mWebView = new AppWebView(getContext());
+            mWebView.setWebviewCallback(new AppWebView.WebViewCallback() {
                 @Override
-                public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                    view.loadUrl(url);
-                    return true;
+                public void onPageFinished() {
+                    mLoadingLayout.showContent();
                 }
 
                 @Override
-                public void onPageFinished(WebView view, String url) {
-                    super.onPageFinished(view, url);
-                    mLoadingLayout.showContent();
+                public void onPageLoadError() {
+//                    mLoadingLayout.showError();
                 }
             });
             addWebView(mWebView);
-            tryToLoadData();
             mLoadingLayout.setRetryListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -54,15 +47,17 @@ public class YuedanWebFragment extends BaseWebFragment {
                     mWebView.reload();
                 }
             });
+            tryToLoadData();
         }
     }
 
     private void tryToLoadData() {
-         Bundle bundle = getArguments();
-         if (bundle != null && !TextUtils.isEmpty(bundle.getString(KEY_URL))) {
-             if (mWebView != null) {
+        Bundle bundle = getArguments();
+        if (bundle != null && !TextUtils.isEmpty(bundle.getString(KEY_URL))) {
+            if (mWebView != null) {
                 mWebView.loadUrl(bundle.getString(KEY_URL));
-             }
-         }
+            }
+        }
     }
+
 }

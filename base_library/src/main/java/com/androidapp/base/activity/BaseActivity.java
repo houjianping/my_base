@@ -38,7 +38,9 @@ public abstract class BaseActivity extends AppCompatActivity {
         }
         initView();
         initData();
-        StatusBarUtil.darkMode(this);
+        if (isTranslucent()) {
+            StatusBarUtil.darkMode(this, getStatusBarColor());
+        }
     }
 
     protected abstract void initContentView(Bundle bundle);
@@ -79,6 +81,10 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     protected boolean isTranslucent() {
         return true;
+    }
+
+    protected int getStatusBarColor() {
+        return Color.TRANSPARENT;
     }
 
     @Override
