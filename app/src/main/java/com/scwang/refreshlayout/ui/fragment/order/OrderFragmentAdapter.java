@@ -1,10 +1,10 @@
-package com.scwang.refreshlayout.activity.fragment.order;
+package com.scwang.refreshlayout.ui.fragment.order;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import com.scwang.refreshlayout.activity.fragment.TabFragment;
+import com.scwang.refreshlayout.ui.fragment.TabFragment;
 
 public class OrderFragmentAdapter extends FragmentPagerAdapter {
     private String[] tabs = {"技能管理", "需求管理"};

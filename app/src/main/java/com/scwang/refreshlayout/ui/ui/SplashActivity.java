@@ -1,4 +1,4 @@
-package com.scwang.refreshlayout.activity.ui;
+package com.scwang.refreshlayout.ui.ui;
 
 import android.os.Bundle;
 import android.os.Handler;
@@ -12,8 +12,8 @@ import android.widget.TextView;
 import com.androidapp.base.activity.BaseActivity;
 import com.bumptech.glide.Glide;
 import com.scwang.refreshlayout.R;
-import com.scwang.refreshlayout.activity.MainActivity;
-import com.scwang.refreshlayout.activity.ui.common.YuedanWebActivity;
+import com.scwang.refreshlayout.ui.MainActivity;
+import com.scwang.refreshlayout.ui.ui.common.YuedanWebActivity;
 
 public class SplashActivity extends BaseActivity {
 

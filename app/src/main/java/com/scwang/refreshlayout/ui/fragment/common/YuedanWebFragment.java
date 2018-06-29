@@ -1,9 +1,10 @@
-package com.scwang.refreshlayout.activity.fragment.common;
+package com.scwang.refreshlayout.ui.fragment.common;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
+import android.view.KeyEvent;
 import android.view.View;
 
 import com.androidapp.base.fragment.BaseWebFragment;
@@ -18,6 +19,29 @@ public class YuedanWebFragment extends BaseWebFragment {
     private AppWebView mWebView;
 
     @Override
+    public void onResume() {
+        super.onResume();
+        getFocus();
+    }
+
+    //主界面获取焦点
+    private void getFocus() {
+        if (getView() == null)
+            return;
+        getView().setFocusableInTouchMode(true);
+        getView().requestFocus();
+        getView().setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if (event.getAction() == KeyEvent.ACTION_UP && keyCode == KeyEvent.KEYCODE_BACK) {
+                    return mWebView.onBackPress();
+                }
+                return false;
+            }
+        });
+    }
+
+    @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         if (mWebView == null) {
@@ -26,11 +50,12 @@ public class YuedanWebFragment extends BaseWebFragment {
                 @Override
                 public void onPageFinished() {
                     mLoadingLayout.showContent();
+                    getFocus();
                 }
 
                 @Override
                 public void onPageLoadError() {
-//                    mLoadingLayout.showError();
+                    mLoadingLayout.showError();
                 }
             });
             addWebView(mWebView);

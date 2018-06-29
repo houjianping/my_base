@@ -27,7 +27,7 @@ import com.androidapp.cachewebviewlib.WebViewCache;
 
 public class AppWebView extends CacheWebView {
 
-    public static final String TAG = "YuedanWebFragment";
+    public static final String TAG = "AppWebView";
 
     private WebViewCallback mWebViewCallback;
 
@@ -59,7 +59,7 @@ public class AppWebView extends CacheWebView {
             @Override
             public void onPageFinished(WebView view, String url) {
                 super.onPageFinished(view, url);
-                loadUrl("javascript:window.myjs.doAction(\"size\", '{width='+document.body.scrollWidth+',height='+document.body.scrollHeight+'}');");
+                loadUrl("javascript:window.myjs.doAction(\"size\", '{width='+document.body.scrollWidth+',height='+document.documentElement.scrollHeight+'}');");
                 String title = view.getTitle();
                 Log.e(TAG, "========onPageFinished WebView title=" + title);
                 if (mWebViewCallback != null) {
@@ -131,25 +131,32 @@ public class AppWebView extends CacheWebView {
             if (height < 1) {
                 return;
             }
-            ToastUtils.showShortToast(getContext(), "页面" + (height * getResources().getDisplayMetrics().density));
             if (getContext() instanceof Activity) {
                 ((Activity) getContext()).runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        setLayoutParams(new LinearLayout.LayoutParams(getResources().getDisplayMetrics().widthPixels, height/*(int) (height * getResources().getDisplayMetrics().density)*/));
+                        setLayoutParams(new LinearLayout.LayoutParams(getResources().getDisplayMetrics().widthPixels, (int) (height * getResources().getDisplayMetrics().density)));
                     }
                 });
             } else if (getContext() instanceof FragmentActivity) {
                 ((FragmentActivity) getContext()).runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        setLayoutParams(new LinearLayout.LayoutParams(getResources().getDisplayMetrics().widthPixels, height/*(int) (height * getResources().getDisplayMetrics().density)*/));
+                        setLayoutParams(new LinearLayout.LayoutParams(getResources().getDisplayMetrics().widthPixels, (int) (height * getResources().getDisplayMetrics().density)));
                     }
                 });
             } else {
                 ToastUtils.showShortToast(getContext(), "页面出错了");
             }
         }
+    }
+
+    public boolean onBackPress() {
+        if (canGoBack()) {
+            goBack();
+            return true;
+        }
+        return false;
     }
 
     public interface WebViewCallback {

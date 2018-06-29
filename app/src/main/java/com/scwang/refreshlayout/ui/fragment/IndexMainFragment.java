@@ -1,4 +1,4 @@
-package com.scwang.refreshlayout.activity.fragment;
+package com.scwang.refreshlayout.ui.fragment;
 
 
 import android.os.Bundle;
@@ -7,13 +7,9 @@ import android.util.Log;
 import android.view.View;
 
 import com.androidapp.base.fragment.BaseTabFragment;
-import com.scwang.refreshlayout.request.OkGoRequest;
 import com.androidapp.smarttablayout.SmartTabLayout;
 import com.scwang.refreshlayout.R;
-import com.scwang.refreshlayout.activity.fragment.index.IndexFragmentAdapter;
-
-import java.util.HashMap;
-import java.util.Map;
+import com.scwang.refreshlayout.ui.fragment.index.IndexFragmentAdapter;
 
 public class IndexMainFragment extends BaseTabFragment {
 

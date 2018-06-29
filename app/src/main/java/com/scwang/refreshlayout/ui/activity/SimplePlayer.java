@@ -1,17 +1,16 @@
-package com.scwang.refreshlayout.activity;
+package com.scwang.refreshlayout.ui.activity;
 
-import android.app.Activity;
 import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.FragmentActivity;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
 
 import com.androidapp.base.activity.BaseActivity;
+import com.androidapp.base.utils.ToastUtils;
+import com.bumptech.glide.Glide;
 import com.scwang.refreshlayout.R;
 import com.shuyu.gsyvideoplayer.GSYVideoManager;
 import com.shuyu.gsyvideoplayer.utils.OrientationUtils;
@@ -63,6 +62,7 @@ public class SimplePlayer extends BaseActivity {
             @Override
             public void onClick(View v) {
                 orientationUtils.resolveByClick();
+                ToastUtils.showShortToast(mContext, "" + orientationUtils.getScreenType());
             }
         });
         videoPlayer.setIsTouchWiget(true); //是否可以滑动调整
@@ -76,7 +76,11 @@ public class SimplePlayer extends BaseActivity {
         videoPlayer.setThumbPlay(true);
         videoPlayer.setFullHideStatusBar(false);
         videoPlayer.setSaveBeforeFullSystemUiVisibility(getWindow().getDecorView().getSystemUiVisibility());
-        videoPlayer.startPlayLogic();
+        //增加封面
+        ImageView imageView = new ImageView(this);
+        imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+        Glide.with(mContext).load("http://a4.att.hudong.com/05/71/01300000057455120185716259013.jpg").into(imageView);
+        videoPlayer.setThumbImageView(imageView);
     }
 
     @Override

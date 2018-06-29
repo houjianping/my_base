@@ -1,4 +1,4 @@
-package com.scwang.refreshlayout.activity.fragment;
+package com.scwang.refreshlayout.ui.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -21,7 +21,7 @@ import com.luck.picture.lib.config.PictureConfig;
 import com.luck.picture.lib.config.PictureMimeType;
 import com.luck.picture.lib.entity.LocalMedia;
 import com.scwang.refreshlayout.R;
-import com.scwang.refreshlayout.activity.coll.ActCollapsingToolBar;
+import com.scwang.refreshlayout.ui.coll.ActCollapsingToolBar;
 import com.scwang.refreshlayout.util.GlideCircleTransform;
 
 import java.util.List;

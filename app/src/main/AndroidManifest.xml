@@ -25,7 +25,7 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.ui.SplashActivity"
+        <activity android:name=".ui.ui.SplashActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -33,23 +33,24 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activity.MainActivity"
+            android:name=".ui.MainActivity"
             android:screenOrientation="portrait"
             android:label="@string/title_activity_index_main">
         </activity>
         <activity
-            android:name=".activity.ui.common.YuedanWebActivity"
+            android:name=".ui.ui.common.YuedanWebActivity"
             android:screenOrientation="portrait"
             android:label="@string/title_activity_index_main">
         </activity>
         <activity
-            android:name=".activity.ui.TestActivity"
+            android:name=".ui.ui.TestActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".activity.coll.ActCollapsingToolBar"
+            android:name=".ui.coll.ActCollapsingToolBar"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".activity.SimplePlayer"
+            android:name=".ui.activity.SimplePlayer"
+            android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait"/>
     </application>
 

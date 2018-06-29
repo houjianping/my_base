@@ -1,4 +1,4 @@
-package com.scwang.refreshlayout.activity;
+package com.scwang.refreshlayout.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,10 +15,10 @@ import com.androidapp.tablayout.CommonTabLayout;
 import com.androidapp.tablayout.listener.CustomTabEntity;
 import com.androidapp.tablayout.listener.OnTabSelectListener;
 import com.scwang.refreshlayout.R;
-import com.scwang.refreshlayout.activity.fragment.IndexMainFragment;
-import com.scwang.refreshlayout.activity.fragment.OrderMainFragment;
-import com.scwang.refreshlayout.activity.fragment.PersonalMainFragment;
-import com.scwang.refreshlayout.activity.fragment.RoomMainFragment;
+import com.scwang.refreshlayout.ui.fragment.IndexMainFragment;
+import com.scwang.refreshlayout.ui.fragment.OrderMainFragment;
+import com.scwang.refreshlayout.ui.fragment.PersonalMainFragment;
+import com.scwang.refreshlayout.ui.fragment.RoomMainFragment;
 
 import java.util.ArrayList;
 

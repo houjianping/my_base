@@ -1,12 +1,12 @@
-package com.scwang.refreshlayout.activity.fragment.index;
+package com.scwang.refreshlayout.ui.fragment.index;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import com.scwang.refreshlayout.activity.fragment.TabFragment;
-import com.scwang.refreshlayout.activity.fragment.common.YuedanWebFragment;
+import com.scwang.refreshlayout.ui.fragment.TabFragment;
+import com.scwang.refreshlayout.ui.fragment.common.YuedanWebFragment;
 
 public class IndexFragmentAdapter extends FragmentPagerAdapter {
     private String[] tabs = {"推荐", "娱乐", "技能", "相亲", "交友", "H5"};

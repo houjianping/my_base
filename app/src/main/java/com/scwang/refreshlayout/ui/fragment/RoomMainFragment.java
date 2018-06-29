@@ -1,7 +1,11 @@
-package com.scwang.refreshlayout.activity.ui;
+package com.scwang.refreshlayout.ui.fragment;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v7.widget.DividerItemDecoration;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
@@ -10,12 +14,9 @@ import android.widget.Toast;
 import com.androidapp.banner.Banner;
 import com.androidapp.banner.listener.OnBannerListener;
 import com.androidapp.banner.loader.ImageLoader;
-import com.androidapp.base.activity.BaseListActivity;
 import com.androidapp.base.adapter.BaseQuickAdapter;
 import com.androidapp.base.adapter.BaseViewHolder;
-import com.androidapp.share.bean.ShareContent;
-import com.androidapp.share.bean.ShareEnum;
-import com.androidapp.share.util.ShareUtil;
+import com.androidapp.base.fragment.BaseTabFragment;
 import com.androidapp.smartrefresh.layout.api.RefreshLayout;
 import com.androidapp.smartrefresh.layout.listener.OnLoadMoreListener;
 import com.androidapp.smartrefresh.layout.listener.OnRefreshListener;
@@ -23,121 +24,83 @@ import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.scwang.refreshlayout.R;
+import com.scwang.refreshlayout.ui.ui.TestActivity;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class TestActivity extends BaseListActivity {
+import static android.support.v7.widget.DividerItemDecoration.VERTICAL;
 
-    private BaseQuickAdapter mBaseQuickAdapter;
+public class RoomMainFragment extends BaseTabFragment {
+
+    private QuickAdapter mAdapter;
 
     @Override
-    protected void initView() {
-        super.initView();
+    protected void loadData(boolean force) {
+    }
+
+    @Override
+    protected void initView(View view, Bundle savedInstanceState) {
+        final RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
+        final RefreshLayout refreshLayout = (RefreshLayout) view.findViewById(R.id.refreshLayout);
+        mAdapter = new QuickAdapter();
+        recyclerView.addItemDecoration(new DividerItemDecoration(getContext(), VERTICAL));
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerView.setAdapter(mAdapter);
+        mAdapter.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
+            @Override
+            public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
+                doStartActivity(TestActivity.class, null);
+            }
+        });
+        final List<Movie> movies = new Gson().fromJson(JSON_MOVIES, new TypeToken<ArrayList<Movie>>() {
+        }.getType());
+        mAdapter.replaceData(movies);
+        refreshLayout.setOnRefreshListener(new OnRefreshListener() {
+            @Override
+            public void onRefresh(@NonNull final RefreshLayout refreshLayout) {
+                refreshLayout.getLayout().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        if (mAdapter.getItemCount() < 2) {
+                            List<Movie> movies = new Gson().fromJson(JSON_MOVIES, new TypeToken<ArrayList<Movie>>() {
+                            }.getType());
+                            mAdapter.replaceData(movies);
+                        }
+                        refreshLayout.finishRefresh();
+                    }
+                }, 2000);
+            }
+        });
+        refreshLayout.setOnLoadMoreListener(new OnLoadMoreListener() {
+            @Override
+            public void onLoadMore(@NonNull RefreshLayout refreshLayout) {
+                mAdapter.addData(movies);
+                refreshLayout.finishLoadMoreWithNoMoreData();
+            }
+        });
+
+
         //添加Header
-        View header = LayoutInflater.from(this).inflate(R.layout.listitem_movie_header, mRecyclerView, false);
+        View header = LayoutInflater.from(getContext()).inflate(R.layout.listitem_movie_header, recyclerView, false);
         Banner banner = (Banner) header;
         banner.setImageLoader(new GlideImageLoader());
         banner.setImages(BANNER_ITEMS);
         banner.setOnBannerListener(new OnBannerListener() {
             @Override
             public void OnBannerClick(int i) {
-                Toast.makeText(getBaseContext(), "si=" + i, Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "si=" + i, Toast.LENGTH_SHORT).show();
             }
         });
         banner.start();
-        addHeaderView(banner, 0);
+        mAdapter.addHeaderView(banner);
+        mAdapter.openLoadAnimation();
     }
 
     @Override
-    protected void initTitle() {
-        super.initTitle();
-        mTitleBar.setTitle("测试列表");
-        ImageView imageView = new ImageView(this);
-        imageView.setImageResource(R.drawable.more);
-        imageView.setPadding(0,0,15,0);
-        imageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ShareUtil shareUtil = new ShareUtil(TestActivity.this,"分享标题", R.mipmap.ic_launcher);
-                shareUtil.setShareCallback(new ShareUtil.ShareCallback() {
-                    @Override
-                    public void onShareStart(ShareEnum shareEnum) {
-                    }
-                    @Override
-                    public void onShareSuccess(ShareEnum shareEnum) {
-                    }
-                    @Override
-                    public void onShareFailed(ShareEnum shareEnum) {
-                    }
-                    @Override
-                    public void onShareCancel(ShareEnum shareEnum) {
-                    }
-                });
-                ShareContent shareContent = new ShareContent();
-                shareContent.setUrl("");
-                shareContent.setTitle("");
-                shareContent.setLogo("");
-                shareContent.setText("");
-                shareContent.setShareObject(1);
-                shareUtil.show(shareContent);
-            }
-        });
-        mTitleBar.setRightView(imageView);
+    protected int getLayoutId() {
+        return R.layout.act_main_test2;
     }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        final List<Movie> movies = new Gson().fromJson(JSON_MOVIES, new TypeToken<ArrayList<Movie>>() {
-        }.getType());
-        mBaseQuickAdapter.replaceData(movies);
-    }
-
-    @Override
-    protected OnRefreshListener getOnRefreshListener() {
-        return mOnRefreshListener;
-    }
-
-    @Override
-    protected OnLoadMoreListener getOnLoadMoreListener() {
-        return mOnLoadMoreListener;
-    }
-
-    @Override
-    protected BaseQuickAdapter getListViewAdapter() {
-        if (mBaseQuickAdapter == null) {
-            mBaseQuickAdapter = new QuickAdapter();
-        }
-        return mBaseQuickAdapter;
-    }
-
-    private OnRefreshListener mOnRefreshListener = new OnRefreshListener() {
-        @Override
-        public void onRefresh(@NonNull RefreshLayout refreshLayout) {
-            refreshLayout.getLayout().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    if (mBaseQuickAdapter.getItemCount() < 2) {
-                        List<Movie> movies = new Gson().fromJson(JSON_MOVIES, new TypeToken<ArrayList<Movie>>() {
-                        }.getType());
-                        mBaseQuickAdapter.replaceData(movies);
-                    }
-                    mRefreshLayout.finishRefresh();
-                }
-            }, 2000);
-        }
-    };
-
-    private OnLoadMoreListener mOnLoadMoreListener = new OnLoadMoreListener() {
-        @Override
-        public void onLoadMore(@NonNull RefreshLayout refreshLayout) {
-            final List<Movie> movies = new Gson().fromJson(JSON_MOVIES, new TypeToken<ArrayList<Movie>>() {
-            }.getType());
-            mBaseQuickAdapter.addData(movies);
-            refreshLayout.finishLoadMoreWithNoMoreData();
-        }
-    };
 
     public class QuickAdapter extends BaseQuickAdapter<Movie, BaseViewHolder> {
         public QuickAdapter() {

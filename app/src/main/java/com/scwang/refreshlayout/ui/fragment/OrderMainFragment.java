@@ -1,4 +1,4 @@
-package com.scwang.refreshlayout.activity.fragment;
+package com.scwang.refreshlayout.ui.fragment;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -10,7 +10,7 @@ import com.androidapp.base.fragment.BaseTabFragment;
 import com.androidapp.widget.CommonTitleBar;
 import com.androidapp.smarttablayout.SmartTabLayout;
 import com.scwang.refreshlayout.R;
-import com.scwang.refreshlayout.activity.fragment.order.OrderFragmentAdapter;
+import com.scwang.refreshlayout.ui.fragment.order.OrderFragmentAdapter;
 
 public class OrderMainFragment extends BaseTabFragment {
 

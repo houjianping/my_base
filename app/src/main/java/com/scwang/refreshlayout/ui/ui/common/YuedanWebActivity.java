@@ -1,4 +1,4 @@
-package com.scwang.refreshlayout.activity.ui.common;
+package com.scwang.refreshlayout.ui.ui.common;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

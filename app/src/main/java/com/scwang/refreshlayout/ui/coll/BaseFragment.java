@@ -1,4 +1,4 @@
-package com.scwang.refreshlayout.activity.coll;
+package com.scwang.refreshlayout.ui.coll;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;

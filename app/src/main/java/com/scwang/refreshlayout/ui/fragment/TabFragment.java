@@ -1,11 +1,13 @@
-package com.scwang.refreshlayout.activity.fragment;
+package com.scwang.refreshlayout.ui.fragment;
 
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
@@ -16,7 +18,10 @@ import com.androidapp.banner.listener.OnBannerListener;
 import com.androidapp.banner.loader.ImageLoader;
 import com.androidapp.base.adapter.BaseQuickAdapter;
 import com.androidapp.base.adapter.BaseViewHolder;
-import com.androidapp.base.fragment.BaseTabFragment;
+import com.androidapp.base.fragment.LazyLoadFragment;
+import com.androidapp.base.utils.ToastUtils;
+import com.androidapp.pagedgridview.PagedGridItem;
+import com.androidapp.pagedgridview.PagedGridLayout;
 import com.androidapp.smartrefresh.layout.api.RefreshLayout;
 import com.androidapp.smartrefresh.layout.listener.OnLoadMoreListener;
 import com.androidapp.smartrefresh.layout.listener.OnRefreshListener;
@@ -24,38 +29,95 @@ import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.scwang.refreshlayout.R;
-import com.scwang.refreshlayout.activity.ui.TestActivity;
+import com.scwang.refreshlayout.ui.activity.SimplePlayer;
+import com.scwang.refreshlayout.ui.ui.TestActivity;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static android.support.v7.widget.DividerItemDecoration.VERTICAL;
 
-public class RoomMainFragment extends BaseTabFragment {
+public class TabFragment extends LazyLoadFragment {
 
+    final List<Movie> movies = new Gson().fromJson(JSON_MOVIES, new TypeToken<ArrayList<Movie>>() {}.getType());
     private QuickAdapter mAdapter;
 
     @Override
     protected void loadData(boolean force) {
+        Log.e("","------loadData--------" + force);
+        if (force) {
+            mAdapter.replaceData(movies);
+        }
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        Log.e("","------loadData---onCreate-----" + getUserVisibleHint());
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        Log.e("","------loadData---onResume-----" + getUserVisibleHint());
     }
 
     @Override
     protected void initView(View view, Bundle savedInstanceState) {
+        Log.e("","------loadData----mAdapter----");
         final RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
         final RefreshLayout refreshLayout = (RefreshLayout) view.findViewById(R.id.refreshLayout);
-        mAdapter = new QuickAdapter();
         recyclerView.addItemDecoration(new DividerItemDecoration(getContext(), VERTICAL));
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        if (mAdapter == null) {
+            Log.e("","------loadData----mAdapter---1111-");
+            mAdapter = new QuickAdapter();
+            //添加Header
+            View header = LayoutInflater.from(getContext()).inflate(R.layout.listitem_movie_header, recyclerView, false);
+            Banner banner = (Banner) header;
+            banner.setImageLoader(new GlideImageLoader());
+            banner.setImages(BANNER_ITEMS);
+            banner.setOnBannerListener(new OnBannerListener() {
+                @Override
+                public void OnBannerClick(int i) {
+                    Toast.makeText(getContext(), "si=" + i, Toast.LENGTH_SHORT).show();
+                }
+            });
+            banner.start();
+            PagedGridLayout pagedGridLayout = new PagedGridLayout(getActivity(), new PagedGridLayout.OnGridItemClick() {
+                @Override
+                public void onGridItemClick(Object item) {
+                    GriedViewItem item1 = (GriedViewItem) item;
+                    ToastUtils.showShortToast(getContext(),"####################" + item1.getTitle());
+                    doStartActivity(SimplePlayer.class, null);
+                }
+            });
+            List<GriedViewItem> list = new ArrayList<>();
+            GriedViewItem item = new GriedViewItem();
+            item.setTitle("美团测试图");
+            item.setIcon_url("http://p1.meituan.net/movie/55c57c37c9baa412aa9351f385275ef861052.jpg");
+            list.add(item);
+            list.add(item);
+            list.add(item);
+            list.add(item);
+            list.add(item);
+            list.add(item);
+            list.add(item);
+            list.add(item);
+            list.add(item);
+            list.add(item);
+            pagedGridLayout.setData(list, 2, 4);
+            mAdapter.addHeaderView(banner,0);
+            mAdapter.addHeaderView(pagedGridLayout,1);
+            mAdapter.openLoadAnimation();
+            mAdapter.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
+                @Override
+                public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
+                    doStartActivity(TestActivity.class, null);
+                }
+            });
+        }
         recyclerView.setAdapter(mAdapter);
-        mAdapter.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
-            @Override
-            public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
-                doStartActivity(TestActivity.class, null);
-            }
-        });
-        final List<Movie> movies = new Gson().fromJson(JSON_MOVIES, new TypeToken<ArrayList<Movie>>() {
-        }.getType());
-        mAdapter.replaceData(movies);
         refreshLayout.setOnRefreshListener(new OnRefreshListener() {
             @Override
             public void onRefresh(@NonNull final RefreshLayout refreshLayout) {
@@ -79,27 +141,11 @@ public class RoomMainFragment extends BaseTabFragment {
                 refreshLayout.finishLoadMoreWithNoMoreData();
             }
         });
-
-
-        //添加Header
-        View header = LayoutInflater.from(getContext()).inflate(R.layout.listitem_movie_header, recyclerView, false);
-        Banner banner = (Banner) header;
-        banner.setImageLoader(new GlideImageLoader());
-        banner.setImages(BANNER_ITEMS);
-        banner.setOnBannerListener(new OnBannerListener() {
-            @Override
-            public void OnBannerClick(int i) {
-                Toast.makeText(getContext(), "si=" + i, Toast.LENGTH_SHORT).show();
-            }
-        });
-        banner.start();
-        mAdapter.addHeaderView(banner);
-        mAdapter.openLoadAnimation();
     }
 
     @Override
     protected int getLayoutId() {
-        return R.layout.act_main_test2;
+        return R.layout.fragment_tab;
     }
 
     public class QuickAdapter extends BaseQuickAdapter<Movie, BaseViewHolder> {
@@ -176,4 +222,7 @@ public class RoomMainFragment extends BaseTabFragment {
             "{\"actors\":null,\"filmName\":\"二十二\",\"grade\":\"10.0\",\"picaddr\":\"http://app.infunpw.com/commons/images/cinema/cinema_films/3811.jpg\",\"releasedate\":\"2017-08-14\",\"shortinfo\":\"二战女俘虏 讲述心中苦\",\"type\":\"纪录片\"}," +
             "{\"actors\":\"郭富城|王千源|刘涛|余皑磊|冯嘉怡\",\"filmName\":\"破·局\",\"grade\":\"5.0\",\"picaddr\":\"http://app.infunpw.com/commons/images/cinema/cinema_films/3812.jpg\",\"releasedate\":\"2017-08-18\",\"shortinfo\":\"影帝硬碰硬 迷局谁怕谁\",\"type\":\"动作|犯罪\"}" +
             "]";
+
+    class GriedViewItem extends PagedGridItem {
+    }
 }
