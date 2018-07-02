@@ -14,6 +14,10 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.androidapp.banner.Banner;
+<<<<<<< HEAD:app/src/main/java/com/scwang/refreshlayout/ui/fragment/TabFragment.java
+=======
+import com.androidapp.banner.listener.OnBannerClickListener;
+>>>>>>> 294fcb7... up:app/src/main/java/com/scwang/refreshlayout/activity/fragment/TabFragment.java
 import com.androidapp.banner.listener.OnBannerListener;
 import com.androidapp.banner.loader.ImageLoader;
 import com.androidapp.base.adapter.BaseQuickAdapter;

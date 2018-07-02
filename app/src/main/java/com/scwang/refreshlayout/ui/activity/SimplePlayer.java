@@ -62,7 +62,6 @@ public class SimplePlayer extends BaseActivity {
             @Override
             public void onClick(View v) {
                 orientationUtils.resolveByClick();
-                ToastUtils.showShortToast(mContext, "" + orientationUtils.getScreenType());
             }
         });
         videoPlayer.setIsTouchWiget(true); //是否可以滑动调整

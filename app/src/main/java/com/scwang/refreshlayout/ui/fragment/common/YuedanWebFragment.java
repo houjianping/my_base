@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 
@@ -69,6 +70,7 @@ public class YuedanWebFragment extends BaseWebFragment {
                 @Override
                 public void onRefresh(RefreshLayout refreshlayout) {
                     refreshlayout.finishRefresh(2000, false);//传入false表示刷新失败
+                    Log.e("","----->" + mWebView.getUrl());
                     mWebView.reload();
                 }
             });

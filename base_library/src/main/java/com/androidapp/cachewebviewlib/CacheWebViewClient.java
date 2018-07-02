@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.net.http.SslError;
 import android.os.Build;
 import android.os.Message;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.webkit.ClientCertRequest;
 import android.webkit.HttpAuthHandler;
@@ -145,7 +146,6 @@ final class CacheWebViewClient extends WebViewClient {
 
     @Override
     public boolean shouldOverrideUrlLoading(WebView view, String url) {
-
         if (mCustomWebViewClient != null) {
             boolean ret = mCustomWebViewClient.shouldOverrideUrlLoading(view, url);
             if (ret) {
@@ -159,7 +159,6 @@ final class CacheWebViewClient extends WebViewClient {
     @TargetApi(Build.VERSION_CODES.N)
     @Override
     public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
-
         if (mCustomWebViewClient != null) {
             boolean ret = mCustomWebViewClient.shouldOverrideUrlLoading(view, request);
             if (ret) {

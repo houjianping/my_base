@@ -7,6 +7,7 @@ import android.os.Build;
 import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.webkit.JavascriptInterface;
 import android.webkit.JsResult;
@@ -35,6 +36,8 @@ public class AppWebView extends CacheWebView {
         super(context);
         initWebView();
         setCacheStrategy(WebViewCache.CacheStrategy.FORCE);
+        setOnTouchListener(mOnTouchListener);
+        Log.e("","###########setOnTouchListener##########mOnTouchListener#####");
     }
 
     private void initWebView() {
@@ -65,6 +68,15 @@ public class AppWebView extends CacheWebView {
                 if (mWebViewCallback != null) {
                     mWebViewCallback.onPageFinished();
                 }
+            }
+
+            @Override
+            public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                Log.e("","shouldOverrideUrlLoading" + url);
+                if (!url.startsWith("http")) {
+                    return true;
+                }
+                return super.shouldOverrideUrlLoading(view, url);
             }
 
             //处理网页加载失败时
@@ -177,4 +189,34 @@ public class AppWebView extends CacheWebView {
             ToastUtils.showShortToast(context, "URL类型加载出错");
         }
     }
+
+    int lastX = 0;
+    int lastY = 0;
+
+    private OnTouchListener mOnTouchListener = new OnTouchListener() {
+        @Override
+        public boolean onTouch(View v, MotionEvent event) {
+            getParent().requestDisallowInterceptTouchEvent(true);
+            int x = (int) event.getRawX();
+            int y = (int) event.getRawY();
+            switch (event.getAction()) {
+                case MotionEvent.ACTION_DOWN:
+                    lastX = x;
+                    lastY = y;
+                    break;
+                case MotionEvent.ACTION_MOVE:
+                    int deltaY = y - lastY;
+                    int deltaX = x - lastX;
+                    if (Math.abs(deltaX) < Math.abs(deltaY)) {
+                        getParent().requestDisallowInterceptTouchEvent(false);
+                    } else {
+                        getParent().requestDisallowInterceptTouchEvent(true);
+                        return true;
+                    }
+                default:
+                    break;
+            }
+            return false;
+        }
+    };
 }
