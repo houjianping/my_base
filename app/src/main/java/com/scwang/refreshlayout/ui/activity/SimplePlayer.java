@@ -9,7 +9,6 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.androidapp.base.activity.BaseActivity;
-import com.androidapp.base.utils.ToastUtils;
 import com.bumptech.glide.Glide;
 import com.scwang.refreshlayout.R;
 import com.shuyu.gsyvideoplayer.GSYVideoManager;
@@ -38,7 +37,7 @@ public class SimplePlayer extends BaseActivity {
 
     @Override
     protected void initView() {
-        videoPlayer =  (StandardGSYVideoPlayer)findViewById(R.id.video_player);
+        videoPlayer = (StandardGSYVideoPlayer) findViewById(R.id.video_player);
     }
 
     @Override

@@ -103,7 +103,7 @@ public class PersonalMainFragment extends BaseTabFragment {
         view.findViewById(R.id.my_redpack).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                LoadingDialog.Builder loadBuilder=new LoadingDialog.Builder(getContext())
+                LoadingDialog.Builder loadBuilder = new LoadingDialog.Builder(getContext())
                         .setMessage("加载中...")
                         .setCancelable(true)
                         .setCancelOutside(true);
@@ -145,6 +145,7 @@ public class PersonalMainFragment extends BaseTabFragment {
             private int lastScrollY = 0;
             private int h = DensityUtil.dp2px(50);
             private int color = /*ContextCompat.getColor(getContext(), R.color.colorPrimary) & 0x00ffffff*/ 0x00ffffff;
+
             @Override
             public void onScrollChange(NestedScrollView v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
                 if (lastScrollY < h) {

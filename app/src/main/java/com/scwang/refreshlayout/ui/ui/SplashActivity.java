@@ -17,14 +17,43 @@ import com.scwang.refreshlayout.ui.ui.common.YuedanWebActivity;
 
 public class SplashActivity extends BaseActivity {
 
+    private static final int MSG_FINISH_CURRENT = 1;
+    private static final int MSG_UPDATE_TIME = 2;
     private View mContentView;
     private View mBottomLogo;
     private ImageView mAdImageView;
     private TextView mSkipTextView;
-
-    private static final int MSG_FINISH_CURRENT = 1;
-    private static final int MSG_UPDATE_TIME = 2;
     private int mMaxTime = 6;
+    private View.OnClickListener mOnClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            if (v == mSkipTextView) {
+                redirectTo();
+            } else if (v == mAdImageView) {
+                doStartActivity(YuedanWebActivity.class, null);
+            }
+        }
+    };
+    private Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            if (isFinishing()) {
+                return;
+            }
+            switch (msg.what) {
+                case MSG_FINISH_CURRENT:
+                    redirectTo();
+                    break;
+                case MSG_UPDATE_TIME:
+                    mMaxTime--;
+                    if (mMaxTime >= 0)
+                        mSkipTextView.setText("跳过(" + mMaxTime + ")");
+                    mHandler.sendEmptyMessageDelayed(MSG_UPDATE_TIME, 1000);
+                    break;
+            }
+        }
+    };
 
     @Override
     protected void initContentView(Bundle bundle) {
@@ -68,17 +97,6 @@ public class SplashActivity extends BaseActivity {
     protected void getBundleExtras(Bundle extras) {
     }
 
-    private View.OnClickListener mOnClickListener = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            if (v == mSkipTextView) {
-                redirectTo();
-            } else if (v == mAdImageView) {
-                doStartActivity(YuedanWebActivity.class, null);
-            }
-        }
-    };
-
     private void showAds() {
         mAdImageView.setClickable(true);
         mSkipTextView.setVisibility(View.VISIBLE);
@@ -87,27 +105,6 @@ public class SplashActivity extends BaseActivity {
         mHandler.sendEmptyMessageDelayed(MSG_FINISH_CURRENT, mMaxTime * 1000);
         mHandler.sendEmptyMessageDelayed(MSG_UPDATE_TIME, 1000);
     }
-
-    private Handler mHandler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-            if (isFinishing()) {
-                return;
-            }
-            switch (msg.what) {
-                case MSG_FINISH_CURRENT:
-                    redirectTo();
-                    break;
-                case MSG_UPDATE_TIME:
-                    mMaxTime --;
-                    if (mMaxTime >= 0)
-                        mSkipTextView.setText("跳过(" + mMaxTime + ")");
-                    mHandler.sendEmptyMessageDelayed(MSG_UPDATE_TIME, 1000);
-                    break;
-            }
-        }
-    };
 
     private void redirectTo() {
         if (isInForeground)

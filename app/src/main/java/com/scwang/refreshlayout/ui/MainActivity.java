@@ -94,17 +94,20 @@ public class MainActivity extends BaseActivity {
             @Override
             public void onTabSelect(int position) {
                 if (position == 2) {
-                    ShareUtil shareUtil = new ShareUtil(MainActivity.this,"分享标题", R.mipmap.ic_launcher);
+                    ShareUtil shareUtil = new ShareUtil(MainActivity.this, "分享标题", R.mipmap.ic_launcher);
                     shareUtil.setShareCallback(new ShareUtil.ShareCallback() {
                         @Override
                         public void onShareStart(ShareEnum shareEnum) {
                         }
+
                         @Override
                         public void onShareSuccess(ShareEnum shareEnum) {
                         }
+
                         @Override
                         public void onShareFailed(ShareEnum shareEnum) {
                         }
+
                         @Override
                         public void onShareCancel(ShareEnum shareEnum) {
                         }
@@ -193,6 +196,16 @@ public class MainActivity extends BaseActivity {
         }
     }
 
+    @Override
+    protected boolean isTranslucent() {
+        return true;
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+    }
+
     public class TabEntity implements CustomTabEntity {
         private String title;
         private int selectedIcon;
@@ -230,15 +243,5 @@ public class MainActivity extends BaseActivity {
         public int getIconSize() {
             return isSelectAble ? 0 : 120;
         }
-    }
-
-    @Override
-    protected boolean isTranslucent() {
-        return true;
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
     }
 }

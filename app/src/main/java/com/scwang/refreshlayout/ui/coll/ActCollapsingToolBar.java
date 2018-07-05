@@ -89,6 +89,7 @@ public class ActCollapsingToolBar extends AppCompatActivity {
             public void doFilter(FilterHeaderItem item) {
                 ToastUtils.showShortToast(getApplicationContext(), item.getKey());
             }
+
             @Override
             public void onItemClick() {
                 mAppBarLayout.setExpanded(false);
@@ -132,6 +133,7 @@ public class ActCollapsingToolBar extends AppCompatActivity {
             }
             return null;
         }
+
         @Override
         public int getCount() {
             return 3;

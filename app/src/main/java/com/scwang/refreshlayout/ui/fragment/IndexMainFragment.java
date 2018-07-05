@@ -18,7 +18,7 @@ public class IndexMainFragment extends BaseTabFragment {
 
     @Override
     protected void loadData(boolean force) {
-        Log.e("","--------loadData-----IndexMainFragment--------" + force);
+        Log.e("", "--------loadData-----IndexMainFragment--------" + force);
     }
 
     @Override

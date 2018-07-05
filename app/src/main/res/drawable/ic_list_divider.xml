@@ -3,7 +3,7 @@
     <item android:left="@dimen/padding_common">
         <shape android:shape="rectangle">
             <solid android:color="@color/colorDivision" />
-            <size android:height="@dimen/division_line"/>
+            <size android:height="@dimen/division_line" />
         </shape>
     </item>
 </layer-list>

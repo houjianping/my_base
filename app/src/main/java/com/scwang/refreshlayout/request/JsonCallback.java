@@ -1,10 +1,8 @@
 package com.scwang.refreshlayout.request;
 
 import android.text.TextUtils;
-import android.util.Log;
 
 import com.androidapp.base.utils.Convert;
-import com.google.gson.stream.JsonReader;
 import com.lzy.okgo.callback.AbsCallback;
 import com.lzy.okgo.request.base.Request;
 

@@ -1,10 +1,8 @@
 package com.scwang.refreshlayout.request;
 
 import android.app.Application;
-import android.os.Looper;
 import android.util.Log;
 
-import com.google.gson.Gson;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.cache.CacheEntity;
 import com.lzy.okgo.cache.CacheMode;

@@ -9,8 +9,8 @@
     android:paddingBottom="30dp">
 
     <com.androidapp.loading.LoadingView
-        app:loadingText="加载中..."
-        android:layout_centerInParent="true"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"/>
+        android:layout_height="fill_parent"
+        android:layout_centerInParent="true"
+        app:loadingText="加载中..." />
 </LinearLayout>

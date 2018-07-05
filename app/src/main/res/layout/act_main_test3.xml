@@ -48,6 +48,7 @@
                         android:layout_gravity="bottom"
                         android:layout_marginTop="60dp"
                         android:orientation="vertical">
+
                         <LinearLayout
                             android:id="@+id/rl_personal_info"
                             android:layout_width="match_parent"
@@ -56,22 +57,26 @@
                             android:paddingLeft="@dimen/padding_common_h"
                             android:paddingRight="@dimen/padding_common_h"
                             android:paddingTop="@dimen/padding_common_v">
+
                             <RelativeLayout
                                 android:id="@+id/rlSettingAvatar"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content">
+
                                 <ImageView
                                     android:id="@+id/ivSettingAvatar"
                                     android:layout_width="60dp"
                                     android:layout_height="60dp"
-                                    android:layout_centerInParent="true"/>
+                                    android:layout_centerInParent="true" />
+
                                 <ImageView
                                     android:layout_width="28dp"
                                     android:layout_height="28dp"
                                     android:layout_alignBottom="@+id/ivSettingAvatar"
                                     android:layout_alignRight="@+id/ivSettingAvatar"
-                                    android:src="@drawable/icon_edit_profile"/>
+                                    android:src="@drawable/icon_edit_profile" />
                             </RelativeLayout>
+
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -79,18 +84,21 @@
                                 android:layout_marginLeft="10dp"
                                 android:layout_toRightOf="@+id/rlSettingAvatar"
                                 android:orientation="vertical">
+
                                 <TextView
                                     android:id="@+id/tvSettingName"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="迷路的麋鹿"
                                     android:textColor="@android:color/white"
-                                    android:textStyle="bold"
-                                    android:textSize="16sp" />
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
+
                                 <LinearLayout
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:orientation="horizontal">
+
                                     <ImageView
                                         android:id="@+id/ivMyHomePage"
                                         android:layout_width="85dp"
@@ -100,93 +108,106 @@
                                 </LinearLayout>
                             </LinearLayout>
                         </LinearLayout>
+
                         <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
                             android:layout_below="@+id/rl_personal_info"
                             android:background="@drawable/bg_divider"
-                            android:orientation="horizontal"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
+                            android:orientation="horizontal">
+
                             <LinearLayout
                                 android:id="@+id/my_account"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:paddingTop="20dp"
-                                android:paddingBottom="20dp"
                                 android:gravity="center_horizontal"
                                 android:orientation="vertical"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content">
+                                android:paddingBottom="20dp"
+                                android:paddingTop="20dp">
+
                                 <ImageView
-                                    android:src="@mipmap/im_msgs"
                                     android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content" />
+                                    android:layout_height="wrap_content"
+                                    android:src="@mipmap/im_msgs" />
+
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="我的账户"
                                     android:layout_marginTop="5dp"
+                                    android:text="我的账户"
                                     android:textColor="@color/black_main"
                                     android:textSize="13sp" />
                             </LinearLayout>
+
                             <LinearLayout
                                 android:id="@+id/my_redpack"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:paddingTop="20dp"
-                                android:paddingBottom="20dp"
                                 android:gravity="center_horizontal"
                                 android:orientation="vertical"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content">
+                                android:paddingBottom="20dp"
+                                android:paddingTop="20dp">
+
                                 <ImageView
-                                    android:src="@mipmap/im_msgs"
                                     android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content" />
+                                    android:layout_height="wrap_content"
+                                    android:src="@mipmap/im_msgs" />
+
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="我的红包"
                                     android:layout_marginTop="5dp"
+                                    android:text="我的红包"
                                     android:textColor="@color/black_main"
                                     android:textSize="13sp" />
                             </LinearLayout>
+
                             <LinearLayout
                                 android:id="@+id/authentication_center"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:paddingTop="20dp"
-                                android:paddingBottom="20dp"
                                 android:gravity="center_horizontal"
                                 android:orientation="vertical"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content">
+                                android:paddingBottom="20dp"
+                                android:paddingTop="20dp">
+
                                 <ImageView
-                                    android:src="@mipmap/im_msgs"
                                     android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content" />
+                                    android:layout_height="wrap_content"
+                                    android:src="@mipmap/im_msgs" />
+
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="认证中心"
                                     android:layout_marginTop="5dp"
+                                    android:text="认证中心"
                                     android:textColor="@color/black_main"
                                     android:textSize="13sp" />
                             </LinearLayout>
+
                             <LinearLayout
                                 android:id="@+id/test"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:paddingTop="20dp"
-                                android:paddingBottom="20dp"
                                 android:gravity="center_horizontal"
                                 android:orientation="vertical"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content">
+                                android:paddingBottom="20dp"
+                                android:paddingTop="20dp">
+
                                 <ImageView
-                                    android:src="@mipmap/im_msgs"
                                     android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content" />
+                                    android:layout_height="wrap_content"
+                                    android:src="@mipmap/im_msgs" />
+
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="我的动态"
                                     android:layout_marginTop="5dp"
+                                    android:text="我的动态"
                                     android:textColor="@color/black_main"
                                     android:textSize="13sp" />
                             </LinearLayout>
@@ -209,33 +230,33 @@
                         android:layout_height="wrap_content"
                         app:settingsIcon="@mipmap/im_msgs"
                         app:settingsShowTopDiv="true"
-                        app:settingsTitle="申请服务达人"/>
+                        app:settingsTitle="申请服务达人" />
 
                     <com.androidapp.widget.SettingItem
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         app:settingsIcon="@mipmap/im_msgs"
-                        app:settingsTitle="我的关注"/>
+                        app:settingsTitle="我的关注" />
 
                     <com.androidapp.widget.SettingItem
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         app:settingsIcon="@mipmap/im_msgs"
                         app:settingsSummary="做任务领红包"
-                        app:settingsTitle="任务中心"/>
+                        app:settingsTitle="任务中心" />
 
                     <com.androidapp.widget.SettingItem
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         app:settingsIcon="@mipmap/im_msgs"
                         app:settingsSummary="邀请好友得现金"
-                        app:settingsTitle="邀请好友"/>
+                        app:settingsTitle="邀请好友" />
 
                     <com.androidapp.widget.SettingItem
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         app:settingsIcon="@mipmap/im_msgs"
-                        app:settingsTitle="赚钱攻略"/>
+                        app:settingsTitle="赚钱攻略" />
 
                     <com.androidapp.widget.SettingItem
                         android:layout_width="fill_parent"

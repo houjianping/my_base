@@ -2,7 +2,6 @@ package com.scwang.refreshlayout.widget;
 
 import android.app.Activity;
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.os.Build;
 import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
@@ -29,15 +28,55 @@ import com.androidapp.cachewebviewlib.WebViewCache;
 public class AppWebView extends CacheWebView {
 
     public static final String TAG = "AppWebView";
-
+    int lastX = 0;
+    int lastY = 0;
     private WebViewCallback mWebViewCallback;
+    private OnTouchListener mOnTouchListener = new OnTouchListener() {
+        @Override
+        public boolean onTouch(View v, MotionEvent event) {
+            getParent().requestDisallowInterceptTouchEvent(true);
+            int x = (int) event.getRawX();
+            int y = (int) event.getRawY();
+            switch (event.getAction()) {
+                case MotionEvent.ACTION_DOWN:
+                    lastX = x;
+                    lastY = y;
+                    break;
+                case MotionEvent.ACTION_MOVE:
+                    int deltaY = y - lastY;
+                    int deltaX = x - lastX;
+                    if (Math.abs(deltaX) < Math.abs(deltaY)) {
+                        getParent().requestDisallowInterceptTouchEvent(false);
+                    } else {
+                        getParent().requestDisallowInterceptTouchEvent(true);
+                        return true;
+                    }
+                default:
+                    break;
+            }
+            return false;
+        }
+    };
 
     public AppWebView(Context context) {
         super(context);
         initWebView();
         setCacheStrategy(WebViewCache.CacheStrategy.FORCE);
         setOnTouchListener(mOnTouchListener);
-        Log.e("","###########setOnTouchListener##########mOnTouchListener#####");
+        Log.e("", "###########setOnTouchListener##########mOnTouchListener#####");
+    }
+
+    public static void preLoadUrl(final Context context, final String url) {
+        if (context instanceof Activity) {
+            ((Activity) context).runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    CacheWebView.cacheWebView(context).loadUrl(url);//要放在UI线程
+                }
+            });
+        } else {
+            ToastUtils.showShortToast(context, "URL类型加载出错");
+        }
     }
 
     private void initWebView() {
@@ -72,7 +111,7 @@ public class AppWebView extends CacheWebView {
 
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                Log.e("","shouldOverrideUrlLoading" + url);
+                Log.e("", "shouldOverrideUrlLoading" + url);
                 if (!url.startsWith("http")) {
                     return true;
                 }
@@ -176,47 +215,4 @@ public class AppWebView extends CacheWebView {
 
         void onPageLoadError();
     }
-
-    public static void preLoadUrl(final Context context, final String url) {
-        if (context instanceof Activity) {
-            ((Activity) context).runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    CacheWebView.cacheWebView(context).loadUrl(url);//要放在UI线程
-                }
-            });
-        } else {
-            ToastUtils.showShortToast(context, "URL类型加载出错");
-        }
-    }
-
-    int lastX = 0;
-    int lastY = 0;
-
-    private OnTouchListener mOnTouchListener = new OnTouchListener() {
-        @Override
-        public boolean onTouch(View v, MotionEvent event) {
-            getParent().requestDisallowInterceptTouchEvent(true);
-            int x = (int) event.getRawX();
-            int y = (int) event.getRawY();
-            switch (event.getAction()) {
-                case MotionEvent.ACTION_DOWN:
-                    lastX = x;
-                    lastY = y;
-                    break;
-                case MotionEvent.ACTION_MOVE:
-                    int deltaY = y - lastY;
-                    int deltaX = x - lastX;
-                    if (Math.abs(deltaX) < Math.abs(deltaY)) {
-                        getParent().requestDisallowInterceptTouchEvent(false);
-                    } else {
-                        getParent().requestDisallowInterceptTouchEvent(true);
-                        return true;
-                    }
-                default:
-                    break;
-            }
-            return false;
-        }
-    };
 }

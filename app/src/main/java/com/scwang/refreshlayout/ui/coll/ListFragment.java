@@ -18,10 +18,10 @@ import java.util.ArrayList;
  * Created by Administrator on 2016/7/25 0025.
  */
 public class ListFragment extends BaseFragment {
+    Context mContext;
     private ArrayList<String> mDatas;
     private View view;
     private RecyclerView mListView;
-    Context mContext;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

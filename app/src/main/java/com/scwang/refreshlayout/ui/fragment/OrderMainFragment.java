@@ -7,8 +7,8 @@ import android.util.Log;
 import android.view.View;
 
 import com.androidapp.base.fragment.BaseTabFragment;
-import com.androidapp.widget.CommonTitleBar;
 import com.androidapp.smarttablayout.SmartTabLayout;
+import com.androidapp.widget.CommonTitleBar;
 import com.scwang.refreshlayout.R;
 import com.scwang.refreshlayout.ui.fragment.order.OrderFragmentAdapter;
 
@@ -20,7 +20,7 @@ public class OrderMainFragment extends BaseTabFragment {
 
     @Override
     protected void loadData(boolean force) {
-        Log.e("","--------loadData-----OrderMainFragment--------" + force);
+        Log.e("", "--------loadData-----OrderMainFragment--------" + force);
         if (force) {
             FragmentPagerAdapter adapter = new OrderFragmentAdapter(getFragmentManager());
             mViewPager.setAdapter(adapter);

@@ -16,10 +16,7 @@ public class GlideCircleTransform extends BitmapTransformation {
     public GlideCircleTransform(Context context) {
         super(context);
     }
-    @Override
-    protected Bitmap transform(BitmapPool pool, Bitmap toTransform, int outWidth, int outHeight) {
-        return circleCrop(pool, toTransform);
-    }
+
     private static Bitmap circleCrop(BitmapPool pool, Bitmap source) {
         if (source == null) return null;
         int size = Math.min(source.getWidth(), source.getHeight());
@@ -37,6 +34,11 @@ public class GlideCircleTransform extends BitmapTransformation {
         float r = size / 2f;
         canvas.drawCircle(r, r, r, paint);
         return result;
+    }
+
+    @Override
+    protected Bitmap transform(BitmapPool pool, Bitmap toTransform, int outWidth, int outHeight) {
+        return circleCrop(pool, toTransform);
     }
 
     @Override

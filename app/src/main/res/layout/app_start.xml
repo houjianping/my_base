@@ -32,11 +32,12 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <ImageView
             android:id="@+id/app_start_view"
-            android:scaleType="fitXY"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:scaleType="fitXY" />
     </RelativeLayout>
 
     <TextView
@@ -48,10 +49,10 @@
         android:layout_marginTop="30dp"
         android:background="@drawable/btn_splash_skip"
         android:gravity="center"
+        android:paddingBottom="8dp"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
         android:paddingTop="8dp"
-        android:paddingBottom="8dp"
         android:text="跳过(6)"
         android:textColor="@android:color/white"
         android:textSize="13sp"

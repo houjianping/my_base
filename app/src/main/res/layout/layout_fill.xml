@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:lineSpacingExtra="5dp"
-    android:textColor="#666666"
     android:padding="10dp"
     android:text="@string/description_set_default_creator"
+    android:textColor="#666666"
     android:textSize="16dp" />

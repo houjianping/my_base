@@ -7,13 +7,13 @@ import android.support.v7.app.AppCompatDelegate;
 
 import com.androidapp.cachewebviewlib.CacheWebView;
 import com.androidapp.share.ShareConfig;
-import com.facebook.stetho.Stetho;
-import com.scwang.refreshlayout.request.OkGoRequest;
 import com.androidapp.smartrefresh.layout.SmartRefreshLayout;
 import com.androidapp.smartrefresh.layout.api.DefaultRefreshHeaderCreator;
 import com.androidapp.smartrefresh.layout.api.RefreshHeader;
 import com.androidapp.smartrefresh.layout.api.RefreshLayout;
 import com.androidapp.smartrefresh.layout.header.ClassicsHeader;
+import com.facebook.stetho.Stetho;
+import com.scwang.refreshlayout.request.OkGoRequest;
 import com.scwang.refreshlayout.util.DynamicTimeFormat;
 
 import java.io.File;
