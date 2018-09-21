@@ -157,4 +157,13 @@ public abstract class BaseActivity extends AppCompatActivity {
         super.onResume();
         isInForeground = true;
     }
+
+    public void startActivity(Class c) {
+        try {
+            Intent intent = new Intent(mContext, c);
+            startActivity(intent);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

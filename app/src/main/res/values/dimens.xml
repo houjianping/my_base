@@ -11,4 +11,8 @@
     <dimen name="textsize_content">14sp</dimen>
     <dimen name="textsize_title">17sp</dimen>
 
+    <dimen name="font_16">16sp</dimen>
+    <dimen name="font_14">14sp</dimen>
+    <dimen name="font_12">12sp</dimen>
+    <dimen name="frame_radius_size">4dp</dimen>
 </resources>

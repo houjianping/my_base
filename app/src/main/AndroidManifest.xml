@@ -55,6 +55,12 @@
             android:name=".ui.activity.SimplePlayer"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait" />
+        <activity android:name=".ui.activity.pcenter.SettingActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait" />
+        <activity android:name=".ui.activity.pcenter.SettingModifyPwd" />
+        <activity android:name=".ui.activity.pcenter.SettingAccount" />
+        <activity android:name=".ui.activity.pcenter.SettingPushControl" />
     </application>
 
 </manifest>

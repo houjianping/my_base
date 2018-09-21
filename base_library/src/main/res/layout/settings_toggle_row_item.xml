@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:clickable="false"
+    android:background="@drawable/settings_toggle_background">
+    <View
+        android:id="@+id/setting_top_div"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_alignParentTop="true"
+        android:background="#d9d9d9" />
+
+    <ImageView
+        android:id="@+id/iv_setting_icon"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="12dp" />
+
+    <TextView
+        android:id="@+id/tv_setting_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:textColor="#353535"
+        android:textSize="16dp"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@+id/iv_setting_icon"/>
+
+    <com.androidapp.widget.ToggleButton
+        android:id="@+id/toggle_btn"
+        android:layout_width="50dp"
+        android:layout_height="30dp"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dip" />
+
+    <TextView
+        android:id="@+id/tv_setting_summary"
+        android:layout_toLeftOf="@+id/toggle_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="10dp"
+        android:textColor="#858585"
+        android:textSize="12sp" />
+
+    <View
+        android:id="@+id/setting_bottom_div"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_marginLeft="50dp"
+        android:layout_alignParentBottom="true"
+        android:background="#d9d9d9" />
+</RelativeLayout>
+

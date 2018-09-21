@@ -27,6 +27,13 @@ allprojects {
             links "http://docs.oracle.com/javase/7/docs/api"
         }
     }
+    ext {
+        buildToolsVersion = "24.0.3"
+        minSdkVersion = 14
+        targetSdkVersion = 25
+        compileSdkVersion = 25
+        supportVersion = "25.3.1"
+    }
 }
 
 task clean(type: Delete) {

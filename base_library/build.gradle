@@ -21,19 +21,18 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     compile 'com.nineoldandroids:library:2.4.0'
     def dataDps = rootProject.ext.dataDependencies
     def androidDps = rootProject.ext.androidDependencies
-
     //图片加载库 Glide
     compile dataDps.glide
     compile dataDps.gson
-
     compile 'com.github.czy1121:loadinglayout:1.0.1'
     compile androidDps.recyclerView
     compile androidDps.supportDesign
     compile 'com.facebook.stetho:stetho:1.5.0'
     compile 'com.squareup.okhttp3:okhttp:3.3.1'
-
+    //物理效果动画
+    compile 'com.facebook.rebound:rebound:0.3.8'
 }

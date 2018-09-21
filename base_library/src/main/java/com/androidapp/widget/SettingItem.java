@@ -64,6 +64,7 @@ public class SettingItem extends RelativeLayout {
         mSummaryTextView = (TextView) view.findViewById(R.id.tv_setting_summary);
         mTopDivView = view.findViewById(R.id.setting_top_div);
         mBottomDivView = view.findViewById(R.id.setting_bottom_div);
+        view.setClickable(true);
     }
 
     private void updateUI() {

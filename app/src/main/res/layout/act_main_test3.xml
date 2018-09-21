@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#f8f8f8">
+    android:background="@color/tab_panel_bg">
 
     <ImageView
         android:id="@+id/parallax"
@@ -215,11 +215,10 @@
                     </RelativeLayout>
                 </android.support.design.widget.CollapsingToolbarLayout>
 
-
                 <LinearLayout
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:background="#f8f8f8"
+                    android:background="@color/tab_panel_bg"
                     android:orientation="vertical"
                     android:paddingBottom="@dimen/division_line"
                     android:paddingTop="@dimen/padding_common"
@@ -230,58 +229,84 @@
                         android:layout_height="wrap_content"
                         app:settingsIcon="@mipmap/im_msgs"
                         app:settingsShowTopDiv="true"
-                        app:settingsTitle="申请服务达人" />
+                        app:settingsTitle="已购" />
 
                     <com.androidapp.widget.SettingItem
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         app:settingsIcon="@mipmap/im_msgs"
-                        app:settingsTitle="我的关注" />
+                        app:settingsTitle="礼券" />
 
                     <com.androidapp.widget.SettingItem
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         app:settingsIcon="@mipmap/im_msgs"
-                        app:settingsSummary="做任务领红包"
-                        app:settingsTitle="任务中心" />
-
-                    <com.androidapp.widget.SettingItem
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        app:settingsIcon="@mipmap/im_msgs"
-                        app:settingsSummary="邀请好友得现金"
-                        app:settingsTitle="邀请好友" />
-
-                    <com.androidapp.widget.SettingItem
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        app:settingsIcon="@mipmap/im_msgs"
-                        app:settingsTitle="赚钱攻略" />
+                        app:settingsSummary="1"
+                        app:settingsTitle="分享有赏" />
 
                     <com.androidapp.widget.SettingItem
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         app:settingsIcon="@mipmap/im_msgs"
                         app:settingsShowBottomDiv="true"
-                        app:settingsSummary="描述信息"
-                        app:settingsTitle="意见反馈及投诉" />
+                        app:settingsSummary=""
+                        app:settingsTitle="邀请好友" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:background="#f8f8f8"
+                    android:background="@color/tab_panel_bg"
                     android:orientation="vertical"
                     android:paddingBottom="@dimen/division_line"
-                    android:paddingTop="@dimen/padding_common">
+                    android:paddingTop="@dimen/padding_common"
+                    app:layout_scrollFlags="scroll">
+
+                    <com.androidapp.widget.SettingItem
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        app:settingsIcon="@mipmap/im_msgs"
+                        app:settingsShowTopDiv="true"
+                        app:settingsTitle="我的笔记" />
+
+                    <com.androidapp.widget.SettingItem
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        app:settingsIcon="@mipmap/im_msgs"
+                        app:settingsTitle="我的留言" />
+
+                    <com.androidapp.widget.SettingItem
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        app:settingsIcon="@mipmap/im_msgs"
+                        app:settingsSummary="1"
+                        app:settingsTitle="我的收藏" />
 
                     <com.androidapp.widget.SettingItem
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         app:settingsIcon="@mipmap/im_msgs"
                         app:settingsShowBottomDiv="true"
+                        app:settingsSummary=""
+                        app:settingsTitle="我的下载" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/tab_panel_bg"
+                    android:orientation="vertical"
+                    android:paddingBottom="@dimen/division_line"
+                    android:paddingTop="@dimen/padding_common">
+
+                    <com.androidapp.widget.SettingItem
+                        android:id="@+id/item_setting"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        app:settingsIcon="@mipmap/im_msgs"
+                        app:settingsShowBottomDiv="true"
                         app:settingsShowTopDiv="true"
-                        app:settingsTitle="控制中心" />
+                        app:settingsTitle="设置" />
                 </LinearLayout>
             </LinearLayout>
         </android.support.v4.widget.NestedScrollView>

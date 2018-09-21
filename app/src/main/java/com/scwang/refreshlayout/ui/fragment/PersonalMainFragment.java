@@ -21,6 +21,7 @@ import com.luck.picture.lib.config.PictureConfig;
 import com.luck.picture.lib.config.PictureMimeType;
 import com.luck.picture.lib.entity.LocalMedia;
 import com.scwang.refreshlayout.R;
+import com.scwang.refreshlayout.ui.activity.pcenter.SettingActivity;
 import com.scwang.refreshlayout.ui.coll.ActCollapsingToolBar;
 import com.scwang.refreshlayout.util.GlideCircleTransform;
 
@@ -165,7 +166,19 @@ public class PersonalMainFragment extends BaseTabFragment {
                 .apply(new RequestOptions().placeholder(R.drawable.iv_default_photo).transform(new GlideCircleTransform(getContext())))
                 .into((ImageView) view.findViewById(R.id.ivSettingAvatar));
 
+        view.findViewById(R.id.item_setting).setOnClickListener(mOnClickListener);
     }
+
+    private View.OnClickListener mOnClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            switch (v.getId()) {
+                case R.id.item_setting:
+                    startActivity(new Intent(mContext, SettingActivity.class));
+                    break;
+            }
+        }
+    };
 
     @Override
     protected int getLayoutId() {

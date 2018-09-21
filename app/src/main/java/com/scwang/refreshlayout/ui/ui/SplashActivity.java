@@ -101,7 +101,7 @@ public class SplashActivity extends BaseActivity {
         mAdImageView.setClickable(true);
         mSkipTextView.setVisibility(View.VISIBLE);
         mBottomLogo.setVisibility(View.GONE);
-        Glide.with(getBaseContext()).load(R.mipmap.image_weibo_home_1).into(mAdImageView);
+        Glide.with(getBaseContext()).load(R.drawable.splash_bg).into(mAdImageView);
         mHandler.sendEmptyMessageDelayed(MSG_FINISH_CURRENT, mMaxTime * 1000);
         mHandler.sendEmptyMessageDelayed(MSG_UPDATE_TIME, 1000);
     }
