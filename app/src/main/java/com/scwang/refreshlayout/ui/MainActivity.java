@@ -17,7 +17,7 @@ import com.androidapp.tablayout.listener.OnTabSelectListener;
 import com.scwang.refreshlayout.R;
 import com.scwang.refreshlayout.ui.fragment.IndexMainFragment;
 import com.scwang.refreshlayout.ui.fragment.OrderMainFragment;
-import com.scwang.refreshlayout.ui.fragment.PersonalMainFragment;
+import com.scwang.refreshlayout.ui.fragment.PCenterFragment;
 import com.scwang.refreshlayout.ui.fragment.RoomMainFragment;
 
 import java.util.ArrayList;
@@ -34,7 +34,7 @@ public class MainActivity extends BaseActivity {
     private CommonTabLayout tabLayout;
     private IndexMainFragment mainFragment;
     private OrderMainFragment mOrderMainFragment;
-    private PersonalMainFragment videoMainFragment;
+    private PCenterFragment videoMainFragment;
     private RoomMainFragment roomMainFragment;
     private int currentTabPosition = 0;
 
@@ -138,12 +138,12 @@ public class MainActivity extends BaseActivity {
         if (savedInstanceState != null) {
             mainFragment = (IndexMainFragment) getSupportFragmentManager().findFragmentByTag("IndexMainFragment");
             mOrderMainFragment = (OrderMainFragment) getSupportFragmentManager().findFragmentByTag("OrderFragment");
-            videoMainFragment = (PersonalMainFragment) getSupportFragmentManager().findFragmentByTag("videoMainFragment");
+            videoMainFragment = (PCenterFragment) getSupportFragmentManager().findFragmentByTag("videoMainFragment");
             roomMainFragment = (RoomMainFragment) getSupportFragmentManager().findFragmentByTag("roomMainFragment");
         } else {
             mainFragment = new IndexMainFragment();
             mOrderMainFragment = new OrderMainFragment();
-            videoMainFragment = new PersonalMainFragment();
+            videoMainFragment = new PCenterFragment();
             roomMainFragment = new RoomMainFragment();
             transaction.add(R.id.fl_body, mainFragment, "IndexMainFragment");
             transaction.add(R.id.fl_body, mOrderMainFragment, "OrderFragment");

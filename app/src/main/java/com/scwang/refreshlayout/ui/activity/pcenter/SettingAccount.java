@@ -10,11 +10,11 @@ public class SettingAccount extends BaseActivity {
 
     @Override
     protected void initContentView(Bundle bundle) {
+        setContentView(R.layout.personal_account);
     }
 
     @Override
     protected void initView() {
-        setContentView(R.layout.personal_account);
         findViewById(R.id.setting_modify_pwd).setOnClickListener(mOnClickListener);
     }
 

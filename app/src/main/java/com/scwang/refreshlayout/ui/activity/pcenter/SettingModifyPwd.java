@@ -8,11 +8,11 @@ import com.scwang.refreshlayout.R;
 public class SettingModifyPwd extends BaseActivity {
     @Override
     protected void initContentView(Bundle bundle) {
+        setContentView(R.layout.personal_modify_pwd);
     }
 
     @Override
     protected void initView() {
-        setContentView(R.layout.personal_modify_pwd);
     }
     @Override
     protected void initData() {

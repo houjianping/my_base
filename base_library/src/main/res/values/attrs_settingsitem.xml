@@ -12,5 +12,6 @@
         <attr name="settingsSummaryColor" format="color" />
         <attr name="settingsSummarySize" format="dimension" />
         <attr name="settingsSummaryIcon" format="reference" />
+        <attr name="settingsClickable" format="boolean" />
     </declare-styleable>
 </resources>

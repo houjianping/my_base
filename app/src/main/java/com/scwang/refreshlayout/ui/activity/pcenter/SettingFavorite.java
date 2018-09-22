@@ -1,4 +1,4 @@
-package com.scwang.refreshlayout.ui.ui;
+package com.scwang.refreshlayout.ui.activity.pcenter;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.DividerItemDecoration;
@@ -22,14 +22,14 @@ import com.scwang.refreshlayout.api.ApiConfig;
 import com.scwang.refreshlayout.bean.BannerItem;
 import com.scwang.refreshlayout.bean.Movie;
 import com.scwang.refreshlayout.imageloader.GlideImageLoader;
+import com.scwang.refreshlayout.ui.ui.TestActivity;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static android.support.v7.widget.DividerItemDecoration.VERTICAL;
 
-public class TestActivity extends BaseListActivity {
-
+public class SettingFavorite extends BaseListActivity {
     @Override
     protected OnRefreshListener getOnRefreshListener() {
         return new OnRefreshListener() {

@@ -61,6 +61,12 @@
         <activity android:name=".ui.activity.pcenter.SettingModifyPwd" />
         <activity android:name=".ui.activity.pcenter.SettingAccount" />
         <activity android:name=".ui.activity.pcenter.SettingPushControl" />
+        <activity android:name=".ui.activity.pcenter.SettingDownloadControl" />
+        <activity android:name=".ui.activity.pcenter.SettingAboutControl" />
+        <activity android:name=".ui.activity.pcenter.SettingsDownloadActivity" />
+        <activity android:name=".ui.activity.pcenter.SettingFavorite" />
+        <activity android:name=".ui.activity.pcenter.SettingLeavingMessage" />
+        <activity android:name=".ui.activity.pcenter.SettingsMyInfoActivity" />
     </application>
 
 </manifest>

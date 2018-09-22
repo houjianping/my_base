@@ -23,17 +23,18 @@ public class SplashActivity extends BaseActivity {
     private View mBottomLogo;
     private ImageView mAdImageView;
     private TextView mSkipTextView;
-    private int mMaxTime = 6;
+    private int mMaxTime = 4;
     private View.OnClickListener mOnClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             if (v == mSkipTextView) {
                 redirectTo();
             } else if (v == mAdImageView) {
-                doStartActivity(YuedanWebActivity.class, null);
+                doStartActivity(YuedanWebActivity.class, YuedanWebActivity.getBundle("", ""));
             }
         }
     };
+
     private Handler mHandler = new Handler() {
         @Override
         public void handleMessage(Message msg) {

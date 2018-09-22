@@ -21,15 +21,21 @@ import com.luck.picture.lib.config.PictureConfig;
 import com.luck.picture.lib.config.PictureMimeType;
 import com.luck.picture.lib.entity.LocalMedia;
 import com.scwang.refreshlayout.R;
+import com.scwang.refreshlayout.api.Urls;
+import com.scwang.refreshlayout.ui.activity.pcenter.SettingsDownloadActivity;
 import com.scwang.refreshlayout.ui.activity.pcenter.SettingActivity;
+import com.scwang.refreshlayout.ui.activity.pcenter.SettingFavorite;
+import com.scwang.refreshlayout.ui.activity.pcenter.SettingLeavingMessage;
+import com.scwang.refreshlayout.ui.activity.pcenter.SettingsMyInfoActivity;
 import com.scwang.refreshlayout.ui.coll.ActCollapsingToolBar;
+import com.scwang.refreshlayout.ui.ui.common.YuedanWebActivity;
 import com.scwang.refreshlayout.util.GlideCircleTransform;
 
 import java.util.List;
 
 import static android.app.Activity.RESULT_OK;
 
-public class PersonalMainFragment extends BaseTabFragment {
+public class PCenterFragment extends BaseTabFragment {
 
     private int mOffset = 0;
     private int mScrollY = 0;
@@ -116,7 +122,7 @@ public class PersonalMainFragment extends BaseTabFragment {
         view.findViewById(R.id.test).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                PictureSelector.create(PersonalMainFragment.this)
+                PictureSelector.create(PCenterFragment.this)
                         .openGallery(PictureMimeType.ofImage())// 全部.PictureMimeType.ofAll()、图片.ofImage()、视频.ofVideo()、音频.ofAudio()
                         .theme(-1)
                         .maxSelectNum(9)// 最大图片选择数量
@@ -167,6 +173,12 @@ public class PersonalMainFragment extends BaseTabFragment {
                 .into((ImageView) view.findViewById(R.id.ivSettingAvatar));
 
         view.findViewById(R.id.item_setting).setOnClickListener(mOnClickListener);
+        view.findViewById(R.id.setting_download).setOnClickListener(mOnClickListener);
+        view.findViewById(R.id.setting_favorite).setOnClickListener(mOnClickListener);
+        view.findViewById(R.id.setting_leaving_message).setOnClickListener(mOnClickListener);
+        view.findViewById(R.id.setting_share_reward).setOnClickListener(mOnClickListener);
+        view.findViewById(R.id.setting_inviting_friends).setOnClickListener(mOnClickListener);
+        view.findViewById(R.id.ivSettingAvatar).setOnClickListener(mOnClickListener);
     }
 
     private View.OnClickListener mOnClickListener = new View.OnClickListener() {
@@ -176,13 +188,31 @@ public class PersonalMainFragment extends BaseTabFragment {
                 case R.id.item_setting:
                     startActivity(new Intent(mContext, SettingActivity.class));
                     break;
+                case R.id.setting_download:
+                    startActivity(new Intent(mContext, SettingsDownloadActivity.class));
+                    break;
+                case R.id.setting_favorite:
+                    startActivity(new Intent(mContext, SettingFavorite.class));
+                    break;
+                case R.id.setting_leaving_message:
+                    startActivity(new Intent(mContext, SettingLeavingMessage.class));
+                    break;
+                case R.id.setting_share_reward:
+                    doStartActivity(YuedanWebActivity.class, YuedanWebActivity.getBundle(Urls.H5.INVITING_FRIENDS, "分享有赏"));
+                    break;
+                case R.id.setting_inviting_friends:
+                    doStartActivity(YuedanWebActivity.class, YuedanWebActivity.getBundle(Urls.H5.SHARE_REWARD, "邀请好友"));
+                    break;
+                case R.id.ivSettingAvatar:
+                    startActivity(new Intent(mContext, SettingsMyInfoActivity.class));
+                    break;
             }
         }
     };
 
     @Override
     protected int getLayoutId() {
-        return R.layout.act_main_test3;
+        return R.layout.personal_center;
     }
 
     @Override

@@ -53,10 +53,10 @@
                             android:id="@+id/rl_personal_info"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:paddingBottom="@dimen/padding_common_v"
                             android:paddingLeft="@dimen/padding_common_h"
+                            android:paddingTop="@dimen/padding_common_v"
                             android:paddingRight="@dimen/padding_common_h"
-                            android:paddingTop="@dimen/padding_common_v">
+                            android:paddingBottom="@dimen/padding_common_v">
 
                             <RelativeLayout
                                 android:id="@+id/rlSettingAvatar"
@@ -68,13 +68,6 @@
                                     android:layout_width="60dp"
                                     android:layout_height="60dp"
                                     android:layout_centerInParent="true" />
-
-                                <ImageView
-                                    android:layout_width="28dp"
-                                    android:layout_height="28dp"
-                                    android:layout_alignBottom="@+id/ivSettingAvatar"
-                                    android:layout_alignRight="@+id/ivSettingAvatar"
-                                    android:src="@drawable/icon_edit_profile" />
                             </RelativeLayout>
 
                             <LinearLayout
@@ -123,8 +116,8 @@
                                 android:layout_weight="1"
                                 android:gravity="center_horizontal"
                                 android:orientation="vertical"
-                                android:paddingBottom="20dp"
-                                android:paddingTop="20dp">
+                                android:paddingTop="20dp"
+                                android:paddingBottom="20dp">
 
                                 <ImageView
                                     android:layout_width="wrap_content"
@@ -147,8 +140,8 @@
                                 android:layout_weight="1"
                                 android:gravity="center_horizontal"
                                 android:orientation="vertical"
-                                android:paddingBottom="20dp"
-                                android:paddingTop="20dp">
+                                android:paddingTop="20dp"
+                                android:paddingBottom="20dp">
 
                                 <ImageView
                                     android:layout_width="wrap_content"
@@ -159,7 +152,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="5dp"
-                                    android:text="我的红包"
+                                    android:text="礼券"
                                     android:textColor="@color/black_main"
                                     android:textSize="13sp" />
                             </LinearLayout>
@@ -171,8 +164,8 @@
                                 android:layout_weight="1"
                                 android:gravity="center_horizontal"
                                 android:orientation="vertical"
-                                android:paddingBottom="20dp"
-                                android:paddingTop="20dp">
+                                android:paddingTop="20dp"
+                                android:paddingBottom="20dp">
 
                                 <ImageView
                                     android:layout_width="wrap_content"
@@ -183,7 +176,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="5dp"
-                                    android:text="认证中心"
+                                    android:text="活动中心"
                                     android:textColor="@color/black_main"
                                     android:textSize="13sp" />
                             </LinearLayout>
@@ -195,8 +188,8 @@
                                 android:layout_weight="1"
                                 android:gravity="center_horizontal"
                                 android:orientation="vertical"
-                                android:paddingBottom="20dp"
-                                android:paddingTop="20dp">
+                                android:paddingTop="20dp"
+                                android:paddingBottom="20dp">
 
                                 <ImageView
                                     android:layout_width="wrap_content"
@@ -220,31 +213,21 @@
                     android:layout_height="wrap_content"
                     android:background="@color/tab_panel_bg"
                     android:orientation="vertical"
-                    android:paddingBottom="@dimen/division_line"
                     android:paddingTop="@dimen/padding_common"
+                    android:paddingBottom="@dimen/division_line"
                     app:layout_scrollFlags="scroll">
 
                     <com.androidapp.widget.SettingItem
+                        android:id="@+id/setting_share_reward"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         app:settingsIcon="@mipmap/im_msgs"
                         app:settingsShowTopDiv="true"
-                        app:settingsTitle="已购" />
-
-                    <com.androidapp.widget.SettingItem
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        app:settingsIcon="@mipmap/im_msgs"
-                        app:settingsTitle="礼券" />
-
-                    <com.androidapp.widget.SettingItem
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        app:settingsIcon="@mipmap/im_msgs"
-                        app:settingsSummary="1"
+                        app:settingsSummary="各得优惠券"
                         app:settingsTitle="分享有赏" />
 
                     <com.androidapp.widget.SettingItem
+                        android:id="@+id/setting_inviting_friends"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         app:settingsIcon="@mipmap/im_msgs"
@@ -258,24 +241,20 @@
                     android:layout_height="wrap_content"
                     android:background="@color/tab_panel_bg"
                     android:orientation="vertical"
-                    android:paddingBottom="@dimen/division_line"
                     android:paddingTop="@dimen/padding_common"
+                    android:paddingBottom="@dimen/division_line"
                     app:layout_scrollFlags="scroll">
 
                     <com.androidapp.widget.SettingItem
+                        android:id="@+id/setting_leaving_message"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         app:settingsIcon="@mipmap/im_msgs"
                         app:settingsShowTopDiv="true"
-                        app:settingsTitle="我的笔记" />
-
-                    <com.androidapp.widget.SettingItem
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        app:settingsIcon="@mipmap/im_msgs"
                         app:settingsTitle="我的留言" />
 
                     <com.androidapp.widget.SettingItem
+                        android:id="@+id/setting_favorite"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         app:settingsIcon="@mipmap/im_msgs"
@@ -283,6 +262,7 @@
                         app:settingsTitle="我的收藏" />
 
                     <com.androidapp.widget.SettingItem
+                        android:id="@+id/setting_download"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         app:settingsIcon="@mipmap/im_msgs"
@@ -296,8 +276,8 @@
                     android:layout_height="wrap_content"
                     android:background="@color/tab_panel_bg"
                     android:orientation="vertical"
-                    android:paddingBottom="@dimen/division_line"
-                    android:paddingTop="@dimen/padding_common">
+                    android:paddingTop="@dimen/padding_common"
+                    android:paddingBottom="@dimen/division_line">
 
                     <com.androidapp.widget.SettingItem
                         android:id="@+id/item_setting"
@@ -378,10 +358,10 @@
                 <TextView
                     android:layout_width="13dp"
                     android:layout_height="13dp"
-                    android:layout_alignRight="@id/selected_im"
                     android:layout_alignTop="@id/selected_im"
-                    android:layout_marginRight="-3dp"
+                    android:layout_alignRight="@id/selected_im"
                     android:layout_marginTop="-3dp"
+                    android:layout_marginRight="-3dp"
                     android:background="@drawable/msg_num_shape"
                     android:gravity="center"
                     android:paddingLeft="2dp"

@@ -28,7 +28,9 @@ public class SettingItem extends RelativeLayout {
     private String mSummary;
     private float mSummaryeSize;
     private int mSummaryColor;
+    private boolean mClickAble;
 
+    private View mBaseView;
     private ImageView mIconImageView;
     private TextView mTitleTextView;
     private TextView mSummaryTextView;
@@ -53,18 +55,20 @@ public class SettingItem extends RelativeLayout {
         mSummary = typedArray.getString(R.styleable.SettingsItem_settingsSummary);
         mSummaryeSize = typedArray.getDimension(R.styleable.SettingsItem_settingsSummarySize, 13);
         mSummaryColor = typedArray.getColor(R.styleable.SettingsItem_settingsSummaryColor, 0XFF999999);
+
+        mClickAble = typedArray.getBoolean(R.styleable.SettingsItem_settingsClickable, true);
         initView();
         updateUI();
+        setClickAble(mClickAble);
     }
 
     private void initView() {
-        View view = LayoutInflater.from(getContext()).inflate(R.layout.settings_row_item, this);
-        mIconImageView = (ImageView) view.findViewById(R.id.iv_setting_icon);
-        mTitleTextView = (TextView) view.findViewById(R.id.tv_setting_title);
-        mSummaryTextView = (TextView) view.findViewById(R.id.tv_setting_summary);
-        mTopDivView = view.findViewById(R.id.setting_top_div);
-        mBottomDivView = view.findViewById(R.id.setting_bottom_div);
-        view.setClickable(true);
+        mBaseView = LayoutInflater.from(getContext()).inflate(R.layout.settings_row_item, this);
+        mIconImageView = (ImageView) mBaseView.findViewById(R.id.iv_setting_icon);
+        mTitleTextView = (TextView) mBaseView.findViewById(R.id.tv_setting_title);
+        mSummaryTextView = (TextView) mBaseView.findViewById(R.id.tv_setting_summary);
+        mTopDivView = mBaseView.findViewById(R.id.setting_top_div);
+        mBottomDivView = mBaseView.findViewById(R.id.setting_bottom_div);
     }
 
     private void updateUI() {
@@ -91,5 +95,10 @@ public class SettingItem extends RelativeLayout {
             layoutParams.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM, RelativeLayout.TRUE);
             mBottomDivView.setLayoutParams(layoutParams);
         }
+    }
+
+    public void setClickAble(boolean clickable) {
+        mClickAble = clickable;
+        mBaseView.setClickable(mClickAble);
     }
 }

@@ -1,5 +1,7 @@
 package com.scwang.refreshlayout.ui.ui.common;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
@@ -12,6 +14,11 @@ import com.androidapp.smartrefresh.layout.listener.OnRefreshListener;
 
 public class YuedanWebActivity extends BaseWebActivity {
 
+    private static final String KEY_URL = "web_url";
+    private static final String KEY_TITLE = "web_title";
+
+    private String mUrl;
+    private String mTitle;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,8 +37,8 @@ public class YuedanWebActivity extends BaseWebActivity {
             }
         });
         addWebView(mWebView);
-        mWebView.loadUrl("https://www.baidu.com/");
-        mCommonTitleBar.setTitle("浏览器标题");
+        mWebView.loadUrl(mUrl);
+        mCommonTitleBar.setTitle(mUrl);
         mLoadingLayout.setRetryListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -50,6 +57,22 @@ public class YuedanWebActivity extends BaseWebActivity {
     @Override
     protected void getBundleExtras(Bundle extras) {
         super.getBundleExtras(extras);
+        if (extras != null) {
+            mUrl = extras.getString(KEY_URL, "");
+            mTitle = extras.getString(KEY_TITLE, "");
+        }
+    }
 
+    /**
+     * 获取H5跳转参数
+     * @param url
+     * @param title
+     * @return
+     */
+    public static Bundle getBundle(String url, String title) {
+        Bundle bundle = new Bundle();
+        bundle.putString(KEY_URL, url);
+        bundle.putString(KEY_TITLE, title);
+        return bundle;
     }
 }
