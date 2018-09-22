@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.text.TextUtils;
 import android.view.View;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -38,7 +39,7 @@ public class YuedanWebActivity extends BaseWebActivity {
         });
         addWebView(mWebView);
         mWebView.loadUrl(mUrl);
-        mCommonTitleBar.setTitle(mUrl);
+        mCommonTitleBar.setTitle(mTitle);
         mLoadingLayout.setRetryListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -61,6 +62,8 @@ public class YuedanWebActivity extends BaseWebActivity {
             mUrl = extras.getString(KEY_URL, "");
             mTitle = extras.getString(KEY_TITLE, "");
         }
+        mUrl = TextUtils.isEmpty(mUrl) ? "https://www.baidu.com/" : mUrl;
+        mTitle = TextUtils.isEmpty(mTitle) ? "浏览器标题" : mTitle;
     }
 
     /**

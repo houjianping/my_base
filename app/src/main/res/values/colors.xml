@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#FF4081</color>
-    <color name="colorPrimaryDark">#96ff4081</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorPrimary">#ff5b06</color>
+    <color name="colorPrimaryDark">#96ff5b06</color>
+    <color name="colorAccent">#ff5b06</color>
 
     <color name="colorTextTitle">#333333</color>
     <color name="colorTextContent">#444444</color>
@@ -11,17 +11,7 @@
     <color name="colorBackgroundDark">#f2f2f2</color>
     <color name="colorDivision">#33aaaaaa</color>
 
-
-
-    <!-- common -->
-    <color name="app_color_blue">#FF4081</color>
     <color name="app_color_white">#ffffff</color>
-    <color name="app_color_blue_disabled">#FF4081</color>
-    <color name="app_color_blue_pressed">#FF4081</color>
-
-    <color name="app_color_blue_2">#FF4081</color>
-    <color name="app_color_blue_2_disabled">#FF4081</color>
-    <color name="app_color_blue_2_pressed">#FF4081</color>
 
     <color name="app_color_theme_1">#EF5362</color> <!-- Grapefruit -->
     <color name="app_color_theme_2">#FE6D4B</color> <!-- Bittersweet -->

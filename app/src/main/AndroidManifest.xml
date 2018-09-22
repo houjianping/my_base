@@ -67,6 +67,8 @@
         <activity android:name=".ui.activity.pcenter.SettingFavorite" />
         <activity android:name=".ui.activity.pcenter.SettingLeavingMessage" />
         <activity android:name=".ui.activity.pcenter.SettingsMyInfoActivity" />
+        <activity android:name=".ui.activity.login.PassWordLoginActivity" />
+        <activity android:name=".ui.activity.login.SecretLoginActivity" />
     </application>
 
 </manifest>

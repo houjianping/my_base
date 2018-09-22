@@ -10,8 +10,10 @@
         android:id="@+id/titlebar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:centerText="修改密码"
+        app:centerText="密码登录"
         app:centerType="textView"
+        app:rightText="短信登录"
+        app:rightType="textView"
         app:leftDrawable="@drawable/comm_titlebar_back_normal"
         app:leftDrawablePadding="0dp"
         app:leftType="textView" />
@@ -20,16 +22,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
-
-        <TextView
-            android:text="密码长度6-24位, 可以是数字、字母等任意字母"
-            android:textColor="@color/secondary_color"
-            android:gravity="center"
-            android:layout_margin="10dp"
-            android:textSize="@dimen/font_12"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content" />
-
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
@@ -42,18 +34,25 @@
                 android:layout_width="fill_parent"
                 android:layout_height="50dp">
                 <EditText
+                    android:paddingLeft="50dp"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:hint="输入旧密码"
-                    style="@style/edittext_password"/>
-                <CheckBox
-                    android:checked="false"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginRight="5dp"
+                    style="@style/edittext_number"
+                    android:hint="输入手机号"/>
+                <TextView
+                    android:id="@+id/tv_areacode"
+                    android:text="+86"
                     android:layout_centerVertical="true"
-                    android:button="@drawable/selector_password"/>
+                    android:layout_width="30dp"
+                    android:textSize="12sp"
+                    android:textColor="@color/secondary_color"
+                    android:layout_height="wrap_content" />
+                <ImageView
+                    android:layout_toEndOf="@+id/tv_areacode"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/arrow_down_black"
+                    android:layout_width="10dp"
+                    android:layout_height="10dp" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -62,26 +61,7 @@
                 <EditText
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    style="@style/edittext_password"
-                    android:hint="设置新密码"/>
-                <CheckBox
-                    android:checked="false"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="5dp"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:button="@drawable/selector_password"/>
-            </RelativeLayout>
-
-
-            <RelativeLayout
-                android:layout_width="fill_parent"
-                android:layout_height="50dp">
-                <EditText
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:hint="确认新密码"
+                    android:hint="输入密码"
                     style="@style/edittext_password"/>
                 <CheckBox
                     android:checked="false"

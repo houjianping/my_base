@@ -22,6 +22,7 @@ import com.luck.picture.lib.config.PictureMimeType;
 import com.luck.picture.lib.entity.LocalMedia;
 import com.scwang.refreshlayout.R;
 import com.scwang.refreshlayout.api.Urls;
+import com.scwang.refreshlayout.ui.activity.login.PassWordLoginActivity;
 import com.scwang.refreshlayout.ui.activity.pcenter.SettingsDownloadActivity;
 import com.scwang.refreshlayout.ui.activity.pcenter.SettingActivity;
 import com.scwang.refreshlayout.ui.activity.pcenter.SettingFavorite;
@@ -179,6 +180,7 @@ public class PCenterFragment extends BaseTabFragment {
         view.findViewById(R.id.setting_share_reward).setOnClickListener(mOnClickListener);
         view.findViewById(R.id.setting_inviting_friends).setOnClickListener(mOnClickListener);
         view.findViewById(R.id.ivSettingAvatar).setOnClickListener(mOnClickListener);
+        view.findViewById(R.id.my_redpack).setOnClickListener(mOnClickListener);
     }
 
     private View.OnClickListener mOnClickListener = new View.OnClickListener() {
@@ -187,6 +189,9 @@ public class PCenterFragment extends BaseTabFragment {
             switch (v.getId()) {
                 case R.id.item_setting:
                     startActivity(new Intent(mContext, SettingActivity.class));
+                    break;
+                case R.id.my_redpack:
+                    startActivity(new Intent(mContext, PassWordLoginActivity.class));
                     break;
                 case R.id.setting_download:
                     startActivity(new Intent(mContext, SettingsDownloadActivity.class));

@@ -3,7 +3,6 @@ package com.android.payment.wxapi;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 
 import com.android.payment.R;
 import com.android.payment.biz.WxPay;
@@ -19,7 +18,7 @@ public class BaseWXEntryActivity extends Activity implements IWXAPIEventHandler 
     private IWXAPI api;
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         api = WXAPIFactory.createWXAPI(this, getString(R.string.WEIXIN_ID));
         api.handleIntent(getIntent(), this);
