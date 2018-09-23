@@ -1,39 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:gravity="center_vertical"
     android:layout_width="wrap_content"
-    android:layout_height="match_parent">
-
-
-    <ImageView
-        android:id="@+id/selected_search"
-        android:layout_width="19dp"
-        android:layout_height="19dp"
-        android:layout_centerVertical="true"
-        android:layout_marginLeft="12dp"
-        android:src="@mipmap/search" />
+    android:layout_height="wrap_content">
 
     <ImageView
-        android:id="@+id/selected_im"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:layout_centerVertical="true"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="12dp"
-        android:layout_toRightOf="@id/selected_search"
-        android:src="@mipmap/im_msgs" />
+        android:id="@+id/search_view"
+        android:layout_width="22dp"
+        android:layout_height="22dp"
+        android:layout_marginStart="10dp"
+        android:src="@drawable/icon_sousuo"
+        android:layout_marginLeft="10dp" />
 
-    <TextView
-        android:layout_width="13dp"
-        android:layout_height="13dp"
-        android:layout_alignRight="@id/selected_im"
-        android:layout_alignTop="@id/selected_im"
-        android:layout_marginRight="-3dp"
-        android:layout_marginTop="-3dp"
-        android:background="@drawable/msg_num_shape"
-        android:gravity="center"
-        android:paddingLeft="2dp"
-        android:paddingRight="2dp"
-        android:text="99"
-        android:textColor="#ffffff"
-        android:textSize="9dp" />
-</RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/rlTitleMsg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp">
+
+        <ImageView
+            android:id="@+id/chat_view"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:layout_marginStart="15dp"
+            android:src="@drawable/icon_xiaoxi"
+            android:layout_marginLeft="15dp" />
+
+        <ImageView
+            android:id="@+id/iv_unread_dot"
+            android:layout_width="6dp"
+            android:layout_height="6dp"
+            android:layout_toRightOf="@+id/chat_view"
+            android:src="@drawable/msg_num_shape"
+            android:visibility="visible" />
+    </RelativeLayout>
+</LinearLayout>

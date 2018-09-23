@@ -44,8 +44,8 @@ repositories {
 }
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    implementation 'com.android.support:multidex:1.0.2'
-    compile 'de.hdodenhof:circleimageview:2.1.0'
+    implementation 'com.android.support:multidex:1.0.3'
+    compile 'de.hdodenhof:circleimageview:2.2.0'
     implementation project(':base_library')
     implementation project(':umeng_library')
     implementation project(':picture_library')

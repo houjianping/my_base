@@ -36,12 +36,10 @@
         <activity
             android:name=".ui.MainActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
-            android:label="@string/title_activity_index_main"
             android:screenOrientation="portrait"></activity>
         <activity
             android:name=".ui.ui.common.YuedanWebActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
-            android:label="@string/title_activity_index_main"
             android:screenOrientation="portrait"></activity>
         <activity
             android:name=".ui.ui.TestActivity"

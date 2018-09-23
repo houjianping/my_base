@@ -1,53 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tl="http://schemas.android.com/apk/res-auto"
+    android:fitsSystemWindows="true"
     android:layout_width="match_parent"
     android:layout_height="fill_parent">
 
-    <com.androidapp.widget.CommonTitleBar
-        android:id="@+id/titlebaraa"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tl:centerText="@string/app_name"
-        tl:centerType="textView"
-        tl:rightCustomView="@layout/layout_custom_right"
-        tl:rightType="customView" />
+    <RelativeLayout
+        android:id="@+id/view_header"
+        android:layout_width="fill_parent"
+        android:layout_height="44dp">
 
-    <com.androidapp.smarttablayout.SmartTabLayout
-        android:id="@+id/viewpagertab"
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:layout_below="@+id/titlebaraa"
-        android:background="#ffffff"
-        android:clipChildren="false"
-        android:clipToPadding="false"
-        tl:stl_clickable="true"
-        tl:stl_defaultTabBackground="@android:color/transparent"
-        tl:stl_defaultTabTextAllCaps="false"
-        tl:stl_defaultTabTextColor="@color/tab_text_selector"
-        tl:stl_defaultTabTextHorizontalPadding="12dp"
-        tl:stl_defaultTabTextMinWidth="0dp"
-        tl:stl_defaultTabTextSize="14dp"
-        tl:stl_distributeEvenly="true"
-        tl:stl_dividerColor="#00000000"
-        tl:stl_dividerThickness="0dp"
-        tl:stl_drawDecorationAfterTab="false"
-        tl:stl_indicatorColor="#ff5c5c"
-        tl:stl_indicatorCornerRadius="0dp"
-        tl:stl_indicatorGravity="bottom"
-        tl:stl_indicatorInFront="true"
-        tl:stl_indicatorInterpolation="smart"
-        tl:stl_indicatorThickness="2dp"
-        tl:stl_indicatorWidth="auto"
-        tl:stl_indicatorWithoutPadding="false"
-        tl:stl_overlineColor="#2D000000"
-        tl:stl_overlineThickness="0dp"
-        tl:stl_underlineColor="#2D000000"
-        tl:stl_underlineThickness="1px" />
+        <LinearLayout
+            android:id="@+id/nearby_actions"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+            <include layout="@layout/layout_custom_right" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_toLeftOf="@+id/nearby_actions">
+
+            <com.androidapp.smarttablayout.SmartTabLayout
+                android:id="@+id/viewpagertab"
+                style="@style/index_tab_style"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:background="#ffffff"
+                android:clipChildren="false"
+                android:clipToPadding="false" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1px"
+        android:layout_below="@+id/view_header"
+        android:background="#2D000000" />
 
     <android.support.v4.view.ViewPager
         android:id="@+id/viewpager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/viewpagertab" />
+        android:layout_below="@+id/view_header"
+        android:paddingTop="1px" />
 </RelativeLayout>

@@ -176,4 +176,45 @@
         <item name="android:textColor">#666</item>
         <item name="android:textSize">@dimen/font_12</item>
     </style>
+    <style name="button_submit">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">35dp</item>
+        <item name="android:layout_marginLeft">20dp</item>
+        <item name="android:layout_marginRight">20dp</item>
+        <item name="android:background">@drawable/btn_theme</item>
+        <item name="android:gravity">center</item>
+        <item name="android:padding">0dp</item>
+        <item name="android:text">完成</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+    <style name="button_share">
+        <item name="android:layout_width">40dp</item>
+        <item name="android:layout_height">40dp</item>
+    </style>
+    <style name="index_tab_style">
+        <item name="stl_clickable">true</item>
+        <item name="stl_defaultTabBackground">@android:color/transparent</item>
+        <item name="stl_defaultTabTextAllCaps">false</item>
+        <item name="stl_defaultTabTextColor">@color/tab_text_selector</item>
+        <item name="stl_defaultTabTextHorizontalPadding">12dp</item>
+        <item name="stl_defaultTabTextMinWidth">20dp</item>
+        <item name="stl_defaultTabTextSize">18sp</item>
+        <item name="stl_distributeEvenly">false</item>
+        <item name="stl_dividerColor">#00000000</item>
+        <item name="stl_dividerThickness">0dp</item>
+        <item name="stl_drawDecorationAfterTab">false</item>
+        <item name="stl_indicatorColor">@color/colorPrimary</item>
+        <item name="stl_indicatorCornerRadius">0dp</item>
+        <item name="stl_indicatorGravity">bottom</item>
+        <item name="stl_indicatorInFront">true</item>
+        <item name="stl_indicatorInterpolation">smart</item>
+        <item name="stl_indicatorThickness">2dp</item>
+        <item name="stl_indicatorWidth">auto</item>
+        <item name="stl_indicatorWithoutPadding">false</item>
+        <item name="stl_overlineColor">#2D000000</item>
+        <item name="stl_overlineThickness">0dp</item>
+        <item name="stl_underlineColor">#2D000000</item>
+        <item name="stl_underlineThickness">0px</item>
+    </style>
 </resources>

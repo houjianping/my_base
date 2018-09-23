@@ -13,7 +13,7 @@ import com.androidapp.smartrefresh.layout.api.RefreshHeader;
 import com.androidapp.smartrefresh.layout.api.RefreshLayout;
 import com.androidapp.smartrefresh.layout.header.ClassicsHeader;
 import com.facebook.stetho.Stetho;
-import com.scwang.refreshlayout.request.OkGoRequest;
+import com.scwang.refreshlayout.api.request.OkGoRequest;
 import com.scwang.refreshlayout.util.DynamicTimeFormat;
 
 import java.io.File;

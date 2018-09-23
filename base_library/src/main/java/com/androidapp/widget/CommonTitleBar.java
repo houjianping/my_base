@@ -209,7 +209,7 @@ public class CommonTitleBar extends RelativeLayout implements View.OnClickListen
         if (rightType == TYPE_RIGHT_TEXTVIEW) {
             rightText = array.getString(R.styleable.CommonTitleBar_rightText);
             rightTextColor = array.getColor(R.styleable.CommonTitleBar_rightTextColor, getResources().getColor(R.color.comm_titlebar_text_selector));
-            rightTextSize = array.getDimension(R.styleable.CommonTitleBar_rightTextSize, ScreenUtil.dip2px(context, 16));
+            rightTextSize = array.getDimension(R.styleable.CommonTitleBar_rightTextSize, ScreenUtil.dip2px(context, 14));
         } else if (rightType == TYPE_RIGHT_IMAGEBUTTON) {
             rightImageResource = array.getResourceId(R.styleable.CommonTitleBar_rightImageResource, 0);
         } else if (rightType == TYPE_RIGHT_CUSTOM_VIEW) {
@@ -220,7 +220,7 @@ public class CommonTitleBar extends RelativeLayout implements View.OnClickListen
         if (centerType == TYPE_CENTER_TEXTVIEW) {
             centerText = array.getString(R.styleable.CommonTitleBar_centerText);
             centerTextColor = array.getColor(R.styleable.CommonTitleBar_centerTextColor, Color.parseColor("#333333"));
-            centerTextSize = array.getDimension(R.styleable.CommonTitleBar_centerTextSize, ScreenUtil.dip2px(context, 16));
+            centerTextSize = array.getDimension(R.styleable.CommonTitleBar_centerTextSize, ScreenUtil.dip2px(context, 18));
             centerSubText = array.getString(R.styleable.CommonTitleBar_centerSubText);
             centerSubTextColor = array.getColor(R.styleable.CommonTitleBar_centerSubTextColor, Color.parseColor("#666666"));
             centerSubTextSize = array.getDimension(R.styleable.CommonTitleBar_centerSubTextSize, ScreenUtil.dip2px(context, 11));
@@ -231,7 +231,6 @@ public class CommonTitleBar extends RelativeLayout implements View.OnClickListen
         } else if (centerType == TYPE_CENTER_CUSTOM_VIEW) {
             centerCustomViewRes = array.getResourceId(R.styleable.CommonTitleBar_centerCustomView, 0);
         }
-
         array.recycle();
     }
 

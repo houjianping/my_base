@@ -1,4 +1,4 @@
-package com.scwang.refreshlayout.request;
+package com.scwang.refreshlayout.api.request;
 
 import android.text.TextUtils;
 

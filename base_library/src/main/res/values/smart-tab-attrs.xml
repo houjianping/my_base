@@ -33,6 +33,7 @@
     <attr name="stl_defaultTabTextSize" format="dimension"/>
     <attr name="stl_defaultTabTextHorizontalPadding" format="dimension"/>
     <attr name="stl_defaultTabTextMinWidth" format="dimension"/>
+    <attr name="stl_defaultTabTextWidth" format="dimension"/>
     <attr name="stl_customTabTextLayoutId" format="reference"/>
     <attr name="stl_customTabTextViewId" format="reference"/>
     <attr name="stl_distributeEvenly" format="boolean"/>

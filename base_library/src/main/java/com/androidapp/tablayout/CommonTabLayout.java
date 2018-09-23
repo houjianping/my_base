@@ -32,6 +32,8 @@ import com.androidapp.tablayout.listener.OnTabSelectListener;
 import com.androidapp.tablayout.utils.FragmentChangeManager;
 import com.androidapp.tablayout.utils.UnreadMsgUtils;
 import com.androidapp.tablayout.widget.MsgView;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 
 import java.util.ArrayList;
 
@@ -235,7 +237,8 @@ public class CommonTabLayout extends FrameLayout implements ValueAnimator.Animat
         TextView tv_tab_title = (TextView) tabView.findViewById(R.id.tv_tab_title);
         tv_tab_title.setText(mTabEntitys.get(position).getTabTitle());
         ImageView iv_tab_icon = (ImageView) tabView.findViewById(R.id.iv_tab_icon);
-        iv_tab_icon.setImageResource(mTabEntitys.get(position).getTabUnselectedIcon());
+        Glide.with(mContext).load(mTabEntitys.get(position).getTabWebUnSelectedIcon())
+                .apply(new RequestOptions().placeholder(mTabEntitys.get(position).getTabUnselectedIcon()).error(mTabEntitys.get(position).getTabUnselectedIcon())).into(iv_tab_icon);
 
         tabView.setOnClickListener(new OnClickListener() {
             @Override
@@ -290,7 +293,15 @@ public class CommonTabLayout extends FrameLayout implements ValueAnimator.Animat
             if (mIconVisible) {
                 iv_tab_icon.setVisibility(View.VISIBLE);
                 CustomTabEntity tabEntity = mTabEntitys.get(i);
-                iv_tab_icon.setImageResource(i == mCurrentTab ? tabEntity.getTabSelectedIcon() : tabEntity.getTabUnselectedIcon());
+                if (i == mCurrentTab) {
+                    Glide.with(mContext).load(tabEntity.getTabWebSelectedIcon())
+                            .apply(new RequestOptions().placeholder(tabEntity.getTabSelectedIcon()).error(tabEntity.getTabSelectedIcon())).into(iv_tab_icon);
+                } else {
+                    Glide.with(mContext).load(tabEntity.getTabWebUnSelectedIcon())
+                            .apply(new RequestOptions().placeholder(tabEntity.getTabUnselectedIcon()).error(tabEntity.getTabUnselectedIcon())).into(iv_tab_icon);
+                }
+
+
                 LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
                         mIconWidth <= 0 ? LinearLayout.LayoutParams.WRAP_CONTENT : (int) mIconWidth,
                         mIconHeight <= 0 ? LinearLayout.LayoutParams.WRAP_CONTENT : (int) mIconHeight);
@@ -325,7 +336,13 @@ public class CommonTabLayout extends FrameLayout implements ValueAnimator.Animat
             tab_title.setTextColor(isSelect ? mTextSelectColor : mTextUnselectColor);
             ImageView iv_tab_icon = (ImageView) tabView.findViewById(R.id.iv_tab_icon);
             CustomTabEntity tabEntity = mTabEntitys.get(i);
-            iv_tab_icon.setImageResource(isSelect ? tabEntity.getTabSelectedIcon() : tabEntity.getTabUnselectedIcon());
+            if (isSelect) {
+                Glide.with(mContext).load(tabEntity.getTabWebSelectedIcon())
+                        .apply(new RequestOptions().placeholder(tabEntity.getTabSelectedIcon()).error(tabEntity.getTabSelectedIcon())).into(iv_tab_icon);
+            } else {
+                Glide.with(mContext).load(tabEntity.getTabWebUnSelectedIcon())
+                        .apply(new RequestOptions().placeholder(tabEntity.getTabUnselectedIcon()).error(tabEntity.getTabUnselectedIcon())).into(iv_tab_icon);
+            }
             if (mTextBold == TEXT_BOLD_WHEN_SELECT) {
                 tab_title.getPaint().setFakeBoldText(isSelect);
             }

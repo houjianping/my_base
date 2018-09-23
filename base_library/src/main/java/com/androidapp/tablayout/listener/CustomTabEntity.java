@@ -14,4 +14,8 @@ public interface CustomTabEntity {
     boolean selectAble();
 
     int getIconSize();
+
+    String getTabWebSelectedIcon();
+
+    String getTabWebUnSelectedIcon();
 }

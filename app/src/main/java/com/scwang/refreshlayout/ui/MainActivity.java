@@ -159,40 +159,44 @@ public class MainActivity extends BaseActivity {
      * 切换
      */
     private void switchTo(int position) {
-        currentTabPosition = position;
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        switch (position) {
-            case 0:
-                transaction.hide(mainFragment);
-                transaction.hide(mOrderMainFragment);
-                transaction.hide(videoMainFragment);
-                transaction.hide(roomMainFragment);
-                transaction.show(mainFragment);
-                transaction.commitNowAllowingStateLoss();
-                break;
-            case 1:
-                transaction.hide(mainFragment);
-                transaction.hide(videoMainFragment);
-                transaction.hide(roomMainFragment);
-                transaction.show(mOrderMainFragment);
-                transaction.commitNowAllowingStateLoss();
-                break;
-            case 3:
-                transaction.hide(mainFragment);
-                transaction.hide(mOrderMainFragment);
-                transaction.hide(videoMainFragment);
-                transaction.show(roomMainFragment);
-                transaction.commitAllowingStateLoss();
-                break;
-            case 4:
-                transaction.hide(mainFragment);
-                transaction.hide(mOrderMainFragment);
-                transaction.hide(roomMainFragment);
-                transaction.show(videoMainFragment);
-                transaction.commitAllowingStateLoss();
-                break;
-            default:
-                break;
+        try {
+            currentTabPosition = position;
+            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+            switch (position) {
+                case 0:
+                    transaction.hide(mainFragment);
+                    transaction.hide(mOrderMainFragment);
+                    transaction.hide(videoMainFragment);
+                    transaction.hide(roomMainFragment);
+                    transaction.show(mainFragment);
+                    transaction.commitNowAllowingStateLoss();
+                    break;
+                case 1:
+                    transaction.hide(mainFragment);
+                    transaction.hide(videoMainFragment);
+                    transaction.hide(roomMainFragment);
+                    transaction.show(mOrderMainFragment);
+                    transaction.commitNowAllowingStateLoss();
+                    break;
+                case 3:
+                    transaction.hide(mainFragment);
+                    transaction.hide(mOrderMainFragment);
+                    transaction.hide(videoMainFragment);
+                    transaction.show(roomMainFragment);
+                    transaction.commitAllowingStateLoss();
+                    break;
+                case 4:
+                    transaction.hide(mainFragment);
+                    transaction.hide(mOrderMainFragment);
+                    transaction.hide(roomMainFragment);
+                    transaction.show(videoMainFragment);
+                    transaction.commitAllowingStateLoss();
+                    break;
+                default:
+                    break;
+            }
+        } catch (Exception e) {
+
         }
     }
 
@@ -242,6 +246,16 @@ public class MainActivity extends BaseActivity {
         @Override
         public int getIconSize() {
             return isSelectAble ? 0 : 120;
+        }
+
+        @Override
+        public String getTabWebSelectedIcon() {
+            return "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1537623961679&di=0f51d311d13e39e3e8baa4fc196a04e8&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F013ac3574e44ff32f875a4292262ed.png";
+        }
+
+        @Override
+        public String getTabWebUnSelectedIcon() {
+            return "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1537623961679&di=0f51d311d13e39e3e8baa4fc196a04e8&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F013ac3574e44ff32f875a4292262ed.png";
         }
     }
 }

@@ -9,7 +9,7 @@
         android:id="@+id/parallax"
         android:layout_width="match_parent"
         android:layout_height="670dp"
-        android:layout_marginTop="-300dp"
+        android:layout_marginTop="-200dp"
         android:adjustViewBounds="true"
         android:contentDescription="@string/app_name"
         android:scaleType="centerCrop"
@@ -20,7 +20,7 @@
         android:id="@+id/refreshLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:srlDragRate="0.75"
+        app:srlDragRate="0.85"
         app:srlEnableLoadMore="true"
         app:srlEnablePureScrollMode="true">
 
@@ -122,7 +122,7 @@
                                 <ImageView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:src="@mipmap/im_msgs" />
+                                    android:src="@drawable/icon_sousuo" />
 
                                 <TextView
                                     android:layout_width="wrap_content"
@@ -146,7 +146,7 @@
                                 <ImageView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:src="@mipmap/im_msgs" />
+                                    android:src="@drawable/icon_sousuo" />
 
                                 <TextView
                                     android:layout_width="wrap_content"
@@ -170,7 +170,7 @@
                                 <ImageView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:src="@mipmap/im_msgs" />
+                                    android:src="@drawable/icon_sousuo" />
 
                                 <TextView
                                     android:layout_width="wrap_content"
@@ -194,7 +194,7 @@
                                 <ImageView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:src="@mipmap/im_msgs" />
+                                    android:src="@drawable/icon_sousuo" />
 
                                 <TextView
                                     android:layout_width="wrap_content"
@@ -221,7 +221,7 @@
                         android:id="@+id/setting_share_reward"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        app:settingsIcon="@mipmap/im_msgs"
+                        app:settingsIcon="@drawable/icon_sousuo"
                         app:settingsShowTopDiv="true"
                         app:settingsSummary="各得优惠券"
                         app:settingsTitle="分享有赏" />
@@ -230,7 +230,7 @@
                         android:id="@+id/setting_inviting_friends"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        app:settingsIcon="@mipmap/im_msgs"
+                        app:settingsIcon="@drawable/icon_sousuo"
                         app:settingsShowBottomDiv="true"
                         app:settingsSummary=""
                         app:settingsTitle="邀请好友" />
@@ -249,7 +249,7 @@
                         android:id="@+id/setting_leaving_message"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        app:settingsIcon="@mipmap/im_msgs"
+                        app:settingsIcon="@drawable/icon_sousuo"
                         app:settingsShowTopDiv="true"
                         app:settingsTitle="我的留言" />
 
@@ -257,7 +257,7 @@
                         android:id="@+id/setting_favorite"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        app:settingsIcon="@mipmap/im_msgs"
+                        app:settingsIcon="@drawable/icon_sousuo"
                         app:settingsSummary="1"
                         app:settingsTitle="我的收藏" />
 
@@ -265,7 +265,7 @@
                         android:id="@+id/setting_download"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        app:settingsIcon="@mipmap/im_msgs"
+                        app:settingsIcon="@drawable/icon_sousuo"
                         app:settingsShowBottomDiv="true"
                         app:settingsSummary=""
                         app:settingsTitle="我的下载" />
@@ -283,7 +283,7 @@
                         android:id="@+id/item_setting"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        app:settingsIcon="@mipmap/im_msgs"
+                        app:settingsIcon="@drawable/icon_sousuo"
                         app:settingsShowBottomDiv="true"
                         app:settingsShowTopDiv="true"
                         app:settingsTitle="设置" />
@@ -331,44 +331,12 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="end">
-
             <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:gravity="center_vertical|right"
                 android:layout_gravity="center">
-
-                <ImageView
-                    android:id="@+id/selected_search"
-                    android:layout_width="19dp"
-                    android:layout_height="19dp"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="12dp"
-                    android:src="@mipmap/search" />
-
-                <ImageView
-                    android:id="@+id/selected_im"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginRight="12dp"
-                    android:layout_toRightOf="@id/selected_search"
-                    android:src="@mipmap/im_msgs" />
-
-                <TextView
-                    android:layout_width="13dp"
-                    android:layout_height="13dp"
-                    android:layout_alignTop="@id/selected_im"
-                    android:layout_alignRight="@id/selected_im"
-                    android:layout_marginTop="-3dp"
-                    android:layout_marginRight="-3dp"
-                    android:background="@drawable/msg_num_shape"
-                    android:gravity="center"
-                    android:paddingLeft="2dp"
-                    android:paddingRight="2dp"
-                    android:text="99"
-                    android:textColor="#ffffff"
-                    android:textSize="9dp" />
+                <include layout="@layout/layout_custom_right" />
             </RelativeLayout>
         </android.support.v7.widget.ButtonBarLayout>
 

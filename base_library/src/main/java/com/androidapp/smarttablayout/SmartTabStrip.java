@@ -1,19 +1,3 @@
-/**
- * Copyright (C) 2015 ogaclejapan
- * Copyright (C) 2013 The Android Open Source Project
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
 package com.androidapp.smarttablayout;
 
 import android.content.Context;
@@ -23,17 +7,13 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.RectF;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
 import android.widget.LinearLayout;
 
 import com.androidapp.base.R;
 
-/**
- * <p>
- * Forked from Google Samples &gt; SlidingTabsBasic &gt;
- * <a href="https://developer.android.com/samples/SlidingTabsBasic/src/com.example.android.common/view/SlidingTabLayout.html">SlidingTabStrip</a>
- */
 class SmartTabStrip extends LinearLayout {
 
   private static final int GRAVITY_BOTTOM = 0;
@@ -115,50 +95,50 @@ class SmartTabStrip extends LinearLayout {
 
     TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.stl_SmartTabLayout);
     indicatorAlwaysInCenter = a.getBoolean(
-        R.styleable.stl_SmartTabLayout_stl_indicatorAlwaysInCenter, indicatorAlwaysInCenter);
+            R.styleable.stl_SmartTabLayout_stl_indicatorAlwaysInCenter, indicatorAlwaysInCenter);
     indicatorWithoutPadding = a.getBoolean(
-        R.styleable.stl_SmartTabLayout_stl_indicatorWithoutPadding, indicatorWithoutPadding);
+            R.styleable.stl_SmartTabLayout_stl_indicatorWithoutPadding, indicatorWithoutPadding);
     indicatorInFront = a.getBoolean(
-        R.styleable.stl_SmartTabLayout_stl_indicatorInFront, indicatorInFront);
+            R.styleable.stl_SmartTabLayout_stl_indicatorInFront, indicatorInFront);
     indicationInterpolatorId = a.getInt(
-        R.styleable.stl_SmartTabLayout_stl_indicatorInterpolation, indicationInterpolatorId);
+            R.styleable.stl_SmartTabLayout_stl_indicatorInterpolation, indicationInterpolatorId);
     indicatorGravity = a.getInt(
-        R.styleable.stl_SmartTabLayout_stl_indicatorGravity, indicatorGravity);
+            R.styleable.stl_SmartTabLayout_stl_indicatorGravity, indicatorGravity);
     indicatorColor = a.getColor(
-        R.styleable.stl_SmartTabLayout_stl_indicatorColor, indicatorColor);
+            R.styleable.stl_SmartTabLayout_stl_indicatorColor, indicatorColor);
     indicatorColorsId = a.getResourceId(
-        R.styleable.stl_SmartTabLayout_stl_indicatorColors, indicatorColorsId);
+            R.styleable.stl_SmartTabLayout_stl_indicatorColors, indicatorColorsId);
     indicatorThickness = a.getDimensionPixelSize(
-        R.styleable.stl_SmartTabLayout_stl_indicatorThickness, indicatorThickness);
+            R.styleable.stl_SmartTabLayout_stl_indicatorThickness, indicatorThickness);
     indicatorWidth = a.getLayoutDimension(
-        R.styleable.stl_SmartTabLayout_stl_indicatorWidth, indicatorWidth);
+            R.styleable.stl_SmartTabLayout_stl_indicatorWidth, indicatorWidth);
     indicatorCornerRadius = a.getDimension(
-        R.styleable.stl_SmartTabLayout_stl_indicatorCornerRadius, indicatorCornerRadius);
+            R.styleable.stl_SmartTabLayout_stl_indicatorCornerRadius, indicatorCornerRadius);
     overlineColor = a.getColor(
-        R.styleable.stl_SmartTabLayout_stl_overlineColor, overlineColor);
+            R.styleable.stl_SmartTabLayout_stl_overlineColor, overlineColor);
     overlineThickness = a.getDimensionPixelSize(
-        R.styleable.stl_SmartTabLayout_stl_overlineThickness, overlineThickness);
+            R.styleable.stl_SmartTabLayout_stl_overlineThickness, overlineThickness);
     underlineColor = a.getColor(
-        R.styleable.stl_SmartTabLayout_stl_underlineColor, underlineColor);
+            R.styleable.stl_SmartTabLayout_stl_underlineColor, underlineColor);
     underlineThickness = a.getDimensionPixelSize(
-        R.styleable.stl_SmartTabLayout_stl_underlineThickness, underlineThickness);
+            R.styleable.stl_SmartTabLayout_stl_underlineThickness, underlineThickness);
     dividerColor = a.getColor(
-        R.styleable.stl_SmartTabLayout_stl_dividerColor, dividerColor);
+            R.styleable.stl_SmartTabLayout_stl_dividerColor, dividerColor);
     dividerColorsId = a.getResourceId(
-        R.styleable.stl_SmartTabLayout_stl_dividerColors, dividerColorsId);
+            R.styleable.stl_SmartTabLayout_stl_dividerColors, dividerColorsId);
     dividerThickness = a.getDimensionPixelSize(
-        R.styleable.stl_SmartTabLayout_stl_dividerThickness, dividerThickness);
+            R.styleable.stl_SmartTabLayout_stl_dividerThickness, dividerThickness);
     drawDecorationAfterTab = a.getBoolean(
-        R.styleable.stl_SmartTabLayout_stl_drawDecorationAfterTab, drawDecorationAfterTab);
+            R.styleable.stl_SmartTabLayout_stl_drawDecorationAfterTab, drawDecorationAfterTab);
     a.recycle();
 
     final int[] indicatorColors = (indicatorColorsId == NO_ID)
-        ? new int[] { indicatorColor }
-        : getResources().getIntArray(indicatorColorsId);
+            ? new int[] { indicatorColor }
+            : getResources().getIntArray(indicatorColorsId);
 
     final int[] dividerColors = (dividerColorsId == NO_ID)
-        ? new int[] { dividerColor }
-        : getResources().getIntArray(dividerColorsId);
+            ? new int[] { dividerColor }
+            : getResources().getIntArray(dividerColorsId);
 
     this.defaultTabColorizer = new SimpleTabColorizer();
     this.defaultTabColorizer.setIndicatorColors(indicatorColors);
@@ -319,8 +299,15 @@ class SmartTabStrip extends LinearLayout {
         }
         thickness = thickness * thicknessOffset;
       }
-
-      drawIndicator(canvas, left, right, height, thickness, color);
+      //---houjianping start
+      if (right - left > 80) {
+        int padding = (right - left - 80) / 2;
+        left = left + padding;
+        right = right - padding;
+      }
+      thickness = 12;
+      // houjianping end
+      drawIndicator(canvas, left, right, height - 12, thickness, color);
 
     }
 
@@ -358,7 +345,7 @@ class SmartTabStrip extends LinearLayout {
   }
 
   private void drawIndicator(Canvas canvas, int left, int right, int height, float thickness,
-      int color) {
+                             int color) {
     if (indicatorThickness <= 0 || indicatorWidth == 0) {
       return;
     }
@@ -392,14 +379,16 @@ class SmartTabStrip extends LinearLayout {
       float padding = (Math.abs(left - right) - indicatorWidth) / 2f;
       indicatorRectF.set(left + padding, top, right - padding, bottom);
     }
-
-    if (indicatorCornerRadius > 0f) {
+    /*if (indicatorCornerRadius > 0f) {
       canvas.drawRoundRect(
           indicatorRectF, indicatorCornerRadius,
           indicatorCornerRadius, indicatorPaint);
     } else {
       canvas.drawRect(indicatorRectF, indicatorPaint);
-    }
+    }*/
+    canvas.drawRoundRect(
+            indicatorRectF, 5,
+            5, indicatorPaint);
   }
 
   private void drawOverline(Canvas canvas, int left, int right) {
