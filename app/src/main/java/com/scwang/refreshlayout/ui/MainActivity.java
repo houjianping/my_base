@@ -24,11 +24,11 @@ import java.util.ArrayList;
 
 public class MainActivity extends BaseActivity {
 
-    private String[] mTitles = {"首页", "订单管理", "", "大厅", "个人中心"};
+    private String[] mTitles = {"首页", "专栏", "大厅", "个人中心"};
     private int[] mIconUnselectIds = {
-            R.mipmap.ic_home_normal, R.mipmap.ic_video_normal, R.mipmap.ic_center, R.mipmap.ic_video_normal, R.mipmap.ic_care_normal};
+            R.mipmap.ic_home_normal, R.mipmap.ic_video_normal, R.mipmap.ic_video_normal, R.mipmap.ic_care_normal};
     private int[] mIconSelectIds = {
-            R.mipmap.ic_home_selected, R.mipmap.ic_video_selected, R.mipmap.ic_center, R.mipmap.ic_video_selected, R.mipmap.ic_care_selected};
+            R.mipmap.ic_home_selected, R.mipmap.ic_video_selected, R.mipmap.ic_video_selected, R.mipmap.ic_care_selected};
     private ArrayList<CustomTabEntity> mTabEntities = new ArrayList<>();
 
     private CommonTabLayout tabLayout;
@@ -93,35 +93,7 @@ public class MainActivity extends BaseActivity {
         tabLayout.setOnTabSelectListener(new OnTabSelectListener() {
             @Override
             public void onTabSelect(int position) {
-                if (position == 2) {
-                    ShareUtil shareUtil = new ShareUtil(MainActivity.this, "分享标题", R.mipmap.ic_launcher);
-                    shareUtil.setShareCallback(new ShareUtil.ShareCallback() {
-                        @Override
-                        public void onShareStart(ShareEnum shareEnum) {
-                        }
-
-                        @Override
-                        public void onShareSuccess(ShareEnum shareEnum) {
-                        }
-
-                        @Override
-                        public void onShareFailed(ShareEnum shareEnum) {
-                        }
-
-                        @Override
-                        public void onShareCancel(ShareEnum shareEnum) {
-                        }
-                    });
-                    ShareContent shareContent = new ShareContent();
-                    shareContent.setUrl("");
-                    shareContent.setTitle("");
-                    shareContent.setLogo("");
-                    shareContent.setText("");
-                    shareContent.setShareObject(1);
-                    shareUtil.show(shareContent);
-                } else {
-                    switchTo(position);
-                }
+                switchTo(position);
             }
 
             @Override
@@ -178,14 +150,14 @@ public class MainActivity extends BaseActivity {
                     transaction.show(mOrderMainFragment);
                     transaction.commitNowAllowingStateLoss();
                     break;
-                case 3:
+                case 2:
                     transaction.hide(mainFragment);
                     transaction.hide(mOrderMainFragment);
                     transaction.hide(videoMainFragment);
                     transaction.show(roomMainFragment);
                     transaction.commitAllowingStateLoss();
                     break;
-                case 4:
+                case 3:
                     transaction.hide(mainFragment);
                     transaction.hide(mOrderMainFragment);
                     transaction.hide(roomMainFragment);
@@ -196,7 +168,7 @@ public class MainActivity extends BaseActivity {
                     break;
             }
         } catch (Exception e) {
-
+            e.printStackTrace();
         }
     }
 
@@ -250,12 +222,14 @@ public class MainActivity extends BaseActivity {
 
         @Override
         public String getTabWebSelectedIcon() {
-            return "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1537623961679&di=0f51d311d13e39e3e8baa4fc196a04e8&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F013ac3574e44ff32f875a4292262ed.png";
+            return null;
+            //return "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1537623961679&di=0f51d311d13e39e3e8baa4fc196a04e8&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F013ac3574e44ff32f875a4292262ed.png";
         }
 
         @Override
         public String getTabWebUnSelectedIcon() {
-            return "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1537623961679&di=0f51d311d13e39e3e8baa4fc196a04e8&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F013ac3574e44ff32f875a4292262ed.png";
+            return null;
+            //return "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1537623961679&di=0f51d311d13e39e3e8baa4fc196a04e8&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F013ac3574e44ff32f875a4292262ed.png";
         }
     }
 }

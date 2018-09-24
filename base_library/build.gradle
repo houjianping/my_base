@@ -11,6 +11,9 @@ android {
         targetSdkVersion globalConfiguration.androidTargetSdkVersion
         versionCode globalConfiguration.versionCode
         versionName globalConfiguration.versionName
+        packagingOptions {
+            exclude 'META-INF/rxjava.properties'
+        }
     }
     buildTypes {
         release {
@@ -35,4 +38,9 @@ dependencies {
     compile 'com.squareup.okhttp3:okhttp:3.3.1'
     //物理效果动画
     compile 'com.facebook.rebound:rebound:0.3.8'
+    //RxLifecycle 内存泄露
+    compile 'com.trello:rxlifecycle:0.6.1'
+    compile 'com.trello:rxlifecycle-components:0.6.1'
+    //黄油刀
+    compile 'com.jakewharton:butterknife:8.1.0'
 }
