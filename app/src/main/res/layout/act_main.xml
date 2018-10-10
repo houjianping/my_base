@@ -24,7 +24,7 @@
         tl:tl_indicator_height="0dp"
         tl:tl_textSelectColor="#ff5c5c"
         tl:tl_textUnselectColor="#808080"
-        tl:tl_textsize="11sp"
+        tl:tl_textsize="9sp"
         tl:tl_underline_color="#d9d9d9"
         tl:tl_underline_gravity="TOP"
         tl:tl_underline_height="1px" />

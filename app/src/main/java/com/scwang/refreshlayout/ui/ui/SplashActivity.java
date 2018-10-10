@@ -30,7 +30,7 @@ public class SplashActivity extends BaseActivity {
             if (v == mSkipTextView) {
                 redirectTo();
             } else if (v == mAdImageView) {
-                doStartActivity(YuedanWebActivity.class, YuedanWebActivity.getBundle("", ""));
+                doStartActivity(YuedanWebActivity.class, YuedanWebActivity.getBundle("http://fe.soho.iyuedan.com/app/video-suggest/detail.html?videoId=59821462#/", ""));
             }
         }
     };
@@ -65,9 +65,9 @@ public class SplashActivity extends BaseActivity {
 
     @Override
     protected void initView() {
-        mSkipTextView = (TextView) findViewById(R.id.tv_skip);
+        mSkipTextView = findViewById(R.id.tv_skip);
         mBottomLogo = findViewById(R.id.bottom_logo);
-        mAdImageView = (ImageView) findViewById(R.id.app_start_view);
+        mAdImageView = findViewById(R.id.app_start_view);
         mSkipTextView.setOnClickListener(mOnClickListener);
         mAdImageView.setOnClickListener(mOnClickListener);
         mAdImageView.setClickable(false);

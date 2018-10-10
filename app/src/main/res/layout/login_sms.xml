@@ -54,7 +54,8 @@
                     android:layout_height="10dp"
                     android:layout_centerVertical="true"
                     android:layout_toEndOf="@+id/tv_areacode"
-                    android:src="@drawable/arrow_down_black" />
+                    android:src="@drawable/arrow_down_black"
+                    android:layout_toRightOf="@+id/tv_areacode" />
             </RelativeLayout>
 
             <RelativeLayout

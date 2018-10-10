@@ -24,11 +24,14 @@ import java.util.ArrayList;
 
 public class MainActivity extends BaseActivity {
 
-    private String[] mTitles = {"首页", "专栏", "大厅", "个人中心"};
+    private String[] mTitles = {"首页", "专栏", "发现", "个人中心"};
+
     private int[] mIconUnselectIds = {
-            R.mipmap.ic_home_normal, R.mipmap.ic_video_normal, R.mipmap.ic_video_normal, R.mipmap.ic_care_normal};
+            R.mipmap.ic_home_normal, R.mipmap.ic_column_normal, R.mipmap.ic_discover_normal, R.mipmap.ic_pcenter_normal};
+
     private int[] mIconSelectIds = {
-            R.mipmap.ic_home_selected, R.mipmap.ic_video_selected, R.mipmap.ic_video_selected, R.mipmap.ic_care_selected};
+            R.mipmap.ic_home_selected, R.mipmap.ic_column_selected, R.mipmap.ic_discover_selected, R.mipmap.ic_pcenter_selected};
+
     private ArrayList<CustomTabEntity> mTabEntities = new ArrayList<>();
 
     private CommonTabLayout tabLayout;
@@ -61,7 +64,7 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void initContentView(Bundle bundle) {
         setContentView(R.layout.act_main);
-        tabLayout = (CommonTabLayout) findViewById(R.id.tab_layout);
+        tabLayout = findViewById(R.id.tab_layout);
         initTab();
         initFragment(bundle);
         //状态栏透明和间距处理
@@ -86,7 +89,7 @@ public class MainActivity extends BaseActivity {
      */
     private void initTab() {
         for (int i = 0; i < mTitles.length; i++) {
-            mTabEntities.add(new TabEntity(mTitles[i], mIconSelectIds[i], mIconUnselectIds[i], !TextUtils.isEmpty(mTitles[i])));
+            mTabEntities.add(new TabEntity(mTitles[i], mIconSelectIds[i], mIconUnselectIds[i], !TextUtils.isEmpty(mTitles[i]), null, null));
         }
         tabLayout.setTabData(mTabEntities);
         //点击监听
@@ -187,12 +190,16 @@ public class MainActivity extends BaseActivity {
         private int selectedIcon;
         private int unSelectedIcon;
         private boolean isSelectAble;
+        private String selectedWebIcon;
+        private String unSelectedWebIcon;
 
-        TabEntity(String title, int selectedIcon, int unSelectedIcon, boolean isSelectAble) {
+        TabEntity(String title, int selectedIcon, int unSelectedIcon, boolean isSelectAble, String selectedWebIcon, String unSelectedWebIcon) {
             this.title = title;
             this.selectedIcon = selectedIcon;
             this.unSelectedIcon = unSelectedIcon;
             this.isSelectAble = isSelectAble;
+            this.selectedIcon = selectedIcon;
+            this.unSelectedWebIcon = unSelectedWebIcon;
         }
 
         @Override
@@ -222,14 +229,12 @@ public class MainActivity extends BaseActivity {
 
         @Override
         public String getTabWebSelectedIcon() {
-            return null;
-            //return "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1537623961679&di=0f51d311d13e39e3e8baa4fc196a04e8&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F013ac3574e44ff32f875a4292262ed.png";
+            return selectedWebIcon;
         }
 
         @Override
         public String getTabWebUnSelectedIcon() {
-            return null;
-            //return "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1537623961679&di=0f51d311d13e39e3e8baa4fc196a04e8&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F013ac3574e44ff32f875a4292262ed.png";
+            return unSelectedWebIcon;
         }
     }
 }

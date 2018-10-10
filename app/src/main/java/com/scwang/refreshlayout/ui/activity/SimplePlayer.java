@@ -37,7 +37,7 @@ public class SimplePlayer extends BaseActivity {
 
     @Override
     protected void initView() {
-        videoPlayer = (StandardGSYVideoPlayer) findViewById(R.id.video_player);
+        videoPlayer = findViewById(R.id.video_player);
     }
 
     @Override

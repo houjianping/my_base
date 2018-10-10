@@ -1,3 +1,8 @@
 <resources>
-    <string name="app_name">案例APP</string>
+    <string name="app_name" translatable="false">案例APP</string>
+    <string name="zone_img_position" translatable="false">circle_img_position</string>
+    <string name="circle_zone_not_read_news">%1$s条新消息</string>
+    <string name="expand">全文</string>
+    <string name="shink">收起</string>
+    <string name="video_play_times">%1$s次播放</string>
 </resources>

@@ -60,21 +60,13 @@ public class PCenterFragment extends BaseTabFragment {
 
     @Override
     protected void initView(View view, Bundle savedInstanceState) {
-        final Toolbar toolbar = (Toolbar) view.findViewById(R.id.toolbar);
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-            }
-        });
-
         //状态栏透明和间距处理
         StatusBarUtil.immersive(getActivity());
-        StatusBarUtil.setPaddingSmart(getActivity(), toolbar);
+        StatusBarUtil.setPaddingSmart(getActivity(), view.findViewById(R.id.eee));
 
         final View parallax = view.findViewById(R.id.parallax);
-        final View buttonBar = view.findViewById(R.id.buttonBarLayout);
-        final NestedScrollView scrollView = (NestedScrollView) view.findViewById(R.id.scrollView);
-        final RefreshLayout refreshLayout = (RefreshLayout) view.findViewById(R.id.refreshLayout);
+        final NestedScrollView scrollView = view.findViewById(R.id.scrollView);
+        final RefreshLayout refreshLayout = view.findViewById(R.id.refreshLayout);
 
         view.findViewById(R.id.my_account).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -159,15 +151,11 @@ public class PCenterFragment extends BaseTabFragment {
                 if (lastScrollY < h) {
                     scrollY = Math.min(h, scrollY);
                     mScrollY = scrollY > h ? h : scrollY;
-                    buttonBar.setAlpha(1f * mScrollY / h);
-                    toolbar.setBackgroundColor(((255 * mScrollY / h) << 24) | color);
                     parallax.setTranslationY(mOffset - mScrollY);
                 }
                 lastScrollY = scrollY;
             }
         });
-        buttonBar.setAlpha(0);
-        toolbar.setBackgroundColor(0);
         Glide.with(getContext())
                 .load(R.mipmap.image_avatar_5)
                 .apply(new RequestOptions().placeholder(R.drawable.iv_default_photo).transform(new GlideCircleTransform(getContext())))

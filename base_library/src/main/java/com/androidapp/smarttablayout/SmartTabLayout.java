@@ -51,6 +51,8 @@ public class SmartTabLayout extends HorizontalScrollView {
     private InternalTabClickListener internalTabClickListener;
     private OnTabClickListener onTabClickListener;
     private boolean distributeEvenly;
+    private static final int FONT_MAX_HEIGHT = 15;
+    private static final int FONT_MIN_HEIGHT = 14;
 
     public SmartTabLayout(Context context) {
         this(context, null);
@@ -385,10 +387,10 @@ public class SmartTabLayout extends HorizontalScrollView {
 
             if (tabView instanceof TextView) {
                 if (i == viewPager.getCurrentItem()) {
-                    ((TextView) tabView).setTextSize(18);
+                    ((TextView) tabView).setTextSize(FONT_MAX_HEIGHT);
                     ((TextView) tabView).setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
                 } else {
-                    ((TextView) tabView).setTextSize(16);
+                    ((TextView) tabView).setTextSize(FONT_MIN_HEIGHT);
                     ((TextView) tabView).setTypeface(Typeface.defaultFromStyle(Typeface.NORMAL));
                 }
             }
@@ -621,10 +623,10 @@ public class SmartTabLayout extends HorizontalScrollView {
                 tabStrip.getChildAt(i).setSelected(position == i);
                 if (tabStrip.getChildAt(i) instanceof TextView) {
                     if (position == i) {
-                        ((TextView) tabStrip.getChildAt(i)).setTextSize(18);
+                        ((TextView) tabStrip.getChildAt(i)).setTextSize(FONT_MAX_HEIGHT);
                         ((TextView) tabStrip.getChildAt(i)).setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
                     } else {
-                        ((TextView) tabStrip.getChildAt(i)).setTextSize(16);
+                        ((TextView) tabStrip.getChildAt(i)).setTextSize(FONT_MIN_HEIGHT);
                         ((TextView) tabStrip.getChildAt(i)).setTypeface(Typeface.defaultFromStyle(Typeface.NORMAL));
                     }
                 }

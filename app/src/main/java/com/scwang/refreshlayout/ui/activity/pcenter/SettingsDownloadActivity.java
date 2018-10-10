@@ -27,9 +27,9 @@ public class SettingsDownloadActivity extends BaseActivity {
 
     @Override
     protected void initView() {
-        mTitleBar = (CommonTitleBar) findViewById(R.id.titlebar);
-        mViewPager = (ViewPager) findViewById(R.id.order_viewpager);
-        mSmartTabLayout = (SmartTabLayout) mTitleBar.getCenterCustomView().findViewById(R.id.tab_list);
+        mTitleBar = findViewById(R.id.titlebar);
+        mViewPager = findViewById(R.id.order_viewpager);
+        mSmartTabLayout = mTitleBar.getCenterCustomView().findViewById(R.id.tab_list);
     }
 
     @Override

@@ -24,7 +24,7 @@ import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.scwang.refreshlayout.R;
-import com.scwang.refreshlayout.ui.ui.TestActivity;
+import com.scwang.refreshlayout.ui.ui.SocializCircleActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -68,8 +68,8 @@ public class RoomMainFragment extends BaseTabFragment {
 
     @Override
     protected void initView(View view, Bundle savedInstanceState) {
-        final RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
-        final RefreshLayout refreshLayout = (RefreshLayout) view.findViewById(R.id.refreshLayout);
+        final RecyclerView recyclerView = view.findViewById(R.id.recyclerView);
+        final RefreshLayout refreshLayout = view.findViewById(R.id.refreshLayout);
         mAdapter = new QuickAdapter();
         recyclerView.addItemDecoration(new DividerItemDecoration(getContext(), VERTICAL));
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -77,7 +77,7 @@ public class RoomMainFragment extends BaseTabFragment {
         mAdapter.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
             @Override
             public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
-                doStartActivity(TestActivity.class, null);
+                doStartActivity(SocializCircleActivity.class, null);
             }
         });
         final List<Movie> movies = new Gson().fromJson(JSON_MOVIES, new TypeToken<ArrayList<Movie>>() {
@@ -163,7 +163,6 @@ public class RoomMainFragment extends BaseTabFragment {
                     .setText(R.id.lmi_actor, item.actors)
                     .setText(R.id.lmi_grade, item.grade)
                     .setText(R.id.lmi_describe, item.shortinfo).addOnClickListener(R.id.movie_item);
-            Glide.with(mContext).load(item.picaddr).into((ImageView) viewHolder.getView(R.id.lmi_avatar));
         }
     }
 

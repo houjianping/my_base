@@ -30,9 +30,9 @@ public class OrderMainFragment extends BaseTabFragment {
 
     @Override
     protected void initView(View view, Bundle savedInstanceState) {
-        mTitleBar = (CommonTitleBar) view.findViewById(R.id.titlebar);
-        mViewPager = (ViewPager) view.findViewById(R.id.order_viewpager);
-        mSmartTabLayout = (SmartTabLayout) mTitleBar.getCenterCustomView().findViewById(R.id.tab_list);
+        mTitleBar = view.findViewById(R.id.titlebar);
+        mViewPager = view.findViewById(R.id.order_viewpager);
+        mSmartTabLayout = mTitleBar.getCenterCustomView().findViewById(R.id.tab_list);
     }
 
     @Override

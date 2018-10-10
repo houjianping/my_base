@@ -8,10 +8,7 @@
     <color name="colorTextContent">#444444</color>
     <color name="colorTextAssistant">#888888</color>
 
-    <color name="colorBackgroundDark">#f2f2f2</color>
     <color name="colorDivision">#33aaaaaa</color>
-
-    <color name="app_color_white">#ffffff</color>
 
     <color name="app_color_theme_1">#EF5362</color> <!-- Grapefruit -->
     <color name="app_color_theme_2">#FE6D4B</color> <!-- Bittersweet -->
@@ -23,26 +20,6 @@
     <color name="app_color_theme_8">#AC8FEF</color> <!-- Lavender -->
     <color name="app_color_theme_9">#EE85C1</color> <!-- Pink Rose -->
 
-    <color name="app_color_description">@color/qmui_config_color_gray_5</color>
-    <color name="bar_divider">#D4D6D8</color>
     <color name="tab_panel_bg">#F8F8F8</color>
-    <color name="tab_panel_divider">@color/bar_divider</color>
-
-    <!-- Components 组件 -->
-    <color name="radiusImageView_border_color">@color/app_color_theme_2</color>
-    <color name="radiusImageView_selected_border_color">@color/app_color_theme_1</color>
-    <color name="radiusImageView_selected_mask_color">#7FEF5362</color>
-
-    <color name="gray">#99A0AA</color>
-    <!-- Helper 系列界面 -->
-
-    <!--默认颜色，控制字体颜色 -->
-    <color name="default_color">#000000</color>
     <color name="secondary_color">#666666</color>
-    <color name="light_color">#ffffff</color>
-    <color name="light_gray_color">#ddd</color>
-    <color name="danger_color">#f53d3d</color>
-    <color name="intersp_color">#dfdfdf</color>
-    <!-- home -->
-    <color name="home_segment_background">#F6F5F4</color>
 </resources>

@@ -41,7 +41,7 @@ public class ListFragment extends BaseFragment {
     }
 
     private void initView() {
-        mListView = (RecyclerView) view.findViewById(R.id.list_view);
+        mListView = view.findViewById(R.id.list_view);
         initData();
         mListView.setLayoutManager(new LinearLayoutManager(mContext));
         mListView.setAdapter(new ListAdapter());
@@ -76,7 +76,7 @@ public class ListFragment extends BaseFragment {
 
             public MyViewHolder(View view) {
                 super(view);
-                tv = (TextView) view.findViewById(R.id.id_num);
+                tv = view.findViewById(R.id.id_num);
             }
         }
     }

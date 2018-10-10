@@ -30,7 +30,8 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.scwang.refreshlayout.R;
 import com.scwang.refreshlayout.ui.activity.SimplePlayer;
-import com.scwang.refreshlayout.ui.ui.TestActivity;
+import com.scwang.refreshlayout.ui.ui.SocializCircleActivity;
+import com.scwang.refreshlayout.ui.ui.VideoListActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -93,8 +94,8 @@ public class TabFragment extends LazyLoadFragment {
     @Override
     protected void initView(View view, Bundle savedInstanceState) {
         Log.e("", "------loadData----mAdapter----");
-        final RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
-        final RefreshLayout refreshLayout = (RefreshLayout) view.findViewById(R.id.refreshLayout);
+        final RecyclerView recyclerView = view.findViewById(R.id.recyclerView);
+        final RefreshLayout refreshLayout = view.findViewById(R.id.refreshLayout);
         recyclerView.addItemDecoration(new DividerItemDecoration(getContext(), VERTICAL));
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         if (mAdapter == null) {
@@ -141,7 +142,7 @@ public class TabFragment extends LazyLoadFragment {
             mAdapter.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
                 @Override
                 public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
-                    doStartActivity(TestActivity.class, null);
+                    doStartActivity(VideoListActivity.class, null);
                 }
             });
         }

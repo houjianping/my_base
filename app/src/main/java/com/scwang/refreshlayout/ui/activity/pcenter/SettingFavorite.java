@@ -22,7 +22,7 @@ import com.scwang.refreshlayout.api.ApiConfig;
 import com.scwang.refreshlayout.bean.BannerItem;
 import com.scwang.refreshlayout.bean.Movie;
 import com.scwang.refreshlayout.imageloader.GlideImageLoader;
-import com.scwang.refreshlayout.ui.ui.TestActivity;
+import com.scwang.refreshlayout.ui.ui.SocializCircleActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -71,7 +71,7 @@ public class SettingFavorite extends BaseListActivity {
             mAdapter.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
                 @Override
                 public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
-                    doStartActivity(TestActivity.class, null);
+                    doStartActivity(SocializCircleActivity.class, null);
                 }
             });
         }

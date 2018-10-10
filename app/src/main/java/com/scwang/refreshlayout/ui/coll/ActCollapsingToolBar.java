@@ -57,13 +57,13 @@ public class ActCollapsingToolBar extends AppCompatActivity {
     }
 
     private void initView() {
-        final AppSwipeRefreshLayout swipeRefreshLayout = (AppSwipeRefreshLayout) findViewById(R.id.swipe_refresh_widget);
-        mAppBarLayout = (AppBarLayout) findViewById(R.id.app_bar_layout);
-        mViewPager = (AppViewPager) findViewById(R.id.view_pager);
+        final AppSwipeRefreshLayout swipeRefreshLayout = findViewById(R.id.swipe_refresh_widget);
+        mAppBarLayout = findViewById(R.id.app_bar_layout);
+        mViewPager = findViewById(R.id.view_pager);
         bitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.ic_share_qq);
         mViewPager.setOffscreenPageLimit(2);
-        head_layout = (LinearLayout) findViewById(R.id.login_layout);
-        toolbar_tab = (TabLayout) findViewById(R.id.toolbar_tab);
+        head_layout = findViewById(R.id.login_layout);
+        toolbar_tab = findViewById(R.id.toolbar_tab);
         head_layout.setBackgroundDrawable(new BitmapDrawable(bitmap));
         mAppBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
             @Override

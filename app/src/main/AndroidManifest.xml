@@ -29,20 +29,21 @@
             android:name=".ui.ui.SplashActivity"
             android:screenOrientation="portrait">
             <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name=".ui.MainActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ui.ui.common.YuedanWebActivity"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:screenOrientation="portrait"></activity>
+            android:configChanges="orientation|keyboardHidden|screenSize"/>
         <activity
-            android:name=".ui.ui.TestActivity"
+            android:name=".ui.ui.SocializCircleActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait" />
         <activity
@@ -53,20 +54,56 @@
             android:name=".ui.activity.SimplePlayer"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait" />
-        <activity android:name=".ui.activity.pcenter.SettingActivity"
+        <activity
+            android:name=".ui.activity.pcenter.SettingActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait" />
-        <activity android:name=".ui.activity.pcenter.SettingModifyPwd" />
-        <activity android:name=".ui.activity.pcenter.SettingAccount" />
-        <activity android:name=".ui.activity.pcenter.SettingPushControl" />
-        <activity android:name=".ui.activity.pcenter.SettingDownloadControl" />
-        <activity android:name=".ui.activity.pcenter.SettingAboutControl" />
-        <activity android:name=".ui.activity.pcenter.SettingsDownloadActivity" />
-        <activity android:name=".ui.activity.pcenter.SettingFavorite" />
-        <activity android:name=".ui.activity.pcenter.SettingLeavingMessage" />
-        <activity android:name=".ui.activity.pcenter.SettingsMyInfoActivity" />
-        <activity android:name=".ui.activity.login.PassWordLoginActivity" />
-        <activity android:name=".ui.activity.login.SecretLoginActivity" />
+        <activity
+            android:name=".ui.activity.pcenter.SettingModifyPwd"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.activity.pcenter.SettingAccount"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.activity.pcenter.SettingPushControl"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.activity.pcenter.SettingDownloadControl"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.activity.pcenter.SettingAboutControl"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.activity.pcenter.SettingsDownloadActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.activity.pcenter.SettingFavorite"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.activity.pcenter.SettingLeavingMessage"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.activity.pcenter.SettingsMyInfoActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.activity.login.PassWordLoginActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.activity.login.SecretLoginActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait" />
+        <activity android:name=".ui.ui.common.BigImagePagerActivity" />
+        <activity android:name=".ui.ui.VideoListActivity" />
     </application>
 
 </manifest>

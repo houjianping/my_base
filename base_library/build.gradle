@@ -34,6 +34,7 @@ dependencies {
     compile 'com.github.czy1121:loadinglayout:1.0.1'
     compile androidDps.recyclerView
     compile androidDps.supportDesign
+    compile androidDps.cardview_v7
     compile 'com.facebook.stetho:stetho:1.5.0'
     compile 'com.squareup.okhttp3:okhttp:3.3.1'
     //物理效果动画
