@@ -5,10 +5,10 @@ import android.widget.ImageView;
 
 import com.androidapp.base.adapter.BaseQuickAdapter;
 import com.androidapp.base.adapter.BaseViewHolder;
+import com.androidapp.base.utils.ImageLoaderUtils;
 import com.bumptech.glide.Glide;
 import com.scwang.refreshlayout.R;
 import com.scwang.refreshlayout.bean.VideoItem;
-import com.scwang.refreshlayout.imageloader.ImageLoaderUtils;
 import com.shuyu.gsyvideoplayer.video.StandardGSYVideoPlayer;
 
 public class VideoListAdapter extends BaseQuickAdapter<VideoItem, BaseViewHolder> {

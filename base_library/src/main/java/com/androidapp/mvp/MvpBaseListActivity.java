@@ -24,7 +24,7 @@ import com.trello.rxlifecycle.components.support.RxAppCompatActivity;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
-import static android.support.v7.widget.DividerItemDecoration.VERTICAL;
+import static android.widget.LinearLayout.VERTICAL;
 
 public abstract class MvpBaseListActivity<M extends MvpBaseModel, P extends MvpBasePresenter> extends RxAppCompatActivity {
 
@@ -76,7 +76,8 @@ public abstract class MvpBaseListActivity<M extends MvpBaseModel, P extends MvpB
     private void initListView() {
         mRecyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         mRefreshLayout = (RefreshLayout) findViewById(R.id.refreshLayout);
-        mRecyclerView.addItemDecoration(new DividerItemDecoration(this, VERTICAL));
+        if (isDividerItemDecorationEnable())
+            mRecyclerView.addItemDecoration(new DividerItemDecoration(this, VERTICAL));
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         if (getListViewAdapter() != null) {
             mRecyclerView.setAdapter(getListViewAdapter());
@@ -88,6 +89,7 @@ public abstract class MvpBaseListActivity<M extends MvpBaseModel, P extends MvpB
             mRefreshLayout.setOnLoadMoreListener(getOnLoadMoreListener());
         }
     }
+
     /**
      * 获取presenter 实例
      */
@@ -232,42 +234,53 @@ public abstract class MvpBaseListActivity<M extends MvpBaseModel, P extends MvpB
 
     /**
      * 下拉刷新回调
+     *
      * @return
      */
     protected abstract OnRefreshListener getOnRefreshListener();
 
     /**
      * 加载更多回调
+     *
      * @return
      */
     protected abstract OnLoadMoreListener getOnLoadMoreListener();
 
     /**
      * 数据源
+     *
      * @return
      */
     protected abstract BaseQuickAdapter getListViewAdapter();
 
     /**
      * 添加列表头部视图
-     * @param headerView 视图
+     *
+     * @param headerView  视图
      * @param headerIndex 顶部层级 0 1 2 3
      */
     protected void addHeaderView(View headerView, int headerIndex) {
         if (getListViewAdapter() != null) {
             getListViewAdapter().addHeaderView(headerView, headerIndex);
         }
-    };
+    }
+
+    ;
 
     /**
      * 添加列表底部视图
+     *
      * @param footerView 视图
-     * @param viewIndex 层级 0 1 2 3
+     * @param viewIndex  层级 0 1 2 3
      */
     protected void addFooterView(View footerView, int viewIndex) {
         if (getListViewAdapter() != null) {
             getListViewAdapter().addFooterView(footerView, viewIndex);
         }
+    }
+
+    protected boolean isDividerItemDecorationEnable() {
+        return true;
     }
 }
 

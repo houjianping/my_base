@@ -163,6 +163,7 @@ public class RoomMainFragment extends BaseTabFragment {
                     .setText(R.id.lmi_actor, item.actors)
                     .setText(R.id.lmi_grade, item.grade)
                     .setText(R.id.lmi_describe, item.shortinfo).addOnClickListener(R.id.movie_item);
+            Glide.with(mContext).load(item.picaddr).into((ImageView) viewHolder.getView(R.id.lmi_avatar));
         }
     }
 

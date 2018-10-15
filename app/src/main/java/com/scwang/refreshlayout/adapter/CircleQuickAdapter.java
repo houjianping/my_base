@@ -1,19 +1,17 @@
 package com.scwang.refreshlayout.adapter;
 
 import android.app.Activity;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewStub;
 import android.widget.ImageView;
 
 import com.androidapp.base.adapter.BaseQuickAdapter;
 import com.androidapp.base.adapter.BaseViewHolder;
+import com.androidapp.base.utils.ImageLoaderUtils;
 import com.androidapp.base.utils.TimeUtil;
-import com.bumptech.glide.Glide;
 import com.scwang.refreshlayout.R;
 import com.scwang.refreshlayout.bean.circle.CircleItem;
 import com.scwang.refreshlayout.bean.circle.CommentItem;
-import com.scwang.refreshlayout.imageloader.ImageLoaderUtils;
 import com.scwang.refreshlayout.ui.ui.common.BigImagePagerActivity;
 import com.scwang.refreshlayout.widget.CommentListView;
 import com.scwang.refreshlayout.widget.ExpandableTextView;

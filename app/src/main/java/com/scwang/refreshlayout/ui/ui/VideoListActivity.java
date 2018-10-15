@@ -91,7 +91,7 @@ public class VideoListActivity extends MvpBaseListActivity<VideoListModelLogic, 
     @Override
     protected void initTitle() {
         super.initTitle();
-        mTitleBar.setTitle("测试页面");
+        mTitleBar.setTitle("视频列表页面");
     }
 
     @Override
@@ -109,5 +109,10 @@ public class VideoListActivity extends MvpBaseListActivity<VideoListModelLogic, 
     protected void onDestroy() {
         super.onDestroy();
         GSYVideoManager.releaseAllVideos();
+    }
+
+    @Override
+    protected boolean isDividerItemDecorationEnable() {
+        return false;
     }
 }

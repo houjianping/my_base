@@ -12,6 +12,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
+        android:gravity="center_vertical"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="15dp"
         android:orientation="horizontal">
 
         <ImageView
@@ -24,10 +28,11 @@
         <TextView
             android:id="@+id/nameTv"
             android:layout_width="wrap_content"
-            android:layout_height="48dp"
+            android:layout_height="wrap_content"
             android:gravity="center"
             android:singleLine="true"
             tools:text="小崽子"
+            android:layout_centerVertical="true"
             android:layout_toRightOf="@+id/headIv"
             android:textColor="@color/black_main"
             android:textSize="@dimen/font_14"
@@ -36,14 +41,15 @@
         <TextView
             android:id="@+id/tv_order_situation"
             android:layout_width="wrap_content"
-            android:layout_height="48dp"
+            android:layout_height="wrap_content"
             android:gravity="center"
             android:paddingLeft="8dp"
             android:layout_toRightOf="@+id/nameTv"
             android:singleLine="true"
+            android:layout_centerVertical="true"
             android:text="发单:10  接单:20"
             android:textColor="@color/secondary_color"
-            android:textSize="@dimen/font_small"
+            android:textSize="@dimen/font_12"
             android:visibility="visible" />
 
         <TextView
@@ -58,7 +64,7 @@
             android:layout_toRightOf="@+id/tv_order_situation"
             android:layout_toLeftOf="@+id/deleteBtn"
             android:textColor="@color/secondary_color"
-            android:textSize="12sp" />
+            android:textSize="@dimen/font_12" />
         <TextView
             android:id="@+id/deleteBtn"
             android:layout_width="wrap_content"
@@ -72,7 +78,7 @@
             android:padding="2dp"
             android:drawablePadding="2dp"
             android:textColor="@color/secondary_color"
-            android:textSize="12sp"
+            android:textSize="@dimen/font_12"
             android:visibility="gone" />
     </RelativeLayout>
 
@@ -90,8 +96,8 @@
             android:ellipsize="end"
             android:singleLine="true"
             tools:text="分享了一个连接"
-            android:textColor="@color/secondary_color"
-            android:textSize="14sp" />
+            android:textColor="@color/colorTextTitle"
+            android:textSize="@dimen/font_14" />
         <com.scwang.refreshlayout.widget.ExpandableTextView
             android:id="@+id/contentTv"
             android:layout_width="match_parent"
@@ -124,7 +130,7 @@
                 android:ellipsize="end"
                 tools:text="1.5km"
                 android:textColor="@color/secondary_color"
-                android:textSize="11sp" />
+                android:textSize="@dimen/font_12" />
 
             <View
                 android:layout_width="0dip"

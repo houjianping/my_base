@@ -11,9 +11,9 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.androidapp.base.utils.FormatUtil;
+import com.androidapp.base.utils.ImageLoaderUtils;
 import com.scwang.refreshlayout.R;
 import com.scwang.refreshlayout.api.ApiConfig;
-import com.scwang.refreshlayout.imageloader.ImageLoaderUtils;
 
 
 /**
