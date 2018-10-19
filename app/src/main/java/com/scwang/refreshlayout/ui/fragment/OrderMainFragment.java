@@ -6,7 +6,7 @@ import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.View;
 
-import com.androidapp.base.fragment.BaseTabFragment;
+import com.androidapp.fragment.BaseTabFragment;
 import com.androidapp.smarttablayout.SmartTabLayout;
 import com.androidapp.widget.CommonTitleBar;
 import com.scwang.refreshlayout.R;

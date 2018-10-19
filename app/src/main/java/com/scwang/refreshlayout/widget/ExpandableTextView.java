@@ -20,7 +20,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.androidapp.base.utils.DensityUtil;
+import com.androidapp.utils.DensityUtil;
 import com.scwang.refreshlayout.R;
 
 public class ExpandableTextView extends LinearLayout implements View.OnClickListener {

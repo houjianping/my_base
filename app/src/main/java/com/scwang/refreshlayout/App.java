@@ -22,6 +22,7 @@ public class App extends Application {
 
     private static final long MAX_DISK_SIZE = 1024 * 1024 * 100;
     private static final long MAX_RAM_SIZE = 1024 * 1024 * 10;
+    private static App mApplication;
 
     static {
         AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);//启用矢量图兼容
@@ -37,11 +38,16 @@ public class App extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        mApplication = this;
         Stetho.initializeWithDefaults(this);
         OkGoRequest.initOkGo(this, true);
         ShareConfig.onCreate(this);
         File cacheFile = new File(this.getCacheDir(), "webview_cache");
         CacheWebView.getCacheConfig().init(this, cacheFile.getAbsolutePath(), MAX_DISK_SIZE, MAX_RAM_SIZE)
                 .enableDebug(true);//100M 磁盘缓存空间,10M 内存缓存空间
+    }
+
+    public static App getContext() {
+        return mApplication;
     }
 }

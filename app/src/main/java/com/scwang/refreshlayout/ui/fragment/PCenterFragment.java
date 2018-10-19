@@ -3,13 +3,12 @@ package com.scwang.refreshlayout.ui.fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.NestedScrollView;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
-import com.androidapp.base.fragment.BaseTabFragment;
-import com.androidapp.base.utils.StatusBarUtil;
+import com.androidapp.fragment.BaseTabFragment;
+import com.androidapp.utils.StatusBarUtil;
 import com.androidapp.smartrefresh.layout.api.RefreshLayout;
 import com.androidapp.smartrefresh.layout.util.DensityUtil;
 import com.androidapp.widget.CustomAlertDialog;
@@ -22,14 +21,16 @@ import com.luck.picture.lib.config.PictureMimeType;
 import com.luck.picture.lib.entity.LocalMedia;
 import com.scwang.refreshlayout.R;
 import com.scwang.refreshlayout.api.Urls;
+import com.scwang.refreshlayout.ui.activity.SocializCircleActivity;
 import com.scwang.refreshlayout.ui.activity.login.PassWordLoginActivity;
+import com.scwang.refreshlayout.ui.activity.pcenter.PersonalWallet;
 import com.scwang.refreshlayout.ui.activity.pcenter.SettingsDownloadActivity;
 import com.scwang.refreshlayout.ui.activity.pcenter.SettingActivity;
 import com.scwang.refreshlayout.ui.activity.pcenter.SettingFavorite;
 import com.scwang.refreshlayout.ui.activity.pcenter.SettingLeavingMessage;
 import com.scwang.refreshlayout.ui.activity.pcenter.SettingsMyInfoActivity;
 import com.scwang.refreshlayout.ui.coll.ActCollapsingToolBar;
-import com.scwang.refreshlayout.ui.ui.common.YuedanWebActivity;
+import com.scwang.refreshlayout.ui.common.YuedanWebActivity;
 import com.scwang.refreshlayout.util.GlideCircleTransform;
 
 import java.util.List;
@@ -71,10 +72,8 @@ public class PCenterFragment extends BaseTabFragment {
         view.findViewById(R.id.my_account).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                /*Intent intent = new Intent(mContext, CaptureActivity.class);
-                startActivityForResult(intent, 100);*/
-                Intent intent = new Intent(mContext, ActCollapsingToolBar.class);
+//                Intent intent = new Intent(mContext, ActCollapsingToolBar.class);
+                Intent intent = new Intent(mContext, PersonalWallet.class);
                 startActivity(intent);
             }
         });
@@ -112,10 +111,11 @@ public class PCenterFragment extends BaseTabFragment {
             }
         });
 
-        view.findViewById(R.id.test).setOnClickListener(new View.OnClickListener() {
+        view.findViewById(R.id.socializcircle).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                PictureSelector.create(PCenterFragment.this)
+                startActivity(new Intent(mContext, SocializCircleActivity.class));
+               /* PictureSelector.create(PCenterFragment.this)
                         .openGallery(PictureMimeType.ofImage())// 全部.PictureMimeType.ofAll()、图片.ofImage()、视频.ofVideo()、音频.ofAudio()
                         .theme(-1)
                         .maxSelectNum(9)// 最大图片选择数量
@@ -138,7 +138,7 @@ public class PCenterFragment extends BaseTabFragment {
                         .rotateEnabled(false) // 裁剪是否可旋转图片
                         .videoMaxSecond(20)//显示多少秒以内的视频or音频也可适用
                         .recordVideoSecond(20)//录制视频秒数 默认60s
-                        .forResult(PictureConfig.CHOOSE_REQUEST);//结果回调onActivityResult code
+                        .forResult(PictureConfig.CHOOSE_REQUEST);//结果回调onActivityResult code*/
             }
         });
         scrollView.setOnScrollChangeListener(new NestedScrollView.OnScrollChangeListener() {

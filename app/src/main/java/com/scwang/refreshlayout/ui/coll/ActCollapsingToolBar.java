@@ -13,10 +13,10 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.LinearLayout;
 
-import com.androidapp.base.utils.StatusBarUtil;
-import com.androidapp.base.utils.ToastUtils;
-import com.androidapp.base.widget.AppSwipeRefreshLayout;
-import com.androidapp.base.widget.AppViewPager;
+import com.androidapp.utils.StatusBarUtil;
+import com.androidapp.utils.ToastUtils;
+import com.androidapp.widget.AppSwipeRefreshLayout;
+import com.androidapp.widget.AppViewPager;
 import com.androidapp.filter.FilterHeaderItem;
 import com.androidapp.filter.FilterView;
 import com.androidapp.filter.multiple.bean.MultiBean;

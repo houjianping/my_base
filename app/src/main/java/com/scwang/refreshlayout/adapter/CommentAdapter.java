@@ -13,7 +13,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.androidapp.base.utils.ToastUtils;
+import com.androidapp.utils.ToastUtils;
 import com.scwang.refreshlayout.R;
 import com.scwang.refreshlayout.bean.circle.CommentItem;
 import com.scwang.refreshlayout.ui.zone.CircleMovementMethod;

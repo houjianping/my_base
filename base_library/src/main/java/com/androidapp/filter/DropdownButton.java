@@ -10,7 +10,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.androidapp.base.R;
-import com.androidapp.base.utils.ToastUtils;
+import com.androidapp.utils.ToastUtils;
 
 public class DropdownButton extends RelativeLayout {
     private TextView textView;

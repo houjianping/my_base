@@ -24,7 +24,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="20dp"
-            android:text="约单有你想要的服务"
+            android:text="与喜欢的音乐不期而遇"
             android:textColor="#9A9A9A"
             android:textSize="12sp" />
     </LinearLayout>

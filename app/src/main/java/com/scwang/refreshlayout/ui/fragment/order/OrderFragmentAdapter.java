@@ -4,6 +4,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
+import com.scwang.refreshlayout.ui.fragment.OrderFragment;
 import com.scwang.refreshlayout.ui.fragment.TabFragment;
 
 public class OrderFragmentAdapter extends FragmentPagerAdapter {
@@ -20,7 +21,7 @@ public class OrderFragmentAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        return new TabFragment();
+        return new OrderFragment();
     }
 
     @Override

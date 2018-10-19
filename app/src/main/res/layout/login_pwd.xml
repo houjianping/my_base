@@ -6,22 +6,44 @@
     android:background="@color/tab_panel_bg"
     android:orientation="vertical">
 
+    <RelativeLayout
+        android:id="@+id/iv_login_bg"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="@drawable/bg_login_register"
+        android:scaleType="centerCrop">
+
+        <ImageView
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="50dp"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/ic_launcher" />
+    </RelativeLayout>
+
     <com.androidapp.widget.CommonTitleBar
         android:id="@+id/titlebar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:centerText="密码登录"
+        app:centerTextColor="@color/white"
         app:centerType="textView"
-        app:leftDrawable="@drawable/comm_titlebar_back_normal"
+        app:leftDrawable="@drawable/comm_titlebar_back_white"
         app:leftDrawablePadding="0dp"
         app:leftType="textView"
         app:rightText="免密登录"
-        app:rightType="textView" />
+        app:rightTextColor="@color/white"
+        app:rightType="textView"
+        app:showBottomLine="false"
+        app:statusBarColor="@color/transparent"
+        app:titleBarColor="@color/transparent" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/titlebar"
+        android:layout_below="@+id/iv_login_bg"
         android:orientation="vertical">
 
         <LinearLayout
@@ -57,8 +79,8 @@
                     android:layout_height="10dp"
                     android:layout_centerVertical="true"
                     android:layout_toEndOf="@+id/tv_areacode"
-                    android:src="@drawable/arrow_down_black"
-                    android:layout_toRightOf="@+id/tv_areacode" />
+                    android:layout_toRightOf="@+id/tv_areacode"
+                    android:src="@drawable/arrow_down_black" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -82,12 +104,6 @@
             </RelativeLayout>
         </LinearLayout>
 
-        <Button
-            android:id="@+id/tv_save"
-            style="@style/button_submit"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="20dp" />
-
         <RelativeLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
@@ -95,6 +111,7 @@
             android:layout_marginRight="20dp">
 
             <TextView
+                android:id="@+id/tv_create_account"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="注册新账号"
@@ -102,6 +119,7 @@
                 android:textSize="@dimen/font_12" />
 
             <TextView
+                android:id="@+id/tv_forget_account"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
@@ -109,61 +127,110 @@
                 android:textColor="@color/secondary_color"
                 android:textSize="@dimen/font_12" />
         </RelativeLayout>
-    </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginLeft="50dp"
-        android:layout_marginRight="50dp"
-        android:layout_marginBottom="30dp"
-        android:orientation="vertical">
+        <Button
+            android:id="@+id/bt_login"
+            android:layout_width="wrap_content"
+            android:layout_height="40dip"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dip"
+            android:background="@drawable/btn_theme_round"
+            android:gravity="center"
+            android:minWidth="220dp"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:text="登录"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
 
         <LinearLayout
-            android:layout_width="fill_parent"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
+            android:layout_marginTop="15dp"
             android:orientation="horizontal">
-
-            <View
-                android:layout_width="80dp"
-                android:layout_height="1px"
-                android:background="@drawable/gray_gradual_left" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:text="其他方式登录"
-                android:textSize="@dimen/font_12" />
+                android:layout_gravity="center"
+                android:layout_marginLeft="5dp"
+                android:text="请阅读并同意"
+                android:textColor="@color/secondary_color"
+                android:textSize="12sp" />
 
-            <View
-                android:layout_width="80dp"
-                android:layout_height="1px"
-                android:background="@drawable/gray_gradual_right" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="5dp"
+                android:text="《使用协议》"
+                android:textColor="@color/colorPrimary"
+                android:textSize="12sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="5dp"
+                android:text="《隐私政策》"
+                android:textColor="@color/colorPrimary"
+                android:textSize="12sp" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:gravity="center">
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:layout_marginTop="30dp"
+            android:orientation="vertical">
 
-            <ImageView
-                style="@style/button_share"
-                android:src="@mipmap/ic_share_qq" />
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal">
 
-            <ImageView
-                style="@style/button_share"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:src="@mipmap/ic_share_wechat" />
+                <View
+                    android:layout_width="80dp"
+                    android:layout_height="1px"
+                    android:background="@drawable/gray_gradual_left" />
 
-            <ImageView
-                style="@style/button_share"
-                android:src="@mipmap/ic_share_weibo" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:text="其他方式登录"
+                    android:textSize="@dimen/font_12" />
+
+                <View
+                    android:layout_width="80dp"
+                    android:layout_height="1px"
+                    android:background="@drawable/gray_gradual_right" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:gravity="center">
+
+                <ImageView
+                    style="@style/button_share"
+                    android:src="@mipmap/ic_share_qq" />
+
+                <ImageView
+                    style="@style/button_share"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:src="@mipmap/ic_share_wechat" />
+
+                <ImageView
+                    style="@style/button_share"
+                    android:src="@mipmap/ic_share_weibo" />
+            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
 </RelativeLayout>

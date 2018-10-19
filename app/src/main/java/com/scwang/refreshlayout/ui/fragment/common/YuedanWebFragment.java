@@ -8,7 +8,7 @@ import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 
-import com.androidapp.base.fragment.BaseWebFragment;
+import com.androidapp.fragment.BaseWebFragment;
 import com.androidapp.smartrefresh.layout.api.RefreshLayout;
 import com.androidapp.smartrefresh.layout.listener.OnRefreshListener;
 import com.scwang.refreshlayout.widget.AppWebView;

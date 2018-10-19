@@ -12,9 +12,9 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.androidapp.base.R;
-import com.androidapp.base.adapter.BaseQuickAdapter;
-import com.androidapp.base.utils.StatusBarUtil;
-import com.androidapp.base.utils.ToastUtils;
+import com.androidapp.adapter.BaseQuickAdapter;
+import com.androidapp.utils.StatusBarUtil;
+import com.androidapp.utils.ToastUtils;
 import com.androidapp.smartrefresh.layout.api.RefreshLayout;
 import com.androidapp.smartrefresh.layout.listener.OnLoadMoreListener;
 import com.androidapp.smartrefresh.layout.listener.OnRefreshListener;

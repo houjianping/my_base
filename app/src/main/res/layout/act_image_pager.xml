@@ -5,7 +5,7 @@
     android:background="@color/black"
     android:layout_height="match_parent">
 
-    <com.androidapp.base.widget.AppViewPager
+    <com.androidapp.widget.AppViewPager
         android:id="@+id/pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

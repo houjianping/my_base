@@ -16,7 +16,7 @@
         app:rightCustomView="@layout/layout_custom_right"
         app:rightType="customView" />
 
-    <com.androidapp.base.widget.AppSwipeRefreshLayout
+    <com.androidapp.widget.AppSwipeRefreshLayout
         android:id="@+id/swipe_refresh_widget"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -81,7 +81,7 @@
                 android:layout_height="match_parent"
                 app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-                <com.androidapp.base.widget.AppViewPager
+                <com.androidapp.widget.AppViewPager
                     android:id="@+id/view_pager"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -93,7 +93,7 @@
                     android:layout_height="wrap_content"></com.androidapp.filter.FilterView>
             </FrameLayout>
         </android.support.design.widget.CoordinatorLayout>
-    </com.androidapp.base.widget.AppSwipeRefreshLayout>
+    </com.androidapp.widget.AppSwipeRefreshLayout>
 
 </LinearLayout>
 

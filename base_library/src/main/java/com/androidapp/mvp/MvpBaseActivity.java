@@ -8,8 +8,8 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.androidapp.base.R;
-import com.androidapp.base.utils.StatusBarUtil;
-import com.androidapp.base.utils.ToastUtils;
+import com.androidapp.utils.StatusBarUtil;
+import com.androidapp.utils.ToastUtils;
 import com.androidapp.widget.CommonTitleBar;
 import com.trello.rxlifecycle.components.support.RxAppCompatActivity;
 
@@ -171,7 +171,7 @@ public abstract class MvpBaseActivity<M extends MvpBaseModel, P extends MvpBaseP
     }
 
     protected void initTitle() {
-        mTitleBar.setBackgroundColor(Color.WHITE);
+        //mTitleBar.setBackgroundColor(Color.WHITE);
         mTvCenterTitle = mTitleBar.getCenterTextView();
         mTitleBar.setListener(new CommonTitleBar.OnTitleBarListener() {
             @Override

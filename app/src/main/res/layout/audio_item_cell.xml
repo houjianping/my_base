@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="100dp"
+    android:layout_height="wrap_content">
+    <RelativeLayout
+        android:layout_width="100dp"
+        android:layout_height="100dp">
+        <com.androidapp.widget.AppRoundImageView
+            tools:src="@mipmap/image_movie_header_12231501221682438"
+            android:scaleType="fitXY"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" />
+    </RelativeLayout>
+    <TextView
+        android:maxLines="2"
+        android:layout_marginTop="@dimen/padding_common"
+        tools:text="大吗，打死了大大了圣诞节啊圣诞节快拉倒可拉伸的"
+        android:ellipsize="end"
+        android:textSize="@dimen/font_12"
+        android:textColor="@color/secondary_color"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+</LinearLayout>

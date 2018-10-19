@@ -3,9 +3,9 @@ package com.scwang.refreshlayout.adapter;
 import android.view.View;
 import android.widget.ImageView;
 
-import com.androidapp.base.adapter.BaseQuickAdapter;
-import com.androidapp.base.adapter.BaseViewHolder;
-import com.androidapp.base.utils.ImageLoaderUtils;
+import com.androidapp.adapter.BaseQuickAdapter;
+import com.androidapp.adapter.BaseViewHolder;
+import com.androidapp.utils.ImageLoaderUtils;
 import com.bumptech.glide.Glide;
 import com.scwang.refreshlayout.R;
 import com.scwang.refreshlayout.bean.VideoItem;

@@ -66,10 +66,10 @@
                             android:id="@+id/rl_personal_info"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:paddingLeft="@dimen/padding_common_h"
-                            android:paddingTop="@dimen/padding_common_v"
-                            android:paddingRight="@dimen/padding_common_h"
-                            android:paddingBottom="@dimen/padding_common_v">
+                            android:paddingLeft="@dimen/padding_common"
+                            android:paddingTop="@dimen/padding_common"
+                            android:paddingRight="@dimen/padding_common"
+                            android:paddingBottom="@dimen/padding_common">
 
                             <RelativeLayout
                                 android:id="@+id/rlSettingAvatar"
@@ -195,7 +195,7 @@
                             </LinearLayout>
 
                             <LinearLayout
-                                android:id="@+id/test"
+                                android:id="@+id/socializcircle"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"

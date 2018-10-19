@@ -7,7 +7,7 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
-import com.androidapp.base.utils.ScreenUtil;
+import com.androidapp.utils.ScreenUtil;
 
 public class PagedViewPager extends ViewPager {
 
@@ -38,12 +38,12 @@ public class PagedViewPager extends ViewPager {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
     }
 
-    /**
+   /* *//**
      * 解决嵌套后滑动不灵敏问题
      *
      * @param ev
      * @return
-     */
+     *//*
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
         switch (ev.getAction()) {
@@ -67,5 +67,5 @@ public class PagedViewPager extends ViewPager {
                 break;
         }
         return super.dispatchTouchEvent(ev);
-    }
+    }*/
 }

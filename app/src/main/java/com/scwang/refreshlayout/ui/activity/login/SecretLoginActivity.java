@@ -1,24 +1,41 @@
 package com.scwang.refreshlayout.ui.activity.login;
 
 import android.os.Bundle;
+import android.view.View;
 
-import com.androidapp.base.activity.BaseActivity;
+import com.androidapp.mvp.MvpBaseActivity;
+import com.androidapp.mvp.MvpBaseView;
+import com.androidapp.utils.ToastUtils;
 import com.scwang.refreshlayout.R;
+import com.scwang.refreshlayout.bean.UserInfo;
+import com.scwang.refreshlayout.model.user.LoginModelLogic;
+import com.scwang.refreshlayout.presenter.user.LoginPresenterImpl;
+import com.scwang.refreshlayout.presenter.user.interfaces.ILoginPresenter;
 
-public class SecretLoginActivity extends BaseActivity {
+import java.util.List;
+
+public class SecretLoginActivity extends MvpBaseActivity<LoginModelLogic, LoginPresenterImpl> implements ILoginPresenter.View {
 
     @Override
-    protected void initContentView(Bundle bundle) {
-        setContentView(R.layout.login_sms);
+    protected int getLayoutId() {
+        return R.layout.login_sms;
     }
 
     @Override
-    protected void initView() {
-
+    protected void onInitView(Bundle bundle) {
+        mPresenter.getHomeCate("");
     }
 
     @Override
-    protected void initData() {
+    protected void onEvent() {
+    }
 
+    @Override
+    protected MvpBaseView getView() {
+        return this;
+    }
+
+    @Override
+    public void getOtherList(List<UserInfo> homeCates) {
     }
 }

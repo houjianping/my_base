@@ -2,7 +2,7 @@ package com.scwang.refreshlayout.api.request;
 
 import android.text.TextUtils;
 
-import com.androidapp.base.utils.Convert;
+import com.androidapp.utils.Convert;
 import com.lzy.okgo.callback.AbsCallback;
 import com.lzy.okgo.request.base.Request;
 

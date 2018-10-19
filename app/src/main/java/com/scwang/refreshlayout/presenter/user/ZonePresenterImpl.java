@@ -1,6 +1,6 @@
 package com.scwang.refreshlayout.presenter.user;
 
-import com.androidapp.base.utils.ToastUtils;
+import com.androidapp.utils.ToastUtils;
 import com.scwang.refreshlayout.bean.circle.CircleItem;
 import com.scwang.refreshlayout.presenter.user.interfaces.IZonePresenter;
 

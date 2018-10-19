@@ -8,7 +8,7 @@ import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.ImageView;
 
-import com.androidapp.base.activity.BaseActivity;
+import com.androidapp.activity.BaseActivity;
 import com.bumptech.glide.Glide;
 import com.scwang.refreshlayout.R;
 import com.shuyu.gsyvideoplayer.GSYVideoManager;

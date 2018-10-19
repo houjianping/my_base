@@ -1,16 +1,13 @@
 <resources>
-
-
     <dimen name="division_line">0.5dp</dimen>
 
-    <dimen name="padding_common">10dp</dimen>
-    <dimen name="padding_common_h">15dp</dimen>
-    <dimen name="padding_common_v">10dp</dimen>
-    <dimen name="padding_common_d">5dp</dimen>
+    <dimen name="padding_common">15dp</dimen>
 
     <dimen name="textsize_content">14sp</dimen>
-    <dimen name="textsize_title">17sp</dimen>
+    <dimen name="textsize_title">16sp</dimen>
 
+    <dimen name="font_20">20sp</dimen>
+    <dimen name="font_18">18sp</dimen>
     <dimen name="font_16">16sp</dimen>
     <dimen name="font_14">14sp</dimen>
     <dimen name="font_12">12sp</dimen>

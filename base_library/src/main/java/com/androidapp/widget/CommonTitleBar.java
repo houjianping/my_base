@@ -24,8 +24,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.androidapp.base.R;
-import com.androidapp.base.utils.AppUtils;
-import com.androidapp.base.utils.ScreenUtil;
+import com.androidapp.utils.AppUtils;
+import com.androidapp.utils.ScreenUtil;
 
 /**
  * 通用标题栏

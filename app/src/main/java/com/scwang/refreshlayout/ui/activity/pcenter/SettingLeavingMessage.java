@@ -9,8 +9,8 @@ import android.widget.Toast;
 
 import com.androidapp.banner.Banner;
 import com.androidapp.banner.listener.OnBannerListener;
-import com.androidapp.base.activity.BaseListActivity;
-import com.androidapp.base.adapter.BaseQuickAdapter;
+import com.androidapp.activity.BaseListActivity;
+import com.androidapp.adapter.BaseQuickAdapter;
 import com.androidapp.smartrefresh.layout.api.RefreshLayout;
 import com.androidapp.smartrefresh.layout.listener.OnLoadMoreListener;
 import com.androidapp.smartrefresh.layout.listener.OnRefreshListener;
@@ -22,7 +22,7 @@ import com.scwang.refreshlayout.api.ApiConfig;
 import com.scwang.refreshlayout.bean.BannerItem;
 import com.scwang.refreshlayout.bean.Movie;
 import com.scwang.refreshlayout.imageloader.GlideImageLoader;
-import com.scwang.refreshlayout.ui.ui.SocializCircleActivity;
+import com.scwang.refreshlayout.ui.activity.SocializCircleActivity;
 
 import java.util.ArrayList;
 import java.util.List;

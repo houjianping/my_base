@@ -2,7 +2,7 @@ package com.scwang.refreshlayout.model.user;
 
 import android.content.Context;
 
-import com.androidapp.base.utils.RxSchedulers;
+import com.androidapp.utils.RxSchedulers;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.scwang.refreshlayout.api.ApiConfig;

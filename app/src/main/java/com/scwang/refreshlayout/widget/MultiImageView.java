@@ -8,8 +8,8 @@ import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
 
-import com.androidapp.base.utils.DensityUtil;
-import com.androidapp.base.utils.ImageLoaderUtils;
+import com.androidapp.utils.DensityUtil;
+import com.androidapp.utils.ImageLoaderUtils;
 import com.scwang.refreshlayout.R;
 
 import java.io.File;

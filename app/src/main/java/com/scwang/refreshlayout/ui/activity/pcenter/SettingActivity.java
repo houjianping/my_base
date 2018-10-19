@@ -4,14 +4,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import com.androidapp.base.activity.BaseActivity;
+import com.androidapp.activity.BaseActivity;
 import com.androidapp.share.bean.ShareContent;
 import com.androidapp.share.bean.ShareEnum;
 import com.androidapp.share.util.ShareUtil;
 import com.androidapp.widget.CustomAlertDialog;
 import com.scwang.refreshlayout.R;
-import com.scwang.refreshlayout.ui.MainActivity;
-import com.scwang.refreshlayout.ui.ui.common.YuedanWebActivity;
+import com.scwang.refreshlayout.ui.common.YuedanWebActivity;
 
 import static com.scwang.refreshlayout.api.Urls.H5.FEEDBACK_CONTROL;
 

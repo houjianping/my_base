@@ -9,8 +9,8 @@ import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 
 import com.androidapp.base.R;
-import com.androidapp.base.utils.CollectionUtils;
-import com.androidapp.base.utils.ScreenUtil;
+import com.androidapp.utils.CollectionUtils;
+import com.androidapp.utils.ScreenUtil;
 import com.androidapp.indicator.CirclePageIndicator;
 
 import java.util.ArrayList;
@@ -24,6 +24,7 @@ public class PagedGridLayout<T extends PagedGridItem> extends LinearLayout {
     private LinearLayout mContainer;
     private OnGridItemClick onGridItemClick;
     private Activity mContext;
+    private boolean mShowBigItems;
 
     public PagedGridLayout(Activity context, OnGridItemClick listener) {
         super(context);
@@ -39,6 +40,10 @@ public class PagedGridLayout<T extends PagedGridItem> extends LinearLayout {
         mViewPager = findViewById(R.id.view_pager);
     }
 
+    public void setEnableBigItem(boolean showBigItem) {
+        mShowBigItems = showBigItem;
+    }
+
     public void setData(List<T> industryList, int row, int colum) {
         if (industryList.size() > 0) {
             mContainer.setVisibility(View.VISIBLE);
@@ -48,8 +53,9 @@ public class PagedGridLayout<T extends PagedGridItem> extends LinearLayout {
         for (int i = 0; i < subList.size(); i++) {
             PagedGridView gridView = new PagedGridView(mContext);
             gridView.setNumColumns(colum);
-            gridView.setVerticalSpacing(7);
-            PagedGridViewAdapter adapter = new PagedGridViewAdapter(mContext, subList.get(i));
+            gridView.setHorizontalSpacing(15);
+            gridView.setVerticalSpacing(15);
+            PagedGridViewAdapter adapter = new PagedGridViewAdapter(mContext, mShowBigItems, subList.get(i));
             if (onGridItemClick != null) {
                 adapter.setOnItemClick(onGridItemClick);
             }

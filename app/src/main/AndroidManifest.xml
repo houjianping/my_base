@@ -26,7 +26,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".ui.ui.SplashActivity"
+            android:name=".ui.activity.SplashActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
@@ -36,14 +36,14 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.MainActivity"
+            android:name=".ui.activity.MainActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ui.ui.common.YuedanWebActivity"
+            android:name=".ui.common.YuedanWebActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"/>
         <activity
-            android:name=".ui.ui.SocializCircleActivity"
+            android:name=".ui.activity.SocializCircleActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait" />
         <activity
@@ -102,8 +102,10 @@
             android:name=".ui.activity.login.SecretLoginActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait" />
-        <activity android:name=".ui.ui.common.BigImagePagerActivity" />
-        <activity android:name=".ui.ui.VideoListActivity" />
+        <activity android:name=".ui.common.BigImagePagerActivity" />
+        <activity android:name=".ui.activity.VideoListActivity" />
+        <activity android:name=".ui.activity.login.CreateAccountActivity" />
+        <activity android:name=".ui.activity.pcenter.PersonalWallet" />
     </application>
 
 </manifest>

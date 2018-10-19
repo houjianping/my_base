@@ -17,11 +17,13 @@ public class PagedGridViewAdapter<T extends PagedGridItem> extends BaseAdapter {
 
     private Activity mContext;
     private List<T> mDynamicList;
+    private boolean mShowBigCategory;
     PagedGridLayout.OnGridItemClick onGridItemClick;
 
-    public PagedGridViewAdapter(Activity context, List<T> dynamicList) {
+    public PagedGridViewAdapter(Activity context, boolean showBig, List<T> dynamicList) {
         this.mContext = context;
         mDynamicList = dynamicList;
+        mShowBigCategory = showBig;
     }
 
     @Override
@@ -44,7 +46,7 @@ public class PagedGridViewAdapter<T extends PagedGridItem> extends BaseAdapter {
         ViewHolder holder;
         if (convertView == null) {
             holder = new ViewHolder();
-            convertView = View.inflate(mContext, R.layout.paged_gridview_item, null);
+            convertView = View.inflate(mContext, mShowBigCategory ? R.layout.paged_gridview_big_item : R.layout.paged_gridview_item, null);
             holder.dynamicImageView = (ImageView) convertView.findViewById(R.id.iv_dynamic_icon);
             holder.dynamicSummaryView = (TextView) convertView.findViewById(R.id.iv_dynamic_summary);
             holder.tvOperateTextView = (TextView) convertView.findViewById(R.id.tv_operate);
@@ -61,11 +63,13 @@ public class PagedGridViewAdapter<T extends PagedGridItem> extends BaseAdapter {
         if (getItem(position).getTitle() != null) {
             holder.dynamicSummaryView.setText(getItem(position).getTitle());
         }
-        if (!TextUtils.isEmpty(getItem(position).getBadge_text())) {
-            holder.tvOperateTextView.setVisibility(View.VISIBLE);
-            holder.tvOperateTextView.setText(getItem(position).getBadge_text());
-        } else {
-            holder.tvOperateTextView.setVisibility(View.GONE);
+        if (holder.tvOperateTextView != null) {
+            if (!TextUtils.isEmpty(getItem(position).getBadge_text())) {
+                holder.tvOperateTextView.setVisibility(View.VISIBLE);
+                holder.tvOperateTextView.setText(getItem(position).getBadge_text());
+            } else {
+                holder.tvOperateTextView.setVisibility(View.GONE);
+            }
         }
         holder.dynamicContainer.setOnClickListener(new View.OnClickListener() {
             @Override

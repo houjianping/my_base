@@ -3,7 +3,7 @@ package com.scwang.refreshlayout.ui.activity.pcenter;
 import android.os.Bundle;
 import android.view.View;
 
-import com.androidapp.base.activity.BaseActivity;
+import com.androidapp.activity.BaseActivity;
 import com.scwang.refreshlayout.R;
 
 public class SettingAccount extends BaseActivity {

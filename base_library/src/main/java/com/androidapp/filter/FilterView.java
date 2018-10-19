@@ -12,8 +12,8 @@ import android.widget.LinearLayout;
 import android.widget.ScrollView;
 
 import com.androidapp.base.R;
-import com.androidapp.base.utils.ScreenUtil;
-import com.androidapp.base.utils.ToastUtils;
+import com.androidapp.utils.ScreenUtil;
+import com.androidapp.utils.ToastUtils;
 import com.androidapp.filter.multiple.MultiPopupView;
 import com.androidapp.filter.multiple.bean.MultiBean;
 import com.androidapp.filter.single.SignalPopupView;

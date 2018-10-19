@@ -19,8 +19,8 @@ import android.webkit.WebViewClient;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
-import com.androidapp.base.utils.JsonUtils;
-import com.androidapp.base.utils.ToastUtils;
+import com.androidapp.utils.JsonUtils;
+import com.androidapp.utils.ToastUtils;
 import com.androidapp.cachewebviewlib.CacheInterceptor;
 import com.androidapp.cachewebviewlib.CacheWebView;
 import com.androidapp.cachewebviewlib.WebViewCache;

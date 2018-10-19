@@ -2,10 +2,10 @@ package com.scwang.refreshlayout.ui.activity.login;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
-import com.androidapp.base.utils.ToastUtils;
-import com.androidapp.mvp.MvpBaseView;
 import com.androidapp.mvp.MvpBaseActivity;
+import com.androidapp.mvp.MvpBaseView;
 import com.scwang.refreshlayout.R;
 import com.scwang.refreshlayout.bean.UserInfo;
 import com.scwang.refreshlayout.model.user.LoginModelLogic;
@@ -15,6 +15,8 @@ import com.scwang.refreshlayout.presenter.user.interfaces.ILoginPresenter;
 import java.util.List;
 
 public class PassWordLoginActivity extends MvpBaseActivity<LoginModelLogic, LoginPresenterImpl> implements ILoginPresenter.View {
+
+    private TextView mCreateAccountTextView;
 
     @Override
     protected int getLayoutId() {
@@ -27,6 +29,8 @@ public class PassWordLoginActivity extends MvpBaseActivity<LoginModelLogic, Logi
         if (mTitleBar != null) {
             mTitleBar.getRightTextView().setOnClickListener(mOnClickListener);
         }
+        mCreateAccountTextView = findViewById(R.id.tv_create_account);
+        mCreateAccountTextView.setOnClickListener(mOnClickListener);
     }
 
     @Override
@@ -40,13 +44,16 @@ public class PassWordLoginActivity extends MvpBaseActivity<LoginModelLogic, Logi
 
     @Override
     public void getOtherList(List<UserInfo> homeCates) {
-        ToastUtils.showShortToast(this, "-------");
     }
 
     private View.OnClickListener mOnClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            doStartActivity(SecretLoginActivity.class, null);
+            if (v ==  mTitleBar.getRightTextView()) {
+                doStartActivity(SecretLoginActivity.class, null);
+            } else if (v == mCreateAccountTextView) {
+                doStartActivity(CreateAccountActivity.class, null);
+            }
         }
     };
 }
