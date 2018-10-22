@@ -21,7 +21,7 @@ import com.scwang.refreshlayout.adapter.QuickAdapter;
 import com.scwang.refreshlayout.api.ApiConfig;
 import com.scwang.refreshlayout.bean.BannerItem;
 import com.scwang.refreshlayout.bean.Movie;
-import com.scwang.refreshlayout.imageloader.GlideImageLoader;
+import com.scwang.refreshlayout.util.GlideImageLoader;
 import com.scwang.refreshlayout.ui.activity.SocializCircleActivity;
 
 import java.util.ArrayList;

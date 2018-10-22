@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="15dp"
+        android:background="#f8f8f8" />
+
+    <com.scwang.refreshlayout.widget.HeaderView
+        android:id="@+id/praise_header"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />
+
+    <com.androidapp.pagedgridview.PagedGridView
+        android:id="@+id/recommend_group"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:numColumns="1"/>
+</LinearLayout>

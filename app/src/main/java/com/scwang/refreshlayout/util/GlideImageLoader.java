@@ -1,4 +1,4 @@
-package com.scwang.refreshlayout.imageloader;
+package com.scwang.refreshlayout.util;
 
 import android.content.Context;
 import android.widget.ImageView;

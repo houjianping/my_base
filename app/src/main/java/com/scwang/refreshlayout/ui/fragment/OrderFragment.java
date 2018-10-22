@@ -32,6 +32,7 @@ import com.scwang.refreshlayout.R;
 import com.scwang.refreshlayout.ui.activity.SimplePlayer;
 import com.scwang.refreshlayout.ui.activity.VideoListActivity;
 import com.scwang.refreshlayout.widget.HeaderView;
+import com.scwang.refreshlayout.widget.MyRefreshLottieHeader;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -133,8 +134,6 @@ public class OrderFragment extends LazyLoadFragment {
             list.add(item);
             list.add(item);
             list.add(item);
-            list.add(item);
-            list.add(item);
             pagedGridLayout.setEnableBigItem(true);
             pagedGridLayout.setData(list, 5, 2);
             mAdapter.addHeaderView(banner, 0);
@@ -177,6 +176,8 @@ public class OrderFragment extends LazyLoadFragment {
                 refreshLayout.finishLoadMoreWithNoMoreData();
             }
         });
+        MyRefreshLottieHeader mRefreshLottieHeader = new MyRefreshLottieHeader(getContext());
+        refreshLayout.setRefreshHeader(mRefreshLottieHeader);
     }
 
     @Override

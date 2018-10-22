@@ -16,7 +16,7 @@
         app:rightImageResource="@drawable/icon_flow"
         app:rightType="imageButton"
         app:leftType="textView" />
-    <ScrollView
+    <com.androidapp.widget.AppScrollView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content">
         <LinearLayout
@@ -408,5 +408,5 @@
                 </RelativeLayout>
             </android.support.v7.widget.CardView>
         </LinearLayout>
-    </ScrollView>
+    </com.androidapp.widget.AppScrollView>
 </LinearLayout>

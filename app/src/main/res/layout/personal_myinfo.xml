@@ -16,13 +16,10 @@
         app:leftDrawablePadding="0dp"
         app:leftType="textView" />
 
-    <com.androidapp.smartrefresh.layout.SmartRefreshLayout
+    <com.androidapp.widget.AppScrollView
         android:id="@+id/refreshLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:srlDragRate="0.75"
-        app:srlEnableLoadMore="true"
-        app:srlEnablePureScrollMode="true">
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -85,5 +82,5 @@
                     app:settingsTitle="学历" />
             </LinearLayout>
         </LinearLayout>
-    </com.androidapp.smartrefresh.layout.SmartRefreshLayout>
+    </com.androidapp.widget.AppScrollView>
 </LinearLayout>

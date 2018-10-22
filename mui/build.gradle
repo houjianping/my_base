@@ -5,7 +5,7 @@ version = "1.0.3" // QMUI 发布到 bintray 的版本号
 
 android {
     compileSdkVersion parent.ext.compileSdkVersion
-    buildToolsVersion parent.ext.buildToolsVersion
+    buildToolsVersion '27.0.3'
     lintOptions {
         abortOnError false
     }

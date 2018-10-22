@@ -37,8 +37,8 @@ public class MainActivity extends BaseActivity {
     private CommonTabLayout tabLayout;
     private IndexMainFragment mainFragment;
     private OrderMainFragment mOrderMainFragment;//专栏
-    private PCenterFragment videoMainFragment;
     private RoomMainFragment roomMainFragment;
+    private PCenterFragment videoMainFragment;
     private int currentTabPosition = 0;
 
     @Override

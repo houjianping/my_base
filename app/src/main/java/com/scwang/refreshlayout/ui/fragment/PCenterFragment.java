@@ -39,8 +39,6 @@ import static android.app.Activity.RESULT_OK;
 
 public class PCenterFragment extends BaseTabFragment {
 
-    private int mOffset = 0;
-    private int mScrollY = 0;
     private String mUpdateUrl = "https://raw.githubusercontent.com/WVector/AppUpdateDemo/master/json/json.txt";
 
     @Override
@@ -63,11 +61,6 @@ public class PCenterFragment extends BaseTabFragment {
     protected void initView(View view, Bundle savedInstanceState) {
         //状态栏透明和间距处理
         StatusBarUtil.immersive(getActivity());
-        StatusBarUtil.setPaddingSmart(getActivity(), view.findViewById(R.id.eee));
-
-        final View parallax = view.findViewById(R.id.parallax);
-        final NestedScrollView scrollView = view.findViewById(R.id.scrollView);
-        final RefreshLayout refreshLayout = view.findViewById(R.id.refreshLayout);
 
         view.findViewById(R.id.my_account).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -115,52 +108,12 @@ public class PCenterFragment extends BaseTabFragment {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(mContext, SocializCircleActivity.class));
-               /* PictureSelector.create(PCenterFragment.this)
-                        .openGallery(PictureMimeType.ofImage())// 全部.PictureMimeType.ofAll()、图片.ofImage()、视频.ofVideo()、音频.ofAudio()
-                        .theme(-1)
-                        .maxSelectNum(9)// 最大图片选择数量
-                        .minSelectNum(1)// 最小选择数量
-                        .imageSpanCount(4)// 每行显示个数
-                        .selectionMode(false ?
-                                PictureConfig.MULTIPLE : PictureConfig.SINGLE)// 多选 or 单选
-                        .previewImage(true)// 是否可预览图片
-                        .previewVideo(false)// 是否可预览视频
-                        .enablePreviewAudio(false) // 是否可播放音频
-                        .isCamera(true)// 是否显示拍照按钮
-                        .isZoomAnim(true)// 图片列表点击 缩放效果 默认true
-                        .enableCrop(true)// 是否裁剪
-                        .compress(true)// 是否压缩
-                        .synOrAsy(true)//同步true或异步false 压缩 默认同步
-                        .glideOverride(160, 160)// glide 加载宽高，越小图片列表越流畅，但会影响列表图片浏览的清晰度
-                        .freeStyleCropEnabled(true)// 裁剪框是否可拖拽
-                        .cropCompressQuality(90)// 裁剪压缩质量 默认100
-                        .minimumCompressSize(100)// 小于100kb的图片不压缩
-                        .rotateEnabled(false) // 裁剪是否可旋转图片
-                        .videoMaxSecond(20)//显示多少秒以内的视频or音频也可适用
-                        .recordVideoSecond(20)//录制视频秒数 默认60s
-                        .forResult(PictureConfig.CHOOSE_REQUEST);//结果回调onActivityResult code*/
-            }
-        });
-        scrollView.setOnScrollChangeListener(new NestedScrollView.OnScrollChangeListener() {
-            private int lastScrollY = 0;
-            private int h = DensityUtil.dp2px(50);
-            private int color = /*ContextCompat.getColor(getContext(), R.color.colorPrimary) & 0x00ffffff*/ 0x00ffffff;
-
-            @Override
-            public void onScrollChange(NestedScrollView v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
-                if (lastScrollY < h) {
-                    scrollY = Math.min(h, scrollY);
-                    mScrollY = scrollY > h ? h : scrollY;
-                    parallax.setTranslationY(mOffset - mScrollY);
-                }
-                lastScrollY = scrollY;
             }
         });
         Glide.with(getContext())
                 .load(R.mipmap.image_avatar_5)
                 .apply(new RequestOptions().placeholder(R.drawable.iv_default_photo).transform(new GlideCircleTransform(getContext())))
                 .into((ImageView) view.findViewById(R.id.ivSettingAvatar));
-
         view.findViewById(R.id.item_setting).setOnClickListener(mOnClickListener);
         view.findViewById(R.id.setting_download).setOnClickListener(mOnClickListener);
         view.findViewById(R.id.setting_favorite).setOnClickListener(mOnClickListener);

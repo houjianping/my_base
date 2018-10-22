@@ -8,7 +8,7 @@ import com.scwang.refreshlayout.ui.fragment.OrderFragment;
 import com.scwang.refreshlayout.ui.fragment.TabFragment;
 
 public class OrderFragmentAdapter extends FragmentPagerAdapter {
-    private String[] tabs = {"技能管理", "需求管理"};
+    private String[] tabs = {"专栏"};
 
     public OrderFragmentAdapter(FragmentManager fm) {
         super(fm);

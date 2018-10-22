@@ -50,6 +50,7 @@
                 android:textSize="14sp" />
 
             <ImageView
+                android:id="@+id/tv_rightview"
                 android:layout_width="12dp"
                 android:layout_height="12dp"
                 android:layout_marginStart="6dp"

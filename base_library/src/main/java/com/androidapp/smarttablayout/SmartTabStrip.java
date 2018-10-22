@@ -300,11 +300,11 @@ class SmartTabStrip extends LinearLayout {
         thickness = thickness * thicknessOffset;
       }
       //---houjianping start
-      if (right - left > 80) {
+      /*if (right - left > 80) {
         int padding = (right - left - 80) / 2;
         left = left + padding;
         right = right - padding;
-      }
+      }*/
       thickness = 5;
       // houjianping end
       drawIndicator(canvas, left, right, height - 5, thickness, color);

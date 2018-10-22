@@ -59,4 +59,5 @@ dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation project(':video_library')
     implementation project(':mui')
+    implementation 'com.airbnb.android:lottie:2.2.0'
 }

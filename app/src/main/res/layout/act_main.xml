@@ -5,7 +5,7 @@
     android:layout_height="fill_parent"
     android:fitsSystemWindows="false">
 
-    <FrameLayout
+    <com.androidapp.widget.WindowInsetsFrameLayout
         android:id="@+id/fl_body"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

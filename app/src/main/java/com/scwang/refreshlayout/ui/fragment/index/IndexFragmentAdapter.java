@@ -9,7 +9,7 @@ import com.scwang.refreshlayout.ui.fragment.TabFragment;
 import com.scwang.refreshlayout.ui.fragment.common.YuedanWebFragment;
 
 public class IndexFragmentAdapter extends FragmentPagerAdapter {
-    private String[] tabs = {"推荐", "娱乐", "技能", "相亲", "交友", "H5"};
+    private String[] tabs = {"推荐", "娱乐", "H5"};
 
     public IndexFragmentAdapter(FragmentManager fm) {
         super(fm);
@@ -22,6 +22,9 @@ public class IndexFragmentAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
+        if (position == 0) {
+            return new RecommendFragment();
+        }
         if (position > 4) {
             Fragment fragment = new YuedanWebFragment();
             Bundle bundle = new Bundle();

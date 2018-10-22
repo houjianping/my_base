@@ -8,7 +8,7 @@
         android:id="@+id/titlebar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        titlebar:centerCustomView="@layout/layout_custom_center"
+        titlebar:centerCustomView="@layout/layout_no_indicator_center"
         titlebar:centerType="customView"
         titlebar:rightCustomView="@layout/layout_custom_right"
         titlebar:rightType="customView" />

@@ -1,111 +1,112 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    package="com.scwang.refreshlayout">
+xmlns:tools="http://schemas.android.com/tools"
+package="com.scwang.refreshlayout">
 
-    <!-- 读取SD卡权限 -->
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <!-- 网络状态权限 -->
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <!-- 网络访问权限 -->
-    <uses-permission android:name="android.permission.INTERNET" />
-    <!-- 设备编号权限 -->
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+<!-- 读取SD卡权限 -->
+<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+<!-- 网络状态权限 -->
+<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+<!-- 网络访问权限 -->
+<uses-permission android:name="android.permission.INTERNET" />
+<!-- 设备编号权限 -->
+<uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
-    <uses-sdk tools:overrideLibrary="com.github.czy1121.loadinglayout" />
+<uses-sdk tools:overrideLibrary="com.github.czy1121.loadinglayout" />
 
-    <application
-        android:name=".App"
-        android:allowBackup="true"
-        android:hardwareAccelerated="true"
-        android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher"
-        android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity
-            android:name=".ui.activity.SplashActivity"
-            android:screenOrientation="portrait">
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-                <action android:name="android.intent.action.MAIN" />
+<application
+    android:name=".App"
+    android:allowBackup="true"
+    android:hardwareAccelerated="true"
+    android:icon="@mipmap/ic_launcher"
+    android:label="@string/app_name"
+    android:roundIcon="@mipmap/ic_launcher"
+    android:supportsRtl="true"
+    android:theme="@style/AppTheme">
+    <activity
+        android:name=".ui.activity.SplashActivity"
+        android:screenOrientation="portrait">
+        <intent-filter>
+            <action android:name="android.intent.action.VIEW" />
+            <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".ui.activity.MainActivity"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".ui.common.YuedanWebActivity"
-            android:configChanges="orientation|keyboardHidden|screenSize"/>
-        <activity
-            android:name=".ui.activity.SocializCircleActivity"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".ui.coll.ActCollapsingToolBar"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".ui.activity.SimplePlayer"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".ui.activity.pcenter.SettingActivity"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".ui.activity.pcenter.SettingModifyPwd"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".ui.activity.pcenter.SettingAccount"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".ui.activity.pcenter.SettingPushControl"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".ui.activity.pcenter.SettingDownloadControl"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".ui.activity.pcenter.SettingAboutControl"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".ui.activity.pcenter.SettingsDownloadActivity"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".ui.activity.pcenter.SettingFavorite"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".ui.activity.pcenter.SettingLeavingMessage"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".ui.activity.pcenter.SettingsMyInfoActivity"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".ui.activity.login.PassWordLoginActivity"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".ui.activity.login.SecretLoginActivity"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:screenOrientation="portrait" />
-        <activity android:name=".ui.common.BigImagePagerActivity" />
-        <activity android:name=".ui.activity.VideoListActivity" />
-        <activity android:name=".ui.activity.login.CreateAccountActivity" />
-        <activity android:name=".ui.activity.pcenter.PersonalWallet" />
-    </application>
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+    </activity>
+    <activity
+        android:name=".ui.activity.MainActivity"
+        android:configChanges="orientation|keyboardHidden|screenSize"
+        android:screenOrientation="portrait" />
+    <activity
+        android:name=".ui.common.YuedanWebActivity"
+        android:configChanges="orientation|keyboardHidden|screenSize"/>
+    <activity
+        android:name=".ui.activity.SocializCircleActivity"
+        android:configChanges="orientation|keyboardHidden|screenSize"
+        android:screenOrientation="portrait" />
+    <activity
+        android:name=".ui.coll.ActCollapsingToolBar"
+        android:configChanges="orientation|keyboardHidden|screenSize"
+        android:screenOrientation="portrait" />
+    <activity
+        android:name=".ui.activity.SimplePlayer"
+        android:configChanges="orientation|keyboardHidden|screenSize"
+        android:screenOrientation="portrait" />
+    <activity
+        android:name=".ui.activity.pcenter.SettingActivity"
+        android:configChanges="orientation|keyboardHidden|screenSize"
+        android:screenOrientation="portrait" />
+    <activity
+        android:name=".ui.activity.pcenter.SettingModifyPwd"
+        android:configChanges="orientation|keyboardHidden|screenSize"
+        android:screenOrientation="portrait" />
+    <activity
+        android:name=".ui.activity.pcenter.SettingAccount"
+        android:configChanges="orientation|keyboardHidden|screenSize"
+        android:screenOrientation="portrait" />
+    <activity
+        android:name=".ui.activity.pcenter.SettingPushControl"
+        android:configChanges="orientation|keyboardHidden|screenSize"
+        android:screenOrientation="portrait" />
+    <activity
+        android:name=".ui.activity.pcenter.SettingDownloadControl"
+        android:configChanges="orientation|keyboardHidden|screenSize"
+        android:screenOrientation="portrait" />
+    <activity
+        android:name=".ui.activity.pcenter.SettingAboutControl"
+        android:configChanges="orientation|keyboardHidden|screenSize"
+        android:screenOrientation="portrait" />
+    <activity
+        android:name=".ui.activity.pcenter.SettingsDownloadActivity"
+        android:configChanges="orientation|keyboardHidden|screenSize"
+        android:screenOrientation="portrait" />
+    <activity
+        android:name=".ui.activity.pcenter.SettingFavorite"
+        android:configChanges="orientation|keyboardHidden|screenSize"
+        android:screenOrientation="portrait" />
+    <activity
+        android:name=".ui.activity.pcenter.SettingLeavingMessage"
+        android:configChanges="orientation|keyboardHidden|screenSize"
+        android:screenOrientation="portrait" />
+    <activity
+        android:name=".ui.activity.pcenter.SettingsMyInfoActivity"
+        android:configChanges="orientation|keyboardHidden|screenSize"
+        android:screenOrientation="portrait" />
+    <activity
+        android:name=".ui.activity.login.PassWordLoginActivity"
+        android:configChanges="orientation|keyboardHidden|screenSize"
+        android:screenOrientation="portrait" />
+    <activity
+        android:name=".ui.activity.login.SecretLoginActivity"
+        android:configChanges="orientation|keyboardHidden|screenSize"
+        android:screenOrientation="portrait" />
+    <activity android:name=".ui.common.BigImagePagerActivity" />
+    <activity android:name=".ui.activity.VideoListActivity" />
+    <activity android:name=".ui.activity.login.CreateAccountActivity" />
+    <activity android:name=".ui.activity.pcenter.PersonalWallet" />
+    <activity android:name=".ui.activity.KnowledgeDetailActivity" />
+</application>
 
 </manifest>
