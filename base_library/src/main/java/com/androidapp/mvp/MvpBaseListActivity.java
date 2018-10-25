@@ -147,11 +147,11 @@ public abstract class MvpBaseListActivity<M extends MvpBaseModel, P extends MvpB
     }
 
     protected void showToast(int stringId) {
-        ToastUtils.showShortToast(this, stringId);
+        ToastUtils.show(stringId);
     }
 
     protected void showToast(String string) {
-        ToastUtils.showShortToast(this, string);
+        ToastUtils.show(string);
     }
 
     /**

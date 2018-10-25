@@ -47,7 +47,7 @@ public class AppWebView extends CacheWebView {
                 }
             });
         } else {
-            ToastUtils.showShortToast(context, "URL类型加载出错");
+            ToastUtils.show("URL类型加载出错");
         }
     }
 
@@ -169,7 +169,7 @@ public class AppWebView extends CacheWebView {
                     }
                 });
             } else {
-                ToastUtils.showShortToast(getContext(), "页面出错了");
+                ToastUtils.show("页面出错了");
             }
         }
     }

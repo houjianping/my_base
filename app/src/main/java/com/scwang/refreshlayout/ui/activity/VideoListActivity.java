@@ -7,20 +7,18 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.androidapp.adapter.BaseQuickAdapter;
-import com.androidapp.utils.ToastUtils;
 import com.androidapp.mvp.MvpBaseListActivity;
 import com.androidapp.mvp.MvpBaseView;
 import com.androidapp.smartrefresh.layout.api.RefreshLayout;
 import com.androidapp.smartrefresh.layout.listener.OnLoadMoreListener;
 import com.androidapp.smartrefresh.layout.listener.OnRefreshListener;
+import com.androidapp.utils.ToastUtils;
 import com.scwang.refreshlayout.adapter.VideoListAdapter;
 import com.scwang.refreshlayout.bean.VideoItem;
 import com.scwang.refreshlayout.model.user.VideoListModelLogic;
 import com.scwang.refreshlayout.presenter.user.VideoListPresenterImpl;
 import com.scwang.refreshlayout.presenter.user.interfaces.IVideoListPresenter;
 import com.shuyu.gsyvideoplayer.GSYVideoManager;
-import com.shuyu.gsyvideoplayer.listener.GSYSampleCallBack;
-import com.shuyu.gsyvideoplayer.utils.GSYVideoHelper;
 
 import java.util.List;
 
@@ -96,7 +94,7 @@ public class VideoListActivity extends MvpBaseListActivity<VideoListModelLogic, 
 
     @Override
     public void onVideoListUpdate(List<VideoItem> circleItemList) {
-        ToastUtils.showShortToast(this, "--1-----");
+        ToastUtils.show("--1-----");
         mAdapter.replaceData(circleItemList);
     }
 

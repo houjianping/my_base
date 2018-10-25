@@ -12,6 +12,7 @@ import com.androidapp.smartrefresh.layout.api.DefaultRefreshHeaderCreator;
 import com.androidapp.smartrefresh.layout.api.RefreshHeader;
 import com.androidapp.smartrefresh.layout.api.RefreshLayout;
 import com.androidapp.smartrefresh.layout.header.ClassicsHeader;
+import com.androidapp.utils.ToastUtils;
 import com.facebook.stetho.Stetho;
 import com.scwang.refreshlayout.api.request.OkGoRequest;
 import com.scwang.refreshlayout.util.DynamicTimeFormat;
@@ -39,6 +40,7 @@ public class App extends Application {
     public void onCreate() {
         super.onCreate();
         mApplication = this;
+        ToastUtils.setContext(this);
         Stetho.initializeWithDefaults(this);
         OkGoRequest.initOkGo(this, true);
         ShareConfig.onCreate(this);

@@ -121,7 +121,7 @@ public class SocializCircleActivity extends MvpBaseListActivity<ZoneModelLogic, 
 
     @Override
     public void onCircleListUpdate(List<CircleItem> circleItemList) {
-        ToastUtils.showShortToast(this, "--1-----");
+        ToastUtils.show("--1-----");
         mAdapter.replaceData(circleItemList);
     }
 

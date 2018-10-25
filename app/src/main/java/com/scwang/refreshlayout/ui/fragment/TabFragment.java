@@ -116,8 +116,7 @@ public class TabFragment extends LazyLoadFragment {
                 @Override
                 public void onGridItemClick(Object item) {
                     GriedViewItem item1 = (GriedViewItem) item;
-                    ToastUtils.showShortToast(getContext(), "####################" + item1.getTitle());
-                    doStartActivity(SimplePlayer.class, null);
+                    ToastUtils.show("####################" + item1.getTitle());
                 }
             });
             List<GriedViewItem> list = new ArrayList<>();

@@ -21,11 +21,18 @@ public class KnowledgeAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        Fragment fragment = new YuedanWebFragment();
-        Bundle bundle = new Bundle();
-        bundle.putString(YuedanWebFragment.KEY_URL, "http://m.lrts.me/h5/appactivity?uid=252995147&mparam=0s34Of5C32xrw7YCOrk1qnLcvSwtmfTIFCFP3YV38QKEyVc71soBDCET0OKwantG1gfqqrUSXcWB%0Aa9C8hoUluyvkwHBloCUH");
-        fragment.setArguments(bundle);
-        return fragment;
+        switch (position) {
+            case 0:
+                return new KnowledgeDescFragment();
+            case 1:
+                return new KnowledgeListFragment();
+            default:
+                Fragment fragment = new YuedanWebFragment();
+                Bundle bundle = new Bundle();
+                bundle.putString(YuedanWebFragment.KEY_URL, "http://m.lrts.me/h5/appactivity?uid=252995147&mparam=0s34Of5C32xrw7YCOrk1qnLcvSwtmfTIFCFP3YV38QKEyVc71soBDCET0OKwantG1gfqqrUSXcWB%0Aa9C8hoUluyvkwHBloCUH");
+                fragment.setArguments(bundle);
+                return fragment;
+        }
     }
 
     @Override

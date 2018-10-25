@@ -118,8 +118,7 @@ public class OrderFragment extends LazyLoadFragment {
                 @Override
                 public void onGridItemClick(Object item) {
                     GriedViewItem item1 = (GriedViewItem) item;
-                    ToastUtils.showShortToast(getContext(), "####################" + item1.getTitle());
-                    doStartActivity(SimplePlayer.class, null);
+                    ToastUtils.show("####################" + item1.getTitle());
                 }
             });
             List<GriedViewItem> list = new ArrayList<>();
@@ -138,10 +137,11 @@ public class OrderFragment extends LazyLoadFragment {
             pagedGridLayout.setData(list, 5, 2);
             mAdapter.addHeaderView(banner, 0);
             HeaderView categoryHeader = new HeaderView(getContext());
+            categoryHeader.setTitle("热点专栏");
             mAdapter.addHeaderView(categoryHeader, 1);
             mAdapter.addHeaderView(pagedGridLayout, 2);
             HeaderView recommendHeader = new HeaderView(getContext());
-            recommendHeader.setTitle("热点专栏");
+            recommendHeader.setTitle("精品推荐");
             recommendHeader.setRightViewVisible(false);
             mAdapter.addHeaderView(recommendHeader, 3);
             mAdapter.openLoadAnimation();

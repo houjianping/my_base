@@ -24,8 +24,10 @@ public class IndexFragmentAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         if (position == 0) {
             return new RecommendFragment();
+        } else if (position == 1) {
+            return new EntertainmentFragment();
         }
-        if (position > 4) {
+        if (position > 1) {
             Fragment fragment = new YuedanWebFragment();
             Bundle bundle = new Bundle();
             bundle.putString(YuedanWebFragment.KEY_URL, "http://www.sina.com.cn/");

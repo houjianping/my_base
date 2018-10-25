@@ -1,5 +1,7 @@
 package com.scwang.refreshlayout.ui.activity;
 
+import android.content.Context;
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.os.Build;
@@ -11,6 +13,7 @@ import android.widget.ImageView;
 import com.androidapp.activity.BaseActivity;
 import com.bumptech.glide.Glide;
 import com.scwang.refreshlayout.R;
+import com.scwang.refreshlayout.bean.VideoItem;
 import com.shuyu.gsyvideoplayer.GSYVideoManager;
 import com.shuyu.gsyvideoplayer.utils.OrientationUtils;
 import com.shuyu.gsyvideoplayer.video.StandardGSYVideoPlayer;
@@ -18,9 +21,12 @@ import com.shuyu.gsyvideoplayer.video.StandardGSYVideoPlayer;
 
 public class SimplePlayer extends BaseActivity {
 
-    StandardGSYVideoPlayer videoPlayer;
+    public static final String KEY_VIDEO_URL = "video_url";
+    public static final String KEY_VIDEO_THUMB = "video_thumb";
+    public static final String KEY_VIDEO_TITLE = "video_title";
 
-    OrientationUtils orientationUtils;
+    private StandardGSYVideoPlayer videoPlayer;
+    private OrientationUtils orientationUtils;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -42,7 +48,11 @@ public class SimplePlayer extends BaseActivity {
 
     @Override
     protected void initData() {
-        init();
+        Bundle bundle = getIntent().getExtras();
+        String videoTitle = bundle.getString(KEY_VIDEO_TITLE);
+        String videoUrl = bundle.getString(KEY_VIDEO_URL);
+        String videoCover = bundle.getString(KEY_VIDEO_THUMB);
+        init(videoTitle, videoUrl, videoCover);
     }
 
     @Override
@@ -50,9 +60,8 @@ public class SimplePlayer extends BaseActivity {
         return false;
     }
 
-    private void init() {
-        String source1 = "http://9890.vod.myqcloud.com/9890_4e292f9a3dd011e6b4078980237cc3d3.f20.mp4";
-        videoPlayer.setUp(source1, true, "视频名称");
+    private void init(String title, String url, String cover) {
+        videoPlayer.setUp(url, true, title);
         videoPlayer.getTitleTextView().setVisibility(View.VISIBLE); //增加title
         videoPlayer.getBackButton().setVisibility(View.VISIBLE); //设置返回键
         orientationUtils = new OrientationUtils(this, videoPlayer); //设置旋转
@@ -77,7 +86,7 @@ public class SimplePlayer extends BaseActivity {
         //增加封面
         ImageView imageView = new ImageView(this);
         imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-        Glide.with(mContext).load("http://a4.att.hudong.com/05/71/01300000057455120185716259013.jpg").into(imageView);
+        Glide.with(mContext).load(cover).into(imageView);
         videoPlayer.setThumbImageView(imageView);
     }
 
@@ -111,5 +120,13 @@ public class SimplePlayer extends BaseActivity {
         //释放所有
         videoPlayer.setVideoAllCallBack(null);
         super.onBackPressed();
+    }
+
+    public static Intent getIntent(Context context, VideoItem videoItem) {
+        Intent intent = new Intent(context, SimplePlayer.class);
+        intent.putExtra(KEY_VIDEO_URL, videoItem.getMp4_url());
+        intent.putExtra(KEY_VIDEO_THUMB, videoItem.getCover());
+        intent.putExtra(KEY_VIDEO_TITLE, videoItem.getTitle());
+        return intent;
     }
 }

@@ -203,7 +203,7 @@ public class CommentAdapter {
 
         @Override
         public void onClick(int position) {
-            ToastUtils.showShortToast(mContext, "点击了"+position);
+            ToastUtils.show("点击了"+position);
         }
     }
 }

@@ -46,11 +46,11 @@ public abstract class BaseFragment extends Fragment {
     protected abstract int getLayoutId();
 
     protected void showToast(int stringId) {
-        ToastUtils.showShortToast(getActivity(), stringId);
+        ToastUtils.show(stringId);
     }
 
     protected void showToast(String string) {
-        ToastUtils.showShortToast(getActivity(), string);
+        ToastUtils.show(string);
     }
 
     /**

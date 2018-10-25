@@ -93,11 +93,11 @@ public abstract class BaseActivity extends AppCompatActivity {
 
 
     protected void showToast(int stringId) {
-        ToastUtils.showShortToast(this, stringId);
+        ToastUtils.show(stringId);
     }
 
     protected void showToast(String string) {
-        ToastUtils.showShortToast(this, string);
+        ToastUtils.show(string);
     }
 
     /**

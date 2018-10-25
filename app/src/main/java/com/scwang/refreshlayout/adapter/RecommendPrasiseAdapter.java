@@ -5,6 +5,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -50,7 +51,7 @@ public class RecommendPrasiseAdapter extends BaseAdapter {
         if (convertView == null) {
             holder = new ViewHolder();
             convertView = View.inflate(mContext, R.layout.item_recommend_prasise, null);
-            holder.iconView = (AppRoundImageView) convertView.findViewById(R.id.prasise_icon);
+            holder.iconView = (ImageView) convertView.findViewById(R.id.prasise_icon);
             holder.titleView = (TextView) convertView.findViewById(R.id.prasise_title);
             holder.baseView = convertView.findViewById(R.id.prasise_container);
             convertView.setTag(holder);
@@ -85,7 +86,7 @@ public class RecommendPrasiseAdapter extends BaseAdapter {
 
     class ViewHolder {
         LinearLayout baseView;
-        AppRoundImageView iconView;
+        ImageView iconView;
         TextView titleView;
     }
 }

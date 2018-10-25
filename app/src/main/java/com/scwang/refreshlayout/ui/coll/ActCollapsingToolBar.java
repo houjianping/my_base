@@ -87,7 +87,7 @@ public class ActCollapsingToolBar extends AppCompatActivity {
         filter_view.setOnFilterItemClick(new FilterView.OnItemClick() {
             @Override
             public void doFilter(FilterHeaderItem item) {
-                ToastUtils.showShortToast(getApplicationContext(), item.getKey());
+                ToastUtils.show(item.getKey());
             }
 
             @Override

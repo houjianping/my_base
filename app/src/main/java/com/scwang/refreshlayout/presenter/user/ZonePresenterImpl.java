@@ -14,17 +14,17 @@ public class ZonePresenterImpl extends IZonePresenter.Presenter {
         mModel.getCircleListItems(mContext, 1).subscribe(new Subscriber<List<CircleItem>>() {
             @Override
             public void onCompleted() {
-                ToastUtils.showShortToast(mContext, "--1--onCompleted--1-");
+                ToastUtils.show("--1--onCompleted--1-");
             }
             @Override
             public void onError(Throwable e) {
                 e.printStackTrace();
-                ToastUtils.showShortToast(mContext, "--1--onError--1-");
+                ToastUtils.show("--1--onError--1-");
             }
 
             @Override
             public void onNext(List<CircleItem> result) {
-                ToastUtils.showShortToast(mContext, "--1----1-");
+                ToastUtils.show("--1----1-");
                 if (result != null) {
                     try {
                         mView.onCircleListUpdate(result);

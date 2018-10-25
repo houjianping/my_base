@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentTransaction;
 import android.text.TextUtils;
+import android.widget.Toast;
 
 import com.androidapp.activity.BaseActivity;
 import com.androidapp.utils.StatusBarUtil;
@@ -14,6 +15,7 @@ import com.androidapp.share.util.ShareUtil;
 import com.androidapp.tablayout.CommonTabLayout;
 import com.androidapp.tablayout.listener.CustomTabEntity;
 import com.androidapp.tablayout.listener.OnTabSelectListener;
+import com.androidapp.utils.ToastUtils;
 import com.scwang.refreshlayout.R;
 import com.scwang.refreshlayout.ui.fragment.IndexMainFragment;
 import com.scwang.refreshlayout.ui.fragment.OrderMainFragment;
@@ -235,6 +237,18 @@ public class MainActivity extends BaseActivity {
         @Override
         public String getTabWebUnSelectedIcon() {
             return unSelectedWebIcon;
+        }
+    }
+
+    private long firstTime = 0;
+    @Override
+    public void onBackPressed() {
+        long secondTime = System.currentTimeMillis();
+        if (secondTime - firstTime > 2000) {
+            ToastUtils.show("再按一次退出程序");
+            firstTime = secondTime;
+        } else{
+            finish();
         }
     }
 }

@@ -10,6 +10,7 @@ import com.scwang.refreshlayout.R;
 import com.scwang.refreshlayout.ui.fragment.knowledge.KnowledgeAdapter;
 
 public class KnowledgeDetailActivity extends BaseActivity {
+
     private CommonTitleBar mTitleBar;
     private ViewPager mViewPager;
     private SmartTabLayout mSmartTabLayout;

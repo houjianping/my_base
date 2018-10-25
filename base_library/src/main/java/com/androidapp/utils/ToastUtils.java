@@ -1,9 +1,6 @@
 package com.androidapp.utils;
 
 import android.content.Context;
-import android.os.Handler;
-import android.os.Looper;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,64 +11,42 @@ import com.androidapp.base.R;
 
 public class ToastUtils {
 
-    private static Toast toast;
-    private static View view;
-    private static TextView mMsgView;
+    private static Context sContext;
+    private Toast mToast;
 
-    private ToastUtils() {
+    public static void setContext(Context context) {
+        sContext = context;
     }
 
-    private static void getToast(Context context) {
-        if (toast == null) {
-            toast = new Toast(context);
+    private ToastUtils(String msg) {
+        LayoutInflater inflater = (LayoutInflater) sContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View view = inflater.inflate(R.layout.widget_toast, null);
+        TextView mTextView = (TextView) view.findViewById(R.id.tv_msg);
+        mTextView.setText(msg);
+        if (mToast == null) {
+            mToast = new Toast(sContext);
         }
-        if (view == null) {
-            view = LayoutInflater.from(context).inflate(R.layout.widget_toast, null);
-            mMsgView = (TextView) view.findViewById(R.id.tv_msg);
-        }
-        toast.setView(view);
+        mToast.setGravity(Gravity.CENTER, 0, 0);
+        mToast.setDuration(Toast.LENGTH_LONG);
+        mToast.setView(view);
     }
 
-    public static void showShortToast(Context context, CharSequence msg) {
-        showToast(context.getApplicationContext(), msg, Toast.LENGTH_SHORT);
+    private void show() {
+        mToast.show();
     }
 
-    public static void showShortToast(Context context, int resId) {
-        showToast(context.getApplicationContext(), resId, Toast.LENGTH_SHORT);
-    }
-
-    public static void showLongToast(Context context, CharSequence msg) {
-        showToast(context.getApplicationContext(), msg, Toast.LENGTH_SHORT);
-    }
-
-    public static void showLongToast(Context context, int resId) {
-        showToast(context.getApplicationContext(), resId, Toast.LENGTH_LONG);
-    }
-
-    private static void showToast(Context context, CharSequence msg, int duration) {
-        try {
-            getToast(context);
-            mMsgView.setText(msg);
-            toast.setDuration(duration);
-            toast.setGravity(Gravity.CENTER, 0, 0);
-            toast.show();
-        } catch (Exception e) {
-            e.printStackTrace();
+    private void hide() {
+        if (mToast != null) {
+            mToast.cancel();
         }
     }
 
-    private static void showToast(Context context, int resId, int duration) {
-        try {
-            if (resId == 0) {
-                return;
-            }
-            getToast(context);
-            mMsgView.setText(resId);
-            toast.setDuration(duration);
-            toast.setGravity(Gravity.CENTER, 0, 0);
-            toast.show();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    public static void show(CharSequence message) {
+        ToastUtils toastUtils = new ToastUtils(message.toString());
+        toastUtils.show();
+    }
+
+    public static void show(int strResId) {
+        show(sContext.getResources().getText(strResId));
     }
 }
