@@ -6,12 +6,12 @@ package com.scwang.refreshlayout.entity.circle;
  * on 2016.07.11:11
  */
 public class CommentConfig {
-    public static enum Type {
+    public enum Type {
         PUBLIC("public"), REPLY("reply");
 
         private String value;
 
-        private Type(String value) {
+        Type(String value) {
             this.value = value;
         }
 

@@ -53,12 +53,6 @@ public class VideoListActivity extends MvpBaseListActivity<VideoListModelLogic, 
     protected BaseQuickAdapter getListViewAdapter() {
         if (mAdapter == null) {
             mAdapter = new MultipleItemQuickAdapter();
-            mAdapter.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
-                @Override
-                public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
-                    Toast.makeText(mContext, "a" + view.getId(), Toast.LENGTH_SHORT).show();
-                }
-            });
             mAdapter.openLoadAnimation();
         }
         return mAdapter;

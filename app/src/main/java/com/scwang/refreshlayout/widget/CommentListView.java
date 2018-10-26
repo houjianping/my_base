@@ -54,12 +54,12 @@ public class CommentListView extends LinearLayout {
         adapter.bindListView(this);
     }
 
-    public static interface OnItemClickListener {
-        public void onItemClick(int position);
+    public interface OnItemClickListener {
+        void onItemClick(int position);
     }
 
-    public static interface OnItemLongClickListener {
-        public void onItemLongClick(int position);
+    public interface OnItemLongClickListener {
+        void onItemLongClick(int position);
     }
 }
 

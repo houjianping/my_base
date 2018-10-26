@@ -47,7 +47,7 @@ public class RecommendFragment extends LazyLoadFragment {
 
     @Override
     protected void initView(View view, Bundle savedInstanceState) {
-        Banner banner = (Banner) view.findViewById(R.id.recommend_banner);;
+        Banner banner = view.findViewById(R.id.recommend_banner);
         banner.setImageLoader(new GlideImageLoader());
         banner.setImages(BANNER_ITEMS);
         banner.setOnBannerListener(new OnBannerListener() {

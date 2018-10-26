@@ -25,11 +25,12 @@ import com.androidapp.smartrefresh.layout.api.RefreshLayout;
 import com.androidapp.smartrefresh.layout.listener.OnLoadMoreListener;
 import com.androidapp.smartrefresh.layout.listener.OnRefreshListener;
 import com.androidapp.utils.ToastUtils;
-import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.scwang.refreshlayout.R;
-import com.scwang.refreshlayout.entity.MultipleEntity;
+import com.scwang.refreshlayout.adapter.MultipleItemQuickAdapter;
+import com.scwang.refreshlayout.entity.BannerItem;
+import com.scwang.refreshlayout.entity.OrderMovie;
 import com.scwang.refreshlayout.ui.activity.VideoListActivity;
 import com.scwang.refreshlayout.widget.HeaderView;
 import com.scwang.refreshlayout.widget.MyRefreshLottieHeader;
@@ -68,9 +69,9 @@ public class OrderFragment extends LazyLoadFragment {
             "{\"actors\":null,\"filmName\":\"二十二\",\"grade\":\"10.0\",\"picaddr\":\"http://app.infunpw.com/commons/images/cinema/cinema_films/3811.jpg\",\"releasedate\":\"2017-08-14\",\"shortinfo\":\"二战女俘虏 讲述心中苦\",\"type\":\"纪录片\"}," +
             "{\"actors\":\"郭富城|王千源|刘涛|余皑磊|冯嘉怡\",\"filmName\":\"破·局\",\"grade\":\"5.0\",\"picaddr\":\"http://app.infunpw.com/commons/images/cinema/cinema_films/3812.jpg\",\"releasedate\":\"2017-08-18\",\"shortinfo\":\"影帝硬碰硬 迷局谁怕谁\",\"type\":\"动作|犯罪\"}" +
             "]";
-    final List<Movie> movies = new Gson().fromJson(JSON_MOVIES, new TypeToken<ArrayList<Movie>>() {
+    final List<OrderMovie> movies = new Gson().fromJson(JSON_MOVIES, new TypeToken<ArrayList<OrderMovie>>() {
     }.getType());
-    private QuickAdapter mAdapter;
+    private MultipleItemQuickAdapter mAdapter;
 
     @Override
     protected void loadData(boolean force) {
@@ -101,7 +102,7 @@ public class OrderFragment extends LazyLoadFragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         if (mAdapter == null) {
             Log.e("", "------loadData----mAdapter---1111-");
-            mAdapter = new QuickAdapter();
+            mAdapter = new MultipleItemQuickAdapter();
             //添加Header
             View headerLayout = LayoutInflater.from(getContext()).inflate(R.layout.listitem_movie_header, recyclerView, false);
             Banner banner = (Banner) headerLayout;
@@ -145,12 +146,6 @@ public class OrderFragment extends LazyLoadFragment {
             recommendHeader.setRightViewVisible(false);
             mAdapter.addHeaderView(recommendHeader, 3);
             mAdapter.openLoadAnimation();
-            mAdapter.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
-                @Override
-                public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
-                    doStartActivity(VideoListActivity.class, null);
-                }
-            });
         }
         recyclerView.setAdapter(mAdapter);
         refreshLayout.setOnRefreshListener(new OnRefreshListener() {
@@ -160,7 +155,7 @@ public class OrderFragment extends LazyLoadFragment {
                     @Override
                     public void run() {
                         if (mAdapter.getItemCount() < 2) {
-                            List<Movie> movies = new Gson().fromJson(JSON_MOVIES, new TypeToken<ArrayList<Movie>>() {
+                            List<OrderMovie> movies = new Gson().fromJson(JSON_MOVIES, new TypeToken<ArrayList<OrderMovie>>() {
                             }.getType());
                             mAdapter.replaceData(movies);
                         }
@@ -183,44 +178,6 @@ public class OrderFragment extends LazyLoadFragment {
     @Override
     protected int getLayoutId() {
         return R.layout.fragment_tab;
-    }
-
-    public static class Movie extends MultipleEntity {
-        public String actors;
-        public String filmName;
-        public String grade;
-        public String info;
-        public String picaddr;
-        public String shortinfo;
-    }
-
-    public static class BannerItem {
-
-        public int pic;
-        public String title;
-
-        public BannerItem() {
-        }
-
-        public BannerItem(String title, int pic) {
-            this.pic = pic;
-            this.title = title;
-        }
-    }
-
-    public class QuickAdapter extends BaseQuickAdapter<Movie, BaseViewHolder> {
-        public QuickAdapter() {
-            super(R.layout.listitem_movie_item);
-        }
-
-        @Override
-        protected void convert(BaseViewHolder viewHolder, Movie item) {
-            viewHolder.setText(R.id.lmi_title, item.filmName)
-                    .setText(R.id.lmi_actor, item.actors)
-                    .setText(R.id.lmi_grade, item.grade)
-                    .setText(R.id.lmi_describe, item.shortinfo).addOnClickListener(R.id.movie_item);
-            Glide.with(mContext).load(item.picaddr).into((ImageView) viewHolder.getView(R.id.lmi_avatar));
-        }
     }
 
     public class GlideImageLoader extends ImageLoader {

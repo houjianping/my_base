@@ -29,6 +29,9 @@ import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.scwang.refreshlayout.R;
+import com.scwang.refreshlayout.adapter.MultipleItemQuickAdapter;
+import com.scwang.refreshlayout.entity.BannerItem;
+import com.scwang.refreshlayout.entity.Movie;
 import com.scwang.refreshlayout.ui.activity.SimplePlayer;
 import com.scwang.refreshlayout.ui.activity.VideoListActivity;
 
@@ -68,7 +71,7 @@ public class TabFragment extends LazyLoadFragment {
             "]";
     final List<Movie> movies = new Gson().fromJson(JSON_MOVIES, new TypeToken<ArrayList<Movie>>() {
     }.getType());
-    private QuickAdapter mAdapter;
+    private MultipleItemQuickAdapter mAdapter;
 
     @Override
     protected void loadData(boolean force) {
@@ -99,7 +102,7 @@ public class TabFragment extends LazyLoadFragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         if (mAdapter == null) {
             Log.e("", "------loadData----mAdapter---1111-");
-            mAdapter = new QuickAdapter();
+            mAdapter = new MultipleItemQuickAdapter();
             //添加Header
             View header = LayoutInflater.from(getContext()).inflate(R.layout.listitem_movie_header, recyclerView, false);
             Banner banner = (Banner) header;
@@ -173,44 +176,6 @@ public class TabFragment extends LazyLoadFragment {
     @Override
     protected int getLayoutId() {
         return R.layout.fragment_tab;
-    }
-
-    public static class Movie {
-        public String actors;
-        public String filmName;
-        public String grade;
-        public String info;
-        public String picaddr;
-        public String shortinfo;
-    }
-
-    public static class BannerItem {
-
-        public int pic;
-        public String title;
-
-        public BannerItem() {
-        }
-
-        public BannerItem(String title, int pic) {
-            this.pic = pic;
-            this.title = title;
-        }
-    }
-
-    public class QuickAdapter extends BaseQuickAdapter<Movie, BaseViewHolder> {
-        public QuickAdapter() {
-            super(R.layout.listitem_movie_item);
-        }
-
-        @Override
-        protected void convert(BaseViewHolder viewHolder, Movie item) {
-            viewHolder.setText(R.id.lmi_title, item.filmName)
-                    .setText(R.id.lmi_actor, item.actors)
-                    .setText(R.id.lmi_grade, item.grade)
-                    .setText(R.id.lmi_describe, item.shortinfo).addOnClickListener(R.id.movie_item);
-            Glide.with(mContext).load(item.picaddr).into((ImageView) viewHolder.getView(R.id.lmi_avatar));
-        }
     }
 
     public class GlideImageLoader extends ImageLoader {

@@ -1,6 +1,5 @@
 package com.scwang.refreshlayout.adapter.provider;
 
-import android.util.Log;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -8,30 +7,29 @@ import com.androidapp.adapter.BaseViewHolder;
 import com.androidapp.adapter.provider.BaseItemProvider;
 import com.bumptech.glide.Glide;
 import com.scwang.refreshlayout.R;
-import com.scwang.refreshlayout.entity.MultipleEntity;
 import com.scwang.refreshlayout.adapter.MultipleItemQuickAdapter;
+import com.scwang.refreshlayout.entity.KnowledgeListItem;
 import com.scwang.refreshlayout.entity.Movie;
+import com.scwang.refreshlayout.entity.MultipleEntity;
 
-public class TestItemProvider extends BaseItemProvider<MultipleEntity,BaseViewHolder> {
+public class KnowledgeListItemProvider extends BaseItemProvider<MultipleEntity,BaseViewHolder> {
 
     @Override
     public int viewType() {
-        return MultipleItemQuickAdapter.ITEM_TEST;
+        return MultipleItemQuickAdapter.ITEM_KNOWLEDGE_LIST_ITEM;
     }
 
     @Override
     public int layout() {
-        return R.layout.item_video_list;
+        return R.layout.item_knowledge;
     }
 
     @Override
     public void convert(BaseViewHolder viewHolder, MultipleEntity multipleEntity, int position) {
-        Movie item = (Movie) multipleEntity;
-        viewHolder.setText(R.id.lmi_title, item.filmName)
-                .setText(R.id.lmi_actor, item.actors)
-                .setText(R.id.lmi_grade, item.grade)
-                .setText(R.id.lmi_describe, item.shortinfo).addOnClickListener(R.id.movie_item);
-        Glide.with(mContext).load(item.picaddr).into((ImageView) viewHolder.getView(R.id.lmi_avatar));
+        KnowledgeListItem item = (KnowledgeListItem) multipleEntity;
+        viewHolder.setText(R.id.article_time, "2018-01-05")
+                .setText(R.id.article_read_num, "139次播放")
+                .setText(R.id.article_title, "第5集 荒山野岭").addOnClickListener(R.id.article_item);
     }
 
     @Override

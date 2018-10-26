@@ -97,7 +97,7 @@ public class MyRefreshLottieHeader extends LinearLayout implements RefreshHeader
     private void initView(Context context) {
         LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = layoutInflater.inflate(R.layout.loading_lottie, this);
-        mAnimationView = (LottieAnimationView) view.findViewById(R.id.loading_lottie);
+        mAnimationView = view.findViewById(R.id.loading_lottie);
     }
 
     /**

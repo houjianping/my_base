@@ -85,7 +85,7 @@ public class CommentAdapter {
         System.out.println("CommentAdapter getView-----------------------" + position);
         View convertView = View.inflate(mContext,
                 R.layout.item_social_comment, null);
-        TextView commentTv = (TextView) convertView.findViewById(R.id.commentTv);
+        TextView commentTv = convertView.findViewById(R.id.commentTv);
         final CircleMovementMethod circleMovementMethod = new CircleMovementMethod(R.color.color_primary,
                 R.color.color_primary);
 

@@ -50,13 +50,13 @@ public class ZoneHeaderView extends LinearLayout{
 
     private void initView() {
         View view = inflate(getContext(), R.layout.item_zone_header, null);
-        img_avater = (ImageView) view.findViewById(R.id.img_avater);
-        waveView= (WaveView) view.findViewById(R.id.wave_view);
-        img_newest_avater = (ImageView) view.findViewById(R.id.img_newest_avater);
-        tv_name = (TextView) view.findViewById(R.id.tv_name);
-        tv_not_read_new = (TextView) view.findViewById(R.id.tv_not_read_new);
-        ll_not_read_news_root = (LinearLayout) view.findViewById(R.id.ll_not_read_news_root);
-        rl_not_read_news_root = (RelativeLayout) view.findViewById(R.id.rl_not_read_news_root);
+        img_avater = view.findViewById(R.id.img_avater);
+        waveView= view.findViewById(R.id.wave_view);
+        img_newest_avater = view.findViewById(R.id.img_newest_avater);
+        tv_name = view.findViewById(R.id.tv_name);
+        tv_not_read_new = view.findViewById(R.id.tv_not_read_new);
+        ll_not_read_news_root = view.findViewById(R.id.ll_not_read_news_root);
+        rl_not_read_news_root = view.findViewById(R.id.rl_not_read_news_root);
         rl_not_read_news_root.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {

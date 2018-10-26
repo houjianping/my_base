@@ -14,24 +14,18 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.androidapp.adapter.BaseQuickAdapter;
-import com.androidapp.adapter.BaseViewHolder;
 import com.androidapp.banner.Banner;
 import com.androidapp.banner.listener.OnBannerListener;
 import com.androidapp.banner.loader.ImageLoader;
 import com.androidapp.fragment.LazyLoadFragment;
-import com.androidapp.pagedgridview.PagedGridItem;
-import com.androidapp.pagedgridview.PagedGridLayout;
 import com.androidapp.smartrefresh.layout.api.RefreshLayout;
 import com.androidapp.smartrefresh.layout.listener.OnLoadMoreListener;
 import com.androidapp.smartrefresh.layout.listener.OnRefreshListener;
-import com.androidapp.utils.ToastUtils;
-import com.bumptech.glide.Glide;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 import com.scwang.refreshlayout.R;
-import com.scwang.refreshlayout.ui.activity.SimplePlayer;
+import com.scwang.refreshlayout.adapter.MultipleItemQuickAdapter;
+import com.scwang.refreshlayout.entity.BannerItem;
+import com.scwang.refreshlayout.entity.KnowledgeListItem;
 import com.scwang.refreshlayout.ui.activity.VideoListActivity;
-import com.scwang.refreshlayout.ui.fragment.TabFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,25 +39,25 @@ public class KnowledgeListFragment extends LazyLoadFragment {
         add(new BannerItem("三生三世十里桃花", R.mipmap.image_movie_header_12981501221820220));
         add(new BannerItem("豆福传", R.mipmap.image_movie_header_12231501221682438));
     }};
-    private QuickAdapter mAdapter;
+    private MultipleItemQuickAdapter mAdapter;
 
     @Override
     protected void loadData(boolean force) {
         Log.e("", "------loadData--------" + force);
         if (force) {
-            List<Movie> movies = new ArrayList<>();
-            movies.add(new Movie());
-            movies.add(new Movie());
-            movies.add(new Movie());
-            movies.add(new Movie());
-            movies.add(new Movie());
-            movies.add(new Movie());
-            movies.add(new Movie());
-            movies.add(new Movie());
-            movies.add(new Movie());
-            movies.add(new Movie());
-            movies.add(new Movie());
-            movies.add(new Movie());
+            List<KnowledgeListItem> movies = new ArrayList<>();
+            movies.add(new KnowledgeListItem());
+            movies.add(new KnowledgeListItem());
+            movies.add(new KnowledgeListItem());
+            movies.add(new KnowledgeListItem());
+            movies.add(new KnowledgeListItem());
+            movies.add(new KnowledgeListItem());
+            movies.add(new KnowledgeListItem());
+            movies.add(new KnowledgeListItem());
+            movies.add(new KnowledgeListItem());
+            movies.add(new KnowledgeListItem());
+            movies.add(new KnowledgeListItem());
+            movies.add(new KnowledgeListItem());
             mAdapter.replaceData(movies);
         }
     }
@@ -89,7 +83,7 @@ public class KnowledgeListFragment extends LazyLoadFragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         if (mAdapter == null) {
             Log.e("", "------loadData----mAdapter---1111-");
-            mAdapter = new QuickAdapter();
+            mAdapter = new MultipleItemQuickAdapter();
             //添加Header
             View header = LayoutInflater.from(getContext()).inflate(R.layout.listitem_movie_header, recyclerView, false);
             Banner banner = (Banner) header;
@@ -134,36 +128,6 @@ public class KnowledgeListFragment extends LazyLoadFragment {
     @Override
     protected int getLayoutId() {
         return R.layout.fragment_tab;
-    }
-
-    public static class Movie {
-    }
-
-    public static class BannerItem {
-
-        public int pic;
-        public String title;
-
-        public BannerItem() {
-        }
-
-        public BannerItem(String title, int pic) {
-            this.pic = pic;
-            this.title = title;
-        }
-    }
-
-    public class QuickAdapter extends BaseQuickAdapter<Movie, BaseViewHolder> {
-        public QuickAdapter() {
-            super(R.layout.item_knowledge);
-        }
-
-        @Override
-        protected void convert(BaseViewHolder viewHolder, Movie item) {
-            viewHolder.setText(R.id.article_time, "2018-01-05")
-                    .setText(R.id.article_read_num, "139次播放")
-                    .setText(R.id.article_title, "第5集 荒山野岭").addOnClickListener(R.id.article_item);
-        }
     }
 
     public class GlideImageLoader extends ImageLoader {

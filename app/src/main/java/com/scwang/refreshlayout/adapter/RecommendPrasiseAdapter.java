@@ -50,8 +50,8 @@ public class RecommendPrasiseAdapter extends BaseAdapter {
         if (convertView == null) {
             holder = new ViewHolder();
             convertView = View.inflate(mContext, R.layout.item_recommend_prasise, null);
-            holder.iconView = (ImageView) convertView.findViewById(R.id.prasise_icon);
-            holder.titleView = (TextView) convertView.findViewById(R.id.prasise_title);
+            holder.iconView = convertView.findViewById(R.id.prasise_icon);
+            holder.titleView = convertView.findViewById(R.id.prasise_title);
             holder.baseView = convertView.findViewById(R.id.prasise_container);
             convertView.setTag(holder);
         } else {

@@ -36,6 +36,6 @@ public class FavortListView extends android.support.v7.widget.AppCompatTextView 
     }*/
 
     public interface ISpanClick {
-        public void onClick(int position);
+        void onClick(int position);
     }
 }

@@ -75,7 +75,7 @@ public class BigImagePagerActivity extends BaseActivity {
     @Override
     public void initView() {
         ViewPager viewPager = (AppViewPager) findViewById(R.id.pager);
-        guideGroup = (LinearLayout) findViewById(R.id.guideGroup);
+        guideGroup = findViewById(R.id.guideGroup);
 
         int startPos = getIntent().getIntExtra(INTENT_POSITION, 0);
         ArrayList<String> imgUrls = getIntent().getStringArrayListExtra(INTENT_IMGURLS);
@@ -91,7 +91,7 @@ public class BigImagePagerActivity extends BaseActivity {
             @Override
             public void onPageSelected(int position) {
                 for (int i = 0; i < guideViewList.size(); i++) {
-                    guideViewList.get(i).setSelected(i == position ? true : false);
+                    guideViewList.get(i).setSelected(i == position);
                 }
             }
 
@@ -115,7 +115,7 @@ public class BigImagePagerActivity extends BaseActivity {
             for (int i = 0; i < imgUrls.size(); i++) {
                 View view = new View(this);
                 view.setBackgroundResource(R.drawable.selector_guide_bg);
-                view.setSelected(i == startPos ? true : false);
+                view.setSelected(i == startPos);
                 LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(12,
                         12);
                 layoutParams.setMargins(10, 0, 0, 0);
@@ -153,7 +153,7 @@ public class BigImagePagerActivity extends BaseActivity {
         public Object instantiateItem(ViewGroup container, final int position) {
             View view = inflater.inflate(R.layout.item_pager_image, container, false);
             if (view != null) {
-                final PhotoView imageView = (PhotoView) view.findViewById(R.id.image);
+                final PhotoView imageView = view.findViewById(R.id.image);
 
                 //单击图片退出
                 imageView.setOnPhotoTapListener(new OnPhotoTapListener() {

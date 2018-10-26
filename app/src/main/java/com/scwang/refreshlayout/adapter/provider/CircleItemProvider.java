@@ -46,13 +46,13 @@ public class CircleItemProvider extends BaseItemProvider<MultipleEntity,BaseView
         expandableTextView.setText(item.getContent());
         ImageLoaderUtils.displayRound(mContext, (ImageView) viewHolder.getView(R.id.headIv), "http://d.hiphotos.baidu.com/image/pic/item/e4dde71190ef76c6e453882a9f16fdfaaf516729.jpg");
         if (viewHolder.getView(R.id.multiImagView) == null) {
-            ViewStub linkOrImgViewStub = (ViewStub) viewHolder.getView(R.id.linkOrImgViewStub);
+            ViewStub linkOrImgViewStub = viewHolder.getView(R.id.linkOrImgViewStub);
             linkOrImgViewStub.setLayoutResource(R.layout.item_circle_viewstub_imgbody);
             linkOrImgViewStub.inflate();
         }
         final List<String> photos = item.getPictureList();
         if (photos != null && photos.size() > 0) {
-            MultiImageView multiImageView = (MultiImageView) viewHolder.getView(R.id.multiImagView);
+            MultiImageView multiImageView = viewHolder.getView(R.id.multiImagView);
             multiImageView.setVisibility(View.VISIBLE);
             multiImageView.setList(photos);
             multiImageView.setOnItemClickListener(new MultiImageView.OnItemClickListener() {
@@ -64,7 +64,7 @@ public class CircleItemProvider extends BaseItemProvider<MultipleEntity,BaseView
         } else {
         }
 
-        CommentListView commentList = (CommentListView) viewHolder.getView(R.id.commentList);
+        CommentListView commentList = viewHolder.getView(R.id.commentList);
         CommentAdapter commentAdapter = new CommentAdapter(mContext);
         commentList.setAdapter(commentAdapter);
 
