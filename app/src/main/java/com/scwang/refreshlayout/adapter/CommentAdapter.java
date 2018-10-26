@@ -15,7 +15,7 @@ import android.widget.TextView;
 
 import com.androidapp.utils.ToastUtils;
 import com.scwang.refreshlayout.R;
-import com.scwang.refreshlayout.bean.circle.CommentItem;
+import com.scwang.refreshlayout.entity.circle.CommentItem;
 import com.scwang.refreshlayout.ui.zone.CircleMovementMethod;
 import com.scwang.refreshlayout.widget.CommentListView;
 import com.scwang.refreshlayout.widget.FavortListView;

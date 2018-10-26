@@ -1,4 +1,4 @@
-package com.scwang.refreshlayout.bean.circle;
+package com.scwang.refreshlayout.entity.circle;
 
 /**
  * des:动态eventbus传递对象

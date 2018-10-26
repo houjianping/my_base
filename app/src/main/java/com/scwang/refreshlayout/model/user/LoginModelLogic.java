@@ -2,7 +2,7 @@ package com.scwang.refreshlayout.model.user;
 
 import android.content.Context;
 
-import com.scwang.refreshlayout.bean.UserInfo;
+import com.scwang.refreshlayout.entity.UserInfo;
 import com.scwang.refreshlayout.presenter.user.interfaces.ILoginPresenter;
 
 import java.util.List;

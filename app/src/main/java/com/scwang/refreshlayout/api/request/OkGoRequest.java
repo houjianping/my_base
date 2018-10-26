@@ -14,8 +14,8 @@ import com.lzy.okgo.model.HttpParams;
 import com.lzy.okgo.model.Response;
 import com.lzy.okgo.request.GetRequest;
 import com.lzy.okgo.request.base.Request;
-import com.scwang.refreshlayout.bean.BaseBean;
-import com.scwang.refreshlayout.bean.Test;
+import com.scwang.refreshlayout.entity.BaseBean;
+import com.scwang.refreshlayout.entity.Test;
 
 import java.util.Map;
 import java.util.concurrent.TimeUnit;

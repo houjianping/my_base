@@ -24,9 +24,9 @@ import com.androidapp.smartrefresh.layout.listener.OnRefreshListener;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.scwang.refreshlayout.R;
-import com.scwang.refreshlayout.adapter.VideoListAdapter;
+import com.scwang.refreshlayout.adapter.MultipleItemQuickAdapter;
 import com.scwang.refreshlayout.api.ApiConfig;
-import com.scwang.refreshlayout.bean.VideoItem;
+import com.scwang.refreshlayout.entity.VideoItem;
 import com.scwang.refreshlayout.ui.activity.SimplePlayer;
 
 import java.util.ArrayList;
@@ -35,7 +35,9 @@ import java.util.List;
 import static android.support.v7.widget.DividerItemDecoration.VERTICAL;
 
 public class EntertainmentFragment extends LazyLoadFragment {
-    private VideoListAdapter mAdapter;
+
+    private MultipleItemQuickAdapter mAdapter;
+
     public static List<BannerItem> BANNER_ITEMS = new ArrayList<BannerItem>() {{
         add(new BannerItem("最后的骑士", R.mipmap.image_movie_header_48621499931969370));
         add(new BannerItem("三生三世十里桃花", R.mipmap.image_movie_header_12981501221820220));
@@ -70,7 +72,7 @@ public class EntertainmentFragment extends LazyLoadFragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         if (mAdapter == null) {
             Log.e("", "------loadData----mAdapter---1111-");
-            mAdapter = new VideoListAdapter();
+            mAdapter = new MultipleItemQuickAdapter<VideoItem>();
             //添加Header
             View header = LayoutInflater.from(getContext()).inflate(R.layout.listitem_movie_header, recyclerView, false);
             Banner banner = (Banner) header;
@@ -89,7 +91,7 @@ public class EntertainmentFragment extends LazyLoadFragment {
         mAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                startActivity(SimplePlayer.getIntent(mContext, mAdapter.getItem(position)));
+                startActivity(SimplePlayer.getIntent(mContext, (VideoItem) mAdapter.getItem(position)));
             }
         });
         recyclerView.setAdapter(mAdapter);

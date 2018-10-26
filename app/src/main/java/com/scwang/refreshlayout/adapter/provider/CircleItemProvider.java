@@ -1,17 +1,22 @@
-package com.scwang.refreshlayout.adapter;
+package com.scwang.refreshlayout.adapter.provider;
 
 import android.app.Activity;
 import android.view.View;
 import android.view.ViewStub;
 import android.widget.ImageView;
+import android.widget.Toast;
 
-import com.androidapp.adapter.BaseQuickAdapter;
 import com.androidapp.adapter.BaseViewHolder;
+import com.androidapp.adapter.provider.BaseItemProvider;
 import com.androidapp.utils.ImageLoaderUtils;
 import com.androidapp.utils.TimeUtil;
 import com.scwang.refreshlayout.R;
-import com.scwang.refreshlayout.bean.circle.CircleItem;
-import com.scwang.refreshlayout.bean.circle.CommentItem;
+import com.scwang.refreshlayout.adapter.CommentAdapter;
+import com.scwang.refreshlayout.entity.MultipleEntity;
+import com.scwang.refreshlayout.adapter.MultipleItemQuickAdapter;
+import com.scwang.refreshlayout.entity.VideoItem;
+import com.scwang.refreshlayout.entity.circle.CircleItem;
+import com.scwang.refreshlayout.entity.circle.CommentItem;
 import com.scwang.refreshlayout.ui.common.BigImagePagerActivity;
 import com.scwang.refreshlayout.widget.CommentListView;
 import com.scwang.refreshlayout.widget.ExpandableTextView;
@@ -19,13 +24,21 @@ import com.scwang.refreshlayout.widget.MultiImageView;
 
 import java.util.List;
 
-public class CircleQuickAdapter extends BaseQuickAdapter<CircleItem, BaseViewHolder> {
-    public CircleQuickAdapter() {
-        super(R.layout.item_circle_list);
+public class CircleItemProvider extends BaseItemProvider<MultipleEntity,BaseViewHolder> {
+
+    @Override
+    public int viewType() {
+        return MultipleItemQuickAdapter.ITEM_CIRCLE;
     }
 
     @Override
-    protected void convert(BaseViewHolder viewHolder, CircleItem item) {
+    public int layout() {
+        return R.layout.item_circle_list;
+    }
+
+    @Override
+    public void convert(BaseViewHolder viewHolder, MultipleEntity multipleEntity, int position) {
+        CircleItem item = (CircleItem) multipleEntity;
         viewHolder.setText(R.id.nameTv, item.getNickName())
                 .setText(R.id.timeTv, TimeUtil.getfriendlyTime(item.getCreateTime()))
                 .setText(R.id.tv_address_or_distance, "广州 <7KM").addOnClickListener(R.id.movie_item);
@@ -71,5 +84,15 @@ public class CircleQuickAdapter extends BaseQuickAdapter<CircleItem, BaseViewHol
             }
         });
         viewHolder.getView(R.id.digCommentBody).setVisibility(commentsDatas.size() > 0 ? View.VISIBLE : View.GONE);
+    }
+
+    @Override
+    public void onClick(BaseViewHolder helper, MultipleEntity data, int position) {
+        Toast.makeText(mContext, "click", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public boolean onLongClick(BaseViewHolder helper, MultipleEntity data, int position) {
+        return true;
     }
 }

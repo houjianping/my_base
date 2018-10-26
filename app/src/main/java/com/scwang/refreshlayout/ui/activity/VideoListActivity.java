@@ -13,8 +13,8 @@ import com.androidapp.smartrefresh.layout.api.RefreshLayout;
 import com.androidapp.smartrefresh.layout.listener.OnLoadMoreListener;
 import com.androidapp.smartrefresh.layout.listener.OnRefreshListener;
 import com.androidapp.utils.ToastUtils;
-import com.scwang.refreshlayout.adapter.VideoListAdapter;
-import com.scwang.refreshlayout.bean.VideoItem;
+import com.scwang.refreshlayout.adapter.MultipleItemQuickAdapter;
+import com.scwang.refreshlayout.entity.VideoItem;
 import com.scwang.refreshlayout.model.user.VideoListModelLogic;
 import com.scwang.refreshlayout.presenter.user.VideoListPresenterImpl;
 import com.scwang.refreshlayout.presenter.user.interfaces.IVideoListPresenter;
@@ -52,7 +52,7 @@ public class VideoListActivity extends MvpBaseListActivity<VideoListModelLogic, 
     @Override
     protected BaseQuickAdapter getListViewAdapter() {
         if (mAdapter == null) {
-            mAdapter = new VideoListAdapter();
+            mAdapter = new MultipleItemQuickAdapter();
             mAdapter.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
                 @Override
                 public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
@@ -64,7 +64,7 @@ public class VideoListActivity extends MvpBaseListActivity<VideoListModelLogic, 
         return mAdapter;
     }
 
-    private VideoListAdapter mAdapter;
+    private MultipleItemQuickAdapter mAdapter;
 
     @Override
     protected int getLayoutId() {

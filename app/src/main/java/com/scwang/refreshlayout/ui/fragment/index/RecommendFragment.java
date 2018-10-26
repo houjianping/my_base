@@ -15,7 +15,7 @@ import com.androidapp.fragment.LazyLoadFragment;
 import com.androidapp.pagedgridview.PagedGridView;
 import com.scwang.refreshlayout.R;
 import com.scwang.refreshlayout.adapter.RecommendPrasiseAdapter;
-import com.scwang.refreshlayout.bean.RecommendPrasise;
+import com.scwang.refreshlayout.entity.RecommendPrasise;
 import com.scwang.refreshlayout.widget.HeaderView;
 import com.scwang.refreshlayout.widget.RecommendGroupView;
 

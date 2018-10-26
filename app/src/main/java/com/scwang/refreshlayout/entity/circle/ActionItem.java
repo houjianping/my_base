@@ -1,4 +1,4 @@
-package com.scwang.refreshlayout.bean.circle;
+package com.scwang.refreshlayout.entity.circle;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;

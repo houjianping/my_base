@@ -1,8 +1,10 @@
-package com.scwang.refreshlayout.bean.circle;
+package com.scwang.refreshlayout.entity.circle;
 
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.text.TextUtils;
+
+import com.scwang.refreshlayout.entity.MultipleEntity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +14,7 @@ import java.util.List;
  * Created by xsf
  * on 2016.07.11:11
  */
-public class CircleItem implements Parcelable {
+public class CircleItem extends MultipleEntity implements Parcelable {
 
 //    动态 {
 //        address (string, optional): 地址 ,

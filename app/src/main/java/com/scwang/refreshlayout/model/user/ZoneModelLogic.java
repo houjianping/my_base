@@ -6,16 +6,13 @@ import com.androidapp.utils.RxSchedulers;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.scwang.refreshlayout.api.ApiConfig;
-import com.scwang.refreshlayout.bean.Movie;
-import com.scwang.refreshlayout.bean.UserInfo;
-import com.scwang.refreshlayout.bean.circle.CircleItem;
+import com.scwang.refreshlayout.entity.circle.CircleItem;
 import com.scwang.refreshlayout.presenter.user.interfaces.IZonePresenter;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import io.reactivex.android.schedulers.AndroidSchedulers;
 import rx.Observable;
 import rx.Subscriber;
 

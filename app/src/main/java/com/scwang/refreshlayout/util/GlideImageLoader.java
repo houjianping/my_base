@@ -4,7 +4,7 @@ import android.content.Context;
 import android.widget.ImageView;
 
 import com.androidapp.banner.loader.ImageLoader;
-import com.scwang.refreshlayout.bean.BannerItem;
+import com.scwang.refreshlayout.entity.BannerItem;
 
 public class GlideImageLoader extends ImageLoader {
     @Override

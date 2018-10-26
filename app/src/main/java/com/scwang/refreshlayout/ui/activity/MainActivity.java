@@ -5,16 +5,12 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentTransaction;
 import android.text.TextUtils;
-import android.widget.Toast;
 
 import com.androidapp.activity.BaseActivity;
-import com.androidapp.utils.StatusBarUtil;
-import com.androidapp.share.bean.ShareContent;
-import com.androidapp.share.bean.ShareEnum;
-import com.androidapp.share.util.ShareUtil;
 import com.androidapp.tablayout.CommonTabLayout;
 import com.androidapp.tablayout.listener.CustomTabEntity;
 import com.androidapp.tablayout.listener.OnTabSelectListener;
+import com.androidapp.utils.StatusBarUtil;
 import com.androidapp.utils.ToastUtils;
 import com.scwang.refreshlayout.R;
 import com.scwang.refreshlayout.ui.fragment.IndexMainFragment;
@@ -68,7 +64,7 @@ public class MainActivity extends BaseActivity {
         setContentView(R.layout.act_main);
         tabLayout = findViewById(R.id.tab_layout);
         initTab();
-        initFragment(bundle);
+        initFragment();
         //状态栏透明和间距处理
         StatusBarUtil.darkMode(this);
     }
@@ -110,23 +106,33 @@ public class MainActivity extends BaseActivity {
     /**
      * 初始化碎片
      */
-    private void initFragment(Bundle savedInstanceState) {
+    private void initFragment() {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        if (savedInstanceState != null) {
-            mainFragment = (IndexMainFragment) getSupportFragmentManager().findFragmentByTag("IndexMainFragment");
-            mOrderMainFragment = (OrderMainFragment) getSupportFragmentManager().findFragmentByTag("OrderFragment");
-            videoMainFragment = (PCenterFragment) getSupportFragmentManager().findFragmentByTag("videoMainFragment");
-            roomMainFragment = (RoomMainFragment) getSupportFragmentManager().findFragmentByTag("roomMainFragment");
-        } else {
+        mainFragment = (IndexMainFragment) getSupportFragmentManager().findFragmentByTag(IndexMainFragment.class.getSimpleName());
+        mOrderMainFragment = (OrderMainFragment) getSupportFragmentManager().findFragmentByTag(OrderMainFragment.class.getSimpleName());
+        videoMainFragment = (PCenterFragment) getSupportFragmentManager().findFragmentByTag(PCenterFragment.class.getSimpleName());
+        roomMainFragment = (RoomMainFragment) getSupportFragmentManager().findFragmentByTag(RoomMainFragment.class.getSimpleName());
+
+        if (mainFragment == null) {
             mainFragment = new IndexMainFragment();
-            mOrderMainFragment = new OrderMainFragment();
-            videoMainFragment = new PCenterFragment();
-            roomMainFragment = new RoomMainFragment();
-            transaction.add(R.id.fl_body, mainFragment, "IndexMainFragment");
-            transaction.add(R.id.fl_body, mOrderMainFragment, "OrderFragment");
-            transaction.add(R.id.fl_body, videoMainFragment, "videoMainFragment");
-            transaction.add(R.id.fl_body, roomMainFragment, "roomMainFragment");
+            transaction.add(R.id.fl_body, mainFragment, IndexMainFragment.class.getSimpleName());
         }
+
+        if (mOrderMainFragment == null) {
+            mOrderMainFragment = new OrderMainFragment();
+            transaction.add(R.id.fl_body, mOrderMainFragment, OrderMainFragment.class.getSimpleName());
+        }
+
+        if (videoMainFragment == null) {
+            videoMainFragment = new PCenterFragment();
+            transaction.add(R.id.fl_body, videoMainFragment, PCenterFragment.class.getSimpleName());
+        }
+
+        if (roomMainFragment == null) {
+            roomMainFragment = new RoomMainFragment();
+            transaction.add(R.id.fl_body, roomMainFragment, RoomMainFragment.class.getSimpleName());
+        }
+
         transaction.commit();
         switchTo(currentTabPosition);
         tabLayout.setCurrentTab(currentTabPosition);
@@ -241,13 +247,14 @@ public class MainActivity extends BaseActivity {
     }
 
     private long firstTime = 0;
+
     @Override
     public void onBackPressed() {
         long secondTime = System.currentTimeMillis();
         if (secondTime - firstTime > 2000) {
             ToastUtils.show("再按一次退出程序");
             firstTime = secondTime;
-        } else{
+        } else {
             finish();
         }
     }

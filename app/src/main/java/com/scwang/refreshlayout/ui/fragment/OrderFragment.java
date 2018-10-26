@@ -29,7 +29,7 @@ import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.scwang.refreshlayout.R;
-import com.scwang.refreshlayout.ui.activity.SimplePlayer;
+import com.scwang.refreshlayout.entity.MultipleEntity;
 import com.scwang.refreshlayout.ui.activity.VideoListActivity;
 import com.scwang.refreshlayout.widget.HeaderView;
 import com.scwang.refreshlayout.widget.MyRefreshLottieHeader;
@@ -185,7 +185,7 @@ public class OrderFragment extends LazyLoadFragment {
         return R.layout.fragment_tab;
     }
 
-    public static class Movie {
+    public static class Movie extends MultipleEntity {
         public String actors;
         public String filmName;
         public String grade;

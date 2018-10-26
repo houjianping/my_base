@@ -1,13 +1,11 @@
 package com.scwang.refreshlayout.ui.activity.login;
 
 import android.os.Bundle;
-import android.view.View;
 
 import com.androidapp.mvp.MvpBaseActivity;
 import com.androidapp.mvp.MvpBaseView;
-import com.androidapp.utils.ToastUtils;
 import com.scwang.refreshlayout.R;
-import com.scwang.refreshlayout.bean.UserInfo;
+import com.scwang.refreshlayout.entity.UserInfo;
 import com.scwang.refreshlayout.model.user.LoginModelLogic;
 import com.scwang.refreshlayout.presenter.user.LoginPresenterImpl;
 import com.scwang.refreshlayout.presenter.user.interfaces.ILoginPresenter;

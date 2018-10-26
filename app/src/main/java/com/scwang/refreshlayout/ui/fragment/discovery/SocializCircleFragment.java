@@ -1,6 +1,5 @@
 package com.scwang.refreshlayout.ui.fragment.discovery;
 
-import android.graphics.Rect;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.DividerItemDecoration;
@@ -17,9 +16,9 @@ import com.androidapp.smartrefresh.layout.listener.OnRefreshListener;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.scwang.refreshlayout.R;
-import com.scwang.refreshlayout.adapter.CircleQuickAdapter;
+import com.scwang.refreshlayout.adapter.MultipleItemQuickAdapter;
 import com.scwang.refreshlayout.api.ApiConfig;
-import com.scwang.refreshlayout.bean.circle.CircleItem;
+import com.scwang.refreshlayout.entity.circle.CircleItem;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +26,7 @@ import java.util.Random;
 
 public class SocializCircleFragment extends LazyLoadFragment {
     private RecyclerView mRecyclerView;
-    private CircleQuickAdapter mAdapter;
+    private MultipleItemQuickAdapter mAdapter;
 
     @Override
     protected void loadData(boolean force) {
@@ -66,7 +65,7 @@ public class SocializCircleFragment extends LazyLoadFragment {
             }
         });
         if (mAdapter == null) {
-            mAdapter = new CircleQuickAdapter();
+            mAdapter = new MultipleItemQuickAdapter();
             mAdapter.openLoadAnimation();
             mAdapter.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
                 @Override

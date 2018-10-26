@@ -1,6 +1,6 @@
-package com.scwang.refreshlayout.bean;
+package com.scwang.refreshlayout.entity;
 
-public class Movie {
+public class Movie extends MultipleEntity {
     public String actors;
     public String filmName;
     public String grade;

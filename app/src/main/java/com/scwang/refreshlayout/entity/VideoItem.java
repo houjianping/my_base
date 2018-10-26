@@ -1,6 +1,6 @@
-package com.scwang.refreshlayout.bean;
+package com.scwang.refreshlayout.entity;
 
-public class VideoItem {
+public class VideoItem extends MultipleEntity {
     /**
      * topicImg : http://vimg3.ws.126.net/image/snapshot/2016/8/5/M/VBUQ2NJ5M.jpg
      * videosource : 新媒体

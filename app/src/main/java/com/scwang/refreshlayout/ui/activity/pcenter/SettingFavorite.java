@@ -7,22 +7,22 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Toast;
 
-import com.androidapp.banner.Banner;
-import com.androidapp.banner.listener.OnBannerListener;
 import com.androidapp.activity.BaseListActivity;
 import com.androidapp.adapter.BaseQuickAdapter;
+import com.androidapp.banner.Banner;
+import com.androidapp.banner.listener.OnBannerListener;
 import com.androidapp.smartrefresh.layout.api.RefreshLayout;
 import com.androidapp.smartrefresh.layout.listener.OnLoadMoreListener;
 import com.androidapp.smartrefresh.layout.listener.OnRefreshListener;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.scwang.refreshlayout.R;
-import com.scwang.refreshlayout.adapter.QuickAdapter;
+import com.scwang.refreshlayout.adapter.MultipleItemQuickAdapter;
 import com.scwang.refreshlayout.api.ApiConfig;
-import com.scwang.refreshlayout.bean.BannerItem;
-import com.scwang.refreshlayout.bean.Movie;
-import com.scwang.refreshlayout.util.GlideImageLoader;
+import com.scwang.refreshlayout.entity.BannerItem;
+import com.scwang.refreshlayout.entity.Movie;
 import com.scwang.refreshlayout.ui.activity.SocializCircleActivity;
+import com.scwang.refreshlayout.util.GlideImageLoader;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -66,7 +66,7 @@ public class SettingFavorite extends BaseListActivity {
     @Override
     protected BaseQuickAdapter getListViewAdapter() {
         if (mAdapter == null) {
-            mAdapter = new QuickAdapter();
+            mAdapter = new MultipleItemQuickAdapter();
             mAdapter.openLoadAnimation();
             mAdapter.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
                 @Override
@@ -87,7 +87,7 @@ public class SettingFavorite extends BaseListActivity {
     final List<Movie> movies = new Gson().fromJson(ApiConfig.JSON_MOVIES, new TypeToken<ArrayList<Movie>>() {
     }.getType());
 
-    private QuickAdapter mAdapter;
+    private MultipleItemQuickAdapter mAdapter;
 
     @Override
     protected void initView() {

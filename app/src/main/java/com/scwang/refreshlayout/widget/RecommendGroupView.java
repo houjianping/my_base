@@ -15,7 +15,7 @@ import com.google.gson.reflect.TypeToken;
 import com.scwang.refreshlayout.R;
 import com.scwang.refreshlayout.adapter.RecommendItemAdapter;
 import com.scwang.refreshlayout.api.ApiConfig;
-import com.scwang.refreshlayout.bean.Movie;
+import com.scwang.refreshlayout.entity.Movie;
 import com.scwang.refreshlayout.ui.activity.KnowledgeDetailActivity;
 
 import java.util.ArrayList;

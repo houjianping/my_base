@@ -5,7 +5,7 @@ import android.content.Context;
 import com.androidapp.mvp.MvpBaseModel;
 import com.androidapp.mvp.MvpBasePresenter;
 import com.androidapp.mvp.MvpBaseView;
-import com.scwang.refreshlayout.bean.UserInfo;
+import com.scwang.refreshlayout.entity.UserInfo;
 
 import java.util.List;
 

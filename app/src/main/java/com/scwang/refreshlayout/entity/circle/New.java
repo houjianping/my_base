@@ -1,4 +1,4 @@
-package com.scwang.refreshlayout.bean.circle;
+package com.scwang.refreshlayout.entity.circle;
 
 import android.os.Parcel;
 import android.os.Parcelable;

@@ -1,4 +1,4 @@
-package com.scwang.refreshlayout.bean;
+package com.scwang.refreshlayout.entity;
 
 import java.io.Serializable;
 import java.util.List;

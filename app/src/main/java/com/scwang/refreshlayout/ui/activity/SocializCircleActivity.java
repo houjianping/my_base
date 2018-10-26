@@ -8,16 +8,16 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.androidapp.adapter.BaseQuickAdapter;
-import com.androidapp.utils.ToastUtils;
 import com.androidapp.mvp.MvpBaseListActivity;
 import com.androidapp.mvp.MvpBaseView;
 import com.androidapp.smartrefresh.layout.api.RefreshLayout;
 import com.androidapp.smartrefresh.layout.listener.OnLoadMoreListener;
 import com.androidapp.smartrefresh.layout.listener.OnRefreshListener;
+import com.androidapp.utils.ToastUtils;
 import com.scwang.refreshlayout.R;
-import com.scwang.refreshlayout.adapter.CircleQuickAdapter;
-import com.scwang.refreshlayout.bean.BannerItem;
-import com.scwang.refreshlayout.bean.circle.CircleItem;
+import com.scwang.refreshlayout.adapter.MultipleItemQuickAdapter;
+import com.scwang.refreshlayout.entity.BannerItem;
+import com.scwang.refreshlayout.entity.circle.CircleItem;
 import com.scwang.refreshlayout.model.user.ZoneModelLogic;
 import com.scwang.refreshlayout.presenter.user.ZonePresenterImpl;
 import com.scwang.refreshlayout.presenter.user.interfaces.IZonePresenter;
@@ -66,7 +66,7 @@ public class SocializCircleActivity extends MvpBaseListActivity<ZoneModelLogic, 
     @Override
     protected BaseQuickAdapter getListViewAdapter() {
         if (mAdapter == null) {
-            mAdapter = new CircleQuickAdapter();
+            mAdapter = new MultipleItemQuickAdapter();
             mAdapter.openLoadAnimation();
             mAdapter.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
                 @Override
@@ -84,7 +84,7 @@ public class SocializCircleActivity extends MvpBaseListActivity<ZoneModelLogic, 
         add(new BannerItem("豆福传", R.mipmap.image_movie_header_12231501221682438));
     }};
 
-    private CircleQuickAdapter mAdapter;
+    private MultipleItemQuickAdapter mAdapter;
 
     @Override
     protected int getLayoutId() {

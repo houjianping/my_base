@@ -1,4 +1,4 @@
-package com.scwang.refreshlayout.bean;
+package com.scwang.refreshlayout.entity;
 
 public class BannerItem {
 

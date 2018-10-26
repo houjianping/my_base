@@ -1,10 +1,8 @@
 package com.scwang.refreshlayout.presenter.user;
 
 import com.androidapp.utils.ToastUtils;
-import com.scwang.refreshlayout.bean.VideoItem;
-import com.scwang.refreshlayout.bean.circle.CircleItem;
+import com.scwang.refreshlayout.entity.VideoItem;
 import com.scwang.refreshlayout.presenter.user.interfaces.IVideoListPresenter;
-import com.scwang.refreshlayout.presenter.user.interfaces.IZonePresenter;
 
 import java.util.List;
 

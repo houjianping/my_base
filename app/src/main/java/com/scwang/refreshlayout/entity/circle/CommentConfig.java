@@ -1,4 +1,4 @@
-package com.scwang.refreshlayout.bean.circle;
+package com.scwang.refreshlayout.entity.circle;
 
 /**
  * des:评论分类

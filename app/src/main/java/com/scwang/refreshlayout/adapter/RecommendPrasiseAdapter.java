@@ -10,10 +10,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.androidapp.pagedgridview.PagedGridLayout;
-import com.androidapp.widget.AppRoundImageView;
 import com.bumptech.glide.Glide;
 import com.scwang.refreshlayout.R;
-import com.scwang.refreshlayout.bean.RecommendPrasise;
+import com.scwang.refreshlayout.entity.RecommendPrasise;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -13,7 +13,7 @@ import android.widget.ImageView;
 import com.androidapp.activity.BaseActivity;
 import com.bumptech.glide.Glide;
 import com.scwang.refreshlayout.R;
-import com.scwang.refreshlayout.bean.VideoItem;
+import com.scwang.refreshlayout.entity.VideoItem;
 import com.shuyu.gsyvideoplayer.GSYVideoManager;
 import com.shuyu.gsyvideoplayer.utils.OrientationUtils;
 import com.shuyu.gsyvideoplayer.video.StandardGSYVideoPlayer;
