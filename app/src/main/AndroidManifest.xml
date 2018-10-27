@@ -26,7 +26,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name="com.siyuan.enjoyreading.ui.activity.SplashActivity"
+            android:name=".ui.activity.SplashActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
@@ -36,90 +36,90 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.siyuan.enjoyreading.ui.activity.MainActivity"
+            android:name=".ui.activity.MainActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.siyuan.enjoyreading.ui.common.YuedanWebActivity"
+            android:name=".ui.common.YuedanWebActivity"
             android:configChanges="orientation|keyboardHidden|screenSize" />
         <activity
-            android:name="com.siyuan.enjoyreading.ui.activity.SocializCircleActivity"
+            android:name=".ui.activity.SocializCircleActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.siyuan.enjoyreading.ui.coll.ActCollapsingToolBar"
+            android:name=".ui.coll.ActCollapsingToolBar"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.siyuan.enjoyreading.ui.activity.SimplePlayer"
+            android:name=".ui.activity.SimplePlayer"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.siyuan.enjoyreading.ui.activity.pcenter.SettingActivity"
+            android:name=".ui.activity.pcenter.SettingActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.siyuan.enjoyreading.ui.activity.pcenter.SettingModifyPwd"
+            android:name=".ui.activity.pcenter.SettingModifyPwd"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.siyuan.enjoyreading.ui.activity.pcenter.SettingAccount"
+            android:name=".ui.activity.pcenter.SettingAccount"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.siyuan.enjoyreading.ui.activity.pcenter.SettingPushControl"
+            android:name=".ui.activity.pcenter.SettingPushControl"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.siyuan.enjoyreading.ui.activity.pcenter.SettingDownloadControl"
+            android:name=".ui.activity.pcenter.SettingDownloadControl"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.siyuan.enjoyreading.ui.activity.pcenter.SettingAboutControl"
+            android:name=".ui.activity.pcenter.SettingAboutControl"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.siyuan.enjoyreading.ui.activity.pcenter.SettingsDownloadActivity"
+            android:name=".ui.activity.pcenter.SettingsDownloadActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.siyuan.enjoyreading.ui.activity.pcenter.SettingFavorite"
+            android:name=".ui.activity.pcenter.SettingFavorite"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.siyuan.enjoyreading.ui.activity.pcenter.SettingLeavingMessage"
+            android:name=".ui.activity.pcenter.SettingLeavingMessage"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.siyuan.enjoyreading.ui.activity.pcenter.SettingsMyInfoActivity"
+            android:name=".ui.activity.pcenter.SettingsMyInfoActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.siyuan.enjoyreading.ui.activity.login.PassWordLoginActivity"
+            android:name=".ui.activity.login.PassWordLoginActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.siyuan.enjoyreading.ui.activity.login.SecretLoginActivity"
+            android:name=".ui.activity.login.SecretLoginActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.siyuan.enjoyreading.ui.common.BigImagePagerActivity"
+            android:name=".ui.common.BigImagePagerActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.siyuan.enjoyreading.ui.activity.VideoListActivity"
+            android:name=".ui.activity.VideoListActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.siyuan.enjoyreading.ui.activity.login.CreateAccountActivity"
+            android:name=".ui.activity.login.CreateAccountActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.siyuan.enjoyreading.ui.activity.pcenter.PersonalWallet"
+            android:name=".ui.activity.pcenter.PersonalWallet"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.siyuan.enjoyreading.ui.activity.KnowledgeDetailActivity"
+            android:name=".ui.activity.KnowledgeDetailActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait" />
     </application>

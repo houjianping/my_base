@@ -14,12 +14,10 @@ public class VideoListPresenterImpl extends IVideoListPresenter.Presenter {
         mModel.getVideoListItems(mContext, 1).subscribe(new Subscriber<List<VideoItem>>() {
             @Override
             public void onCompleted() {
-                ToastUtils.show("--1--onCompleted--1-");
             }
             @Override
             public void onError(Throwable e) {
                 e.printStackTrace();
-                ToastUtils.show("--1--onError--1-");
             }
 
             @Override
