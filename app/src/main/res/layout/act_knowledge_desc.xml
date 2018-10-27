@@ -182,15 +182,15 @@
                     android:layout_marginTop="10dp"
                     android:orientation="vertical">
 
-                    <com.scwang.refreshlayout.widget.UserCommentView
+                    <com.siyuan.enjoyreading.widget.UserCommentView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" />
 
-                    <com.scwang.refreshlayout.widget.UserCommentView
+                    <com.siyuan.enjoyreading.widget.UserCommentView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" />
 
-                    <com.scwang.refreshlayout.widget.UserCommentView
+                    <com.siyuan.enjoyreading.widget.UserCommentView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" />
                 </LinearLayout>

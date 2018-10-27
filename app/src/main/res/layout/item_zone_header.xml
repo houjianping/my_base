@@ -16,7 +16,7 @@
             android:scaleType="centerCrop"
             android:src="@drawable/bgkobe"
             android:visibility="visible" />
-        <com.scwang.refreshlayout.widget.WaveView
+        <com.siyuan.enjoyreading.widget.WaveView
             android:id="@+id/wave_view"
             android:layout_width="match_parent"
             android:layout_height="15dp"
