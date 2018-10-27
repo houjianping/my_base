@@ -7,7 +7,7 @@ import com.androidapp.activity.BaseActivity;
 import com.androidapp.widget.LoadingDialog;
 import com.siyuan.enjoyreading.R;
 import com.siyuan.enjoyreading.api.Urls;
-import com.siyuan.enjoyreading.ui.common.YuedanWebActivity;
+import com.siyuan.enjoyreading.ui.activity.currency.YuedanWebActivity;
 
 public class SettingAboutControl extends BaseActivity {
 

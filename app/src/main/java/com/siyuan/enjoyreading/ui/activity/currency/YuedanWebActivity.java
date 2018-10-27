@@ -1,4 +1,4 @@
-package com.siyuan.enjoyreading.ui.common;
+package com.siyuan.enjoyreading.ui.activity.currency;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

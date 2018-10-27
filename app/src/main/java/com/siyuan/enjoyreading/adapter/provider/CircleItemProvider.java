@@ -14,7 +14,7 @@ import com.siyuan.enjoyreading.R;
 import com.siyuan.enjoyreading.adapter.MultipleItemQuickAdapter;
 import com.siyuan.enjoyreading.entity.MultipleEntity;
 import com.siyuan.enjoyreading.entity.circle.CircleItem;
-import com.siyuan.enjoyreading.ui.common.BigImagePagerActivity;
+import com.siyuan.enjoyreading.ui.activity.currency.PhotoViewerActivity;
 import com.siyuan.enjoyreading.widget.ExpandableTextView;
 import com.siyuan.enjoyreading.widget.MultiImageView;
 
@@ -54,7 +54,7 @@ public class CircleItemProvider extends BaseItemProvider<MultipleEntity,BaseView
             multiImageView.setOnItemClickListener(new MultiImageView.OnItemClickListener() {
                 @Override
                 public void onItemClick(View view, int position) {
-                    BigImagePagerActivity.startImagePagerActivity((Activity) mContext, photos, position);
+                    PhotoViewerActivity.startPhotoViewerActivity((Activity) mContext, photos, position);
                 }
             });
         } else {

@@ -10,7 +10,7 @@ import com.androidapp.share.bean.ShareEnum;
 import com.androidapp.share.util.ShareUtil;
 import com.androidapp.widget.CustomAlertDialog;
 import com.siyuan.enjoyreading.R;
-import com.siyuan.enjoyreading.ui.common.YuedanWebActivity;
+import com.siyuan.enjoyreading.ui.activity.currency.YuedanWebActivity;
 
 import static com.siyuan.enjoyreading.api.Urls.H5.FEEDBACK_CONTROL;
 

@@ -1,4 +1,4 @@
-package com.siyuan.enjoyreading.ui.common;
+package com.siyuan.enjoyreading.ui.activity.currency;
 
 import android.app.Activity;
 import android.content.Context;
@@ -20,7 +20,7 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 
 import com.androidapp.activity.BaseActivity;
-import com.androidapp.widget.AppViewPager;
+import com.androidapp.utils.ScreenUtil;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.DataSource;
 import com.bumptech.glide.load.engine.GlideException;
@@ -34,20 +34,11 @@ import com.siyuan.enjoyreading.R;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BigImagePagerActivity extends BaseActivity {
+public class PhotoViewerActivity extends BaseActivity {
     public static final String INTENT_IMGURLS = "imgurls";
     public static final String INTENT_POSITION = "position";
     private List<View> guideViewList = new ArrayList<View>();
     private LinearLayout guideGroup;
-
-    public static void startImagePagerActivity(Activity activity, List<String> imgUrls, int position) {
-        Intent intent = new Intent(activity, BigImagePagerActivity.class);
-        intent.putStringArrayListExtra(INTENT_IMGURLS, new ArrayList<String>(imgUrls));
-        intent.putExtra(INTENT_POSITION, position);
-        activity.startActivity(intent);
-        activity.overridePendingTransition(R.anim.fade_in,
-                R.anim.fade_out);
-    }
 
     /**
      * 监听返回键
@@ -59,8 +50,8 @@ public class BigImagePagerActivity extends BaseActivity {
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
-            BigImagePagerActivity.this.finish();
-            BigImagePagerActivity.this.overridePendingTransition(R.anim.fade_in,
+            PhotoViewerActivity.this.finish();
+            PhotoViewerActivity.this.overridePendingTransition(R.anim.fade_in,
                     R.anim.fade_out);
             return true;
         }
@@ -74,7 +65,7 @@ public class BigImagePagerActivity extends BaseActivity {
 
     @Override
     public void initView() {
-        ViewPager viewPager = (AppViewPager) findViewById(R.id.pager);
+        ViewPager viewPager = (ViewPager) findViewById(R.id.pager);
         guideGroup = findViewById(R.id.guideGroup);
 
         int startPos = getIntent().getIntExtra(INTENT_POSITION, 0);
@@ -116,9 +107,9 @@ public class BigImagePagerActivity extends BaseActivity {
                 View view = new View(this);
                 view.setBackgroundResource(R.drawable.selector_guide_bg);
                 view.setSelected(i == startPos);
-                LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(12,
-                        12);
-                layoutParams.setMargins(10, 0, 0, 0);
+                LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ScreenUtil.dip2px(mContext, 6),
+                        ScreenUtil.dip2px(mContext, 6));
+                layoutParams.setMargins(ScreenUtil.dip2px(mContext, 5), 0, 0, 0);
                 guideGroup.addView(view, layoutParams);
                 guideViewList.add(view);
             }
@@ -159,14 +150,14 @@ public class BigImagePagerActivity extends BaseActivity {
                 imageView.setOnPhotoTapListener(new OnPhotoTapListener() {
                     @Override
                     public void onPhotoTap(ImageView view, float x, float y) {
-                        BigImagePagerActivity.this.finish();
+                        PhotoViewerActivity.this.finish();
                     }
                 });
 
                 //loading
                 final ProgressBar loading = new ProgressBar(context);
-                FrameLayout.LayoutParams loadingLayoutParams = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
-                        ViewGroup.LayoutParams.WRAP_CONTENT);
+                FrameLayout.LayoutParams loadingLayoutParams = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+                        ViewGroup.LayoutParams.MATCH_PARENT);
                 loadingLayoutParams.gravity = Gravity.CENTER;
                 loading.setLayoutParams(loadingLayoutParams);
                 ((FrameLayout) view).addView(loading);
@@ -213,6 +204,15 @@ public class BigImagePagerActivity extends BaseActivity {
         public Parcelable saveState() {
             return null;
         }
+    }
+
+    public static void startPhotoViewerActivity(Activity activity, List<String> imgUrls, int position) {
+        Intent intent = new Intent(activity, PhotoViewerActivity.class);
+        intent.putStringArrayListExtra(INTENT_IMGURLS, new ArrayList<String>(imgUrls));
+        intent.putExtra(INTENT_POSITION, position);
+        activity.startActivity(intent);
+        activity.overridePendingTransition(R.anim.fade_in,
+                R.anim.fade_out);
     }
 }
 

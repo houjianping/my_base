@@ -1,4 +1,4 @@
-package com.siyuan.enjoyreading.ui.coll;
+package com.siyuan.enjoyreading.ui.fragment.base;
 
 import android.content.Context;
 import android.os.Bundle;

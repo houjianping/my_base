@@ -12,7 +12,7 @@ import android.widget.TextView;
 import com.androidapp.activity.BaseActivity;
 import com.bumptech.glide.Glide;
 import com.siyuan.enjoyreading.R;
-import com.siyuan.enjoyreading.ui.common.YuedanWebActivity;
+import com.siyuan.enjoyreading.ui.activity.currency.YuedanWebActivity;
 
 public class SplashActivity extends BaseActivity {
 

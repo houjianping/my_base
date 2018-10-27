@@ -40,7 +40,7 @@
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ui.common.YuedanWebActivity"
+            android:name=".ui.activity.currency.YuedanWebActivity"
             android:configChanges="orientation|keyboardHidden|screenSize" />
         <activity
             android:name=".ui.activity.SocializCircleActivity"
@@ -51,7 +51,7 @@
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ui.activity.SimplePlayer"
+            android:name=".ui.activity.currency.SimplePlayer"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait" />
         <activity
@@ -103,7 +103,7 @@
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ui.common.BigImagePagerActivity"
+            android:name=".ui.activity.currency.PhotoViewerActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait" />
         <activity

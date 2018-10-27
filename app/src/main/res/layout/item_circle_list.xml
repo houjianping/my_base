@@ -94,13 +94,6 @@
         android:layout_marginBottom="5dp"
         android:orientation="vertical">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="一眨眼假期就快结束了，估计不少学生党都不情愿回学校有木有！不过在学校除了上课之外，宿舍生活也可以丰富多彩！不少学生党吐槽学校生活各种不方便，那是你还没准备好宿舍神器！"
-            android:textColor="#FF666666"
-            android:textSize="14sp"
-            />
         <com.siyuan.enjoyreading.widget.ExpandableTextView
             android:id="@+id/contentTv"
             android:layout_width="match_parent"

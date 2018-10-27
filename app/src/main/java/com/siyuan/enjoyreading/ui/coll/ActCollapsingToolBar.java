@@ -21,6 +21,7 @@ import com.androidapp.filter.FilterHeaderItem;
 import com.androidapp.filter.FilterView;
 import com.androidapp.filter.multiple.bean.MultiBean;
 import com.siyuan.enjoyreading.R;
+import com.siyuan.enjoyreading.ui.fragment.base.ListFragment;
 
 import java.util.ArrayList;
 import java.util.List;

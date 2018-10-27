@@ -27,7 +27,7 @@ import com.siyuan.enjoyreading.R;
 import com.siyuan.enjoyreading.adapter.MultipleItemQuickAdapter;
 import com.siyuan.enjoyreading.api.ApiConfig;
 import com.siyuan.enjoyreading.entity.VideoItem;
-import com.siyuan.enjoyreading.ui.activity.SimplePlayer;
+import com.siyuan.enjoyreading.ui.activity.currency.SimplePlayer;
 
 import java.util.ArrayList;
 import java.util.List;

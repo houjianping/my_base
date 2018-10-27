@@ -1,4 +1,4 @@
-package com.siyuan.enjoyreading.ui.activity;
+package com.siyuan.enjoyreading.ui.activity.currency;
 
 import android.content.Context;
 import android.content.Intent;
