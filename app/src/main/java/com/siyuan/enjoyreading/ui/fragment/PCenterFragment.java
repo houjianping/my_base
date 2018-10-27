@@ -20,10 +20,10 @@ import com.siyuan.enjoyreading.api.Urls;
 import com.siyuan.enjoyreading.ui.activity.SocializCircleActivity;
 import com.siyuan.enjoyreading.ui.activity.login.PassWordLoginActivity;
 import com.siyuan.enjoyreading.ui.activity.pcenter.PersonalWallet;
-import com.siyuan.enjoyreading.ui.activity.pcenter.SettingsDownloadActivity;
 import com.siyuan.enjoyreading.ui.activity.pcenter.SettingActivity;
 import com.siyuan.enjoyreading.ui.activity.pcenter.SettingFavorite;
 import com.siyuan.enjoyreading.ui.activity.pcenter.SettingLeavingMessage;
+import com.siyuan.enjoyreading.ui.activity.pcenter.SettingsDownloadActivity;
 import com.siyuan.enjoyreading.ui.activity.pcenter.SettingsMyInfoActivity;
 import com.siyuan.enjoyreading.ui.common.YuedanWebActivity;
 import com.siyuan.enjoyreading.util.GlideCircleTransform;
@@ -87,17 +87,6 @@ public class PCenterFragment extends BaseTabFragment {
                 dialog.show();
             }
         });
-        view.findViewById(R.id.my_redpack).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                LoadingDialog.Builder loadBuilder = new LoadingDialog.Builder(getContext())
-                        .setMessage("加载中...")
-                        .setCancelable(true)
-                        .setCancelOutside(true);
-                LoadingDialog dialog = loadBuilder.create();
-                dialog.show();
-            }
-        });
 
         view.findViewById(R.id.socializcircle).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -117,6 +106,7 @@ public class PCenterFragment extends BaseTabFragment {
         view.findViewById(R.id.setting_inviting_friends).setOnClickListener(mOnClickListener);
         view.findViewById(R.id.ivSettingAvatar).setOnClickListener(mOnClickListener);
         view.findViewById(R.id.my_redpack).setOnClickListener(mOnClickListener);
+        view.findViewById(R.id.ll_userinfo_area).setOnClickListener(mOnClickListener);
     }
 
     private View.OnClickListener mOnClickListener = new View.OnClickListener() {
@@ -127,7 +117,12 @@ public class PCenterFragment extends BaseTabFragment {
                     startActivity(new Intent(mContext, SettingActivity.class));
                     break;
                 case R.id.my_redpack:
-                    startActivity(new Intent(mContext, PassWordLoginActivity.class));
+                    LoadingDialog.Builder loadBuilder = new LoadingDialog.Builder(getContext())
+                            .setMessage("加载中...")
+                            .setCancelable(true)
+                            .setCancelOutside(true);
+                    LoadingDialog dialog = loadBuilder.create();
+                    dialog.show();
                     break;
                 case R.id.setting_download:
                     startActivity(new Intent(mContext, SettingsDownloadActivity.class));
@@ -146,6 +141,9 @@ public class PCenterFragment extends BaseTabFragment {
                     break;
                 case R.id.ivSettingAvatar:
                     startActivity(new Intent(mContext, SettingsMyInfoActivity.class));
+                    break;
+                case R.id.ll_userinfo_area:
+                    startActivity(new Intent(mContext, PassWordLoginActivity.class));
                     break;
             }
         }
