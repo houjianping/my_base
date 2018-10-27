@@ -36,8 +36,8 @@ public class CircleItemProvider extends BaseItemProvider<MultipleEntity,BaseView
     public void convert(BaseViewHolder viewHolder, MultipleEntity multipleEntity, int position) {
         CircleItem item = (CircleItem) multipleEntity;
         viewHolder.setText(R.id.nameTv, item.getNickName())
-                .setText(R.id.timeTv, TimeUtil.getfriendlyTime(item.getCreateTime()))
-                .setText(R.id.tv_address_or_distance, "广州 <7KM").addOnClickListener(R.id.movie_item);
+                .setText(R.id.timeTv, "3小时前")
+                .setText(R.id.tv_address_or_distance, "北京海淀距您0.35公里").addOnClickListener(R.id.movie_item);
         ExpandableTextView expandableTextView = viewHolder.getView(R.id.contentTv);
         expandableTextView.setText(item.getContent());
         ImageLoaderUtils.displayRound(mContext, (ImageView) viewHolder.getView(R.id.headIv), "http://d.hiphotos.baidu.com/image/pic/item/e4dde71190ef76c6e453882a9f16fdfaaf516729.jpg");

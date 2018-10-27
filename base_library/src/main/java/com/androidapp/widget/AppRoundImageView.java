@@ -2,13 +2,16 @@ package com.androidapp.widget;
 
 import android.content.Context;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Path;
+import android.graphics.PorterDuff;
 import android.os.Build;
 import android.support.v7.widget.AppCompatImageView;
 import android.util.AttributeSet;
+import android.view.MotionEvent;
 import android.view.View;
 
-public class AppRoundImageView extends AppCompatImageView {
+public class AppRoundImageView extends AppCompatImageView implements View.OnTouchListener{
 
     private static final int BORDER_WIDTH = 12;
     private float width, height;
@@ -58,5 +61,21 @@ public class AppRoundImageView extends AppCompatImageView {
             canvas.clipPath(path);
         }
         super.onDraw(canvas);
+    }
+
+    @Override
+    public boolean onTouch(View v, MotionEvent event) {
+        switch (event.getAction()) {
+            case MotionEvent.ACTION_DOWN:  // 按下时图像变灰
+                setColorFilter(Color.GRAY, PorterDuff.Mode.MULTIPLY);
+                break;
+            case MotionEvent.ACTION_UP:   // 手指离开或取消操作时恢复原色
+            case MotionEvent.ACTION_CANCEL:
+                setColorFilter(Color.TRANSPARENT);
+                break;
+            default:
+                break;
+        }
+        return false;
     }
 }

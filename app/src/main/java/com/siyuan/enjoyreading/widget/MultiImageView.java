@@ -10,6 +10,7 @@ import android.widget.LinearLayout;
 
 import com.androidapp.utils.DensityUtil;
 import com.androidapp.utils.ImageLoaderUtils;
+import com.androidapp.widget.AppRoundImageView;
 import com.siyuan.enjoyreading.R;
 
 import java.io.File;
@@ -30,14 +31,14 @@ public class MultiImageView extends LinearLayout {
      * 长度 单位为Pixel
      **/
     private int pxOneMaxWandH;  // 单张图最大允许宽高
-    private int pxMoreWandH = 0;// 多张图的宽高
+    private int pxTwoH;  // 单张图最大允许宽高
+    private int pxThreeH = 0;// 多张图的宽高
     private int pxImagePadding = 0;
 
     private int MAX_PER_ROW_COUNT = 3;// 每行显示最大数
 
-    private LayoutParams onePicPara;
-    private LayoutParams morePara, moreParaColumnFirst;
-    private LayoutParams rowPara;
+    private LayoutParams oneParams;
+    private LayoutParams moreTwo, threeParams;
 
     private OnItemClickListener mOnItemClickListener;
 
@@ -62,7 +63,8 @@ public class MultiImageView extends LinearLayout {
         imagesList = lists;
 
         if (MAX_WIDTH > 0) {
-            pxMoreWandH = (MAX_WIDTH - pxImagePadding * 2) / 3; //解决右侧图片和内容对不齐问题
+            pxThreeH = (MAX_WIDTH - pxImagePadding * 3) / 3; //解决右侧图片和内容对不齐问题
+            pxTwoH = (MAX_WIDTH - pxImagePadding * 2) / 2; //解决右侧图片和内容对不齐问题
             pxOneMaxWandH = MAX_WIDTH * 2 / 3;
             initImageLayoutParams();
         }
@@ -114,14 +116,13 @@ public class MultiImageView extends LinearLayout {
     private void initImageLayoutParams() {
         int wrap = LayoutParams.WRAP_CONTENT;
         int match = LayoutParams.MATCH_PARENT;
-        //pxOneMaxWandH
-        onePicPara = new LayoutParams(match, wrap);
+        oneParams = new LayoutParams(match, wrap);
 
-        moreParaColumnFirst = new LayoutParams(pxMoreWandH, pxMoreWandH);
-        morePara = new LayoutParams(pxMoreWandH, pxMoreWandH);
-        morePara.setMargins(pxImagePadding, 0, 0, 0);
+        threeParams = new LayoutParams(pxThreeH, pxThreeH);
+        threeParams.setMargins(pxImagePadding, 0, pxImagePadding, 0);
 
-        rowPara = new LayoutParams(match, wrap);
+        moreTwo = new LayoutParams(pxTwoH, pxTwoH);
+        moreTwo.setMargins(pxImagePadding, 0, pxImagePadding, 0);
     }
 
     // 根据imageView的数量初始化不同的View布局,还要为每一个View作点击效果
@@ -139,7 +140,7 @@ public class MultiImageView extends LinearLayout {
         }
 
         if (imagesList.size() == 1) {
-            addView(createImageView(0, false));
+            addView(createImageView(0, 1));
         } else {
             int allCount = imagesList.size();
             if (allCount == 4 ) {
@@ -153,7 +154,7 @@ public class MultiImageView extends LinearLayout {
                 LinearLayout rowLayout = new LinearLayout(getContext());
                 rowLayout.setOrientation(LinearLayout.HORIZONTAL);
 
-                rowLayout.setLayoutParams(rowPara);
+                rowLayout.setLayoutParams(oneParams);
                 if (rowCursor != 0) {
                     rowLayout.setPadding(0, pxImagePadding, 0, 0);
                 }
@@ -168,23 +169,26 @@ public class MultiImageView extends LinearLayout {
                 int rowOffset = rowCursor * MAX_PER_ROW_COUNT;// 行偏移
                 for (int columnCursor = 0; columnCursor < columnCount; columnCursor++) {
                     int position = columnCursor + rowOffset;
-                    rowLayout.addView(createImageView(position, true));
+                    rowLayout.addView(createImageView(position, MAX_PER_ROW_COUNT));
                 }
             }
         }
     }
 
-    private ImageView createImageView(int position, final boolean isMultiImage) {
+    private ImageView createImageView(int position, int column) {
         String url = imagesList.get(position);
-        ImageView imageView = new ColorFilterImageView(getContext());
-        if (isMultiImage) {
-            imageView.setScaleType(ScaleType.CENTER_CROP);
-            imageView.setLayoutParams(position % MAX_PER_ROW_COUNT == 0 ? moreParaColumnFirst : morePara);
-        } else {
+        AppRoundImageView imageView = new AppRoundImageView(getContext());
+        if (column == 1) {
             imageView.setAdjustViewBounds(true);
             imageView.setScaleType(ScaleType.CENTER_CROP);
             imageView.setMaxHeight(pxOneMaxWandH);
-            imageView.setLayoutParams(onePicPara);
+            imageView.setLayoutParams(oneParams);
+        } else if (column == 2) {
+            imageView.setScaleType(ScaleType.CENTER_CROP);
+            imageView.setLayoutParams(moreTwo);
+        } else {
+            imageView.setScaleType(ScaleType.CENTER_CROP);
+            imageView.setLayoutParams(threeParams);
         }
 
         imageView.setTag(R.string.zone_img_position, position);

@@ -86,7 +86,6 @@ public class VideoListActivity extends MvpBaseListActivity<VideoListModelLogic, 
 
     @Override
     public void onVideoListUpdate(List<VideoItem> circleItemList) {
-        ToastUtils.show("--1-----");
         mAdapter.replaceData(circleItemList);
     }
 

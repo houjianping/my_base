@@ -22,7 +22,6 @@ public class VideoListPresenterImpl extends IVideoListPresenter.Presenter {
 
             @Override
             public void onNext(List<VideoItem> result) {
-                ToastUtils.show("--1----1-");
                 if (result != null) {
                     try {
                         mView.onVideoListUpdate(result);
