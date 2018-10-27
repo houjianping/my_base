@@ -39,9 +39,6 @@ public class SocializCircleActivity extends MvpBaseListActivity<ZoneModelLogic, 
                     @Override
                     public void run() {
                         if (mAdapter.getItemCount() < 2) {
-                            /*List<Movie> movies = new Gson().fromJson(ApiConfig.JSON_MOVIES, new TypeToken<ArrayList<Movie>>() {
-                            }.getType());
-                            mAdapter.replaceData(movies);*/
                         }
                         refreshLayout.finishRefresh();
                     }
@@ -55,9 +52,6 @@ public class SocializCircleActivity extends MvpBaseListActivity<ZoneModelLogic, 
         return new OnLoadMoreListener() {
             @Override
             public void onLoadMore(@NonNull RefreshLayout refreshLayout) {
-                /*final List<Movie> movies = new Gson().fromJson(ApiConfig.JSON_MOVIES, new TypeToken<ArrayList<Movie>>() {
-                }.getType());
-                mAdapter.addData(movies);*/
                 refreshLayout.finishLoadMoreWithNoMoreData();
             }
         };

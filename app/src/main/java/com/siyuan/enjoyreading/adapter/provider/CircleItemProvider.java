@@ -11,13 +11,10 @@ import com.androidapp.adapter.provider.BaseItemProvider;
 import com.androidapp.utils.ImageLoaderUtils;
 import com.androidapp.utils.TimeUtil;
 import com.siyuan.enjoyreading.R;
-import com.siyuan.enjoyreading.adapter.CommentAdapter;
-import com.siyuan.enjoyreading.entity.MultipleEntity;
 import com.siyuan.enjoyreading.adapter.MultipleItemQuickAdapter;
+import com.siyuan.enjoyreading.entity.MultipleEntity;
 import com.siyuan.enjoyreading.entity.circle.CircleItem;
-import com.siyuan.enjoyreading.entity.circle.CommentItem;
 import com.siyuan.enjoyreading.ui.common.BigImagePagerActivity;
-import com.siyuan.enjoyreading.widget.CommentListView;
 import com.siyuan.enjoyreading.widget.ExpandableTextView;
 import com.siyuan.enjoyreading.widget.MultiImageView;
 
@@ -62,27 +59,6 @@ public class CircleItemProvider extends BaseItemProvider<MultipleEntity,BaseView
             });
         } else {
         }
-
-        CommentListView commentList = viewHolder.getView(R.id.commentList);
-        CommentAdapter commentAdapter = new CommentAdapter(mContext);
-        commentList.setAdapter(commentAdapter);
-
-        final List<CommentItem> commentsDatas = item.getReplys();
-        commentAdapter.setDatas(commentsDatas);
-        commentAdapter.notifyDataSetChanged();
-        commentList.setOnItemClick(new CommentListView.OnItemClickListener() {
-            @Override
-            public void onItemClick(int commentPosition) {
-                CommentItem commentItem = commentsDatas.get(commentPosition);
-            }
-        });
-        commentList.setOnItemLongClick(new CommentListView.OnItemLongClickListener() {
-            @Override
-            public void onItemLongClick(int commentPosition) {
-                CommentItem commentItem = commentsDatas.get(commentPosition);
-            }
-        });
-        viewHolder.getView(R.id.digCommentBody).setVisibility(commentsDatas.size() > 0 ? View.VISIBLE : View.GONE);
     }
 
     @Override

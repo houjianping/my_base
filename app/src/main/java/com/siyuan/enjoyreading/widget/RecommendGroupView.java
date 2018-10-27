@@ -40,7 +40,7 @@ public class RecommendGroupView extends LinearLayout {
     private void initView() {
         mBaseView = LayoutInflater.from(getContext()).inflate(R.layout.index_recommend_group, this);
         PagedGridView pagedGridView = mBaseView.findViewById(R.id.recommend_group);
-        List<Movie> movies = new Gson().fromJson(ApiConfig.JSON_MOVIES_SHORT, new TypeToken<ArrayList<Movie>>() {
+        List<Movie> movies = new Gson().fromJson(ApiConfig.JSON_MOVIES, new TypeToken<ArrayList<Movie>>() {
         }.getType());
         pagedGridView.setAdapter(new RecommendItemAdapter(getContext(), movies));
         pagedGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {

@@ -4,13 +4,21 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="100dp"
-    android:gravity="center_vertical">
+    android:gravity="center">
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/loading_lottie"
-        android:layout_width="wrap_content"
-        android:layout_height="100dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         android:layout_gravity="center_horizontal"
         app:lottie_fileName="man_and_travel.json"
         app:lottie_loop="true"/>
+    <TextView
+        android:layout_marginBottom="10dp"
+        android:id="@+id/loading_title"
+        android:gravity="center"
+        android:layout_gravity="center_vertical"
+        android:textSize="@dimen/font_16"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />
 </LinearLayout>

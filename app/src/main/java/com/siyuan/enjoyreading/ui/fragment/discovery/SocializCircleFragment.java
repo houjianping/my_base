@@ -38,7 +38,6 @@ public class SocializCircleFragment extends LazyLoadFragment {
             }
             mAdapter.replaceData(circleItems);
         }
-
     }
 
     @Override

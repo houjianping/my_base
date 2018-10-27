@@ -16,6 +16,7 @@ import com.androidapp.utils.ToastUtils;
 import com.facebook.stetho.Stetho;
 import com.siyuan.enjoyreading.api.request.OkGoRequest;
 import com.siyuan.enjoyreading.util.DynamicTimeFormat;
+import com.siyuan.enjoyreading.widget.MyRefreshLottieHeader;
 
 import java.io.File;
 
@@ -30,8 +31,9 @@ public class App extends Application {
         SmartRefreshLayout.setDefaultRefreshHeaderCreator(new DefaultRefreshHeaderCreator() {
             @Override
             public RefreshHeader createRefreshHeader(@NonNull Context context, @NonNull RefreshLayout layout) {
-                layout.setPrimaryColorsId(R.color.tab_panel_bg, R.color.colorTextTitle);//全局设置主题颜色
-                return new ClassicsHeader(context).setTimeFormat(new DynamicTimeFormat("更新于 %s"));
+//                layout.setPrimaryColorsId(R.color.tab_panel_bg, R.color.colorTextTitle);//全局设置主题颜色
+//                return new ClassicsHeader(context).setTimeFormat(new DynamicTimeFormat("更新于 %s"));
+                return new MyRefreshLottieHeader(context);
             }
         });
     }
