@@ -15,6 +15,8 @@ import com.androidapp.fragment.LazyLoadFragment;
 import com.androidapp.pagedgridview.PagedGridView;
 import com.siyuan.enjoyreading.R;
 import com.siyuan.enjoyreading.adapter.RecommendPrasiseAdapter;
+import com.siyuan.enjoyreading.api.ApiConfig;
+import com.siyuan.enjoyreading.entity.BannerItem;
 import com.siyuan.enjoyreading.entity.RecommendPrasise;
 import com.siyuan.enjoyreading.widget.HeaderView;
 import com.siyuan.enjoyreading.widget.RecommendGroupView;
@@ -23,11 +25,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RecommendFragment extends LazyLoadFragment {
-    public static List<BannerItem> BANNER_ITEMS = new ArrayList<BannerItem>() {{
-        add(new BannerItem("最后的骑士", R.mipmap.image_movie_header_48621499931969370));
-        add(new BannerItem("三生三世十里桃花", R.mipmap.image_movie_header_12981501221820220));
-        add(new BannerItem("豆福传", R.mipmap.image_movie_header_12231501221682438));
-    }};
 
     @Override
     protected void loadData(boolean force) {
@@ -49,7 +46,7 @@ public class RecommendFragment extends LazyLoadFragment {
     protected void initView(View view, Bundle savedInstanceState) {
         Banner banner = view.findViewById(R.id.recommend_banner);
         banner.setImageLoader(new GlideImageLoader());
-        banner.setImages(BANNER_ITEMS);
+        banner.setImages(ApiConfig.BANNER_ITEMS);
         banner.setOnBannerListener(new OnBannerListener() {
             @Override
             public void OnBannerClick(int i) {
@@ -84,17 +81,6 @@ public class RecommendFragment extends LazyLoadFragment {
     @Override
     protected int getLayoutId() {
         return R.layout.index_recommend;
-    }
-
-    public static class BannerItem {
-        public int pic;
-        public String title;
-        public BannerItem() {
-        }
-        public BannerItem(String title, int pic) {
-            this.pic = pic;
-            this.title = title;
-        }
     }
 
     public class GlideImageLoader extends ImageLoader {

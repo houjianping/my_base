@@ -1,8 +1,20 @@
 package com.siyuan.enjoyreading.api;
 
+import com.siyuan.enjoyreading.R;
+import com.siyuan.enjoyreading.entity.BannerItem;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class ApiConfig {
+
+    public static List<BannerItem> BANNER_ITEMS = new ArrayList<BannerItem>() {{
+        add(new BannerItem("最后的骑士", R.mipmap.image_movie_header_48621499931969370));
+        add(new BannerItem("三生三世十里桃花", R.mipmap.image_movie_header_12981501221820220));
+        add(new BannerItem("豆福传", R.mipmap.image_movie_header_12231501221682438));
+    }};
+
     public static String JSON_MOVIES = "[" +
             "{\"actors\":\"丹尼斯·威缇可宁|Emma|Nikki|Jiayao|Wang|Maggie|Mao|Gang-yun|Sa\",\"filmName\":\"神灵寨\",\"grade\":\"5.0\",\"picaddr\":\"http://app.infunpw.com/commons/images/cinema/cinema_films/3823.jpg\",\"releasedate\":\"2017-07-31\",\"shortinfo\":\"父亲忽病危 新娘真够黑\",\"type\":\"剧情|喜剧\"}," +
             "{\"actors\":\"刘亦菲|杨洋|彭子苏|严屹宽|罗晋\",\"filmName\":\"三生三世十里桃花\",\"grade\":\"9.2\",\"picaddr\":\"http://app.infunpw.com/commons/images/cinema/cinema_films/3566.jpg\",\"releasedate\":\"2017-08-03\",\"shortinfo\":\"虐心姐弟恋 颜值要逆天\",\"type\":\"剧情|爱情|奇幻\"}," +

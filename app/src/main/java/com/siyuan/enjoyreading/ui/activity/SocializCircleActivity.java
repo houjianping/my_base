@@ -72,12 +72,6 @@ public class SocializCircleActivity extends MvpBaseListActivity<ZoneModelLogic, 
         return mAdapter;
     }
 
-    public static List<BannerItem> BANNER_ITEMS = new ArrayList<BannerItem>() {{
-        add(new BannerItem("最后的骑士", R.mipmap.image_movie_header_48621499931969370));
-        add(new BannerItem("三生三世十里桃花", R.mipmap.image_movie_header_12981501221820220));
-        add(new BannerItem("豆福传", R.mipmap.image_movie_header_12231501221682438));
-    }};
-
     private MultipleItemQuickAdapter mAdapter;
 
     @Override

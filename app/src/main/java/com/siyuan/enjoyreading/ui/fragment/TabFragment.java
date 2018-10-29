@@ -40,11 +40,6 @@ import static android.support.v7.widget.DividerItemDecoration.VERTICAL;
 
 public class TabFragment extends LazyLoadFragment {
 
-    public static List<BannerItem> BANNER_ITEMS = new ArrayList<BannerItem>() {{
-        add(new BannerItem("最后的骑士", R.mipmap.image_movie_header_48621499931969370));
-        add(new BannerItem("三生三世十里桃花", R.mipmap.image_movie_header_12981501221820220));
-        add(new BannerItem("豆福传", R.mipmap.image_movie_header_12231501221682438));
-    }};
     final List<Movie> movies = new Gson().fromJson(ApiConfig.JSON_MOVIES, new TypeToken<ArrayList<Movie>>() {
     }.getType());
     private MultipleItemQuickAdapter mAdapter;
@@ -83,7 +78,7 @@ public class TabFragment extends LazyLoadFragment {
             View header = LayoutInflater.from(getContext()).inflate(R.layout.listitem_movie_header, recyclerView, false);
             Banner banner = (Banner) header;
             banner.setImageLoader(new GlideImageLoader());
-            banner.setImages(BANNER_ITEMS);
+            banner.setImages(ApiConfig.BANNER_ITEMS);
             banner.setOnBannerListener(new OnBannerListener() {
                 @Override
                 public void OnBannerClick(int i) {

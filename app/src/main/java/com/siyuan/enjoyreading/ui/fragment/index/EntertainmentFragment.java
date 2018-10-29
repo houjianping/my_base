@@ -26,6 +26,7 @@ import com.google.gson.reflect.TypeToken;
 import com.siyuan.enjoyreading.R;
 import com.siyuan.enjoyreading.adapter.MultipleItemQuickAdapter;
 import com.siyuan.enjoyreading.api.ApiConfig;
+import com.siyuan.enjoyreading.entity.BannerItem;
 import com.siyuan.enjoyreading.entity.VideoItem;
 import com.siyuan.enjoyreading.ui.activity.currency.SimplePlayer;
 
@@ -37,12 +38,6 @@ import static android.support.v7.widget.DividerItemDecoration.VERTICAL;
 public class EntertainmentFragment extends LazyLoadFragment {
 
     private MultipleItemQuickAdapter mAdapter;
-
-    public static List<BannerItem> BANNER_ITEMS = new ArrayList<BannerItem>() {{
-        add(new BannerItem("最后的骑士", R.mipmap.image_movie_header_48621499931969370));
-        add(new BannerItem("三生三世十里桃花", R.mipmap.image_movie_header_12981501221820220));
-        add(new BannerItem("豆福传", R.mipmap.image_movie_header_12231501221682438));
-    }};
 
     @Override
     protected void loadData(boolean force) {
@@ -77,7 +72,7 @@ public class EntertainmentFragment extends LazyLoadFragment {
             View header = LayoutInflater.from(getContext()).inflate(R.layout.listitem_movie_header, recyclerView, false);
             Banner banner = (Banner) header;
             banner.setImageLoader(new GlideImageLoader());
-            banner.setImages(BANNER_ITEMS);
+            banner.setImages(ApiConfig.BANNER_ITEMS);
             banner.setOnBannerListener(new OnBannerListener() {
                 @Override
                 public void OnBannerClick(int i) {
@@ -117,19 +112,6 @@ public class EntertainmentFragment extends LazyLoadFragment {
     @Override
     protected int getLayoutId() {
         return R.layout.fragment_tab;
-    }
-
-    public static class BannerItem {
-        public int pic;
-        public String title;
-
-        public BannerItem() {
-        }
-
-        public BannerItem(String title, int pic) {
-            this.pic = pic;
-            this.title = title;
-        }
     }
 
     public class GlideImageLoader extends ImageLoader {
