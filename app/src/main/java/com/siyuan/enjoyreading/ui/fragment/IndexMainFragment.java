@@ -1,6 +1,7 @@
 package com.siyuan.enjoyreading.ui.fragment;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
@@ -9,6 +10,7 @@ import android.view.View;
 import com.androidapp.fragment.BaseTabFragment;
 import com.androidapp.smarttablayout.SmartTabLayout;
 import com.siyuan.enjoyreading.R;
+import com.siyuan.enjoyreading.ui.activity.index.ChannelActivity;
 import com.siyuan.enjoyreading.ui.fragment.index.IndexFragmentAdapter;
 
 public class IndexMainFragment extends BaseTabFragment {
@@ -27,6 +29,13 @@ public class IndexMainFragment extends BaseTabFragment {
         mViewPager.setAdapter(new IndexFragmentAdapter(getFragmentManager()));
         mSmartTabLayout = view.findViewById(R.id.viewpagertab);
         mSmartTabLayout.setViewPager(mViewPager);
+
+        view.findViewById(R.id.chat_view).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getContext(), ChannelActivity.class));
+            }
+        });
     }
 
     @Override

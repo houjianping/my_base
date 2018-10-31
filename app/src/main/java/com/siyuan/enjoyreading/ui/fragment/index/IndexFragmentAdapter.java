@@ -9,7 +9,7 @@ import com.siyuan.enjoyreading.ui.fragment.TabFragment;
 import com.siyuan.enjoyreading.ui.fragment.common.YuedanWebFragment;
 
 public class IndexFragmentAdapter extends FragmentPagerAdapter {
-    private String[] tabs = {"推荐", "娱乐", "H5"};
+    private String[] tabs = {"推荐", "娱乐", "娱乐", "推荐", "娱乐", "娱乐","推荐", "娱乐", "H5"};
 
     public IndexFragmentAdapter(FragmentManager fm) {
         super(fm);
@@ -22,19 +22,17 @@ public class IndexFragmentAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        if (position == 0) {
+        if (tabs[position] .equals("推荐")) {
             return new RecommendFragment();
-        } else if (position == 1) {
+        } else if (tabs[position] .equals("娱乐")) {
             return new EntertainmentFragment();
-        }
-        if (position > 1) {
+        } else {
             Fragment fragment = new YuedanWebFragment();
             Bundle bundle = new Bundle();
             bundle.putString(YuedanWebFragment.KEY_URL, "http://www.sina.com.cn/");
             fragment.setArguments(bundle);
             return fragment;
         }
-        return new TabFragment();
     }
 
     @Override

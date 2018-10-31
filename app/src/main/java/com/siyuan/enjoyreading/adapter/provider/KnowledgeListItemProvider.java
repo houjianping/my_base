@@ -8,6 +8,7 @@ import com.siyuan.enjoyreading.R;
 import com.siyuan.enjoyreading.adapter.MultipleItemQuickAdapter;
 import com.siyuan.enjoyreading.entity.KnowledgeListItem;
 import com.siyuan.enjoyreading.entity.MultipleEntity;
+import com.siyuan.enjoyreading.util.IntentUtil;
 
 public class KnowledgeListItemProvider extends BaseItemProvider<MultipleEntity,BaseViewHolder> {
 
@@ -32,6 +33,7 @@ public class KnowledgeListItemProvider extends BaseItemProvider<MultipleEntity,B
     @Override
     public void onClick(BaseViewHolder helper, MultipleEntity data, int position) {
         Toast.makeText(mContext, "click", Toast.LENGTH_SHORT).show();
+        mContext.startActivity(IntentUtil.getIntent("{\"page\":\"SettingAbout\",\"type\":1}"));
     }
 
     @Override

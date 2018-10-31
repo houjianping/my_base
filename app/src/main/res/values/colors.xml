@@ -25,4 +25,6 @@
     <color name="transparent">@android:color/transparent</color>
 
     <color name="white">#ffffff</color>
+
+    <color name="red_500">#ef4836</color>
 </resources>

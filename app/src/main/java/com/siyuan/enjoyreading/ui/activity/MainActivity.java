@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentTransaction;
 import android.text.TextUtils;
+import android.view.View;
 
 import com.androidapp.activity.BaseActivity;
 import com.androidapp.tablayout.CommonTabLayout;
@@ -13,6 +14,7 @@ import com.androidapp.tablayout.listener.OnTabSelectListener;
 import com.androidapp.utils.StatusBarUtil;
 import com.androidapp.utils.ToastUtils;
 import com.siyuan.enjoyreading.R;
+import com.siyuan.enjoyreading.ui.activity.index.ChannelActivity;
 import com.siyuan.enjoyreading.ui.fragment.IndexMainFragment;
 import com.siyuan.enjoyreading.ui.fragment.OrderMainFragment;
 import com.siyuan.enjoyreading.ui.fragment.PCenterFragment;
