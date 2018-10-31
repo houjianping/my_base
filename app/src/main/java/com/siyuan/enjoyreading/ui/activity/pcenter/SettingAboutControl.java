@@ -13,7 +13,7 @@ public class SettingAboutControl extends BaseActivity {
 
     @Override
     protected void initContentView(Bundle bundle) {
-        setContentView(R.layout.personal_about);
+        setContentView(R.layout.act_personal_about);
     }
 
     @Override

@@ -94,12 +94,6 @@ public class KnowledgeListFragment extends LazyLoadFragment {
             banner.start();
             mAdapter.addHeaderView(banner, 0);
             mAdapter.openLoadAnimation();
-            mAdapter.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
-                @Override
-                public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
-                    doStartActivity(VideoListActivity.class, null);
-                }
-            });
         }
         recyclerView.setAdapter(mAdapter);
         refreshLayout.setOnRefreshListener(new OnRefreshListener() {

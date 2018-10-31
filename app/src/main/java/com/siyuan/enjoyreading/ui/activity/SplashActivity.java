@@ -57,8 +57,8 @@ public class SplashActivity extends BaseActivity {
 
     @Override
     protected void initContentView(Bundle bundle) {
-        setContentView(R.layout.app_start);
-        mContentView = View.inflate(this, R.layout.app_start, null);
+        setContentView(R.layout.act_splash);
+        mContentView = View.inflate(this, R.layout.act_splash, null);
         setContentView(mContentView);
     }
 

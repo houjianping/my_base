@@ -51,7 +51,7 @@
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ui.activity.currency.SimplePlayer"
+            android:name=".ui.activity.currency.FullPagePlayerActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait" />
         <activity
@@ -119,10 +119,11 @@
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ui.activity.KnowledgeDetailActivity"
+            android:name=".ui.activity.knwoledge.KnowledgeDetailActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait" />
         <activity android:name=".ui.activity.index.ChannelActivity" />
+        <activity android:name=".ui.activity.knwoledge.DetailVideoPlayer" />
     </application>
 
 </manifest>

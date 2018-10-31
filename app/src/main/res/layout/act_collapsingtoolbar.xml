@@ -10,10 +10,10 @@
         android:id="@+id/titlebar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:centerCustomView="@layout/layout_custom_left"
+        app:centerCustomView="@layout/layout_header_left"
         app:centerText="大厅"
         app:centerType="textView"
-        app:rightCustomView="@layout/layout_custom_right"
+        app:rightCustomView="@layout/layout_header_right"
         app:rightType="customView" />
 
     <com.androidapp.widget.AppSwipeRefreshLayout

@@ -31,7 +31,7 @@ public class RoomMainFragment extends BaseTabFragment {
 
     @Override
     protected int getLayoutId() {
-        return R.layout.act_main_test3;
+        return R.layout.act_tab_three;
     }
 
 }

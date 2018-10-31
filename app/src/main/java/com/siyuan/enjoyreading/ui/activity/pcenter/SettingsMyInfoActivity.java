@@ -9,7 +9,7 @@ public class SettingsMyInfoActivity extends BaseActivity {
 
     @Override
     protected void initContentView(Bundle bundle) {
-        setContentView(R.layout.personal_myinfo);
+        setContentView(R.layout.act_personal_myinfo);
     }
 
     @Override

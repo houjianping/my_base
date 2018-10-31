@@ -151,7 +151,7 @@ public class PCenterFragment extends BaseTabFragment {
 
     @Override
     protected int getLayoutId() {
-        return R.layout.personal_center;
+        return R.layout.act_personal_center;
     }
 
     @Override

@@ -20,7 +20,7 @@ public class PassWordLoginActivity extends MvpBaseActivity<LoginModelLogic, Logi
 
     @Override
     protected int getLayoutId() {
-        return R.layout.login_pwd;
+        return R.layout.act_account_login_pwd;
     }
 
     @Override

@@ -16,7 +16,7 @@ import com.siyuan.enjoyreading.R;
 import com.siyuan.enjoyreading.adapter.RecommendItemAdapter;
 import com.siyuan.enjoyreading.api.ApiConfig;
 import com.siyuan.enjoyreading.entity.Movie;
-import com.siyuan.enjoyreading.ui.activity.KnowledgeDetailActivity;
+import com.siyuan.enjoyreading.ui.activity.knwoledge.KnowledgeDetailActivity;
 
 import java.util.ArrayList;
 import java.util.List;

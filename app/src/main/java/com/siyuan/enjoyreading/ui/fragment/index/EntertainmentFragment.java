@@ -28,7 +28,7 @@ import com.siyuan.enjoyreading.adapter.MultipleItemQuickAdapter;
 import com.siyuan.enjoyreading.api.ApiConfig;
 import com.siyuan.enjoyreading.entity.BannerItem;
 import com.siyuan.enjoyreading.entity.VideoItem;
-import com.siyuan.enjoyreading.ui.activity.currency.SimplePlayer;
+import com.siyuan.enjoyreading.ui.activity.currency.FullPagePlayerActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -86,7 +86,7 @@ public class EntertainmentFragment extends LazyLoadFragment {
         mAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                startActivity(SimplePlayer.getIntent(mContext, (VideoItem) mAdapter.getItem(position)));
+                startActivity(FullPagePlayerActivity.getIntent(mContext, (VideoItem) mAdapter.getItem(position)));
             }
         });
         recyclerView.setAdapter(mAdapter);

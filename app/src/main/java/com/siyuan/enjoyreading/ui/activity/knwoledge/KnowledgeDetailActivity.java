@@ -1,4 +1,4 @@
-package com.siyuan.enjoyreading.ui.activity;
+package com.siyuan.enjoyreading.ui.activity.knwoledge;
 
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;

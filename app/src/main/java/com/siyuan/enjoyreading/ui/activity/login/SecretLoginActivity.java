@@ -16,7 +16,7 @@ public class SecretLoginActivity extends MvpBaseActivity<LoginModelLogic, LoginP
 
     @Override
     protected int getLayoutId() {
-        return R.layout.login_sms;
+        return R.layout.act_account_login_sms;
     }
 
     @Override

@@ -8,11 +8,10 @@
         android:id="@+id/titlebar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        titlebar:leftDrawable="@drawable/comm_titlebar_back_normal"
-        titlebar:leftDrawablePadding="0dp"
-        titlebar:leftType="textView"
-        titlebar:centerCustomView="@layout/layout_custom_center"
-        titlebar:centerType="customView"/>
+        titlebar:centerCustomView="@layout/layout_no_indicator_center"
+        titlebar:centerType="customView"
+        titlebar:rightCustomView="@layout/layout_header_right"
+        titlebar:rightType="customView" />
 
     <android.support.v4.view.ViewPager
         android:id="@+id/order_viewpager"

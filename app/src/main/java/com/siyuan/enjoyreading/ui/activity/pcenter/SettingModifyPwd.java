@@ -8,7 +8,7 @@ import com.siyuan.enjoyreading.R;
 public class SettingModifyPwd extends BaseActivity {
     @Override
     protected void initContentView(Bundle bundle) {
-        setContentView(R.layout.personal_modify_pwd);
+        setContentView(R.layout.act_personal_modify_pwd);
     }
 
     @Override

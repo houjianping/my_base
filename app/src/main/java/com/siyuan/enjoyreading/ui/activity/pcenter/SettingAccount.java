@@ -10,7 +10,7 @@ public class SettingAccount extends BaseActivity {
 
     @Override
     protected void initContentView(Bundle bundle) {
-        setContentView(R.layout.personal_account);
+        setContentView(R.layout.act_personal_account);
     }
 
     @Override

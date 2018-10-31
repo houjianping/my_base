@@ -9,7 +9,7 @@ public class PersonalWallet extends BaseActivity {
 
     @Override
     protected void initContentView(Bundle bundle) {
-        setContentView(R.layout.personal_wallet);
+        setContentView(R.layout.act_personal_wallet);
     }
 
     @Override

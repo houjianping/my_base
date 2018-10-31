@@ -1,4 +1,4 @@
-package com.siyuan.enjoyreading.ui.activity.currency;
+package com.siyuan.enjoyreading.ui.activity.knwoledge;
 
 import android.content.Context;
 import android.content.Intent;
@@ -12,14 +12,14 @@ import android.widget.ImageView;
 
 import com.androidapp.activity.BaseActivity;
 import com.bumptech.glide.Glide;
-import com.siyuan.enjoyreading.R;
-import com.siyuan.enjoyreading.entity.VideoItem;
 import com.shuyu.gsyvideoplayer.GSYVideoManager;
 import com.shuyu.gsyvideoplayer.utils.OrientationUtils;
 import com.shuyu.gsyvideoplayer.video.StandardGSYVideoPlayer;
+import com.siyuan.enjoyreading.R;
+import com.siyuan.enjoyreading.entity.VideoItem;
 
 
-public class SimplePlayer extends BaseActivity {
+public class DetailVideoPlayer extends BaseActivity {
 
     public static final String KEY_VIDEO_URL = "video_url";
     public static final String KEY_VIDEO_THUMB = "video_thumb";
@@ -38,7 +38,7 @@ public class SimplePlayer extends BaseActivity {
 
     @Override
     protected void initContentView(Bundle bundle) {
-        setContentView(R.layout.activity_simple_play);
+        setContentView(R.layout.act_knowledge_play);
     }
 
     @Override
@@ -123,7 +123,7 @@ public class SimplePlayer extends BaseActivity {
     }
 
     public static Intent getIntent(Context context, VideoItem videoItem) {
-        Intent intent = new Intent(context, SimplePlayer.class);
+        Intent intent = new Intent(context, DetailVideoPlayer.class);
         intent.putExtra(KEY_VIDEO_URL, videoItem.getMp4_url());
         intent.putExtra(KEY_VIDEO_THUMB, videoItem.getCover());
         intent.putExtra(KEY_VIDEO_TITLE, videoItem.getTitle());

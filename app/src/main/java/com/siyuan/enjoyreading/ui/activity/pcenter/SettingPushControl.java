@@ -8,7 +8,7 @@ import com.siyuan.enjoyreading.R;
 public class SettingPushControl extends BaseActivity {
     @Override
     protected void initContentView(Bundle bundle) {
-        setContentView(R.layout.personal_push_control);
+        setContentView(R.layout.act_personal_push_control);
     }
 
     @Override

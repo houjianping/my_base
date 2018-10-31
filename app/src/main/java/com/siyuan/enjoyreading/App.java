@@ -31,8 +31,6 @@ public class App extends Application {
         SmartRefreshLayout.setDefaultRefreshHeaderCreator(new DefaultRefreshHeaderCreator() {
             @Override
             public RefreshHeader createRefreshHeader(@NonNull Context context, @NonNull RefreshLayout layout) {
-//                layout.setPrimaryColorsId(R.color.tab_panel_bg, R.color.colorTextTitle);//全局设置主题颜色
-//                return new ClassicsHeader(context).setTimeFormat(new DynamicTimeFormat("更新于 %s"));
                 return new MyRefreshLottieHeader(context);
             }
         });

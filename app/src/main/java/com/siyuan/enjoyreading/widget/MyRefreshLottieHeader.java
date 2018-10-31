@@ -16,8 +16,6 @@ import com.androidapp.smartrefresh.layout.constant.RefreshState;
 import com.androidapp.smartrefresh.layout.constant.SpinnerStyle;
 import com.siyuan.enjoyreading.R;
 
-import java.util.Date;
-
 public class MyRefreshLottieHeader extends LinearLayout implements RefreshHeader {
 
     public static String REFRESH_HEADER_PULLING = null;//"下拉可以刷新";
@@ -156,7 +154,7 @@ public class MyRefreshLottieHeader extends LinearLayout implements RefreshHeader
 
     private void initView(Context context) {
         LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View view = layoutInflater.inflate(R.layout.loading_lottie, this);
+        View view = layoutInflater.inflate(R.layout.view_loading_lottie, this);
         mAnimationView = view.findViewById(R.id.loading_lottie);
         mTitleText = view.findViewById(R.id.loading_title);
     }

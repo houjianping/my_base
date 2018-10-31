@@ -18,7 +18,7 @@ public class SettingActivity extends BaseActivity {
 
     @Override
     protected void initContentView(Bundle bundle) {
-        setContentView(R.layout.personal_settings);
+        setContentView(R.layout.act_personal_settings);
     }
 
     @Override

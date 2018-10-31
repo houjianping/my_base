@@ -17,7 +17,7 @@ public class SettingsDownloadActivity extends BaseActivity {
 
     @Override
     protected void initContentView(Bundle bundle) {
-        setContentView(R.layout.personal_donwload);
+        setContentView(R.layout.act_personal_donwload);
     }
 
     @Override

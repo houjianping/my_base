@@ -92,10 +92,10 @@ public class ChannelAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
                 return holder;
 
             case TYPE_MY:
-                view = mInflater.inflate(R.layout.item_channel_my, parent, false);
+                view = mInflater.inflate(R.layout.item_channel, parent, false);
                 final MyViewHolder myHolder = new MyViewHolder(view);
 
-                myHolder.textView.setOnClickListener(new View.OnClickListener() {
+                myHolder.view.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(final View v) {
                         int position = myHolder.getAdapterPosition();
@@ -183,9 +183,10 @@ public class ChannelAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
                 };
 
             case TYPE_OTHER:
-                view = mInflater.inflate(R.layout.item_channe_other, parent, false);
+                view = mInflater.inflate(R.layout.item_channel, parent, false);
+                view.findViewById(R.id.img_edit).setVisibility(View.GONE);
                 final OtherViewHolder otherHolder = new OtherViewHolder(view);
-                otherHolder.textView.setOnClickListener(new View.OnClickListener() {
+                otherHolder.view.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         RecyclerView recyclerView = ((RecyclerView) parent);
@@ -431,7 +432,7 @@ public class ChannelAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         for (int i = 0; i < visibleChildCount; i++) {
             View view = parent.getChildAt(i);
             ImageView imgEdit = (ImageView) view.findViewById(R.id.img_edit);
-            if (imgEdit != null) {
+            if (imgEdit != null && imgEdit.getVisibility() != View.GONE) {
                 imgEdit.setVisibility(View.VISIBLE);
             }
         }
@@ -449,7 +450,7 @@ public class ChannelAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         for (int i = 0; i < visibleChildCount; i++) {
             View view = parent.getChildAt(i);
             ImageView imgEdit = (ImageView) view.findViewById(R.id.img_edit);
-            if (imgEdit != null) {
+            if (imgEdit != null && imgEdit.getVisibility() != View.GONE) {
                 imgEdit.setVisibility(View.INVISIBLE);
             }
         }
@@ -484,11 +485,13 @@ public class ChannelAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     class MyViewHolder extends RecyclerView.ViewHolder implements OnDragVHListener {
         private TextView textView;
         private ImageView imgEdit;
+        private View view;
 
         public MyViewHolder(View itemView) {
             super(itemView);
             textView = (TextView) itemView.findViewById(R.id.tv);
             imgEdit = (ImageView) itemView.findViewById(R.id.img_edit);
+            view = itemView.findViewById(R.id.rl_channel_item);
         }
 
         /**
@@ -513,10 +516,12 @@ public class ChannelAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
      */
     class OtherViewHolder extends RecyclerView.ViewHolder {
         private TextView textView;
+        private View view;
 
         public OtherViewHolder(View itemView) {
             super(itemView);
             textView = (TextView) itemView.findViewById(R.id.tv);
+            view = itemView.findViewById(R.id.rl_channel_item);
         }
     }
 

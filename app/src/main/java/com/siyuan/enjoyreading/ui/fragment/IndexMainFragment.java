@@ -40,7 +40,7 @@ public class IndexMainFragment extends BaseTabFragment {
 
     @Override
     protected int getLayoutId() {
-        return R.layout.act_main_test;
+        return R.layout.act_tab_one;
     }
 
 }

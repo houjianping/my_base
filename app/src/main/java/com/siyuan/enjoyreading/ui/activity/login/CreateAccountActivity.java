@@ -16,7 +16,7 @@ public class CreateAccountActivity extends MvpBaseActivity<LoginModelLogic, Logi
 
     @Override
     protected int getLayoutId() {
-        return R.layout.login_register;
+        return R.layout.act_account_login_register;
     }
 
     @Override
