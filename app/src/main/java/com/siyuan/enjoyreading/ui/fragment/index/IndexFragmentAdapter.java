@@ -22,7 +22,9 @@ public class IndexFragmentAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        if (tabs[position] .equals("推荐")) {
+        if (position == 2) {
+            return new TabFragment();
+        } else if (tabs[position] .equals("推荐")) {
             return new RecommendFragment();
         } else if (tabs[position] .equals("娱乐")) {
             return new EntertainmentFragment();

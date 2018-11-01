@@ -32,6 +32,7 @@ import com.siyuan.enjoyreading.api.ApiConfig;
 import com.siyuan.enjoyreading.entity.BannerItem;
 import com.siyuan.enjoyreading.entity.Movie;
 import com.siyuan.enjoyreading.ui.activity.VideoListActivity;
+import com.siyuan.enjoyreading.util.BannerImageLoader;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -77,7 +78,7 @@ public class TabFragment extends LazyLoadFragment {
             //添加Header
             View header = LayoutInflater.from(getContext()).inflate(R.layout.listitem_movie_header, recyclerView, false);
             Banner banner = (Banner) header;
-            banner.setImageLoader(new GlideImageLoader());
+            banner.setImageLoader(new BannerImageLoader());
             banner.setImages(ApiConfig.BANNER_ITEMS);
             banner.setOnBannerListener(new OnBannerListener() {
                 @Override
@@ -147,13 +148,6 @@ public class TabFragment extends LazyLoadFragment {
     @Override
     protected int getLayoutId() {
         return R.layout.fragment_tab;
-    }
-
-    public class GlideImageLoader extends ImageLoader {
-        @Override
-        public void displayImage(Context context, Object path, ImageView imageView) {
-            imageView.setImageResource(((BannerItem) path).pic);
-        }
     }
 
     class GriedViewItem extends PagedGridItem {
