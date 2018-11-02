@@ -30,6 +30,7 @@ import com.siyuan.enjoyreading.adapter.MultipleItemQuickAdapter;
 import com.siyuan.enjoyreading.api.ApiConfig;
 import com.siyuan.enjoyreading.entity.BannerItem;
 import com.siyuan.enjoyreading.entity.OrderMovie;
+import com.siyuan.enjoyreading.ui.activity.knwoledge.KnowledgeDetailActivity;
 import com.siyuan.enjoyreading.widget.HeaderView;
 
 import java.util.ArrayList;
@@ -89,7 +90,7 @@ public class OrderFragment extends LazyLoadFragment {
                 @Override
                 public void onGridItemClick(Object item) {
                     GriedViewItem item1 = (GriedViewItem) item;
-                    ToastUtils.show("####################" + item1.getTitle());
+                    mContext.startActivity(KnowledgeDetailActivity.getIntent(mContext));
                 }
             });
             final GriedViewItem item = new GriedViewItem();

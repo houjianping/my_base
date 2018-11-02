@@ -1,13 +1,13 @@
 package com.siyuan.enjoyreading.entity;
 
 public class MultipleEntity {
-    public String viewType;
+    public int viewType;
 
-    public String getViewType() {
+    public int getViewType() {
         return viewType;
     }
 
-    public void setViewType(String viewType) {
+    public void setViewType(int viewType) {
         this.viewType = viewType;
     }
 }

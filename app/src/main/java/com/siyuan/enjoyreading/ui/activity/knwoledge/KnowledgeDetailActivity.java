@@ -1,5 +1,7 @@
 package com.siyuan.enjoyreading.ui.activity.knwoledge;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 
@@ -31,5 +33,10 @@ public class KnowledgeDetailActivity extends BaseActivity {
     protected void initData() {
         mViewPager.setAdapter(new KnowledgeAdapter(getSupportFragmentManager()));
         mSmartTabLayout.setViewPager(mViewPager);
+    }
+
+    public static Intent getIntent(Context context) {
+        Intent intent = new Intent(context, KnowledgeDetailActivity.class);
+        return intent;
     }
 }

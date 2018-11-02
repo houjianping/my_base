@@ -59,7 +59,7 @@ public class ImageLoaderUtils {
         Glide.with(context).load(url).apply(options).into(imageView);
     }
 
-    public static void display(Context context, ImageView imageView, int url) {
+    public static void display(Context context, ImageView imageView, int id) {
         if (imageView == null) {
             throw new IllegalArgumentException("argument error");
         }
@@ -67,7 +67,7 @@ public class ImageLoaderUtils {
                 .centerCrop()
                 .priority(Priority.HIGH)
                 .diskCacheStrategy(DiskCacheStrategy.ALL);
-        Glide.with(context).load(url).apply(options).into(imageView);
+        Glide.with(context).load(id).apply(options).into(imageView);
     }
 
     public static void displayRound(Context context, ImageView imageView, String url) {

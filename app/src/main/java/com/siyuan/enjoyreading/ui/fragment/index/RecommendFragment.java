@@ -23,6 +23,7 @@ import com.google.gson.reflect.TypeToken;
 import com.siyuan.enjoyreading.R;
 import com.siyuan.enjoyreading.adapter.MultipleItemQuickAdapter;
 import com.siyuan.enjoyreading.api.ApiConfig;
+import com.siyuan.enjoyreading.entity.AdItem;
 import com.siyuan.enjoyreading.entity.GridItem;
 import com.siyuan.enjoyreading.entity.HeaderItem;
 import com.siyuan.enjoyreading.entity.Movie;
@@ -64,6 +65,11 @@ public class RecommendFragment extends LazyLoadFragment {
             movies.add(headerItem3);
             List<MultipleEntity> lists = new Gson().fromJson(ApiConfig.JSON_MOVIES, new TypeToken<ArrayList<Movie>>() {
             }.getType());
+            AdItem adItem = new AdItem();
+            adItem.setWidth(750);
+            adItem.setHeight(360);
+            adItem.setAction("{\"page\":\"SettingAbout\",\"type\":1}");
+            movies.add(adItem);
             movies.addAll(lists);
             mAdapter.replaceData(movies);
         }
