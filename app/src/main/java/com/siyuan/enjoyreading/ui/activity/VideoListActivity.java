@@ -1,5 +1,7 @@
 package com.siyuan.enjoyreading.ui.activity;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
@@ -81,7 +83,7 @@ public class VideoListActivity extends MvpBaseListActivity<VideoListModelLogic, 
     @Override
     protected void initTitle() {
         super.initTitle();
-        mTitleBar.setTitle("视频列表页面");
+        mTitleBar.setTitle("列表页");
     }
 
     @Override
@@ -103,5 +105,10 @@ public class VideoListActivity extends MvpBaseListActivity<VideoListModelLogic, 
     @Override
     protected boolean isDividerItemDecorationEnable() {
         return false;
+    }
+
+    public static Intent getIntent(Context context) {
+        Intent intent = new Intent(context, VideoListActivity.class);
+        return intent;
     }
 }

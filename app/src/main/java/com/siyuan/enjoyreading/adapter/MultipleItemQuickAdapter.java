@@ -5,12 +5,14 @@ import com.androidapp.adapter.MultipleItemAdapter;
 import com.siyuan.enjoyreading.adapter.provider.BannerItemProvider;
 import com.siyuan.enjoyreading.adapter.provider.CircleItemProvider;
 import com.siyuan.enjoyreading.adapter.provider.HeaderItemProvider;
+import com.siyuan.enjoyreading.adapter.provider.IndexGridItemProvider;
 import com.siyuan.enjoyreading.adapter.provider.KnowledgeListItemProvider;
 import com.siyuan.enjoyreading.adapter.provider.OrderMovieItemProvider;
 import com.siyuan.enjoyreading.adapter.provider.TestItemProvider;
 import com.siyuan.enjoyreading.adapter.provider.VideoItemProvider;
 import com.siyuan.enjoyreading.entity.BannerItem;
 import com.siyuan.enjoyreading.entity.BannerItemEntity;
+import com.siyuan.enjoyreading.entity.GridItem;
 import com.siyuan.enjoyreading.entity.HeaderItem;
 import com.siyuan.enjoyreading.entity.KnowledgeListItem;
 import com.siyuan.enjoyreading.entity.Movie;
@@ -28,6 +30,7 @@ public class MultipleItemQuickAdapter<T extends MultipleEntity> extends Multiple
     public static final int ITEM_ORDER_MOVIE = 4;
     public static final int ITEM_HEADER = 5;
     public static final int ITEM_BANNER = 6;
+    public static final int ITEM_GRID = 7;
 
     public MultipleItemQuickAdapter() {
         super(null);
@@ -50,6 +53,8 @@ public class MultipleItemQuickAdapter<T extends MultipleEntity> extends Multiple
             return ITEM_HEADER;
         } else if (entity instanceof BannerItemEntity) {
             return ITEM_BANNER;
+        } else if (entity instanceof GridItem) {
+            return ITEM_GRID;
         }
         return ITEM_VIDEO;
     }
@@ -64,6 +69,7 @@ public class MultipleItemQuickAdapter<T extends MultipleEntity> extends Multiple
             mProviderDelegate.registerProvider(new OrderMovieItemProvider());
             mProviderDelegate.registerProvider(new HeaderItemProvider());
             mProviderDelegate.registerProvider(new BannerItemProvider());
+            mProviderDelegate.registerProvider(new IndexGridItemProvider());
         } catch (Exception e) {
             e.printStackTrace();
         }

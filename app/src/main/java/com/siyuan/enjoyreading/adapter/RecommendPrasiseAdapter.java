@@ -1,6 +1,7 @@
 package com.siyuan.enjoyreading.adapter;
 
 import android.app.Activity;
+import android.content.Context;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,9 +22,9 @@ public class RecommendPrasiseAdapter extends BaseAdapter {
 
     PagedGridLayout.OnGridItemClick onGridItemClick;
     private List<RecommendPrasise> recommendPrasises = new ArrayList<>();
-    private Activity mContext;
+    private Context mContext;
 
-    public RecommendPrasiseAdapter(Activity context, List<RecommendPrasise> prasises) {
+    public RecommendPrasiseAdapter(Context context, List<RecommendPrasise> prasises) {
         mContext = context;
         recommendPrasises.clear();
         recommendPrasises.addAll(prasises);
@@ -57,7 +58,7 @@ public class RecommendPrasiseAdapter extends BaseAdapter {
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
-        if (!TextUtils.isEmpty(getItem(position).getIconurl()) && !(mContext).isFinishing()) {
+        if (!TextUtils.isEmpty(getItem(position).getIconurl())) {
             Glide.with(mContext).load(getItem(position).getIconurl()).into(holder.iconView);
         }
         if (holder.titleView != null) {

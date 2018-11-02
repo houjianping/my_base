@@ -1,6 +1,6 @@
 package com.siyuan.enjoyreading.entity;
 
-public class HeaderItem extends MultipleEntity{
+public class HeaderItem extends MultipleEntity {
     private String leftTitle;
     private String rightTitle;
     private boolean showMoreItem;
