@@ -44,6 +44,7 @@ public class DetailVideoPlayer extends BaseActivity {
     @Override
     protected void initView() {
         videoPlayer = findViewById(R.id.video_player);
+        findViewById(R.id.video_one).findViewById(R.id.video_title).setBackgroundColor(R.color.color_primary);
     }
 
     @Override

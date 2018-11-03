@@ -22,7 +22,8 @@ public class SplashActivity extends BaseActivity {
     private View mBottomLogo;
     private ImageView mAdImageView;
     private TextView mSkipTextView;
-    private int mMaxTime = 4;
+    private int mMaxTime = 3;
+
     private View.OnClickListener mOnClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -70,6 +71,7 @@ public class SplashActivity extends BaseActivity {
         mSkipTextView.setOnClickListener(mOnClickListener);
         mAdImageView.setOnClickListener(mOnClickListener);
         mAdImageView.setClickable(false);
+        mSkipTextView.setText("跳过(3)");
     }
 
     @Override
