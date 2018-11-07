@@ -21,6 +21,7 @@ public class SettingAboutControl extends BaseActivity {
         findViewById(R.id.settings_check_update).setOnClickListener(mOnClickListener);
         findViewById(R.id.settings_contact_us).setOnClickListener(mOnClickListener);
         findViewById(R.id.settings_terms_of_service).setOnClickListener(mOnClickListener);
+        findViewById(R.id.small_id).setOnClickListener(mOnClickListener);
     }
 
     @Override

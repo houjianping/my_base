@@ -16,8 +16,8 @@
         app:centerCustomView="@layout/layout_header_left"
         app:centerText=""
         app:centerType="textView"
-        app:rightCustomView="@layout/layout_header_right"
-        app:rightType="customView" />
+        app:rightImageResource="@drawable/more"
+        app:rightType="imageButton" />
 
     <ScrollView
         android:layout_width="fill_parent"
@@ -31,30 +31,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
             <LinearLayout
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"
-                android:paddingTop="10dp"
-                android:paddingBottom="10dp"
-                android:orientation="horizontal"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content">
-                <Button
-                    android:layout_weight="1"
-                    android:text="点赞"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-                <Button
-                    android:layout_weight="1"
-                    android:text="分享"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-                <Button
-                    android:layout_weight="1"
-                    android:text="赞赏"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-            </LinearLayout>
-            <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content">
@@ -67,6 +43,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
                     android:orientation="vertical">
 
                     <com.siyuan.enjoyreading.widget.UserCommentView

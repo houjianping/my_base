@@ -11,7 +11,7 @@ public class Storage {
     private static final String USER_TOKEN = "token";
 
     public static String getUserToken() {
-        return SharedPreferencesUtil.get(App.getContext(), MODEL_USER, USER_TOKEN);
+        return SharedPreferencesUtil.get(App.getInstance(), MODEL_USER, USER_TOKEN);
     }
 
     public static boolean isUserLogin() {

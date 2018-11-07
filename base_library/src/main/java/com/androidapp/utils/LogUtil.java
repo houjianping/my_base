@@ -1,92 +1,195 @@
 package com.androidapp.utils;
 
+import android.text.TextUtils;
 import android.util.Log;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 /**
- * @author: 范建海
- * @createTime: 2016/8/24 20:42
- * @className:  LogUtil
  * @Description: 日志工具类  DEBUG布尔常量控制是否显示日志
- *                          TAG为日志的标记
+ * TAG为日志的标记
  */
 public class LogUtil {
-    /** 控制显示日志的常量 **/
-    public static final boolean DEBUG = true;
-    /** 日志标记常量 **/
-    public static final String TAG = "yxck";
+    private static boolean IS_SHOW_LOG = true;
 
-    public static void d(String desc) {
-        if (DEBUG)
-            Log.d(TAG,desc);
+    private static final String DEFAULT_MESSAGE = "execute";
+    private static final String LINE_SEPARATOR = System.getProperty("line.separator");
+    private static final int JSON_INDENT = 4;
+
+    private static final int V = 0x1;
+    private static final int D = 0x2;
+    private static final int I = 0x3;
+    private static final int W = 0x4;
+    private static final int E = 0x5;
+    private static final int A = 0x6;
+    private static final int JSON = 0x7;
+
+    public static void init(boolean isShowLog) {
+        IS_SHOW_LOG = isShowLog;
     }
 
-    public static void d(String tag,String desc) {
-        if (DEBUG)
-            Log.d(tag,desc);
+    public static void v(Object msg) {
+        printLog(V, null, msg);
     }
 
-    public static void d(String desc, Throwable tr) {
-        if (DEBUG)
-            Log.d(TAG, desc, tr);
+    public static void v(String tag, String msg) {
+        printLog(V, tag, msg);
     }
 
-    public static void v(String desc) {
-        if (DEBUG)
-            Log.v(TAG, desc);
+    public static void d(Object msg) {
+        printLog(D, null, msg);
     }
 
-    public static void v(String tag,String desc) {
-        if (DEBUG)
-            Log.v(tag,desc);
+    public static void d(String tag, Object msg) {
+        printLog(D, tag, msg);
     }
 
-    public static void v(String desc, Throwable tr) {
-        if (DEBUG)
-            Log.v(TAG, desc);
+    public static void i(Object msg) {
+        printLog(I, null, msg);
     }
 
-    public static void w(String desc) {
-        if (DEBUG)
-            Log.w(TAG, desc);
+    public static void i(String tag, Object msg) {
+        printLog(I, tag, msg);
     }
 
-    public static void w(String tag,String desc) {
-        if (DEBUG)
-            Log.w(tag,desc);
+    public static void w(Object msg) {
+        printLog(W, null, msg);
     }
 
-    public static void w(String desc, Throwable e) {
-        if (DEBUG)
-            Log.w(TAG, desc, e);
+    public static void w(String tag, Object msg) {
+        printLog(W, tag, msg);
     }
 
-    public static void i(String desc) {
-        if (DEBUG)
-            Log.i(TAG,desc);
+    public static void e(Object msg) {
+        printLog(E, null, msg);
     }
 
-    public static void i(String tag,String desc) {
-        if (DEBUG)
-            Log.i(tag,desc);
+    public static void e(String tag, Object msg) {
+        printLog(E, tag, msg);
     }
 
-    public static void i(String desc, Throwable tr) {
-        if (DEBUG)
-            Log.i(TAG, desc, tr);
+    public static void a() {
+        printLog(A, null, DEFAULT_MESSAGE);
     }
 
-    public static void e(String desc) {
-        if (DEBUG)
-            Log.e(TAG, desc);
+    public static void a(Object msg) {
+        printLog(A, null, msg);
     }
 
-    public static void e(String tag,String desc) {
-        if (DEBUG)
-            Log.e(tag,desc);
+    public static void a(String tag, Object msg) {
+        printLog(A, tag, msg);
     }
 
-    public static void e(String desc, Throwable tr) {
-        if (DEBUG)
-            Log.e(TAG, desc, tr);
+    public static void json(String jsonFormat) {
+        printLog(JSON, null, jsonFormat);
+    }
+
+    public static void json(String tag, String jsonFormat) {
+        printLog(JSON, tag, jsonFormat);
+    }
+
+    private static void printLog(int type, String tagStr, Object objectMsg) {
+        String msg;
+        if (!IS_SHOW_LOG) {
+            return;
+        }
+
+        StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
+
+        int index = 4;
+        String className = stackTrace[index].getFileName();
+        String methodName = stackTrace[index].getMethodName();
+        int lineNumber = stackTrace[index].getLineNumber();
+
+        String tag = (tagStr == null ? className : tagStr);
+        methodName = methodName.substring(0, 1).toUpperCase() + methodName.substring(1);
+
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("[ (").append(className).append(":").append(lineNumber).append(")#").append(methodName).append(" ] ");
+
+        if (objectMsg == null) {
+            msg = "Log with null Object";
+        } else {
+            msg = objectMsg.toString();
+        }
+        if (msg != null && type != JSON) {
+            stringBuilder.append(msg);
+        }
+
+        String logStr = stringBuilder.toString();
+
+        switch (type) {
+            case V:
+                Log.v(tag, logStr);
+                break;
+            case D:
+                Log.d(tag, logStr);
+                break;
+            case I:
+                Log.i(tag, logStr);
+                break;
+            case W:
+                Log.w(tag, logStr);
+                break;
+            case E:
+                Log.e(tag, logStr);
+                break;
+            case A:
+                Log.wtf(tag, logStr);
+                break;
+            case JSON: {
+                if (TextUtils.isEmpty(msg)) {
+                    Log.d(tag, "Empty or Null json content");
+                    return;
+                }
+                String message = null;
+                try {
+                    if (msg.startsWith("{")) {
+                        JSONObject jsonObject = new JSONObject(msg);
+                        message = jsonObject.toString(JSON_INDENT);
+                    } else if (msg.startsWith("[")) {
+                        JSONArray jsonArray = new JSONArray(msg);
+                        message = jsonArray.toString(JSON_INDENT);
+                    }
+                } catch (JSONException e) {
+                    e(tag, e.getCause().getMessage() + "\n" + msg);
+                    return;
+                }
+
+                printLine(tag, true);
+                message = logStr + LINE_SEPARATOR + message;
+                String[] lines = message.split(LINE_SEPARATOR);
+                StringBuilder jsonContent = new StringBuilder();
+                for (String line : lines) {
+                    jsonContent.append("║ ").append(line).append(LINE_SEPARATOR);
+                }
+                if (jsonContent.toString().length() > 3200) {
+                    Log.w(tag, "jsonContent.length = " + jsonContent.toString().length());
+                    int chunkCount = jsonContent.toString().length() / 3200;
+                    for (int i = 0; i <= chunkCount; i++) {
+                        int max = 3200 * (i + 1);
+                        if (max >= jsonContent.toString().length()) {
+                            Log.w(tag, jsonContent.toString().substring(3200 * i));
+                        } else {
+                            Log.w(tag, jsonContent.toString().substring(3200 * i, max));
+                        }
+                    }
+                } else {
+                    Log.w(tag, jsonContent.toString());
+                }
+                printLine(tag, false);
+            }
+            break;
+        }
+    }
+
+    private static void printLine(String tag, boolean isTop) {
+        if (isTop) {
+            Log.w(tag, "╔═══════════════════════════════════════════════════════════════════════════════════════");
+        } else {
+            Log.w(tag, "╚═══════════════════════════════════════════════════════════════════════════════════════");
+        }
     }
 }

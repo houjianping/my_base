@@ -4,12 +4,13 @@
     android:id="@+id/movie_item"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="@dimen/padding_common">
+    android:paddingRight="@dimen/padding_common"
+    android:paddingLeft="@dimen/padding_common">
     <TextView
         android:id="@+id/article_title"
         style="@style/AppTheme.Label.Title"
         android:maxLines="2"
-        android:padding="5dp"
+        android:padding="8dp"
         android:text="城里人买农村房子合同无效,但房屋可不予退返，但房屋可不予退返"
         android:background="#fff0f0f0" />
 </LinearLayout>

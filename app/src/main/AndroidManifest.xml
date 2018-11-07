@@ -38,7 +38,11 @@
         <activity
             android:name=".ui.activity.MainActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="com.androidapp.crash.ERROR" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".ui.activity.currency.YuedanWebActivity"
             android:configChanges="orientation|keyboardHidden|screenSize" />
@@ -124,7 +128,10 @@
             android:screenOrientation="portrait" />
         <activity android:name=".ui.activity.index.ChannelActivity" />
         <activity android:name=".ui.activity.knwoledge.ArticleVideoDetailPlayer" />
-        <activity android:name=".ui.activity.knwoledge.ArticleDetailPlayer" />
+        <activity
+            android:name=".ui.activity.knwoledge.ArticleDetailPlayer"
+            android:hardwareAccelerated="false"
+            />
     </application>
 
 </manifest>

@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Build;
 import android.text.TextUtils;
 import android.util.AttributeSet;
+import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewParent;
 import android.webkit.CookieManager;
@@ -51,6 +52,7 @@ public class CacheWebView extends WebView {
         initData();
         initSettings();
         initWebViewClient();
+        setLayerType(View.LAYER_TYPE_HARDWARE,null);
     }
 
     private void initData() {

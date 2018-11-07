@@ -17,7 +17,7 @@ import java.util.Map;
 public class IntentUtil {
 
     public static Intent getIntent(String json) {
-        return getIntent(App.getContext(), json);
+        return getIntent(App.getInstance(), json);
     }
 
     private static Intent getIntent(Context context, String json) {

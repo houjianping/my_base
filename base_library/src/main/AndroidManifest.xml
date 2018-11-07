@@ -1,2 +1,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.androidapp.base" />
+    package="com.androidapp.base" >
+    <uses-permission android:name="android.permission.INTERNET" />
+    <application>
+        <activity
+            android:name="com.androidapp.crash.DefaultErrorActivity"
+            android:process=":error_activity" />
+    </application>
+</manifest>

@@ -24,7 +24,7 @@ public class SPUtils {
 
     public static int getSharedIntData(String key) {
         if (sp == null) {
-            LogUtils.logd("SPUtils need init");
+            LogUtil.d("SPUtils need init");
             return 0;
         }
         return sp.getInt(key, 0);
@@ -32,7 +32,7 @@ public class SPUtils {
 
     public static void setSharedlongData(String key, long value) {
         if (sp == null) {
-            LogUtils.logd("SPUtils need init");
+            LogUtil.d("SPUtils need init");
             return;
         }
         sp.edit().putLong(key, value).commit();
@@ -40,7 +40,7 @@ public class SPUtils {
 
     public static long getSharedlongData(String key) {
         if (sp == null) {
-            LogUtils.logd("SPUtils need init");
+            LogUtil.d("SPUtils need init");
             return 0l;
         }
         return sp.getLong(key, 0l);
@@ -48,7 +48,7 @@ public class SPUtils {
 
     public static void setSharedFloatData(String key, float value) {
         if (sp == null) {
-            LogUtils.logd("SPUtils need init");
+            LogUtil.d("SPUtils need init");
             return;
         }
         sp.edit().putFloat(key, value).commit();
@@ -56,7 +56,7 @@ public class SPUtils {
 
     public static Float getSharedFloatData(String key) {
         if (sp == null) {
-            LogUtils.logd("SPUtils need init");
+            LogUtil.d("SPUtils need init");
             return 0f;
         }
         return sp.getFloat(key, 0f);
@@ -64,7 +64,7 @@ public class SPUtils {
 
     public static void setSharedBooleanData(String key, boolean value) {
         if (sp == null) {
-            LogUtils.logd("SPUtils need init");
+            LogUtil.d("SPUtils need init");
             return;
         }
         sp.edit().putBoolean(key, value).commit();
@@ -72,7 +72,7 @@ public class SPUtils {
 
     public static Boolean getSharedBooleanData(String key) {
         if (sp == null) {
-            LogUtils.logd("SPUtils need init");
+            LogUtil.d("SPUtils need init");
             return false;
         }
         return sp.getBoolean(key, false);
@@ -80,7 +80,7 @@ public class SPUtils {
 
     public static void setSharedStringData(String key, String value) {
         if (sp == null) {
-            LogUtils.logd("SPUtils need init");
+            LogUtil.d("SPUtils need init");
             return;
         }
         sp.edit().putString(key, value).commit();
@@ -88,7 +88,7 @@ public class SPUtils {
 
     public static String getSharedStringData(String key) {
         if (sp == null) {
-            LogUtils.logd("SPUtils need init");
+            LogUtil.d("SPUtils need init");
             return "";
         }
         return sp.getString(key, "");
