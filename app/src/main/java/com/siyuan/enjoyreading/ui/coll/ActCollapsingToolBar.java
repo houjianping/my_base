@@ -13,6 +13,7 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.LinearLayout;
 
+import com.androidapp.activity.BaseActivity;
 import com.androidapp.utils.StatusBarUtil;
 import com.androidapp.utils.ToastUtils;
 import com.androidapp.widget.AppSwipeRefreshLayout;
@@ -26,7 +27,7 @@ import com.siyuan.enjoyreading.ui.fragment.base.ListFragment;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ActCollapsingToolBar extends AppCompatActivity {
+public class ActCollapsingToolBar extends BaseActivity {
     AppBarLayout mAppBarLayout;
 
     Bitmap bitmap;
@@ -50,14 +51,12 @@ public class ActCollapsingToolBar extends AppCompatActivity {
     private List<MultiBean> dictList = new ArrayList<>();
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    protected void initContentView(Bundle bundle) {
         setContentView(R.layout.act_collapsingtoolbar);
-        initView();
-        StatusBarUtil.darkMode(this);
     }
 
-    private void initView() {
+    @Override
+    protected void initView() {
         final AppSwipeRefreshLayout swipeRefreshLayout = findViewById(R.id.swipe_refresh_widget);
         mAppBarLayout = findViewById(R.id.app_bar_layout);
         mViewPager = findViewById(R.id.view_pager);
@@ -83,19 +82,11 @@ public class ActCollapsingToolBar extends AppCompatActivity {
             }
         });
         initFragment();
-        FilterView filter_view = findViewById(R.id.filter_view);
-        filter_view.setFilterItems(null);
-        filter_view.setOnFilterItemClick(new FilterView.OnItemClick() {
-            @Override
-            public void doFilter(FilterHeaderItem item) {
-                ToastUtils.show(item.getKey());
-            }
+    }
 
-            @Override
-            public void onItemClick() {
-                mAppBarLayout.setExpanded(false);
-            }
-        });
+    @Override
+    protected void initData() {
+
     }
 
 

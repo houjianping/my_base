@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/tab_panel_bg">
+
+    <com.androidapp.widget.CommonTitleBar
+        android:id="@+id/titlebar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:leftDrawable="@drawable/comm_titlebar_back_normal"
+        app:leftDrawablePadding="0dp"
+        app:leftType="textView"
+        app:centerCustomView="@layout/layout_header_left"
+        app:centerText=""
+        app:centerType="textView"
+        app:rightCustomView="@layout/layout_header_right"
+        app:rightType="customView" />
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+            <com.siyuan.enjoyreading.widget.AppWebView
+                android:id="@+id/article_webview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <LinearLayout
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+                <Button
+                    android:layout_weight="1"
+                    android:text="点赞"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <Button
+                    android:layout_weight="1"
+                    android:text="分享"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <Button
+                    android:layout_weight="1"
+                    android:text="赞赏"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+                <include layout="@layout/item_article_list"/>
+                <include layout="@layout/item_article_list"/>
+                <include layout="@layout/item_article_list"/>
+                <include layout="@layout/item_article_list"/>
+                <include layout="@layout/item_article_list"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="vertical">
+
+                    <com.siyuan.enjoyreading.widget.UserCommentView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                    <com.siyuan.enjoyreading.widget.UserCommentView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                    <com.siyuan.enjoyreading.widget.UserCommentView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                    <com.siyuan.enjoyreading.widget.UserCommentView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                    <com.siyuan.enjoyreading.widget.UserCommentView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                    <com.siyuan.enjoyreading.widget.UserCommentView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                    <com.siyuan.enjoyreading.widget.UserCommentView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                    <com.siyuan.enjoyreading.widget.UserCommentView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

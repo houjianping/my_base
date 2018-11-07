@@ -123,7 +123,8 @@
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait" />
         <activity android:name=".ui.activity.index.ChannelActivity" />
-        <activity android:name=".ui.activity.knwoledge.DetailVideoPlayer" />
+        <activity android:name=".ui.activity.knwoledge.ArticleVideoDetailPlayer" />
+        <activity android:name=".ui.activity.knwoledge.ArticleDetailPlayer" />
     </application>
 
 </manifest>

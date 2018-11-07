@@ -10,6 +10,9 @@
         android:id="@+id/titlebar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:leftDrawable="@drawable/comm_titlebar_back_normal"
+        app:leftDrawablePadding="0dp"
+        app:leftType="textView"
         app:centerCustomView="@layout/layout_header_left"
         app:centerText="大厅"
         app:centerType="textView"
@@ -62,17 +65,19 @@
                     <android.support.design.widget.TabItem
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text="A" />
+                        android:text="推荐" />
 
                     <android.support.design.widget.TabItem
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text="B" />
+                        android:background="@drawable/btn_gray"
+                        android:text="评论" />
 
                     <android.support.design.widget.TabItem
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text="C" />
+                        android:background="@drawable/btn_gray"
+                        android:text="猜你喜欢" />
                 </android.support.design.widget.TabLayout>
             </android.support.design.widget.AppBarLayout>
 
@@ -86,11 +91,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="#ffffff" />
-
-                <com.androidapp.filter.FilterView
-                    android:id="@+id/filter_view"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"></com.androidapp.filter.FilterView>
             </FrameLayout>
         </android.support.design.widget.CoordinatorLayout>
     </com.androidapp.widget.AppSwipeRefreshLayout>

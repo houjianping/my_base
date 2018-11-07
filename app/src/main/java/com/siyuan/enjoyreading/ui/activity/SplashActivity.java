@@ -30,7 +30,7 @@ public class SplashActivity extends BaseActivity {
             if (v == mSkipTextView) {
                 redirectTo();
             } else if (v == mAdImageView) {
-                doStartActivity(YuedanWebActivity.class, YuedanWebActivity.getBundle("http://fe.soho.iyuedan.com/app/video-suggest/detail.html?videoId=59821462#/", ""));
+                doStartActivity(YuedanWebActivity.class, YuedanWebActivity.getBundle("http://www.baidu.com", ""));
             }
         }
     };

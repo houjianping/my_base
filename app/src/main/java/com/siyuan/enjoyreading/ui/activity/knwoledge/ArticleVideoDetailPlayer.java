@@ -19,7 +19,7 @@ import com.siyuan.enjoyreading.R;
 import com.siyuan.enjoyreading.entity.VideoItem;
 
 
-public class DetailVideoPlayer extends BaseActivity {
+public class ArticleVideoDetailPlayer extends BaseActivity {
 
     public static final String KEY_VIDEO_URL = "video_url";
     public static final String KEY_VIDEO_THUMB = "video_thumb";
@@ -124,7 +124,7 @@ public class DetailVideoPlayer extends BaseActivity {
     }
 
     public static Intent getIntent(Context context, VideoItem videoItem) {
-        Intent intent = new Intent(context, DetailVideoPlayer.class);
+        Intent intent = new Intent(context, ArticleVideoDetailPlayer.class);
         intent.putExtra(KEY_VIDEO_URL, videoItem.getMp4_url());
         intent.putExtra(KEY_VIDEO_THUMB, videoItem.getCover());
         intent.putExtra(KEY_VIDEO_TITLE, videoItem.getTitle());

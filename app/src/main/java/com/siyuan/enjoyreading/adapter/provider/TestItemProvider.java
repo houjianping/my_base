@@ -1,5 +1,6 @@
 package com.siyuan.enjoyreading.adapter.provider;
 
+import android.content.Intent;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -10,6 +11,8 @@ import com.siyuan.enjoyreading.R;
 import com.siyuan.enjoyreading.entity.MultipleEntity;
 import com.siyuan.enjoyreading.adapter.MultipleItemQuickAdapter;
 import com.siyuan.enjoyreading.entity.Movie;
+import com.siyuan.enjoyreading.ui.activity.knwoledge.ArticleDetailPlayer;
+import com.siyuan.enjoyreading.ui.coll.ActCollapsingToolBar;
 
 public class TestItemProvider extends BaseItemProvider<MultipleEntity,BaseViewHolder> {
 
@@ -35,7 +38,11 @@ public class TestItemProvider extends BaseItemProvider<MultipleEntity,BaseViewHo
 
     @Override
     public void onClick(BaseViewHolder helper, MultipleEntity data, int position) {
-        Toast.makeText(mContext, "click", Toast.LENGTH_SHORT).show();
+        try {
+            mContext.startActivity(ArticleDetailPlayer.getIntent(mContext, "https://mil.sina.cn/2018-11-06/detail-ihmutuea7434493.d.html?from=wap"));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override

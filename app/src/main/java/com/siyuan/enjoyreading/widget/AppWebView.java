@@ -5,6 +5,7 @@ import android.content.Context;
 import android.os.Build;
 import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
+import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
 import android.webkit.JavascriptInterface;
@@ -33,6 +34,12 @@ public class AppWebView extends CacheWebView {
 
     public AppWebView(Context context) {
         super(context);
+        initWebView();
+        setCacheStrategy(WebViewCache.CacheStrategy.FORCE);
+    }
+
+    public AppWebView(Context context, AttributeSet attrs) {
+        super(context,attrs);
         initWebView();
         setCacheStrategy(WebViewCache.CacheStrategy.FORCE);
     }
