@@ -12,7 +12,7 @@ import android.widget.TextView;
 import com.androidapp.activity.BaseActivity;
 import com.bumptech.glide.Glide;
 import com.siyuan.enjoyreading.R;
-import com.siyuan.enjoyreading.ui.activity.currency.YuedanWebActivity;
+import com.siyuan.enjoyreading.ui.activity.currency.AppWebActivity;
 
 public class SplashActivity extends BaseActivity {
 
@@ -30,7 +30,7 @@ public class SplashActivity extends BaseActivity {
             if (v == mSkipTextView) {
                 redirectTo();
             } else if (v == mAdImageView) {
-                doStartActivity(YuedanWebActivity.class, YuedanWebActivity.getBundle("http://www.baidu.com", ""));
+                doStartActivity(AppWebActivity.class, AppWebActivity.getBundle("http://www.baidu.com", ""));
             }
         }
     };

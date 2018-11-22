@@ -7,8 +7,9 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.androidapp.fragment.BaseTabFragment;
+import com.androidapp.upgrade.UpdateAppManager;
 import com.androidapp.utils.StatusBarUtil;
-import com.androidapp.widget.CustomAlertDialog;
+import com.androidapp.widget.AppAlertDialog;
 import com.androidapp.widget.LoadingDialog;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
@@ -25,8 +26,9 @@ import com.siyuan.enjoyreading.ui.activity.pcenter.SettingFavorite;
 import com.siyuan.enjoyreading.ui.activity.pcenter.SettingLeavingMessage;
 import com.siyuan.enjoyreading.ui.activity.pcenter.SettingsDownloadActivity;
 import com.siyuan.enjoyreading.ui.activity.pcenter.SettingsMyInfoActivity;
-import com.siyuan.enjoyreading.ui.activity.currency.YuedanWebActivity;
+import com.siyuan.enjoyreading.ui.activity.currency.AppWebActivity;
 import com.siyuan.enjoyreading.util.GlideCircleTransform;
+import com.siyuan.enjoyreading.util.OkGoUpdateHttpUtil;
 
 import java.util.List;
 
@@ -40,7 +42,7 @@ public class PCenterFragment extends BaseTabFragment {
     protected void loadData(boolean force) {
         if (!force)
             return;
-        /*new UpdateAppManager
+        new UpdateAppManager
                 .Builder()
                 //当前Activity
                 .setActivity(getActivity())
@@ -49,7 +51,7 @@ public class PCenterFragment extends BaseTabFragment {
                 //实现httpManager接口的对象
                 .setHttpManager(new OkGoUpdateHttpUtil())
                 .build()
-                .update();*/
+                .update();
     }
 
     @Override
@@ -60,7 +62,6 @@ public class PCenterFragment extends BaseTabFragment {
         view.findViewById(R.id.my_account).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Intent intent = new Intent(mContext, ActCollapsingToolBar.class);
                 Intent intent = new Intent(mContext, PersonalWallet.class);
                 startActivity(intent);
             }
@@ -68,7 +69,7 @@ public class PCenterFragment extends BaseTabFragment {
         view.findViewById(R.id.authentication_center).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final CustomAlertDialog dialog = new CustomAlertDialog(getContext(), false);
+                final AppAlertDialog dialog = new AppAlertDialog(getContext(), false);
                 dialog.setTitle("关注");
                 dialog.setMessage("点击了关注点击了关注点击了关注点击了关注", getResources().getColor(R.color.black_main));
                 dialog.setPositiveButton("确定", new View.OnClickListener() {
@@ -134,10 +135,10 @@ public class PCenterFragment extends BaseTabFragment {
                     startActivity(new Intent(mContext, SettingLeavingMessage.class));
                     break;
                 case R.id.setting_share_reward:
-                    doStartActivity(YuedanWebActivity.class, YuedanWebActivity.getBundle(Urls.H5.INVITING_FRIENDS, "分享有赏"));
+                    doStartActivity(AppWebActivity.class, AppWebActivity.getBundle(Urls.H5.INVITING_FRIENDS, "分享有赏"));
                     break;
                 case R.id.setting_inviting_friends:
-                    doStartActivity(YuedanWebActivity.class, YuedanWebActivity.getBundle(Urls.H5.SHARE_REWARD, "邀请好友"));
+                    doStartActivity(AppWebActivity.class, AppWebActivity.getBundle(Urls.H5.SHARE_REWARD, "邀请好友"));
                     break;
                 case R.id.ivSettingAvatar:
                     startActivity(new Intent(mContext, SettingsMyInfoActivity.class));

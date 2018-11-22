@@ -2,7 +2,6 @@ package com.androidapp.widget;
 
 import android.app.Dialog;
 import android.content.Context;
-import android.graphics.drawable.GradientDrawable;
 import android.os.Build;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -15,12 +14,12 @@ import android.widget.TextView;
 
 import com.androidapp.base.R;
 
-public class CustomAlertDialog extends Dialog {
+public class AppAlertDialog extends Dialog {
 
     private Context mContext;
     private View mContentView;
 
-    public CustomAlertDialog(Context context, boolean custom) {
+    public AppAlertDialog(Context context, boolean custom) {
         super(context, R.style.CustomDialog);
         if (!custom) {
             mContext = context;
@@ -31,7 +30,7 @@ public class CustomAlertDialog extends Dialog {
         transparent();
     }
 
-    public CustomAlertDialog(Context context, boolean custom, boolean showCloseBtn) {
+    public AppAlertDialog(Context context, boolean custom, boolean showCloseBtn) {
         super(context, R.style.CustomDialog);
         if (!custom) {
             mContext = context;
@@ -54,7 +53,7 @@ public class CustomAlertDialog extends Dialog {
         win.setAttributes(lp);
     }
 
-    public CustomAlertDialog setPositiveButton(String stringId, View.OnClickListener positiveListener) {
+    public AppAlertDialog setPositiveButton(String stringId, View.OnClickListener positiveListener) {
         Button btOK = (Button) mContentView.findViewById(R.id.bt_ok);
         Button btCancel = (Button) mContentView.findViewById(R.id.bt_cancel);
         btOK.setText(stringId);
@@ -68,7 +67,7 @@ public class CustomAlertDialog extends Dialog {
         return this;
     }
 
-    public CustomAlertDialog setNegativeButton(String stringId, View.OnClickListener negativeListener) {
+    public AppAlertDialog setNegativeButton(String stringId, View.OnClickListener negativeListener) {
         Button btOK = (Button) mContentView.findViewById(R.id.bt_ok);
         Button btCancel = (Button) mContentView.findViewById(R.id.bt_cancel);
         btCancel.setText(stringId);

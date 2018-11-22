@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="47.0dip"
+    android:background="@drawable/btn_gray"
+    android:gravity="center_vertical">
+    <TextView
+        android:id="@+id/add_comments"
+        android:layout_width="0.0dip"
+        android:layout_height="30.0dip"
+        android:layout_marginStart="15.0dip"
+        android:layout_marginEnd="10.329987dip"
+        android:layout_weight="1.0"
+        android:background="@drawable/comment_bar_input_background"
+        android:drawableStart="@drawable/comment_bar_text_drawable_start"
+        android:drawablePadding="5.669983dip"
+        android:gravity="center_vertical"
+        android:hint="写出你的心声~"
+        android:paddingStart="14.0dip"
+        android:paddingEnd="0.0dip"
+        android:textColorHint="#ffb3b3b3"
+        android:textSize="12sp" />
+
+    <FrameLayout
+        android:id="@+id/comment_action_layout"
+        android:layout_width="47.0dip"
+        android:layout_height="47.0dip"
+        android:layout_marginStart="-3.3299866dip">
+
+        <ImageView
+            android:id="@+id/enter_comments_detail"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:paddingLeft="13.0dip"
+            android:paddingTop="14.0dip"
+            android:paddingRight="13.0dip"
+            android:paddingBottom="14.0dip"
+            android:src="@drawable/comment_bar_detail_black" />
+    </FrameLayout>
+
+    <RelativeLayout
+        android:id="@+id/comment_bar_collect"
+        android:layout_width="47.0dip"
+        android:layout_height="47.0dip">
+
+        <ImageView
+            android:id="@+id/iv_collect_icon_unselected"
+            android:layout_width="47.0dip"
+            android:layout_height="47.0dip"
+            android:paddingLeft="13.0dip"
+            android:paddingTop="14.0dip"
+            android:paddingRight="13.0dip"
+            android:paddingBottom="14.0dip"
+            android:src="@drawable/collect_black" />
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/comment_bar_share_wx"
+        android:layout_width="47.0dip"
+        android:layout_height="47.0dip"
+        android:paddingLeft="13.0dip"
+        android:paddingTop="14.0dip"
+        android:paddingRight="13.0dip"
+        android:paddingBottom="14.0dip"
+        android:src="@drawable/comment_bar_wx" />
+
+    <ImageView
+        android:id="@+id/img_thumbUp"
+        android:layout_width="47.0dip"
+        android:layout_height="47.0dip"
+        android:layout_marginEnd="3.0dip"
+        android:paddingLeft="13.0dip"
+        android:paddingTop="14.0dip"
+        android:paddingRight="13.0dip"
+        android:paddingBottom="14.0dip"
+        android:src="@drawable/like_white" />
+</LinearLayout>

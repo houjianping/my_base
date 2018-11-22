@@ -90,7 +90,7 @@
         <item name="android:listPreferredItemHeightSmall">?attr/qmui_list_item_height</item>
 
         <!-- 配置qmui提供的theme -->
-        <item name="qmui_config_color_blue">@color/theme_selector</item>
+        <item name="qmui_config_color_blue">@color/colorPrimary</item>
         <item name="qmui_topbar_title_color">@color/qmui_config_color_white</item>
         <item name="qmui_topbar_subtitle_color">@color/qmui_config_color_white</item>
         <item name="qmui_topbar_text_btn_color_state_list">@color/s_topbar_btn_color</item>

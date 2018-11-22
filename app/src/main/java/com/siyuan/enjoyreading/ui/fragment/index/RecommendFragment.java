@@ -94,7 +94,7 @@ public class RecommendFragment extends LazyLoadFragment {
         Map<Integer, Boolean> itemTYpes = new HashMap<>();
         itemTYpes.put(MultipleItemQuickAdapter.ITEM_TEST, true);
         dividerItemDecoration.setItemDividerType(itemTYpes);
-        recyclerView.addItemDecoration(dividerItemDecoration);
+//        recyclerView.addItemDecoration(dividerItemDecoration);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         if (mAdapter == null) {
             Log.e("", "------loadData----mAdapter---1111-");

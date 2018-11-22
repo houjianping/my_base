@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list android:oneshot="false"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:duration="30" android:drawable="@drawable/frame_refresh_01" />
+    <item android:duration="30" android:drawable="@drawable/frame_refresh_02" />
+    <item android:duration="30" android:drawable="@drawable/frame_refresh_03" />
+    <item android:duration="30" android:drawable="@drawable/frame_refresh_04" />
+    <item android:duration="30" android:drawable="@drawable/frame_refresh_05" />
+    <item android:duration="30" android:drawable="@drawable/frame_refresh_06" />
+    <item android:duration="30" android:drawable="@drawable/frame_refresh_07" />
+    <item android:duration="30" android:drawable="@drawable/frame_refresh_08" />
+    <item android:duration="30" android:drawable="@drawable/frame_refresh_09" />
+    <item android:duration="30" android:drawable="@drawable/frame_refresh_10" />
+    <item android:duration="30" android:drawable="@drawable/frame_refresh_11" />
+    <item android:duration="30" android:drawable="@drawable/frame_refresh_12" />
+    <item android:duration="30" android:drawable="@drawable/frame_refresh_13" />
+    <item android:duration="30" android:drawable="@drawable/frame_refresh_14" />
+    <item android:duration="30" android:drawable="@drawable/frame_refresh_15" />
+    <item android:duration="30" android:drawable="@drawable/frame_refresh_16" />
+    <item android:duration="30" android:drawable="@drawable/frame_refresh_17" />
+    <item android:duration="30" android:drawable="@drawable/frame_refresh_18" />
+    <item android:duration="30" android:drawable="@drawable/frame_refresh_19" />
+    <item android:duration="30" android:drawable="@drawable/frame_refresh_20" />
+    <item android:duration="30" android:drawable="@drawable/frame_refresh_21" />
+    <item android:duration="30" android:drawable="@drawable/frame_refresh_22" />
+    <item android:duration="30" android:drawable="@drawable/frame_refresh_23" />
+    <item android:duration="30" android:drawable="@drawable/frame_refresh_24" />
+    <item android:duration="30" android:drawable="@drawable/frame_refresh_25" />
+    <item android:duration="30" android:drawable="@drawable/frame_refresh_26" />
+    <item android:duration="30" android:drawable="@drawable/frame_refresh_27" />
+    <item android:duration="30" android:drawable="@drawable/frame_refresh_28" />
+    <item android:duration="30" android:drawable="@drawable/frame_refresh_29" />
+    <item android:duration="30" android:drawable="@drawable/frame_refresh_30" />
+    <item android:duration="30" android:drawable="@drawable/frame_refresh_31" />
+    <item android:duration="30" android:drawable="@drawable/frame_refresh_32" />
+    <item android:duration="30" android:drawable="@drawable/frame_refresh_33" />
+    <item android:duration="30" android:drawable="@drawable/frame_refresh_34" />
+    <item android:duration="30" android:drawable="@drawable/frame_refresh_35" />
+    <item android:duration="30" android:drawable="@drawable/frame_refresh_36" />
+    <item android:duration="30" android:drawable="@drawable/frame_refresh_37" />
+    <item android:duration="30" android:drawable="@drawable/frame_refresh_38" />
+    <item android:duration="30" android:drawable="@drawable/frame_refresh_39" />
+    <item android:duration="30" android:drawable="@drawable/frame_refresh_40" />
+    <item android:duration="30" android:drawable="@drawable/frame_refresh_41" />
+    <item android:duration="30" android:drawable="@drawable/frame_refresh_42" />
+    <item android:duration="30" android:drawable="@drawable/frame_refresh_43" />
+    <item android:duration="30" android:drawable="@drawable/frame_refresh_44" />
+    <item android:duration="30" android:drawable="@drawable/frame_refresh_45" />
+    <item android:duration="30" android:drawable="@drawable/frame_refresh_46" />
+    <item android:duration="30" android:drawable="@drawable/frame_refresh_47" />
+    <item android:duration="30" android:drawable="@drawable/frame_refresh_48" />
+    <item android:duration="30" android:drawable="@drawable/frame_refresh_49" />
+</animation-list>

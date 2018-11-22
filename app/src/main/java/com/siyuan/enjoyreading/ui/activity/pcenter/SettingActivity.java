@@ -8,9 +8,9 @@ import com.androidapp.activity.BaseActivity;
 import com.androidapp.share.bean.ShareContent;
 import com.androidapp.share.bean.ShareEnum;
 import com.androidapp.share.util.ShareUtil;
-import com.androidapp.widget.CustomAlertDialog;
+import com.androidapp.widget.AppAlertDialog;
 import com.siyuan.enjoyreading.R;
-import com.siyuan.enjoyreading.ui.activity.currency.YuedanWebActivity;
+import com.siyuan.enjoyreading.ui.activity.currency.AppWebActivity;
 
 import static com.siyuan.enjoyreading.api.Urls.H5.FEEDBACK_CONTROL;
 
@@ -50,7 +50,7 @@ public class SettingActivity extends BaseActivity {
                     startActivity(new Intent(mContext, SettingDownloadControl.class));
                     break;
                 case R.id.setting_feedback_control:
-                    doStartActivity(YuedanWebActivity.class, YuedanWebActivity.getBundle(FEEDBACK_CONTROL, "帮助与反馈"));
+                    doStartActivity(AppWebActivity.class, AppWebActivity.getBundle(FEEDBACK_CONTROL, "帮助与反馈"));
                     break;
                 case R.id.setting_clear_control:
                     clearCache();
@@ -94,7 +94,7 @@ public class SettingActivity extends BaseActivity {
     }
 
     private void clearCache() {
-        final CustomAlertDialog dialog = new CustomAlertDialog(mContext, false);
+        final AppAlertDialog dialog = new AppAlertDialog(mContext, false);
         dialog.setTitle("清除缓存");
         dialog.setMessage("确认清除App缓存? 清除缓存后个别页面可能访问过慢", getResources().getColor(R.color.black_main));
         dialog.setPositiveButton("确定", new View.OnClickListener() {

@@ -44,7 +44,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.activity.currency.YuedanWebActivity"
+            android:name=".ui.activity.currency.AppWebActivity"
             android:configChanges="orientation|keyboardHidden|screenSize" />
         <activity
             android:name=".ui.activity.SocializCircleActivity"
@@ -129,9 +129,7 @@
         <activity android:name=".ui.activity.index.ChannelActivity" />
         <activity android:name=".ui.activity.knwoledge.ArticleVideoDetailPlayer" />
         <activity
-            android:name=".ui.activity.knwoledge.ArticleDetailPlayer"
-            android:hardwareAccelerated="false"
-            />
+            android:name=".ui.activity.knwoledge.ArticleDetailPlayer" />
     </application>
 
 </manifest>

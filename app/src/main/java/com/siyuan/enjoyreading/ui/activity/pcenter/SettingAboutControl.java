@@ -7,7 +7,7 @@ import com.androidapp.activity.BaseActivity;
 import com.androidapp.widget.LoadingDialog;
 import com.siyuan.enjoyreading.R;
 import com.siyuan.enjoyreading.api.Urls;
-import com.siyuan.enjoyreading.ui.activity.currency.YuedanWebActivity;
+import com.siyuan.enjoyreading.ui.activity.currency.AppWebActivity;
 
 public class SettingAboutControl extends BaseActivity {
 
@@ -21,7 +21,6 @@ public class SettingAboutControl extends BaseActivity {
         findViewById(R.id.settings_check_update).setOnClickListener(mOnClickListener);
         findViewById(R.id.settings_contact_us).setOnClickListener(mOnClickListener);
         findViewById(R.id.settings_terms_of_service).setOnClickListener(mOnClickListener);
-        findViewById(R.id.small_id).setOnClickListener(mOnClickListener);
     }
 
     @Override
@@ -41,10 +40,10 @@ public class SettingAboutControl extends BaseActivity {
                     dialog.show();
                     break;
                 case R.id.settings_contact_us:
-                    doStartActivity(YuedanWebActivity.class, YuedanWebActivity.getBundle(Urls.H5.CONTACT_US, "联系我们"));
+                    doStartActivity(AppWebActivity.class, AppWebActivity.getBundle(Urls.H5.CONTACT_US, "联系我们"));
                     break;
                 case R.id.settings_terms_of_service:
-                    doStartActivity(YuedanWebActivity.class, YuedanWebActivity.getBundle(Urls.H5.TERMS_OF_SERVICE, "服务条款"));
+                    doStartActivity(AppWebActivity.class, AppWebActivity.getBundle(Urls.H5.TERMS_OF_SERVICE, "服务条款"));
                     break;
             }
         }

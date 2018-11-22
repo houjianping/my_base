@@ -8,7 +8,7 @@ android {
     defaultConfig {
         multiDexEnabled true
         applicationId "com.siyuan.enjoyreading"
-        minSdkVersion 16
+        minSdkVersion 17
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
@@ -58,4 +58,5 @@ dependencies {
     implementation project(':video_library')
     implementation project(':mui')
     implementation 'com.airbnb.android:lottie:2.2.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
 }

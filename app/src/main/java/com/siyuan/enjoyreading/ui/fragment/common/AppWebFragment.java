@@ -13,7 +13,7 @@ import com.androidapp.smartrefresh.layout.api.RefreshLayout;
 import com.androidapp.smartrefresh.layout.listener.OnRefreshListener;
 import com.siyuan.enjoyreading.widget.AppWebView;
 
-public class YuedanWebFragment extends BaseWebFragment {
+public class AppWebFragment extends BaseWebFragment {
 
     public static final String KEY_URL = "h5url";
 

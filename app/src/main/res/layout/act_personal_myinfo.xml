@@ -35,7 +35,7 @@
                 android:paddingBottom="@dimen/division_line">
 
                 <com.androidapp.widget.SettingItem
-                    android:id="@+id/setting_account"
+                    android:id="@+id/setting_avatar"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     app:settingsShowBottomDiv="true"
@@ -54,7 +54,7 @@
                 app:layout_scrollFlags="scroll">
 
                 <com.androidapp.widget.SettingItem
-                    android:id="@+id/setting_push_control"
+                    android:id="@+id/setting_name"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     app:settingsShowBottomDiv="true"
@@ -62,23 +62,24 @@
                     app:settingsTitle="昵称" />
 
                 <com.androidapp.widget.SettingItem
+                    android:id="@+id/setting_sex"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     app:settingsShowBottomDiv="true"
                     app:settingsTitle="性别" />
 
                 <com.androidapp.widget.SettingItem
+                    android:id="@+id/setting_birthday"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     app:settingsShowBottomDiv="true"
                     app:settingsTitle="生日" />
 
                 <com.androidapp.widget.SettingItem
-                    android:id="@+id/setting_clear_control"
+                    android:id="@+id/setting_edu"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     app:settingsShowBottomDiv="true"
-                    app:settingsSummary="1.83M"
                     app:settingsTitle="学历" />
             </LinearLayout>
         </LinearLayout>

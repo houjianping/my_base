@@ -69,7 +69,7 @@ public class OrderFragment extends LazyLoadFragment {
         Log.e("", "------loadData----mAdapter----");
         final RecyclerView recyclerView = view.findViewById(R.id.recyclerView);
         final RefreshLayout refreshLayout = view.findViewById(R.id.refreshLayout);
-        recyclerView.addItemDecoration(new DividerItemDecoration(getContext(), VERTICAL));
+//        recyclerView.addItemDecoration(new DividerItemDecoration(getContext(), VERTICAL));
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         if (mAdapter == null) {
             Log.e("", "------loadData----mAdapter---1111-");

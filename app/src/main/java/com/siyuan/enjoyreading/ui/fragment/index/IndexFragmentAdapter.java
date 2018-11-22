@@ -6,7 +6,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
 import com.siyuan.enjoyreading.ui.fragment.TabFragment;
-import com.siyuan.enjoyreading.ui.fragment.common.YuedanWebFragment;
+import com.siyuan.enjoyreading.ui.fragment.common.AppWebFragment;
 
 public class IndexFragmentAdapter extends FragmentPagerAdapter {
     private String[] tabs = {"推荐", "娱乐", "娱乐", "推荐", "娱乐", "娱乐","推荐", "娱乐", "H5"};
@@ -29,9 +29,9 @@ public class IndexFragmentAdapter extends FragmentPagerAdapter {
         } else if (tabs[position] .equals("娱乐")) {
             return new EntertainmentFragment();
         } else {
-            Fragment fragment = new YuedanWebFragment();
+            Fragment fragment = new AppWebFragment();
             Bundle bundle = new Bundle();
-            bundle.putString(YuedanWebFragment.KEY_URL, "http://www.sina.com.cn/");
+            bundle.putString(AppWebFragment.KEY_URL, "http://www.sina.com.cn/");
             fragment.setArguments(bundle);
             return fragment;
         }

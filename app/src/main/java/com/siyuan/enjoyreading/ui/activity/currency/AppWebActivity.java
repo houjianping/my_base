@@ -11,7 +11,7 @@ import com.androidapp.activity.BaseWebActivity;
 import com.androidapp.smartrefresh.layout.api.RefreshLayout;
 import com.androidapp.smartrefresh.layout.listener.OnRefreshListener;
 
-public class YuedanWebActivity extends BaseWebActivity {
+public class AppWebActivity extends BaseWebActivity {
 
     private static final String KEY_URL = "web_url";
     private static final String KEY_TITLE = "web_title";

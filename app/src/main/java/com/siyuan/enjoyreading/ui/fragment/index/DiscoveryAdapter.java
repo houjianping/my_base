@@ -5,7 +5,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import com.siyuan.enjoyreading.ui.fragment.common.YuedanWebFragment;
+import com.siyuan.enjoyreading.ui.fragment.common.AppWebFragment;
 import com.siyuan.enjoyreading.ui.fragment.discovery.SocializCircleFragment;
 
 public class DiscoveryAdapter extends FragmentPagerAdapter {
@@ -26,15 +26,15 @@ public class DiscoveryAdapter extends FragmentPagerAdapter {
             case 0:
                 return new SocializCircleFragment();
             case 1:
-                Fragment fragment = new YuedanWebFragment();
+                Fragment fragment = new AppWebFragment();
                 Bundle bundle = new Bundle();
-                bundle.putString(YuedanWebFragment.KEY_URL, "http://m.lrts.me/h5/appactivity?uid=252995147&mparam=0s34Of5C32xrw7YCOrk1qnLcvSwtmfTIFCFP3YV38QKEyVc71soBDCET0OKwantG1gfqqrUSXcWB%0Aa9C8hoUluyvkwHBloCUH");
+                bundle.putString(AppWebFragment.KEY_URL, "http://m.lrts.me/h5/appactivity?uid=252995147&mparam=0s34Of5C32xrw7YCOrk1qnLcvSwtmfTIFCFP3YV38QKEyVc71soBDCET0OKwantG1gfqqrUSXcWB%0Aa9C8hoUluyvkwHBloCUH");
                 fragment.setArguments(bundle);
                 return fragment;
             default:
-                Fragment activeFragment = new YuedanWebFragment();
+                Fragment activeFragment = new AppWebFragment();
                 Bundle activebundle = new Bundle();
-                activebundle.putString(YuedanWebFragment.KEY_URL, "http://m.lrts.me/h5/appactivity?uid=252995147&mparam=0s34Of5C32xrw7YCOrk1qnLcvSwtmfTIFCFP3YV38QKEyVc71soBDCET0OKwantG1gfqqrUSXcWB%0Aa9C8hoUluyvkwHBloCUH");
+                activebundle.putString(AppWebFragment.KEY_URL, "http://m.lrts.me/h5/appactivity?uid=252995147&mparam=0s34Of5C32xrw7YCOrk1qnLcvSwtmfTIFCFP3YV38QKEyVc71soBDCET0OKwantG1gfqqrUSXcWB%0Aa9C8hoUluyvkwHBloCUH");
                 activeFragment.setArguments(activebundle);
                 return activeFragment;
         }

@@ -8,9 +8,15 @@
     android:orientation="vertical"
     android:paddingBottom="30dp">
 
-    <com.androidapp.loading.LoadingView
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_centerInParent="true"
-        app:loadingText="加载中..." />
+    <!--<com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/animation_view"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        app:lottie_fileName="radar_loading.json"
+        app:lottie_loop="true"
+        app:lottie_autoPlay="true" />-->
+    <com.siyuan.enjoyreading.widget.LoadingView
+        android:layout_width="300dp"
+        android:layout_height="300dp">
+    </com.siyuan.enjoyreading.widget.LoadingView>
 </LinearLayout>

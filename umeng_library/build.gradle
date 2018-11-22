@@ -4,7 +4,7 @@ android {
     compileSdkVersion 27
 
     defaultConfig {
-        minSdkVersion 15
+        minSdkVersion 17
         targetSdkVersion 25
         //友盟
         resValue "string", "UM_KEY", "5a1bc715f29d984c42000033"

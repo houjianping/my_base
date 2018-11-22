@@ -155,7 +155,7 @@ public class AppWebView extends CacheWebView {
 
     @JavascriptInterface
     public void doAction(String action, String json) {
-        if ("size".equals(action)) {
+        /*if ("size".equals(action)) {
             final int height = JsonUtils.getIntValue(json, "height");
             if (height < 1) {
                 return;
@@ -177,7 +177,7 @@ public class AppWebView extends CacheWebView {
             } else {
                 ToastUtils.show("页面出错了");
             }
-        }
+        }*/
     }
 
     public boolean onBackPress() {
