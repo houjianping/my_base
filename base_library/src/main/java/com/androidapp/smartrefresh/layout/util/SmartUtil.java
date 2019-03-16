@@ -25,12 +25,13 @@ import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
  * Created by SCWANG on 2018/3/5.
  */
 
-public class SmartUtil {
+public abstract class SmartUtil {
+
+    @SuppressWarnings("deprecation")
     public static int getColor(@NonNull Context context, @ColorRes int colorId) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             return context.getColor(colorId);
         }
-        //noinspection deprecation
         return context.getResources().getColor(colorId);
     }
 
@@ -69,7 +70,7 @@ public class SmartUtil {
             }
 
             final int newTop = firstView.getTop() - y;
-            listView.setSelectionFromTop(firstPosition, newTop);
+            ((ListView) listView).setSelectionFromTop(firstPosition, newTop);
         } else {
             listView.smoothScrollBy(y, 0);
         }
@@ -80,8 +81,12 @@ public class SmartUtil {
                 || view instanceof ScrollView
                 || view instanceof ScrollingView
                 || view instanceof WebView
+                || view instanceof NestedScrollingChild;
+    }
+
+    public static boolean isContentView(View view) {
+        return isScrollableView(view)
                 || view instanceof ViewPager
-                || view instanceof NestedScrollingChild
                 || view instanceof NestedScrollingParent;
     }
 

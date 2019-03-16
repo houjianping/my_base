@@ -26,9 +26,9 @@ import android.graphics.Shader;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.OvalShape;
 import android.os.Build;
-import android.support.annotation.ColorInt;
 import android.view.View;
 import android.widget.ImageView;
+
 
 /**
  * Private class created to work around issues with AnimationListeners being
@@ -49,6 +49,7 @@ public class CircleImageView extends ImageView {
 //    private Animation.AnimationListener mListener;
     int mShadowRadius;
 
+    @SuppressWarnings("deprecation")
     public CircleImageView(Context context, int color) {
         super(context);
         final View thisView = this;
@@ -59,7 +60,7 @@ public class CircleImageView extends ImageView {
         mShadowRadius = (int) (density * SHADOW_RADIUS);
 
         ShapeDrawable circle;
-        if (android.os.Build.VERSION.SDK_INT >= 21) {
+        if (Build.VERSION.SDK_INT >= 21) {
             circle = new ShapeDrawable(new OvalShape());
             thisView.setElevation(SHADOW_ELEVATION * density);
         } else {
@@ -76,7 +77,6 @@ public class CircleImageView extends ImageView {
         if (Build.VERSION.SDK_INT >= 16) {
             thisView.setBackground(circle);
         } else {
-            //noinspection deprecation
             thisView.setBackgroundDrawable(circle);
         }
     }

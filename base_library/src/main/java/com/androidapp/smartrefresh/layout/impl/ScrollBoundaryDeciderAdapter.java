@@ -1,7 +1,6 @@
 package com.androidapp.smartrefresh.layout.impl;
 
 import android.graphics.PointF;
-import android.view.MotionEvent;
 import android.view.View;
 
 import com.androidapp.smartrefresh.layout.api.ScrollBoundaryDecider;

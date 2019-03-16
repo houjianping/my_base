@@ -1,7 +1,6 @@
 package com.androidapp.smartrefresh.layout.internal;
 
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.graphics.drawable.Animatable;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
@@ -19,15 +18,13 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.androidapp.smartrefresh.layout.api.RefreshFooter;
-import com.androidapp.smartrefresh.layout.api.RefreshHeader;
 import com.androidapp.smartrefresh.layout.api.RefreshInternal;
 import com.androidapp.smartrefresh.layout.api.RefreshKernel;
 import com.androidapp.smartrefresh.layout.api.RefreshLayout;
 import com.androidapp.smartrefresh.layout.constant.SpinnerStyle;
 import com.androidapp.smartrefresh.layout.util.DensityUtil;
-import com.androidapp.smartrefresh.layout.util.DesignUtil;
 
+import static android.view.View.MeasureSpec.EXACTLY;
 import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
 import static com.androidapp.smartrefresh.layout.util.SmartUtil.getColor;
 
@@ -47,8 +44,8 @@ public abstract class InternalClassics<T extends InternalClassics> extends Inter
     protected ImageView mProgressView;
     protected LinearLayout mCenterLayout;
     protected RefreshKernel mRefreshKernel;
-    protected ArrowDrawable mArrowDrawable;
-    protected ProgressDrawable mProgressDrawable;
+    protected PaintDrawable mArrowDrawable;
+    protected PaintDrawable mProgressDrawable;
 //    protected SpinnerStyle mSpinnerStyle = SpinnerStyle.Translate;
     protected Integer mAccentColor;
     protected Integer mPrimaryColor;
@@ -56,6 +53,7 @@ public abstract class InternalClassics<T extends InternalClassics> extends Inter
     protected int mFinishDuration = 500;
     protected int mPaddingTop = 20;
     protected int mPaddingBottom = 20;
+    protected int mMinHeightOfContent = 0;
 
     //<editor-fold desc="RelativeLayout">
 
@@ -128,12 +126,28 @@ public abstract class InternalClassics<T extends InternalClassics> extends Inter
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         final View thisView = this;
-        if (MeasureSpec.getMode(heightMeasureSpec) == MeasureSpec.EXACTLY) {
-            thisView.setPadding(thisView.getPaddingLeft(), 0, thisView.getPaddingRight(), 0);
+        if (MeasureSpec.getMode(heightMeasureSpec) == EXACTLY) {
+            final int parentHeight = MeasureSpec.getSize(heightMeasureSpec);
+            if (parentHeight < mMinHeightOfContent) {
+                final int padding = (parentHeight - mMinHeightOfContent) / 2;
+                thisView.setPadding(thisView.getPaddingLeft(), padding, thisView.getPaddingRight(), padding);
+            } else {
+                thisView.setPadding(thisView.getPaddingLeft(), 0, thisView.getPaddingRight(), 0);
+            }
+
         } else {
             thisView.setPadding(thisView.getPaddingLeft(), mPaddingTop, thisView.getPaddingRight(), mPaddingBottom);
         }
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+        if (mMinHeightOfContent == 0) {
+            final ViewGroup thisGroup = this;
+            for (int i = 0; i < thisGroup.getChildCount(); i++) {
+                final int height = thisGroup.getChildAt(i).getMeasuredHeight();
+                if (mMinHeightOfContent < height) {
+                    mMinHeightOfContent = height;
+                }
+            }
+        }
     }
 
     @Override
@@ -153,8 +167,8 @@ public abstract class InternalClassics<T extends InternalClassics> extends Inter
         }
     }
 
+    @SuppressWarnings("unchecked")
     protected T self() {
-        //noinspection unchecked
         return (T) this;
     }
 
@@ -206,7 +220,7 @@ public abstract class InternalClassics<T extends InternalClassics> extends Inter
         return mFinishDuration;//延迟500毫秒之后再弹回
     }
 
-    @Override@Deprecated
+    @Override
     public void setPrimaryColors(@ColorInt int ... colors) {
         if (colors.length > 0) {
             final View thisView = this;
@@ -217,8 +231,8 @@ public abstract class InternalClassics<T extends InternalClassics> extends Inter
             if (mAccentColor == null) {
                 if (colors.length > 1) {
                     setAccentColor(colors[1]);
-                } else {
-                    setAccentColor(colors[0] == 0xffffffff ? 0xff666666 : 0xffffffff);
+//                } else {
+//                    setAccentColor(colors[0] == 0xffffffff ? 0xff666666 : 0xffffffff);
                 }
                 mAccentColor = null;
             }
@@ -290,9 +304,11 @@ public abstract class InternalClassics<T extends InternalClassics> extends Inter
         mTitleText.setTextColor(accentColor);
         if (mArrowDrawable != null) {
             mArrowDrawable.setColor(accentColor);
+            mArrowView.invalidateDrawable(mArrowDrawable);
         }
         if (mProgressDrawable != null) {
             mProgressDrawable.setColor(accentColor);
+            mProgressView.invalidateDrawable(mProgressDrawable);
         }
         return self();
     }
@@ -318,11 +334,6 @@ public abstract class InternalClassics<T extends InternalClassics> extends Inter
         mTitleText.setTextSize(size);
         if (mRefreshKernel != null) {
             mRefreshKernel.requestRemeasureHeightFor(this);
-//            if (this instanceof RefreshHeader) {
-//                mRefreshKernel.requestRemeasureHeightForHeader();
-//            } else if (this instanceof RefreshFooter) {
-//                mRefreshKernel.requestRemeasureHeightForFooter();
-//            }
         }
         return self();
     }

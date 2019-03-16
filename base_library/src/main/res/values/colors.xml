@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <color name="color_primary">#ff5b06</color>
-
     <color name="actionsheet_red">#ff5b06</color>
-    <color name="actionsheet_theme">#666666</color>
-    <color name="actionsheet_gray">#8F8F8F</color>
-
-    <color name="divider">#c6c6c6</color>
+    <color name="actionsheet_theme">#333</color>
+    <color name="divider">#FFEEEEEE</color>
 </resources>

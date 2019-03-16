@@ -26,7 +26,6 @@ import com.androidapp.smartrefresh.layout.constant.RefreshState;
 import com.androidapp.smartrefresh.layout.constant.SpinnerStyle;
 import com.androidapp.smartrefresh.layout.internal.InternalAbstract;
 import com.androidapp.smartrefresh.layout.util.DensityUtil;
-import com.androidapp.smartrefresh.layout.util.DesignUtil;
 
 import static com.androidapp.smartrefresh.layout.util.SmartUtil.getColor;
 

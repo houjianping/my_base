@@ -44,6 +44,8 @@
         <attr name="srlEnableLoadMore" format="boolean"/>
         <attr name="srlEnableHeaderTranslationContent" format="boolean"/>
         <attr name="srlEnableFooterTranslationContent" format="boolean"/>
+        <attr name="srlHeaderTranslationViewId" format="reference"/>
+        <attr name="srlFooterTranslationViewId" format="reference"/>
         <attr name="srlEnablePreviewInEditMode" format="boolean"/>
         <attr name="srlEnableAutoLoadMore" format="boolean"/>
         <attr name="srlEnableOverScrollBounce" format="boolean"/>
@@ -53,9 +55,11 @@
         <attr name="srlEnableScrollContentWhenRefreshed" format="boolean"/>
         <attr name="srlEnableLoadMoreWhenContentNotFull" format="boolean"/>
         <attr name="srlEnableFooterFollowWhenLoadFinished" format="boolean"/>
+        <attr name="srlEnableFooterFollowWhenNoMoreData" format="boolean"/>
         <attr name="srlEnableClipHeaderWhenFixedBehind" format="boolean"/>
         <attr name="srlEnableClipFooterWhenFixedBehind" format="boolean"/>
         <attr name="srlEnableOverScrollDrag" format="boolean"/>
+        <!--<attr name="srlEnableNestedScrollingOnly" format="boolean"/>-->
         <attr name="srlDisableContentWhenRefresh" format="boolean"/>
         <attr name="srlDisableContentWhenLoading" format="boolean"/>
         <attr name="srlFixedHeaderViewId" format="reference"/>
@@ -94,6 +98,15 @@
         <attr name="srlTextSizeTime"/>
         <attr name="srlTextTimeMarginTop" format="dimension"/>
         <attr name="srlEnableLastTime" format="boolean"/>
+
+        <attr name="srlTextPulling"/>
+        <attr name="srlTextLoading"/>
+        <attr name="srlTextRelease"/>
+        <attr name="srlTextFinish"/>
+        <attr name="srlTextFailed"/>
+        <attr name="srlTextUpdate"/>
+        <attr name="srlTextSecondary"/>
+        <attr name="srlTextRefreshing"/>
     </declare-styleable>
 
     <declare-styleable name="ClassicsFooter">
@@ -108,6 +121,14 @@
         <attr name="srlDrawableSize"/>
         <attr name="srlDrawableArrowSize"/>
         <attr name="srlDrawableProgressSize"/>
+
+        <attr name="srlTextPulling"/>
+        <attr name="srlTextRelease"/>
+        <attr name="srlTextLoading"/>
+        <attr name="srlTextRefreshing"/>
+        <attr name="srlTextFinish"/>
+        <attr name="srlTextFailed"/>
+        <attr name="srlTextNothing"/>
     </declare-styleable>
 
     <declare-styleable name="TwoLevelHeader">

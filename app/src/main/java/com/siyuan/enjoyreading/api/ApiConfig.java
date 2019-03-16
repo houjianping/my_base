@@ -23,7 +23,7 @@ public class ApiConfig {
             "{\"actors\":\"薛凯琪|陈意涵|张钧甯|迈克·泰森\",\"filmName\":\"闺蜜2：无二不作\",\"grade\":\"8.3\",\"picaddr\":\"http://app.infunpw.com/commons/images/cinema/cinema_films/3776.jpg\",\"releasedate\":\"2017-08-04\",\"shortinfo\":\"闺蜜团出战 会一会新娘\",\"type\":\"喜剧|爱情\"}," +
             "{\"actors\":\"彭禺厶|王萌|周凯文|曹琦|孟子叶\",\"filmName\":\"诡井\",\"grade\":\"5.0\",\"picaddr\":\"http://app.infunpw.com/commons/images/cinema/cinema_films/3824.jpg\",\"releasedate\":\"2017-08-04\",\"shortinfo\":\"午夜深井中 怨魂欲现形\",\"type\":\"恐怖|惊悚\"}," +
             "{\"actors\":\"旺卓措|刘承宙|高欣生|段楠|来钰\",\"filmName\":\"荒野加油站\",\"grade\":\"5.0\",\"picaddr\":\"http://app.infunpw.com/commons/images/cinema/cinema_films/3821.jpg\",\"releasedate\":\"2017-08-04\",\"shortinfo\":\"夜半拉乘客 结果遇不测\",\"type\":\"惊悚|悬疑\"}," +
-            "{\"actors\":\"刘佩琦|曹云金|罗昱焜\",\"filmName\":\"龙之战\",\"grade\":\"5.0\",\"picaddr\":\"http://app.infunpw.com/commons/images/cinema/cinema_films/3778.jpg\",\"releasedate\":\"2017-08-04\",\"shortinfo\":\"持倭刀屹立 抗外敌救国\",\"type\":\"动作|战争|历史\"}," +
+            "{\"actors\":\"刘佩琦|曹云金|罗昱焜\",\"filmName\":\"龙之战\",\"grade\":\"5.0\",\"picaddr\":\"http://d.hiphotos.baidu.com/image/pic/item/e4dde71190ef76c6e453882a9f16fdfaaf516729.jpg\",\"releasedate\":\"2017-08-04\",\"shortinfo\":\"持倭刀屹立 抗外敌救国\",\"type\":\"动作|战争|历史\"}," +
             "{\"actors\":\"金巴|曲尼次仁|夏诺.扎西敦珠|索朗尼玛|益西旦增\",\"filmName\":\"皮绳上的魂\",\"grade\":\"5.0\",\"picaddr\":\"http://app.infunpw.com/commons/images/cinema/cinema_films/3801.jpg\",\"releasedate\":\"2017-08-04\",\"shortinfo\":\"走完朝圣路 又上降魔旅\",\"type\":\"剧情\"}," +
             "{\"actors\":\"严丽祯|李晔|王衡|李传缨|李心仪\",\"filmName\":\"玩偶奇兵\",\"grade\":\"10.0\",\"picaddr\":\"http://app.infunpw.com/commons/images/cinema/cinema_films/3779.jpg\",\"releasedate\":\"2017-08-04\",\"shortinfo\":\"玩偶战数码 一头两个大\",\"type\":\"动画|冒险|奇幻\"}," +
             "{\"actors\":\"斯蒂芬·马布里|吴尊|何冰|郑秀妍|王庆祥\",\"filmName\":\"我是马布里\",\"grade\":\"0.0\",\"picaddr\":\"http://app.infunpw.com/commons/images/cinema/cinema_films/3810.jpg\",\"releasedate\":\"2017-08-04\",\"shortinfo\":\"吴尊助冠军 热血灌篮魂\",\"type\":\"剧情|运动\"}," +
@@ -55,6 +55,31 @@ public class ApiConfig {
             ,"http://g.hiphotos.baidu.com/image/pic/item/7acb0a46f21fbe09359315d16f600c338644ad22.jpg","http://h.hiphotos.baidu.com/image/h%3D200/sign=9d4948d52c738bd4db21b531918a876c/6a600c338744ebf85db15337dbf9d72a6159a7f1.jpg"
             ,"http://e.hiphotos.baidu.com/image/h%3D200/sign=7683f02abc096b639e1959503c328733/203fb80e7bec54e74a142d1bbb389b504fc26a3e.jpg"};
 
+    public static String RECHARGE_LIST = "[{" +
+            "\"id\": 0," +
+            "\"title\": \"60\"," +
+            "\"content\": \"6\"" +
+            "},{" +
+            "\"id\": 1," +
+            "\"title\": \"180\"," +
+            "\"content\": \"18\"" +
+            "},{" +
+            "\"id\": 2," +
+            "\"title\": \"300\"," +
+            "\"content\": \"30\"" +
+            "},{" +
+            "\"id\": 3," +
+            "\"title\": \"680\"," +
+            "\"content\": \"68\"" +
+            "},{" +
+            "\"id\": 4," +
+            "\"title\": \"1680\"," +
+            "\"content\": \"168\"" +
+            "},{" +
+            "\"id\": 5," +
+            "\"title\": \"5800\"," +
+            "\"content\": \"580\"" +
+            "}]";
     public static String JSON_VIDEO_LIST = "[{" +
             "\"sizeHD\": 0," +
             "\"videoTopic\": {" +
@@ -414,4 +439,62 @@ public class ApiConfig {
     public static String getRandomPhotoUrl() {
         return  Urls[new Random().nextInt(Urls.length)];
     }
+
+    public static String JSON_WALLET_LIST = "[{" +
+            "\"icon\": \"ada\"," +
+            "\"title\": \"adad\"," +
+            "\"summary\": \"ad\"," +
+            "\"moneyDesc\": \"ada\"," +
+            "\"time\": 1552719726000," +
+            "\"statusDesc\": \"ada\"" +
+            "},{" +
+            "\"icon\": \"ada\"," +
+            "\"title\": \"adad\"," +
+            "\"summary\": \"ad\"," +
+            "\"moneyDesc\": \"ada\"," +
+            "\"time\": 1552719726000," +
+            "\"statusDesc\": \"ada\"" +
+            "},{" +
+            "\"icon\": \"ada\"," +
+            "\"title\": \"adad\"," +
+            "\"summary\": \"ad\"," +
+            "\"moneyDesc\": \"ada\"," +
+            "\"time\": 1552719726000," +
+            "\"statusDesc\": \"ada\"" +
+            "},{" +
+            "\"icon\": \"ada\"," +
+            "\"title\": \"adad\"," +
+            "\"summary\": \"ad\"," +
+            "\"moneyDesc\": \"ada\"," +
+            "\"time\": 1552719726000," +
+            "\"statusDesc\": \"ada\"" +
+            "},{" +
+            "\"icon\": \"ada\"," +
+            "\"title\": \"adad\"," +
+            "\"summary\": \"ad\"," +
+            "\"moneyDesc\": \"ada\"," +
+            "\"time\": 1552719726000," +
+            "\"statusDesc\": \"ada\"" +
+            "},{" +
+            "\"icon\": \"ada\"," +
+            "\"title\": \"adad\"," +
+            "\"summary\": \"ad\"," +
+            "\"moneyDesc\": \"ada\"," +
+            "\"time\": 1552719726000," +
+            "\"statusDesc\": \"ada\"" +
+            "},{" +
+            "\"icon\": \"ada\"," +
+            "\"title\": \"adad\"," +
+            "\"summary\": \"ad\"," +
+            "\"moneyDesc\": \"ada\"," +
+            "\"time\": 1552719726000," +
+            "\"statusDesc\": \"ada\"" +
+            "},{" +
+            "\"icon\": \"ada\"," +
+            "\"title\": \"adad\"," +
+            "\"summary\": \"ad\"," +
+            "\"moneyDesc\": \"ada\"," +
+            "\"time\": 1552719726000," +
+            "\"statusDesc\": \"ada\"" +
+            "}]";
 }
