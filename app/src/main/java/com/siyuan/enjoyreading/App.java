@@ -16,6 +16,7 @@ import com.androidapp.smartrefresh.layout.api.DefaultRefreshHeaderCreator;
 import com.androidapp.smartrefresh.layout.api.RefreshHeader;
 import com.androidapp.smartrefresh.layout.api.RefreshLayout;
 import com.androidapp.smartrefresh.layout.header.ClassicsHeader;
+import com.androidapp.utils.SPUtils;
 import com.androidapp.utils.ToastUtils;
 import com.facebook.stetho.Stetho;
 import com.siyuan.enjoyreading.api.request.OkGoRequest;
@@ -47,6 +48,7 @@ public class App extends Application {
     public void onCreate() {
         super.onCreate();
         setApplication(this);
+        SPUtils.init(this);
         initCrash();
         ToastUtils.setContext(this);
         Stetho.initializeWithDefaults(this);

@@ -1,5 +1,8 @@
 package com.siyuan.enjoyreading.ui.activity;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -10,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.androidapp.activity.BaseActivity;
+import com.androidapp.utils.SPUtils;
 import com.bumptech.glide.Glide;
 import com.siyuan.enjoyreading.R;
 import com.siyuan.enjoyreading.ui.activity.currency.AppWebActivity;
@@ -65,6 +69,11 @@ public class SplashActivity extends BaseActivity {
 
     @Override
     protected void initView() {
+        boolean appUsed = SPUtils.getSharedBooleanData("appUsed");
+        if (!appUsed) {
+            startActivity(new Intent(SplashActivity.this, GuideActivity.class));
+            finish();
+        }
         mSkipTextView = findViewById(R.id.tv_skip);
         mBottomLogo = findViewById(R.id.bottom_logo);
         mAdImageView = findViewById(R.id.app_start_view);

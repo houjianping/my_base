@@ -19,7 +19,7 @@ public class SPUtils {
     }
 
     public static void setSharedIntData(String key, int value) {
-        sp.edit().putInt(key, value).commit();
+        sp.edit().putInt(key, value).apply();
     }
 
     public static int getSharedIntData(String key) {
@@ -35,7 +35,7 @@ public class SPUtils {
             LogUtil.d("SPUtils need init");
             return;
         }
-        sp.edit().putLong(key, value).commit();
+        sp.edit().putLong(key, value).apply();
     }
 
     public static long getSharedlongData(String key) {
@@ -51,7 +51,7 @@ public class SPUtils {
             LogUtil.d("SPUtils need init");
             return;
         }
-        sp.edit().putFloat(key, value).commit();
+        sp.edit().putFloat(key, value).apply();
     }
 
     public static Float getSharedFloatData(String key) {
@@ -67,7 +67,7 @@ public class SPUtils {
             LogUtil.d("SPUtils need init");
             return;
         }
-        sp.edit().putBoolean(key, value).commit();
+        sp.edit().putBoolean(key, value).apply();
     }
 
     public static Boolean getSharedBooleanData(String key) {
@@ -83,7 +83,7 @@ public class SPUtils {
             LogUtil.d("SPUtils need init");
             return;
         }
-        sp.edit().putString(key, value).commit();
+        sp.edit().putString(key, value).apply();
     }
 
     public static String getSharedStringData(String key) {

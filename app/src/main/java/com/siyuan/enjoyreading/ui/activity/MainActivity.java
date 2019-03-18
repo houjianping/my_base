@@ -22,7 +22,7 @@ import com.siyuan.enjoyreading.ui.fragment.RoomMainFragment;
 
 import java.util.ArrayList;
 
-public class MainActivity extends BaseActivity {
+public class  MainActivity extends BaseActivity {
 
     private String[] mTitles = {"首页", "专栏", "发现", "个人中心"};
 
