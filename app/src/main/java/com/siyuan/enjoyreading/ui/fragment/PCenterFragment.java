@@ -9,9 +9,7 @@ import android.widget.ImageView;
 import com.androidapp.fragment.BaseTabFragment;
 import com.androidapp.upgrade.UpdateAppManager;
 import com.androidapp.utils.StatusBarUtil;
-import com.androidapp.widget.ActionSheet;
 import com.androidapp.widget.AppAlertDialog;
-import com.androidapp.widget.LoadingDialog;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.luck.picture.lib.PictureSelector;
@@ -20,14 +18,15 @@ import com.luck.picture.lib.entity.LocalMedia;
 import com.siyuan.enjoyreading.R;
 import com.siyuan.enjoyreading.api.Urls;
 import com.siyuan.enjoyreading.ui.activity.SocializCircleActivity;
+import com.siyuan.enjoyreading.ui.activity.currency.AppWebActivity;
 import com.siyuan.enjoyreading.ui.activity.login.PassWordLoginActivity;
+import com.siyuan.enjoyreading.ui.activity.pcenter.CouponActivity;
 import com.siyuan.enjoyreading.ui.activity.pcenter.PersonalWallet;
 import com.siyuan.enjoyreading.ui.activity.pcenter.SettingActivity;
 import com.siyuan.enjoyreading.ui.activity.pcenter.SettingFavorite;
 import com.siyuan.enjoyreading.ui.activity.pcenter.SettingLeavingMessage;
 import com.siyuan.enjoyreading.ui.activity.pcenter.SettingsDownloadActivity;
 import com.siyuan.enjoyreading.ui.activity.pcenter.SettingsMyInfoActivity;
-import com.siyuan.enjoyreading.ui.activity.currency.AppWebActivity;
 import com.siyuan.enjoyreading.util.GlideCircleTransform;
 import com.siyuan.enjoyreading.util.OkGoUpdateHttpUtil;
 
@@ -119,14 +118,15 @@ public class PCenterFragment extends BaseTabFragment {
                     startActivity(new Intent(mContext, SettingActivity.class));
                     break;
                 case R.id.my_redpack:
-                    ActionSheet.OnSheetItemClickListener listener = new ActionSheet.OnSheetItemClickListener() {
+                    startActivity(new Intent(mContext, CouponActivity.class));
+                    /*ActionSheet.OnSheetItemClickListener listener = new ActionSheet.OnSheetItemClickListener() {
                         @Override
                         public void onClick(int which) {
 
                         }
                     };
                     ActionSheet actionSheet = new ActionSheet(getContext());
-                    actionSheet.builder().addSheetItem("你好", R.color.black, listener).addSheetItem("你好a", R.color.black, listener).setCancelable(false).show();
+                    actionSheet.builder().addSheetItem("你好", R.color.black, listener).addSheetItem("你好a", R.color.black, listener).setCancelable(false).show();*/
                     /*LoadingDialog.Builder loadBuilder = new LoadingDialog.Builder(getContext())
                             .setMessage("加载中...")
                             .setCancelable(true)

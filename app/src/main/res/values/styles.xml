@@ -57,14 +57,19 @@
 
     <style name="AppTheme.Label.Title">
         <item name="android:textColor">@color/colorTextTitle</item>
-        <item name="android:textSize">@dimen/textsize_title</item>
+        <item name="android:textSize">@dimen/font_16</item>
+    </style>
+
+    <style name="AppTheme.Label.Content">
+        <item name="android:textColor">@color/colorTextContent</item>
+        <item name="android:textSize">@dimen/font_14</item>
     </style>
 
     <style name="AppTheme.Label.Discription">
         <item name="android:gravity">top</item>
         <item name="android:lineSpacingExtra">5dp</item>
         <item name="android:ellipsize">end</item>
-        <item name="android:textSize">@dimen/textsize_content</item>
+        <item name="android:textSize">@dimen/font_14</item>
         <item name="android:singleLine">false</item>
     </style>
 
@@ -210,7 +215,7 @@
         <item name="stl_dividerColor">#00000000</item>
         <item name="stl_dividerThickness">0dp</item>
         <item name="stl_drawDecorationAfterTab">false</item>
-        <item name="stl_indicatorColor">@color/colorPrimary</item>
+        <item name="stl_indicatorColor">@color/colorIndicator</item>
         <item name="stl_indicatorCornerRadius">0dp</item>
         <item name="stl_indicatorGravity">bottom</item>
         <item name="stl_indicatorInFront">true</item>

@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:background="@color/tab_panel_bg">
+    android:background="@color/white">
 
     <com.androidapp.widget.CommonTitleBar
         android:id="@+id/titlebar"
@@ -37,6 +37,24 @@
                 android:orientation="vertical"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content">
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="44dp"
+                        android:background="@drawable/bottom_line"
+                        android:gravity="center_vertical">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="15dp"
+                            android:text="相关推荐"
+                            android:textColor="@color/colorTextTitle"
+                            android:textSize="16sp" />
+                    </LinearLayout>
+                </LinearLayout>
                 <include layout="@layout/item_article_list"/>
                 <include layout="@layout/item_article_list"/>
                 <include layout="@layout/item_article_list"/>

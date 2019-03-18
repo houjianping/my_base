@@ -82,7 +82,7 @@
             android:drawablePadding="2dp"
             android:gravity="center"
             android:padding="2dp"
-            android:textColor="@color/secondary_color"
+            android:textColor="@color/colorTextContent"
             android:textSize="@dimen/font_12"
             android:visibility="gone" />
     </RelativeLayout>
@@ -99,7 +99,7 @@
             android:id="@+id/contentTv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:contentTextColor="@color/secondary_color"
+            app:contentTextColor="@color/colorTextContent"
             app:contentTextSize="14sp"
             app:maxCollapsedLines="5"
             app:showExpandCollapseDrawable="false"

@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/tab_panel_bg"
+    android:background="@color/activity_background"
     android:orientation="vertical">
 
     <com.androidapp.widget.CommonTitleBar
@@ -183,6 +183,7 @@
             </LinearLayout>
 
             <RelativeLayout
+                android:id="@+id/bill_complaint"
                 android:layout_width="match_parent"
                 android:layout_height="44dp"
                 android:layout_marginTop="40dp"
@@ -212,6 +213,7 @@
                 android:background="@color/divider" />
 
             <RelativeLayout
+                android:id="@+id/bill_common_problem"
                 android:layout_width="match_parent"
                 android:layout_height="44dp"
                 android:background="@drawable/settings_item_background"

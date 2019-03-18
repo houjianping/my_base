@@ -19,7 +19,7 @@
         tools:text="大吗，打死了大大了圣诞节啊圣诞节快拉倒可拉伸的"
         android:ellipsize="end"
         android:textSize="@dimen/font_12"
-        android:textColor="@color/secondary_color"
+        android:textColor="@color/colorTextContent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 </LinearLayout>

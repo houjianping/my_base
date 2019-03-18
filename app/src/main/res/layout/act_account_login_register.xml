@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/tab_panel_bg"
+    android:background="@color/activity_background"
     android:orientation="vertical">
 
     <RelativeLayout
@@ -47,7 +47,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/padding_common"
-            android:background="@color/tab_panel_bg"
+            android:background="@color/activity_background"
             android:orientation="vertical"
             android:paddingBottom="@dimen/division_line">
 
@@ -68,7 +68,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:text="+86"
-                    android:textColor="@color/secondary_color"
+                    android:textColor="@color/colorTextContent"
                     android:textSize="12sp" />
 
                 <ImageView
@@ -124,7 +124,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="短信验证码收不到？"
-                    android:textColor="@color/secondary_color"
+                    android:textColor="@color/colorTextContent"
                     android:textSize="12sp" />
 
                 <TextView
@@ -185,7 +185,7 @@
                 android:layout_gravity="center"
                 android:layout_marginLeft="5dp"
                 android:text="请阅读并同意"
-                android:textColor="@color/secondary_color"
+                android:textColor="@color/colorTextContent"
                 android:textSize="12sp" />
 
             <TextView

@@ -133,6 +133,7 @@
             android:name=".ui.activity.knwoledge.ArticleDetailPlayer" />
         <activity android:name=".ui.activity.pcenter.PersonalWalletDetail" />
         <activity android:name=".ui.activity.pcenter.PersonalWalletList" />
+        <activity android:name=".ui.activity.pcenter.CouponActivity" />
     </application>
 
 </manifest>

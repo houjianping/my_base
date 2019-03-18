@@ -5,6 +5,7 @@ import com.androidapp.adapter.MultipleItemAdapter;
 import com.siyuan.enjoyreading.adapter.provider.AdItemProvider;
 import com.siyuan.enjoyreading.adapter.provider.BannerItemProvider;
 import com.siyuan.enjoyreading.adapter.provider.CircleItemProvider;
+import com.siyuan.enjoyreading.adapter.provider.CouponProvider;
 import com.siyuan.enjoyreading.adapter.provider.HeaderItemProvider;
 import com.siyuan.enjoyreading.adapter.provider.IndexGridItemProvider;
 import com.siyuan.enjoyreading.adapter.provider.KnowledgeListItemProvider;
@@ -15,6 +16,7 @@ import com.siyuan.enjoyreading.adapter.provider.WalletItemProvider;
 import com.siyuan.enjoyreading.entity.AdItem;
 import com.siyuan.enjoyreading.entity.BannerItem;
 import com.siyuan.enjoyreading.entity.BannerItemEntity;
+import com.siyuan.enjoyreading.entity.Coupon;
 import com.siyuan.enjoyreading.entity.GridItem;
 import com.siyuan.enjoyreading.entity.HeaderItem;
 import com.siyuan.enjoyreading.entity.KnowledgeListItem;
@@ -37,6 +39,7 @@ public class MultipleItemQuickAdapter<T extends MultipleEntity> extends Multiple
     public static final int ITEM_GRID = 7;
     public static final int ITEM_AD = 8;
     public static final int ITEM_WALLET = 9;
+    public static final int ITEM_COUPON = 10;
 
     public MultipleItemQuickAdapter() {
         super(null);
@@ -65,6 +68,8 @@ public class MultipleItemQuickAdapter<T extends MultipleEntity> extends Multiple
             return ITEM_AD;
         } else if (entity instanceof WalletItem) {
             return ITEM_WALLET;
+        } else if (entity instanceof Coupon) {
+            return ITEM_COUPON;
         }
         return ITEM_VIDEO;
     }
@@ -82,6 +87,7 @@ public class MultipleItemQuickAdapter<T extends MultipleEntity> extends Multiple
             mProviderDelegate.registerProvider(new IndexGridItemProvider());
             mProviderDelegate.registerProvider(new AdItemProvider());
             mProviderDelegate.registerProvider(new WalletItemProvider());
+            mProviderDelegate.registerProvider(new CouponProvider());
         } catch (Exception e) {
             e.printStackTrace();
         }

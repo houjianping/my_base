@@ -1,30 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#ff5b06</color>
-    <color name="colorPrimaryDark">#96ff5b06</color>
-    <color name="colorAccent">#ff5b06</color>
+    <!-- 主色-->
+    <color name="colorPrimary">#26a6ff</color>
+    <color name="colorPrimaryDark">#0086f1</color>
+    <color name="colorAccent">#26a6ff</color>
+    <color name="colorIndicator">#ff5c5c</color>
 
-    <color name="colorTextTitle">#333333</color>
-    <color name="colorTextContent">#444444</color>
-    <color name="colorTextAssistant">#888888</color>
+    <!-- 辅色-->
+    <color name="colorDanger">#fe3950</color><!-- 部分警示文字 金额等-->
+    <color name="colorWarn">#ffc746</color><!-- 突出的按钮标签-->
+    <color name="colorDating">#71e46b</color><!-- 数据展示和icon等-->
+    <color name="colorTag">#787adf</color><!-- 部分标签和icon等-->
 
-    <color name="colorDivision">#33aaaaaa</color>
+    <!-- 文字颜色-->
+    <color name="colorTextTitle">#333333</color> ><!-- 用于一级内容显示-->
+    <color name="colorTextContent">#666666</color><!-- 用于二级内容显示-->
+    <color name="colorTextSummary">#999999</color><!-- 用于说明文字描述-->
+    <color name="colorTextAssistant">#b5b5b5</color><!-- 用于未填写的字段提示和下级操作按钮-->
+    <color name="colorDivision">#33aaaaaa</color><!-- 用于未填写的字段提示和下级操作按钮-->
+    <color name="white">#ffffff</color><!-- 用于反白文字-->
 
-    <color name="app_color_theme_1">#EF5362</color> <!-- Grapefruit -->
-    <color name="app_color_theme_2">#FE6D4B</color> <!-- Bittersweet -->
-    <color name="app_color_theme_3">#FFCF47</color> <!-- Sunflower -->
-    <color name="app_color_theme_4">#9FD661</color> <!-- Grass -->
-    <color name="app_color_theme_5">#3FD0AD</color> <!-- Mint -->
-    <color name="app_color_theme_6">#2BBDF3</color> <!-- Aqua -->
-    <color name="app_color_theme_7">#5A9AEF</color> <!-- Blue Jeans -->
-    <color name="app_color_theme_8">#AC8FEF</color> <!-- Lavender -->
-    <color name="app_color_theme_9">#EE85C1</color> <!-- Pink Rose -->
-
-    <color name="tab_panel_bg">#F8F8F8</color>
-    <color name="secondary_color">#666666</color>
+    <!-- 背景色-->
+    <color name="activity_background">#F8F8F8</color>
     <color name="transparent">@android:color/transparent</color>
 
-    <color name="white">#ffffff</color>
+    <color name="app_color_theme_0">#41ceb5</color>
+    <color name="app_color_theme_1">#EF5362</color>
+    <color name="app_color_theme_2">#cf32ff</color>
+    <color name="app_color_theme_3">#FFCF47</color>
+    <color name="app_color_theme_4">#9FD661</color>
+    <color name="app_color_theme_5">#3FD0AD</color>
+    <color name="app_color_theme_6">#2BBDF3</color>
+    <color name="app_color_theme_7">#5A9AEF</color>
+    <color name="app_color_theme_8">#AC8FEF</color>
+    <color name="app_color_theme_9">#EE85C1</color>
 
-    <color name="red_500">#ef4836</color>
 </resources>

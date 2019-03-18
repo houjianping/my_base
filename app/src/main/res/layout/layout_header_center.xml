@@ -23,7 +23,7 @@
         tab:stl_dividerColor="#00000000"
         tab:stl_dividerThickness="0dp"
         tab:stl_drawDecorationAfterTab="false"
-        tab:stl_indicatorColor="#ff5c5c"
+        tab:stl_indicatorColor="@color/colorIndicator"
         tab:stl_indicatorCornerRadius="0dp"
         tab:stl_indicatorGravity="bottom"
         tab:stl_indicatorInFront="false"

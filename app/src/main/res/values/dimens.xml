@@ -3,9 +3,6 @@
 
     <dimen name="padding_common">15dp</dimen>
 
-    <dimen name="textsize_content">14sp</dimen>
-    <dimen name="textsize_title">16sp</dimen>
-
     <dimen name="font_20">20sp</dimen>
     <dimen name="font_18">18sp</dimen>
     <dimen name="font_16">16sp</dimen>
