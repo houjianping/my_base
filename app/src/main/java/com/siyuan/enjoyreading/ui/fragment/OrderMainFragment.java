@@ -10,6 +10,7 @@ import com.androidapp.fragment.BaseTabFragment;
 import com.androidapp.smarttablayout.SmartTabLayout;
 import com.androidapp.widget.CommonTitleBar;
 import com.siyuan.enjoyreading.R;
+import com.siyuan.enjoyreading.ui.activity.knwoledge.SearchKeyWordActivity;
 import com.siyuan.enjoyreading.ui.fragment.order.OrderFragmentAdapter;
 
 public class OrderMainFragment extends BaseTabFragment {
@@ -33,6 +34,12 @@ public class OrderMainFragment extends BaseTabFragment {
         mTitleBar = view.findViewById(R.id.titlebar);
         mViewPager = view.findViewById(R.id.order_viewpager);
         mSmartTabLayout = mTitleBar.getCenterCustomView().findViewById(R.id.tab_list);
+        mTitleBar.getRightCustomView().findViewById(R.id.search_view).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                doStartActivity(SearchKeyWordActivity.class, null);
+            }
+        });
     }
 
     @Override

@@ -147,6 +147,7 @@
             android:name=".ui.activity.GuideActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait" />
+        <activity android:name=".ui.activity.knwoledge.SearchKeyWordActivity" />
     </application>
 
 </manifest>
