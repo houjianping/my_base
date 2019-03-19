@@ -36,22 +36,8 @@ import static android.app.Activity.RESULT_OK;
 
 public class PCenterFragment extends BaseTabFragment {
 
-    private String mUpdateUrl = "https://raw.githubusercontent.com/WVector/AppUpdateDemo/master/json/json.txt";
-
     @Override
     protected void loadData(boolean force) {
-        if (!force)
-            return;
-        new UpdateAppManager
-                .Builder()
-                //当前Activity
-                .setActivity(getActivity())
-                //更新地址
-                .setUpdateUrl(mUpdateUrl)
-                //实现httpManager接口的对象
-                .setHttpManager(new OkGoUpdateHttpUtil())
-                .build()
-                .update();
     }
 
     @Override

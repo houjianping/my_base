@@ -16,7 +16,7 @@ import com.umeng.socialize.media.UMImage;
 import com.umeng.socialize.media.UMVideo;
 import com.umeng.socialize.media.UMWeb;
 
-public class ShareUtil {
+public class ShareHelper {
 
     private Activity mContext;
     private ShareCallback mShareCallback;
@@ -25,7 +25,7 @@ public class ShareUtil {
     private int mDefaultLogo;
     private ShareEnum mCurrentShareEnum;
 
-    public ShareUtil(Activity context, String shareTitle, int appLogo) {
+    public ShareHelper(Activity context, String shareTitle, int appLogo) {
         mContext = context;
         mDefaultLogo = appLogo;
         mShareCallback = null;

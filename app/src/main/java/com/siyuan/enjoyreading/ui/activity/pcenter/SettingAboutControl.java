@@ -4,13 +4,16 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.androidapp.activity.BaseActivity;
+import com.androidapp.upgrade.UpdateAppManager;
 import com.androidapp.widget.LoadingDialog;
 import com.siyuan.enjoyreading.R;
 import com.siyuan.enjoyreading.api.Urls;
 import com.siyuan.enjoyreading.ui.activity.currency.AppWebActivity;
+import com.siyuan.enjoyreading.util.OkGoUpdateHttpUtil;
 
 public class SettingAboutControl extends BaseActivity {
 
+    private String mUpdateUrl = "https://raw.githubusercontent.com/WVector/AppUpdateDemo/master/json/json.txt";
     @Override
     protected void initContentView(Bundle bundle) {
         setContentView(R.layout.act_personal_about);
@@ -38,6 +41,13 @@ public class SettingAboutControl extends BaseActivity {
                             .setCancelOutside(true);
                     LoadingDialog dialog = loadBuilder.create();
                     dialog.show();
+                    new UpdateAppManager
+                            .Builder()
+                            .setActivity(SettingAboutControl.this)
+                            .setUpdateUrl(mUpdateUrl)
+                            .setHttpManager(new OkGoUpdateHttpUtil())
+                            .build()
+                            .update();
                     break;
                 case R.id.settings_contact_us:
                     doStartActivity(AppWebActivity.class, AppWebActivity.getBundle(Urls.H5.CONTACT_US, "联系我们"));

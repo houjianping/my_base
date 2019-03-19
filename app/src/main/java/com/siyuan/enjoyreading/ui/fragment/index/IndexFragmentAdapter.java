@@ -5,11 +5,10 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import com.siyuan.enjoyreading.ui.fragment.TabFragment;
 import com.siyuan.enjoyreading.ui.fragment.common.AppWebFragment;
 
 public class IndexFragmentAdapter extends FragmentPagerAdapter {
-    private String[] tabs = {"推荐", "娱乐", "娱乐", "推荐", "娱乐", "娱乐","推荐", "娱乐", "H5"};
+    private String[] tabs = {"推荐", "娱乐", "相亲", "H5"};
 
     public IndexFragmentAdapter(FragmentManager fm) {
         super(fm);
@@ -22,18 +21,17 @@ public class IndexFragmentAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        if (position == 2) {
-            return new TabFragment();
-        } else if (tabs[position] .equals("推荐")) {
-            return new RecommendFragment();
-        } else if (tabs[position] .equals("娱乐")) {
-            return new EntertainmentFragment();
-        } else {
-            Fragment fragment = new AppWebFragment();
-            Bundle bundle = new Bundle();
-            bundle.putString(AppWebFragment.KEY_URL, "http://www.sina.com.cn/");
-            fragment.setArguments(bundle);
-            return fragment;
+        switch (tabs[position]) {
+            case "推荐":
+                return new RecommendFragment();
+            case "H5":
+                Fragment fragment = new AppWebFragment();
+                Bundle bundle = new Bundle();
+                bundle.putString(AppWebFragment.KEY_URL, "http://www.sina.com.cn/");
+                fragment.setArguments(bundle);
+                return fragment;
+            default:
+                return new EntertainmentFragment();
         }
     }
 

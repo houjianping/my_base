@@ -2,6 +2,8 @@
     <dimen name="division_line">0.5dp</dimen>
 
     <dimen name="padding_common">15dp</dimen>
+    <dimen name="padding_middle">10dp</dimen>
+    <dimen name="padding_small">5dp</dimen>
 
     <dimen name="font_20">20sp</dimen>
     <dimen name="font_18">18sp</dimen>

@@ -34,11 +34,12 @@ public class App extends Application {
 
     static {
         AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);//启用矢量图兼容
-        SmartRefreshLayout.setDefaultRefreshHeaderCreator(new DefaultRefreshHeaderCreator() {
+        SmartRefreshLayout.setDefaultRefreshHeaderCreator(
+                new DefaultRefreshHeaderCreator() {
             @Override
             public RefreshHeader createRefreshHeader(@NonNull Context context, @NonNull RefreshLayout layout) {
                 //全局设置主题颜色（优先级第二低，可以覆盖 DefaultRefreshInitializer 的配置，与下面的ClassicsHeader绑定）
-                layout.setPrimaryColorsId(R.color.white, R.color.colorPrimary);
+                layout.setPrimaryColorsId(R.color.white, R.color.colorIndicator);
                 return new ClassicsHeader(context).setTimeFormat(new DynamicTimeFormat("更新于 %s"));
             }
         });

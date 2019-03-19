@@ -12,11 +12,8 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.siyuan.enjoyreading.R;
 import com.siyuan.enjoyreading.adapter.RechargeItemAdapter;
-import com.siyuan.enjoyreading.adapter.RecommendItemAdapter;
 import com.siyuan.enjoyreading.api.ApiConfig;
-import com.siyuan.enjoyreading.entity.Movie;
 import com.siyuan.enjoyreading.entity.RechargeBean;
-import com.siyuan.enjoyreading.ui.activity.knwoledge.KnowledgeDetailActivity;
 
 import java.util.ArrayList;
 import java.util.List;

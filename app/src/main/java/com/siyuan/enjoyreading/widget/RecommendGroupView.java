@@ -16,7 +16,7 @@ import com.siyuan.enjoyreading.R;
 import com.siyuan.enjoyreading.adapter.RecommendItemAdapter;
 import com.siyuan.enjoyreading.api.ApiConfig;
 import com.siyuan.enjoyreading.entity.Movie;
-import com.siyuan.enjoyreading.ui.activity.knwoledge.KnowledgeDetailActivity;
+import com.siyuan.enjoyreading.ui.activity.knwoledge.KnowledgeChapterActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,7 +46,7 @@ public class RecommendGroupView extends LinearLayout {
         pagedGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                mActivity.startActivity(new Intent(getContext(), KnowledgeDetailActivity.class));
+                mActivity.startActivity(new Intent(getContext(), KnowledgeChapterActivity.class));
             }
         });
     }

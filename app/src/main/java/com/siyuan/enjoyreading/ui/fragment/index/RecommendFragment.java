@@ -61,7 +61,7 @@ public class RecommendFragment extends LazyLoadFragment {
             movies.add(gridItem2);
 
             HeaderItem headerItem3 = new HeaderItem();
-            headerItem3.setLeftTitle("好评栏目推荐");
+            headerItem3.setLeftTitle("热门频道");
             movies.add(headerItem3);
             List<MultipleEntity> lists = new Gson().fromJson(ApiConfig.JSON_MOVIES, new TypeToken<ArrayList<Movie>>() {
             }.getType());

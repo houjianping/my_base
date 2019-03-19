@@ -122,7 +122,7 @@
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ui.activity.knwoledge.KnowledgeDetailActivity"
+            android:name=".ui.activity.knwoledge.KnowledgeChapterActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait" />
         <activity android:name=".ui.activity.index.ChannelActivity"
@@ -133,7 +133,7 @@
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ui.activity.knwoledge.ArticleDetailPlayer"
+            android:name=".ui.activity.knwoledge.ArticleDetailActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait" />
         <activity

@@ -4,61 +4,76 @@
     android:id="@+id/movie_item"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="@dimen/padding_common">
+    android:orientation="vertical">
 
-    <com.androidapp.widget.AppRoundImageView
-        android:id="@+id/lmi_avatar"
-        android:layout_width="80dp"
-        android:layout_height="100dp"
-        android:layout_gravity="center_vertical"
-        android:layout_marginEnd="@dimen/padding_common"
-        android:layout_marginRight="@dimen/padding_common"
-        android:contentDescription="@string/app_name"
-        tools:background="#fff0f0f0" />
+    <LinearLayout
+        android:paddingLeft="@dimen/padding_common"
+        android:paddingRight="@dimen/padding_common"
+        android:paddingTop="@dimen/padding_middle"
+        android:paddingBottom="@dimen/padding_middle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <RelativeLayout
-        android:layout_width="fill_parent"
-        android:layout_height="100dp"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/lmi_title"
-            style="@style/AppTheme.Label.Title"
-            android:layout_marginTop="5dp"
-            android:minWidth="200dp"
-            tools:background="#fff0f0f0" />
-
-        <TextView
-            android:id="@+id/lmi_describe"
-            style="@style/AppTheme.Label"
-            android:layout_below="@+id/lmi_title"
-            android:layout_marginTop="5dp"
-            android:maxLines="3"
+        <com.androidapp.widget.AppRoundImageView
+            android:id="@+id/lmi_avatar"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="@dimen/padding_common"
             tools:background="#fff0f0f0" />
 
         <RelativeLayout
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/lmi_describe"
-            android:layout_alignParentBottom="true"
-            android:gravity="bottom">
+            android:layout_height="80dp"
+            android:orientation="vertical">
 
             <TextView
-                android:id="@+id/lmi_actor"
+                android:id="@+id/lmi_title"
+                style="@style/AppTheme.Label.Title"
+                android:layout_marginTop="5dp"
+                android:minWidth="200dp"
+                tools:background="#fff0f0f0" />
+
+            <TextView
+                android:id="@+id/lmi_describe"
                 style="@style/AppTheme.Label"
+                android:layout_below="@+id/lmi_title"
+                android:layout_marginTop="5dp"
+                android:maxLines="3"
+                tools:background="#fff0f0f0" />
+
+            <RelativeLayout
                 android:layout_width="fill_parent"
-                android:layout_marginRight="10dp"
-                android:layout_toLeftOf="@+id/lmi_grade"
-                android:gravity="left"
-                tools:background="#fff0f0f0" />
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/lmi_describe"
+                android:layout_alignParentBottom="true"
+                android:gravity="bottom">
 
-            <TextView
-                android:id="@+id/lmi_grade"
-                style="@style/AppTheme.Label"
-                android:layout_alignParentRight="true"
-                android:textColor="@android:color/holo_orange_dark"
-                tools:background="#fff0f0f0" />
+                <TextView
+                    android:id="@+id/lmi_actor"
+                    style="@style/AppTheme.Label"
+                    android:layout_width="fill_parent"
+                    android:singleLine="true"
+                    android:layout_marginRight="10dp"
+                    android:layout_toLeftOf="@+id/lmi_grade"
+                    android:gravity="left"
+                    tools:background="#fff0f0f0" />
+
+                <TextView
+                    android:id="@+id/lmi_grade"
+                    style="@style/AppTheme.Label"
+                    android:layout_alignParentRight="true"
+                    android:textColor="@color/app_color_theme_3"
+                    tools:background="#fff0f0f0" />
+            </RelativeLayout>
         </RelativeLayout>
-    </RelativeLayout>
+    </LinearLayout>
+
+    <View
+        android:layout_height="1px"
+        android:background="@color/colorDivision"
+        android:layout_width="match_parent"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="110dp" />
 </LinearLayout>
 

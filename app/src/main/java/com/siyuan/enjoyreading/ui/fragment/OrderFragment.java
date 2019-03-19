@@ -4,7 +4,6 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -22,7 +21,6 @@ import com.androidapp.pagedgridview.PagedGridLayout;
 import com.androidapp.smartrefresh.layout.api.RefreshLayout;
 import com.androidapp.smartrefresh.layout.listener.OnLoadMoreListener;
 import com.androidapp.smartrefresh.layout.listener.OnRefreshListener;
-import com.androidapp.utils.ToastUtils;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.siyuan.enjoyreading.R;
@@ -30,13 +28,11 @@ import com.siyuan.enjoyreading.adapter.MultipleItemQuickAdapter;
 import com.siyuan.enjoyreading.api.ApiConfig;
 import com.siyuan.enjoyreading.entity.BannerItem;
 import com.siyuan.enjoyreading.entity.OrderMovie;
-import com.siyuan.enjoyreading.ui.activity.knwoledge.KnowledgeDetailActivity;
+import com.siyuan.enjoyreading.ui.activity.knwoledge.KnowledgeChapterActivity;
 import com.siyuan.enjoyreading.widget.HeaderView;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static android.support.v7.widget.DividerItemDecoration.VERTICAL;
 
 public class OrderFragment extends LazyLoadFragment {
 
@@ -90,7 +86,7 @@ public class OrderFragment extends LazyLoadFragment {
                 @Override
                 public void onGridItemClick(Object item) {
                     GriedViewItem item1 = (GriedViewItem) item;
-                    mContext.startActivity(KnowledgeDetailActivity.getIntent(mContext));
+                    mContext.startActivity(KnowledgeChapterActivity.getIntent(mContext));
                 }
             });
             final GriedViewItem item = new GriedViewItem();

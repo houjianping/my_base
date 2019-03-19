@@ -11,7 +11,7 @@ import com.androidapp.widget.CommonTitleBar;
 import com.siyuan.enjoyreading.R;
 import com.siyuan.enjoyreading.ui.fragment.knowledge.KnowledgeAdapter;
 
-public class KnowledgeDetailActivity extends BaseActivity {
+public class KnowledgeChapterActivity extends BaseActivity {
 
     private CommonTitleBar mTitleBar;
     private ViewPager mViewPager;
@@ -36,7 +36,7 @@ public class KnowledgeDetailActivity extends BaseActivity {
     }
 
     public static Intent getIntent(Context context) {
-        Intent intent = new Intent(context, KnowledgeDetailActivity.class);
+        Intent intent = new Intent(context, KnowledgeChapterActivity.class);
         return intent;
     }
 }

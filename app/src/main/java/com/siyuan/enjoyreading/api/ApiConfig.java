@@ -2,6 +2,7 @@ package com.siyuan.enjoyreading.api;
 
 import com.siyuan.enjoyreading.R;
 import com.siyuan.enjoyreading.entity.BannerItem;
+import com.siyuan.enjoyreading.entity.WebInfo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,12 +49,12 @@ public class ApiConfig {
     /**
      * 图片
      */
-    private static String[]Urls={"http://d.hiphotos.baidu.com/image/pic/item/e4dde71190ef76c6e453882a9f16fdfaaf516729.jpg", "http://h.hiphotos.baidu.com/image/pic/item/30adcbef76094b36db47d2e4a1cc7cd98c109de6.jpg","http://g.hiphotos.baidu.com/image/pic/item/0d338744ebf81a4c27dc0dcdd52a6059242da6cc.jpg"
-            ,"http://c.hiphotos.baidu.com/image/h%3D200/sign=d21f63f99d3df8dcb93d8891fd1072bf/78310a55b319ebc415951b978026cffc1f1716ca.jpg","http://d.hiphotos.baidu.com/image/pic/item/54fbb2fb43166d22dc28839a442309f79052d265.jpg"
-            ,"http://c.hiphotos.baidu.com/image/pic/item/03087bf40ad162d9d0e7560313dfa9ec8a13cda7.jpg","http://g.hiphotos.baidu.com/image/h%3D200/sign=16f4ef3e35adcbef1e3479069cae2e0e/6d81800a19d8bc3e7763d030868ba61ea9d345e5.jpg"
-            ,"http://g.hiphotos.baidu.com/image/pic/item/8d5494eef01f3a29a3b0e6c49b25bc315c607cbb.jpg","http://c.hiphotos.baidu.com/image/h%3D200/sign=548da2d73f6d55fbdac671265d224f40/a044ad345982b2b7a2b8f7cd33adcbef76099b90.jpg"
-            ,"http://g.hiphotos.baidu.com/image/pic/item/7acb0a46f21fbe09359315d16f600c338644ad22.jpg","http://h.hiphotos.baidu.com/image/h%3D200/sign=9d4948d52c738bd4db21b531918a876c/6a600c338744ebf85db15337dbf9d72a6159a7f1.jpg"
-            ,"http://e.hiphotos.baidu.com/image/h%3D200/sign=7683f02abc096b639e1959503c328733/203fb80e7bec54e74a142d1bbb389b504fc26a3e.jpg"};
+    private static String[] Urls = {"http://d.hiphotos.baidu.com/image/pic/item/e4dde71190ef76c6e453882a9f16fdfaaf516729.jpg", "http://h.hiphotos.baidu.com/image/pic/item/30adcbef76094b36db47d2e4a1cc7cd98c109de6.jpg", "http://g.hiphotos.baidu.com/image/pic/item/0d338744ebf81a4c27dc0dcdd52a6059242da6cc.jpg"
+            , "http://c.hiphotos.baidu.com/image/h%3D200/sign=d21f63f99d3df8dcb93d8891fd1072bf/78310a55b319ebc415951b978026cffc1f1716ca.jpg", "http://d.hiphotos.baidu.com/image/pic/item/54fbb2fb43166d22dc28839a442309f79052d265.jpg"
+            , "http://c.hiphotos.baidu.com/image/pic/item/03087bf40ad162d9d0e7560313dfa9ec8a13cda7.jpg", "http://g.hiphotos.baidu.com/image/h%3D200/sign=16f4ef3e35adcbef1e3479069cae2e0e/6d81800a19d8bc3e7763d030868ba61ea9d345e5.jpg"
+            , "http://g.hiphotos.baidu.com/image/pic/item/8d5494eef01f3a29a3b0e6c49b25bc315c607cbb.jpg", "http://c.hiphotos.baidu.com/image/h%3D200/sign=548da2d73f6d55fbdac671265d224f40/a044ad345982b2b7a2b8f7cd33adcbef76099b90.jpg"
+            , "http://g.hiphotos.baidu.com/image/pic/item/7acb0a46f21fbe09359315d16f600c338644ad22.jpg", "http://h.hiphotos.baidu.com/image/h%3D200/sign=9d4948d52c738bd4db21b531918a876c/6a600c338744ebf85db15337dbf9d72a6159a7f1.jpg"
+            , "http://e.hiphotos.baidu.com/image/h%3D200/sign=7683f02abc096b639e1959503c328733/203fb80e7bec54e74a142d1bbb389b504fc26a3e.jpg"};
 
     public static String RECHARGE_LIST = "[{" +
             "\"id\": 0," +
@@ -411,33 +412,36 @@ public class ApiConfig {
             "\"sectiontitle\": \"\"," +
             "\"topicDesc\": \"生命的价值不依赖于我们的所作所为。\"" +
             "}]";
+
     /**
      * 获取随机图片串
+     *
      * @param num
      * @return
      */
     public static String getRandomPhotoUrlString(int num) {
         StringBuilder sdbResult = new StringBuilder();
-        if(num>0) {
-            String[] photoUrls = new String[num>9?9:num];
-            for (int i = 0; i< num ; i++) {
-                if ( sdbResult.length() > 0 )
-                {
-                    sdbResult.append( ";" ).append( Urls[new Random().nextInt(Urls.length)] );
-                }else{
-                    sdbResult.append( Urls[new Random().nextInt(Urls.length)] );
+        if (num > 0) {
+            String[] photoUrls = new String[num > 9 ? 9 : num];
+            for (int i = 0; i < num; i++) {
+                if (sdbResult.length() > 0) {
+                    sdbResult.append(";").append(Urls[new Random().nextInt(Urls.length)]);
+                } else {
+                    sdbResult.append(Urls[new Random().nextInt(Urls.length)]);
                 }
 
             }
         }
         return sdbResult.toString();
     }
+
     /**
      * 获取随机图片串
+     *
      * @return
      */
     public static String getRandomPhotoUrl() {
-        return  Urls[new Random().nextInt(Urls.length)];
+        return Urls[new Random().nextInt(Urls.length)];
     }
 
     public static String JSON_WALLET_LIST = "[{" +
@@ -497,4 +501,17 @@ public class ApiConfig {
             "\"time\": 1552719726000," +
             "\"statusDesc\": \"ada\"" +
             "}]";
+
+    public static WebInfo getWebInfo() {
+        String content = "<div class=\"widt_ad\" style=\"padding-bottom: 0px; padding-top: 0px; color: rgb(51, 51, 51); font-family: 微软雅黑, &quot;Microsoft YaHei&quot;, arial, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px;\"><img class=\"scrollLoading\" src=\"http://08.imgmini.eastday.com/mobile/20171213/20171213090938_5d204cbfe29043528eac687619b28f40_1.jpeg\" style=\"background-color:rgb(241, 240, 240); border:none; display:block; height:500.63888888889; margin-left:auto; margin-right:auto; max-width:100%; width:670px\" /></div>\n\n<p style=\"text-align:start\">&nbsp;</p>\n\n<p style=\"text-align:start\">据《每日邮报》12月12日报道，圣诞节快到了，美国一家小餐馆提前迎来了一位&ldquo;圣诞老人&rdquo;&mdash;&mdash;一位神秘的顾客吃了一顿17美元（约113元）的早餐后，给服务员留下了2000美元（约1.3万元）的小费。</p>\n\n<p style=\"text-align:start\">&nbsp;</p>\n\n<div class=\"widt_ad\" style=\"padding-bottom: 0px; padding-top: 0px; color: rgb(51, 51, 51); font-family: 微软雅黑, &quot;Microsoft YaHei&quot;, arial, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px;\"><img class=\"scrollLoading\" src=\"http://08.imgmini.eastday.com/mobile/20171213/20171213090938_5d204cbfe29043528eac687619b28f40_2.jpeg\" style=\"background-color:rgb(241, 240, 240); border:none; display:block; height:819px; margin-left:auto; margin-right:auto; max-width:100%; width:634px\" /></div>\n\n<p style=\"text-align:start\">&nbsp;</p>\n\n<p style=\"text-align:start\">在美国亚利桑那州斯科茨代尔市一家名为&ldquo;5 &amp; Diner&rdquo;的餐厅里，一位匿名人士在吃过一顿17.23美元的早餐后，给服务员们留下了2000美元的小费，并在账单上留下了一句话：请把小费分给所有餐馆工作人员，圣诞快乐。</p>\n\n<p style=\"text-align:start\">&nbsp;</p>\n\n<div class=\"widt_ad\" style=\"padding-bottom: 0px; padding-top: 0px; color: rgb(51, 51, 51); font-family: 微软雅黑, &quot;Microsoft YaHei&quot;, arial, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px;\"><img class=\"scrollLoading\" src=\"http://08.imgmini.eastday.com/mobile/20171213/20171213090938_5d204cbfe29043528eac687619b28f40_3.jpeg\" style=\"background-color:rgb(241, 240, 240); border:none; display:block; height:436px; margin-left:auto; margin-right:auto; max-width:100%; width:634px\" /></div>\n\n<p style=\"text-align:start\">&nbsp;</p>\n\n<p style=\"text-align:start\">餐馆服务员Delia Meeks说：&ldquo;我们立即把它交给了值班经理，她简直不敢相信，我们都很兴奋。这让餐馆每个人都有了很棒的一天。&rdquo;这顿饭的价格为17.23美元，顾客点了培根和鸡蛋作为早餐，小费是餐费的一百多倍。这家餐厅的9名员工每人分到了200多美元的小费。Meeks说，工作人员希望这位仁慈的陌生人能回来，这样他们就可以感谢他了。</p>\n";
+
+        WebInfo info = new WebInfo();
+        info.setUseWebUrl(true);
+        info.setUrl("https://mil.sina.cn/2018-11-06/detail-ihmutuea7434493.d.html?from=wap");
+        info.setTitle("神秘顾客花一百块吃早餐，扔给服务员一万三小费");
+        info.setSource("东方头条");
+        info.setDate(1541660938);
+        info.setBody(content);
+        return info;
+    }
 }

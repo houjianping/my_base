@@ -5,12 +5,10 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.androidapp.activity.BaseActivity;
-import com.androidapp.share.bean.ShareContent;
-import com.androidapp.share.bean.ShareEnum;
-import com.androidapp.share.util.ShareUtil;
 import com.androidapp.widget.AppAlertDialog;
 import com.siyuan.enjoyreading.R;
 import com.siyuan.enjoyreading.ui.activity.currency.AppWebActivity;
+import com.siyuan.enjoyreading.util.ShareUtil;
 
 import static com.siyuan.enjoyreading.api.Urls.H5.FEEDBACK_CONTROL;
 
@@ -56,7 +54,7 @@ public class SettingActivity extends BaseActivity {
                     clearCache();
                     break;
                 case R.id.setting_share_control:
-                    share();
+                    ShareUtil.share(SettingActivity.this);
                     break;
                 case R.id.setting_about_control:
                     startActivity(new Intent(mContext, SettingAboutControl.class));
@@ -64,34 +62,6 @@ public class SettingActivity extends BaseActivity {
             }
         }
     };
-
-    private void share() {
-        ShareUtil shareUtil = new ShareUtil(mContext, "分享标题", R.mipmap.ic_launcher);
-        shareUtil.setShareCallback(new ShareUtil.ShareCallback() {
-            @Override
-            public void onShareStart(ShareEnum shareEnum) {
-            }
-
-            @Override
-            public void onShareSuccess(ShareEnum shareEnum) {
-            }
-
-            @Override
-            public void onShareFailed(ShareEnum shareEnum) {
-            }
-
-            @Override
-            public void onShareCancel(ShareEnum shareEnum) {
-            }
-        });
-        ShareContent shareContent = new ShareContent();
-        shareContent.setUrl("");
-        shareContent.setTitle("");
-        shareContent.setLogo("");
-        shareContent.setText("");
-        shareContent.setShareObject(1);
-        shareUtil.show(shareContent);
-    }
 
     private void clearCache() {
         final AppAlertDialog dialog = new AppAlertDialog(mContext, false);
