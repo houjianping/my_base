@@ -150,6 +150,7 @@ public class CommonTitleBar extends RelativeLayout implements View.OnClickListen
 
     private OnTitleBarListener listener;
     private OnTitleBarDoubleClickListener doubleClickListener;
+    private OnSearchTextChanged  onSearchTextChanged;
 
     private static final int TYPE_LEFT_NONE = 0;
     private static final int TYPE_LEFT_TEXTVIEW = 1;
@@ -603,6 +604,9 @@ public class CommonTitleBar extends RelativeLayout implements View.OnClickListen
 
         @Override
         public void onTextChanged(CharSequence s, int start, int before, int count) {
+            if (onSearchTextChanged != null) {
+                onSearchTextChanged.onTextChanged(s, start, before, count);
+            }
         }
 
         @Override
@@ -940,6 +944,10 @@ public class CommonTitleBar extends RelativeLayout implements View.OnClickListen
         this.doubleClickListener = doubleClickListener;
     }
 
+    public void setOnSearchTextChanged(OnSearchTextChanged listener) {
+        this.onSearchTextChanged = listener;
+    }
+
     /**
      * 设置双击监听
      */
@@ -972,5 +980,9 @@ public class CommonTitleBar extends RelativeLayout implements View.OnClickListen
      */
     public interface OnTitleBarDoubleClickListener {
         void onClicked(View v);
+    }
+
+    public interface OnSearchTextChanged {
+        void onTextChanged(CharSequence s, int start, int before, int count);
     }
 }

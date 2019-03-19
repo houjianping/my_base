@@ -125,8 +125,13 @@
             android:name=".ui.activity.knwoledge.KnowledgeDetailActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait" />
-        <activity android:name=".ui.activity.index.ChannelActivity" />
-        <activity android:name=".ui.activity.knwoledge.ArticleVideoDetailPlayer" />
+        <activity android:name=".ui.activity.index.ChannelActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.activity.knwoledge.ArticleVideoDetailPlayer"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ui.activity.knwoledge.ArticleDetailPlayer"
             android:configChanges="orientation|keyboardHidden|screenSize"
@@ -147,7 +152,10 @@
             android:name=".ui.activity.GuideActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait" />
-        <activity android:name=".ui.activity.knwoledge.SearchKeyWordActivity" />
+        <activity
+            android:name=".ui.activity.knwoledge.SearchKeyWordActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

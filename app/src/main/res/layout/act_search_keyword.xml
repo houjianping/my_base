@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:titlebar="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="fill_parent"
@@ -10,47 +9,87 @@
         android:id="@+id/titlebar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        titlebar:centerSearchRightType="delete"
+        titlebar:centerType="searchView"
         titlebar:leftDrawable="@drawable/comm_titlebar_back_normal"
         titlebar:leftDrawablePadding="0dp"
         titlebar:leftType="textView"
-        titlebar:centerType="searchView"
-        titlebar:centerSearchRightType="delete"
         titlebar:rightText="确定"
-        titlebar:rightType="textView"/>
+        titlebar:rightType="textView" />
+
     <LinearLayout
-        android:layout_width="fill_parent"
+        android:id="@+id/ll_history"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
+
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="44dp"
-            android:background="@drawable/bottom_line"
-            android:gravity="center_vertical">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
-                android:text="历史记录"
-                android:textColor="#ff666666"
-                android:textSize="14sp" />
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:background="@drawable/bottom_line"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:text="历史记录"
+                    android:textColor="@color/colorTextSummary"
+                    android:textSize="14sp" />
+            </LinearLayout>
         </LinearLayout>
+
+        <com.androidapp.pagedgridview.PagedGridView
+            android:id="@+id/pgv_history"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:numColumns="2" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:background="@drawable/bottom_line"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:text="猜您想要的"
+                    android:textColor="@color/colorTextSummary"
+                    android:textSize="14sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <com.androidapp.pagedgridview.PagedGridView
+            android:id="@+id/pgv_recommend"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:numColumns="2" />
     </LinearLayout>
-    <LinearLayout
-        android:layout_width="fill_parent"
+
+    <com.androidapp.pagedgridview.PagedGridView
+        android:id="@+id/pgv_search"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="44dp"
-            android:background="@drawable/bottom_line"
-            android:gravity="center_vertical">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
-                android:text="猜您想要的"
-                android:textColor="#ff666666"
-                android:textSize="14sp" />
-        </LinearLayout>
-    </LinearLayout>
+        android:layout_gravity="center"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:numColumns="1" />
 </LinearLayout>
