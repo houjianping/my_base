@@ -16,7 +16,7 @@ import com.shuyu.gsyvideoplayer.GSYVideoManager;
 import com.shuyu.gsyvideoplayer.utils.OrientationUtils;
 import com.shuyu.gsyvideoplayer.video.StandardGSYVideoPlayer;
 import com.siyuan.enjoyreading.R;
-import com.siyuan.enjoyreading.entity.VideoItem;
+import com.siyuan.enjoyreading.entity.NewsItem;
 
 
 public class ArticleVideoDetailPlayer extends BaseActivity {
@@ -44,7 +44,7 @@ public class ArticleVideoDetailPlayer extends BaseActivity {
     @Override
     protected void initView() {
         videoPlayer = findViewById(R.id.video_player);
-        findViewById(R.id.video_one).findViewById(R.id.video_title).setBackgroundColor(R.color.color_primary);
+        findViewById(R.id.video_one).findViewById(R.id.video_title).setBackgroundColor(getResources().getColor(R.color.color_primary));
     }
 
     @Override
@@ -123,7 +123,7 @@ public class ArticleVideoDetailPlayer extends BaseActivity {
         super.onBackPressed();
     }
 
-    public static Intent getIntent(Context context, VideoItem videoItem) {
+    public static Intent getIntent(Context context, NewsItem videoItem) {
         Intent intent = new Intent(context, ArticleVideoDetailPlayer.class);
         intent.putExtra(KEY_VIDEO_URL, videoItem.getMp4_url());
         intent.putExtra(KEY_VIDEO_THUMB, videoItem.getCover());

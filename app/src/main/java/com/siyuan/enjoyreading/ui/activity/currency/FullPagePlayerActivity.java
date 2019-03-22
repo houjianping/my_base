@@ -13,7 +13,7 @@ import android.widget.ImageView;
 import com.androidapp.activity.BaseActivity;
 import com.bumptech.glide.Glide;
 import com.siyuan.enjoyreading.R;
-import com.siyuan.enjoyreading.entity.VideoItem;
+import com.siyuan.enjoyreading.entity.NewsItem;
 import com.shuyu.gsyvideoplayer.GSYVideoManager;
 import com.shuyu.gsyvideoplayer.utils.OrientationUtils;
 import com.shuyu.gsyvideoplayer.video.StandardGSYVideoPlayer;
@@ -122,7 +122,7 @@ public class FullPagePlayerActivity extends BaseActivity {
         super.onBackPressed();
     }
 
-    public static Intent getIntent(Context context, VideoItem videoItem) {
+    public static Intent getIntent(Context context, NewsItem videoItem) {
         Intent intent = new Intent(context, FullPagePlayerActivity.class);
         intent.putExtra(KEY_VIDEO_URL, videoItem.getMp4_url());
         intent.putExtra(KEY_VIDEO_THUMB, videoItem.getCover());

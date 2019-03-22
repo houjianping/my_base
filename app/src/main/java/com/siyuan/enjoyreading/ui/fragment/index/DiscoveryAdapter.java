@@ -7,9 +7,10 @@ import android.support.v4.app.FragmentPagerAdapter;
 
 import com.siyuan.enjoyreading.ui.fragment.common.AppWebFragment;
 import com.siyuan.enjoyreading.ui.fragment.discovery.SocializCircleFragment;
+import com.siyuan.enjoyreading.ui.fragment.discovery.VideoListFragment;
 
 public class DiscoveryAdapter extends FragmentPagerAdapter {
-    private String[] tabs = {"读友", "福利", "活动"};
+    private String[] tabs = {"读友", "小视频", "福利", "活动"};
 
     public DiscoveryAdapter(FragmentManager fm) {
         super(fm);
@@ -26,6 +27,8 @@ public class DiscoveryAdapter extends FragmentPagerAdapter {
             case 0:
                 return new SocializCircleFragment();
             case 1:
+                return new VideoListFragment();
+            case 2:
                 Fragment fragment = new AppWebFragment();
                 Bundle bundle = new Bundle();
                 bundle.putString(AppWebFragment.KEY_URL, "http://m.lrts.me/h5/appactivity?uid=252995147&mparam=0s34Of5C32xrw7YCOrk1qnLcvSwtmfTIFCFP3YV38QKEyVc71soBDCET0OKwantG1gfqqrUSXcWB%0Aa9C8hoUluyvkwHBloCUH");

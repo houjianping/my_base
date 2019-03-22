@@ -27,7 +27,7 @@ import com.siyuan.enjoyreading.R;
 import com.siyuan.enjoyreading.adapter.MultipleItemQuickAdapter;
 import com.siyuan.enjoyreading.api.ApiConfig;
 import com.siyuan.enjoyreading.entity.BannerItem;
-import com.siyuan.enjoyreading.entity.VideoItem;
+import com.siyuan.enjoyreading.entity.NewsItem;
 import com.siyuan.enjoyreading.ui.activity.currency.FullPagePlayerActivity;
 
 import java.util.ArrayList;
@@ -42,7 +42,7 @@ public class EntertainmentFragment extends LazyLoadFragment {
     @Override
     protected void loadData(boolean force) {
         if (force) {
-            final List<VideoItem> circleItems = new Gson().fromJson(ApiConfig.JSON_VIDEO_LIST, new TypeToken<ArrayList<VideoItem>>() {
+            final List<NewsItem> circleItems = new Gson().fromJson(ApiConfig.JSON_VIDEO_LIST, new TypeToken<ArrayList<NewsItem>>() {
             }.getType());
             mAdapter.replaceData(circleItems);
         }
@@ -67,7 +67,7 @@ public class EntertainmentFragment extends LazyLoadFragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         if (mAdapter == null) {
             Log.e("", "------loadData----mAdapter---1111-");
-            mAdapter = new MultipleItemQuickAdapter<VideoItem>();
+            mAdapter = new MultipleItemQuickAdapter<NewsItem>();
             //添加Header
             View header = LayoutInflater.from(getContext()).inflate(R.layout.listitem_movie_header, recyclerView, false);
             Banner banner = (Banner) header;
@@ -86,7 +86,7 @@ public class EntertainmentFragment extends LazyLoadFragment {
         mAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                startActivity(FullPagePlayerActivity.getIntent(mContext, (VideoItem) mAdapter.getItem(position)));
+                startActivity(FullPagePlayerActivity.getIntent(mContext, (NewsItem) mAdapter.getItem(position)));
             }
         });
         recyclerView.setAdapter(mAdapter);

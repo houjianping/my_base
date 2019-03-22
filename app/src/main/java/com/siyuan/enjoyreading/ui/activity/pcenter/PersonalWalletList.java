@@ -1,6 +1,5 @@
 package com.siyuan.enjoyreading.ui.activity.pcenter;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.DividerItemDecoration;
@@ -11,7 +10,6 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.androidapp.activity.BaseActivity;
-import com.androidapp.adapter.BaseQuickAdapter;
 import com.androidapp.banner.Banner;
 import com.androidapp.banner.listener.OnBannerListener;
 import com.androidapp.smartrefresh.layout.api.RefreshLayout;
@@ -22,7 +20,6 @@ import com.google.gson.reflect.TypeToken;
 import com.siyuan.enjoyreading.R;
 import com.siyuan.enjoyreading.adapter.MultipleItemQuickAdapter;
 import com.siyuan.enjoyreading.api.ApiConfig;
-import com.siyuan.enjoyreading.entity.VideoItem;
 import com.siyuan.enjoyreading.entity.WalletItem;
 import com.siyuan.enjoyreading.util.BannerImageLoader;
 

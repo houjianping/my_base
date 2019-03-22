@@ -12,10 +12,10 @@ import com.siyuan.enjoyreading.adapter.provider.KnowledgeListItemProvider;
 import com.siyuan.enjoyreading.adapter.provider.NotificationItemProvider;
 import com.siyuan.enjoyreading.adapter.provider.OrderMovieItemProvider;
 import com.siyuan.enjoyreading.adapter.provider.TestItemProvider;
+import com.siyuan.enjoyreading.adapter.provider.NewsItemProvider;
 import com.siyuan.enjoyreading.adapter.provider.VideoItemProvider;
 import com.siyuan.enjoyreading.adapter.provider.WalletItemProvider;
 import com.siyuan.enjoyreading.entity.AdItem;
-import com.siyuan.enjoyreading.entity.BannerItem;
 import com.siyuan.enjoyreading.entity.BannerItemEntity;
 import com.siyuan.enjoyreading.entity.Coupon;
 import com.siyuan.enjoyreading.entity.GridItem;
@@ -25,6 +25,7 @@ import com.siyuan.enjoyreading.entity.Movie;
 import com.siyuan.enjoyreading.entity.MultipleEntity;
 import com.siyuan.enjoyreading.entity.NotificationItem;
 import com.siyuan.enjoyreading.entity.OrderMovie;
+import com.siyuan.enjoyreading.entity.NewsItem;
 import com.siyuan.enjoyreading.entity.VideoItem;
 import com.siyuan.enjoyreading.entity.WalletItem;
 import com.siyuan.enjoyreading.entity.circle.CircleItem;
@@ -32,7 +33,7 @@ import com.siyuan.enjoyreading.entity.circle.CircleItem;
 public class MultipleItemQuickAdapter<T extends MultipleEntity> extends MultipleItemAdapter<T, BaseViewHolder> {
 
     public static final int ITEM_TEST = 0;
-    public static final int ITEM_VIDEO = 1;
+    public static final int ITEM_NEWS = 1;
     public static final int ITEM_CIRCLE = 2;
     public static final int ITEM_KNOWLEDGE_LIST_ITEM = 3;
     public static final int ITEM_ORDER_MOVIE = 4;
@@ -43,6 +44,7 @@ public class MultipleItemQuickAdapter<T extends MultipleEntity> extends Multiple
     public static final int ITEM_WALLET = 9;
     public static final int ITEM_COUPON = 10;
     public static final int ITEM_NOTIFICATION = 11;
+    public static final int ITEM_VIDEO_LIST = 12;
 
     public MultipleItemQuickAdapter() {
         super(null);
@@ -57,8 +59,8 @@ public class MultipleItemQuickAdapter<T extends MultipleEntity> extends Multiple
             return ITEM_CIRCLE;
         } else if (entity instanceof KnowledgeListItem) {
             return ITEM_KNOWLEDGE_LIST_ITEM;
-        } else if (entity instanceof VideoItem) {
-            return ITEM_VIDEO;
+        } else if (entity instanceof NewsItem) {
+            return ITEM_NEWS;
         } else if (entity instanceof OrderMovie) {
             return ITEM_ORDER_MOVIE;
         } else if (entity instanceof HeaderItem) {
@@ -75,14 +77,16 @@ public class MultipleItemQuickAdapter<T extends MultipleEntity> extends Multiple
             return ITEM_COUPON;
         } else if (entity instanceof NotificationItem) {
             return ITEM_NOTIFICATION;
+        } else if (entity instanceof VideoItem) {
+            return ITEM_VIDEO_LIST;
         }
-        return ITEM_VIDEO;
+        return ITEM_NEWS;
     }
 
     @Override
     public void registerItemProvider() {
         try {
-            mProviderDelegate.registerProvider(new VideoItemProvider());
+            mProviderDelegate.registerProvider(new NewsItemProvider());
             mProviderDelegate.registerProvider(new TestItemProvider());
             mProviderDelegate.registerProvider(new CircleItemProvider());
             mProviderDelegate.registerProvider(new KnowledgeListItemProvider());
@@ -94,6 +98,7 @@ public class MultipleItemQuickAdapter<T extends MultipleEntity> extends Multiple
             mProviderDelegate.registerProvider(new WalletItemProvider());
             mProviderDelegate.registerProvider(new CouponProvider());
             mProviderDelegate.registerProvider(new NotificationItemProvider());
+            mProviderDelegate.registerProvider(new VideoItemProvider());
         } catch (Exception e) {
             e.printStackTrace();
         }

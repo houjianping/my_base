@@ -1,17 +1,14 @@
 package com.siyuan.enjoyreading.adapter.provider;
 
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.androidapp.adapter.BaseViewHolder;
 import com.androidapp.adapter.provider.BaseItemProvider;
-import com.androidapp.utils.ImageLoaderUtils;
 import com.siyuan.enjoyreading.R;
 import com.siyuan.enjoyreading.adapter.MultipleItemQuickAdapter;
 import com.siyuan.enjoyreading.entity.HeaderItem;
 import com.siyuan.enjoyreading.entity.MultipleEntity;
-import com.siyuan.enjoyreading.entity.VideoItem;
 
 public class HeaderItemProvider extends BaseItemProvider<MultipleEntity,BaseViewHolder> {
 

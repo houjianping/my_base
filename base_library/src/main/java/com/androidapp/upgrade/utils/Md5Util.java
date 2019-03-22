@@ -14,6 +14,23 @@ import java.security.NoSuchAlgorithmException;
  */
 
 public class Md5Util {
+    public static String MD5(String s) {
+        try {
+            MessageDigest md = MessageDigest.getInstance("MD5");
+            byte[] bytes = md.digest(s.getBytes("utf-8"));
+
+            final char[] HEX_DIGITS = "0123456789ABCDEF".toCharArray();
+            StringBuilder ret = new StringBuilder(bytes.length * 2);
+            for (int i=0; i<bytes.length; i++) {
+                ret.append(HEX_DIGITS[(bytes[i] >> 4) & 0x0f]);
+                ret.append(HEX_DIGITS[bytes[i] & 0x0f]);
+            }
+            return ret.toString();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "";
+    }
     public static String getFileMD5(File file) {
         if (!file.exists()) {
             return "";

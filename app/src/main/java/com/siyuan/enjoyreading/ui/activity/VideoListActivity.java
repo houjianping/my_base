@@ -12,9 +12,8 @@ import com.androidapp.mvp.MvpBaseView;
 import com.androidapp.smartrefresh.layout.api.RefreshLayout;
 import com.androidapp.smartrefresh.layout.listener.OnLoadMoreListener;
 import com.androidapp.smartrefresh.layout.listener.OnRefreshListener;
-import com.androidapp.utils.ToastUtils;
 import com.siyuan.enjoyreading.adapter.MultipleItemQuickAdapter;
-import com.siyuan.enjoyreading.entity.VideoItem;
+import com.siyuan.enjoyreading.entity.NewsItem;
 import com.siyuan.enjoyreading.model.user.VideoListModelLogic;
 import com.siyuan.enjoyreading.presenter.user.VideoListPresenterImpl;
 import com.siyuan.enjoyreading.presenter.user.interfaces.IVideoListPresenter;
@@ -87,7 +86,7 @@ public class VideoListActivity extends MvpBaseListActivity<VideoListModelLogic, 
     }
 
     @Override
-    public void onVideoListUpdate(List<VideoItem> circleItemList) {
+    public void onVideoListUpdate(List<NewsItem> circleItemList) {
         mAdapter.replaceData(circleItemList);
     }
 

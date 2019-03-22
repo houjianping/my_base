@@ -6,7 +6,7 @@ import com.siyuan.enjoyreading.R;
 import com.siyuan.enjoyreading.adapter.MultipleItemQuickAdapter;
 import com.siyuan.enjoyreading.entity.KnowledgeListItem;
 import com.siyuan.enjoyreading.entity.MultipleEntity;
-import com.siyuan.enjoyreading.entity.VideoItem;
+import com.siyuan.enjoyreading.entity.NewsItem;
 import com.siyuan.enjoyreading.ui.activity.knwoledge.ArticleVideoDetailPlayer;
 
 public class KnowledgeListItemProvider extends BaseItemProvider<MultipleEntity,BaseViewHolder> {
@@ -31,7 +31,7 @@ public class KnowledgeListItemProvider extends BaseItemProvider<MultipleEntity,B
 
     @Override
     public void onClick(BaseViewHolder helper, MultipleEntity data, int position) {
-        VideoItem videoItem = new VideoItem();
+        NewsItem videoItem = new NewsItem();
         videoItem.setMp4_url("http://flv3.bn.netease.com/videolib3/1604/14/LSwHa2712/SD/LSwHa2712-mobile.mp4");
         videoItem.setCover("http://vimg3.ws.126.net/image/snapshot/2016/4/F/M/VBJLSB3FM.jpg");
         videoItem.setTitle("67名电信诈骗嫌疑人被押回国");

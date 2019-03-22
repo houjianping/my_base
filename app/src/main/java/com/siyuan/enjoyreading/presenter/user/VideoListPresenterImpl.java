@@ -1,7 +1,6 @@
 package com.siyuan.enjoyreading.presenter.user;
 
-import com.androidapp.utils.ToastUtils;
-import com.siyuan.enjoyreading.entity.VideoItem;
+import com.siyuan.enjoyreading.entity.NewsItem;
 import com.siyuan.enjoyreading.presenter.user.interfaces.IVideoListPresenter;
 
 import java.util.List;
@@ -11,7 +10,7 @@ import rx.Subscriber;
 public class VideoListPresenterImpl extends IVideoListPresenter.Presenter {
     @Override
     public void getVideoListItems(int page) {
-        mModel.getVideoListItems(mContext, 1).subscribe(new Subscriber<List<VideoItem>>() {
+        mModel.getVideoListItems(mContext, 1).subscribe(new Subscriber<List<NewsItem>>() {
             @Override
             public void onCompleted() {
             }
@@ -21,7 +20,7 @@ public class VideoListPresenterImpl extends IVideoListPresenter.Presenter {
             }
 
             @Override
-            public void onNext(List<VideoItem> result) {
+            public void onNext(List<NewsItem> result) {
                 if (result != null) {
                     try {
                         mView.onVideoListUpdate(result);
