@@ -35,12 +35,7 @@ public class SettingAboutControl extends BaseActivity {
         public void onClick(View v) {
             switch (v.getId()) {
                 case R.id.settings_check_update:
-                    LoadingDialog.Builder loadBuilder = new LoadingDialog.Builder(mContext)
-                            .setMessage("加载中...")
-                            .setCancelable(true)
-                            .setCancelOutside(true);
-                    LoadingDialog dialog = loadBuilder.create();
-                    dialog.show();
+                    showLoading(true);
                     new UpdateAppManager
                             .Builder()
                             .setActivity(SettingAboutControl.this)

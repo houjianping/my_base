@@ -1,15 +1,15 @@
-package com.siyuan.enjoyreading.ui.fragment.mycenter;
+package com.siyuan.enjoyreading.ui.fragment.message;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import com.siyuan.enjoyreading.ui.fragment.index.EntertainmentFragment;
+import com.siyuan.enjoyreading.ui.fragment.TabFragment;
 
-public class DownloadFragmentAdapter extends FragmentPagerAdapter {
-    private String[] tabs = {"已下载", "下载中"};
+public class MessageFragmentAdapter extends FragmentPagerAdapter {
+    private String[] tabs = {"消息", "通知"};
 
-    public DownloadFragmentAdapter(FragmentManager fm) {
+    public MessageFragmentAdapter(FragmentManager fm) {
         super(fm);
     }
 
@@ -20,7 +20,7 @@ public class DownloadFragmentAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        return new EntertainmentFragment();
+        return new NotificationFragment();
     }
 
     @Override

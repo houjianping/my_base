@@ -153,9 +153,10 @@
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ui.activity.knwoledge.SearchKeyWordActivity"
+            android:name=".ui.activity.SearchKeyWordActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait" />
+        <activity android:name=".ui.activity.MessageActivity" />
     </application>
 
 </manifest>

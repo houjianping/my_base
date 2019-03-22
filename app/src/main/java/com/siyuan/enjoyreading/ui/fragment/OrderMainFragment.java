@@ -1,5 +1,6 @@
 package com.siyuan.enjoyreading.ui.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -10,7 +11,8 @@ import com.androidapp.fragment.BaseTabFragment;
 import com.androidapp.smarttablayout.SmartTabLayout;
 import com.androidapp.widget.CommonTitleBar;
 import com.siyuan.enjoyreading.R;
-import com.siyuan.enjoyreading.ui.activity.knwoledge.SearchKeyWordActivity;
+import com.siyuan.enjoyreading.ui.activity.MessageActivity;
+import com.siyuan.enjoyreading.ui.activity.SearchKeyWordActivity;
 import com.siyuan.enjoyreading.ui.fragment.order.OrderFragmentAdapter;
 
 public class OrderMainFragment extends BaseTabFragment {
@@ -38,6 +40,12 @@ public class OrderMainFragment extends BaseTabFragment {
             @Override
             public void onClick(View v) {
                 doStartActivity(SearchKeyWordActivity.class, null);
+            }
+        });
+        mTitleBar.getRightCustomView().findViewById(R.id.chat_view).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getContext(), MessageActivity.class));
             }
         });
     }

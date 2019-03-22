@@ -9,6 +9,7 @@ import com.siyuan.enjoyreading.adapter.provider.CouponProvider;
 import com.siyuan.enjoyreading.adapter.provider.HeaderItemProvider;
 import com.siyuan.enjoyreading.adapter.provider.IndexGridItemProvider;
 import com.siyuan.enjoyreading.adapter.provider.KnowledgeListItemProvider;
+import com.siyuan.enjoyreading.adapter.provider.NotificationItemProvider;
 import com.siyuan.enjoyreading.adapter.provider.OrderMovieItemProvider;
 import com.siyuan.enjoyreading.adapter.provider.TestItemProvider;
 import com.siyuan.enjoyreading.adapter.provider.VideoItemProvider;
@@ -22,6 +23,7 @@ import com.siyuan.enjoyreading.entity.HeaderItem;
 import com.siyuan.enjoyreading.entity.KnowledgeListItem;
 import com.siyuan.enjoyreading.entity.Movie;
 import com.siyuan.enjoyreading.entity.MultipleEntity;
+import com.siyuan.enjoyreading.entity.NotificationItem;
 import com.siyuan.enjoyreading.entity.OrderMovie;
 import com.siyuan.enjoyreading.entity.VideoItem;
 import com.siyuan.enjoyreading.entity.WalletItem;
@@ -40,6 +42,7 @@ public class MultipleItemQuickAdapter<T extends MultipleEntity> extends Multiple
     public static final int ITEM_AD = 8;
     public static final int ITEM_WALLET = 9;
     public static final int ITEM_COUPON = 10;
+    public static final int ITEM_NOTIFICATION = 11;
 
     public MultipleItemQuickAdapter() {
         super(null);
@@ -70,6 +73,8 @@ public class MultipleItemQuickAdapter<T extends MultipleEntity> extends Multiple
             return ITEM_WALLET;
         } else if (entity instanceof Coupon) {
             return ITEM_COUPON;
+        } else if (entity instanceof NotificationItem) {
+            return ITEM_NOTIFICATION;
         }
         return ITEM_VIDEO;
     }
@@ -88,6 +93,7 @@ public class MultipleItemQuickAdapter<T extends MultipleEntity> extends Multiple
             mProviderDelegate.registerProvider(new AdItemProvider());
             mProviderDelegate.registerProvider(new WalletItemProvider());
             mProviderDelegate.registerProvider(new CouponProvider());
+            mProviderDelegate.registerProvider(new NotificationItemProvider());
         } catch (Exception e) {
             e.printStackTrace();
         }

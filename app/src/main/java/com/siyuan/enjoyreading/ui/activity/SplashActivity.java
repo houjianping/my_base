@@ -70,7 +70,6 @@ public class SplashActivity extends BaseActivity {
     @Override
     protected void initView() {
         boolean appUsed = SPUtils.getSharedBooleanData("appUsed");
-        appUsed = false;
         if (!appUsed) {
             startActivity(new Intent(SplashActivity.this, GuideActivity.class));
             finish();

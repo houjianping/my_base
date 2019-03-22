@@ -15,9 +15,9 @@ import java.util.List;
 
 public class RechargeItemAdapter extends BaseAdapter {
 
-    PagedGridLayout.OnGridItemClick onGridItemClick;
     private List<RechargeBean> recommendPrasises = new ArrayList<>();
     private Context mContext;
+    private RechargeBean mSelectedRechargeInfo;
 
     public RechargeItemAdapter(Context context, List<RechargeBean> prasises) {
         mContext = context;
@@ -54,11 +54,26 @@ public class RechargeItemAdapter extends BaseAdapter {
         }
         holder.titleView.setText("" + getItem(position).getTitle());
         holder.contextView.setText("￥" + getItem(position).getContent());
+        convertView.setBackgroundResource(mSelectedRechargeInfo != null && mSelectedRechargeInfo == getItem(position) ? R.drawable.item_border_selected : R.drawable.item_border);
+        if (mSelectedRechargeInfo == null && position == 0) {
+            convertView.setBackgroundResource(R.drawable.item_border_selected);
+        } else {
+            convertView.setBackgroundResource(mSelectedRechargeInfo != null && mSelectedRechargeInfo == getItem(position) ? R.drawable.item_border_selected : R.drawable.item_border);
+        }
         return convertView;
     }
 
-    public void setOnItemClick(PagedGridLayout.OnGridItemClick listener) {
-        onGridItemClick = listener;
+    public void setSelected(RechargeBean rechargeInfo) {
+        this.mSelectedRechargeInfo = rechargeInfo;
+        notifyDataSetChanged();
+    }
+
+    public RechargeBean getRechargeInfo() {
+        if (mSelectedRechargeInfo == null) {
+            return getItem(0);
+        } else {
+            return mSelectedRechargeInfo;
+        }
     }
 
     class ViewHolder {

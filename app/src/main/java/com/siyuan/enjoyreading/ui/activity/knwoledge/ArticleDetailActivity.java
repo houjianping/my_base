@@ -79,6 +79,7 @@ public class ArticleDetailActivity extends BaseActivity {
         if (webInfo == null ) {
             return;
         }
+        webInfo.setUseWebUrl(false);
         if (webInfo.isUseWebUrl()) {
             mWebView.loadUrl(webInfo.getUrl());
         } else {

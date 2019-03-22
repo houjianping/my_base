@@ -14,11 +14,15 @@ import com.siyuan.enjoyreading.R;
 import com.siyuan.enjoyreading.adapter.RechargeItemAdapter;
 import com.siyuan.enjoyreading.api.ApiConfig;
 import com.siyuan.enjoyreading.entity.RechargeBean;
+import com.siyuan.enjoyreading.widget.RadioGroupPlus;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class PersonalWallet extends BaseActivity {
+
+    private RechargeItemAdapter mRechargeItemAdapter;
+    private RadioGroupPlus mRadioGroupPlus;
 
     @Override
     protected void initContentView(Bundle bundle) {
@@ -28,16 +32,23 @@ public class PersonalWallet extends BaseActivity {
     @Override
     protected void initView() {
         PagedGridView pagedGridView = findViewById(R.id.gv_recharge);
+        mRadioGroupPlus = findViewById(R.id.rgp_group);
         List<RechargeBean> rechargeItems = new Gson().fromJson(ApiConfig.RECHARGE_LIST, new TypeToken<ArrayList<RechargeBean>>() {
         }.getType());
-        pagedGridView.setAdapter(new RechargeItemAdapter(this, rechargeItems));
+        mRechargeItemAdapter = new RechargeItemAdapter(this, rechargeItems);
+        pagedGridView.setAdapter(mRechargeItemAdapter);
         pagedGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                ToastUtils.show("Hello Recharge");
+                mRechargeItemAdapter.setSelected(mRechargeItemAdapter.getItem(position));
             }
         });
+        findViewById(R.id.rl_alipay).setOnClickListener(mOnclickListener);
+        findViewById(R.id.rl_wxpay).setOnClickListener(mOnclickListener);
+        findViewById(R.id.rl_yepay).setOnClickListener(mOnclickListener);
+        mRadioGroupPlus.check(R.id.rb_zfb);
     }
+
     @Override
     protected void initData() {
         mTitleBar.getRightImageButton().setOnClickListener(new View.OnClickListener() {
@@ -47,4 +58,21 @@ public class PersonalWallet extends BaseActivity {
             }
         });
     }
+
+    private View.OnClickListener mOnclickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            switch (v.getId()) {
+                case R.id.rl_alipay:
+                    mRadioGroupPlus.check(R.id.rb_zfb);
+                    break;
+                case R.id.rl_wxpay:
+                    mRadioGroupPlus.check(R.id.rb_wx);
+                    break;
+                case R.id.rl_yepay:
+                    mRadioGroupPlus.check(R.id.rb_ye);
+                    break;
+            }
+        }
+    };
 }

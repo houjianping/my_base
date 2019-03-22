@@ -12,6 +12,7 @@ import com.androidapp.base.R;
 import com.androidapp.utils.StatusBarUtil;
 import com.androidapp.utils.ToastUtils;
 import com.androidapp.widget.CommonTitleBar;
+import com.androidapp.widget.LoadingDialog;
 
 public abstract class BaseActivity extends AppCompatActivity {
 
@@ -22,6 +23,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected CommonTitleBar mTitleBar;
     protected TextView mTvCenterTitle;
     public boolean isInForeground;
+    private LoadingDialog mLoadingDialog;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -161,6 +163,25 @@ public abstract class BaseActivity extends AppCompatActivity {
         try {
             Intent intent = new Intent(mContext, c);
             startActivity(intent);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void showLoading(boolean cancelable) {
+        LoadingDialog.Builder loadBuilder = new LoadingDialog.Builder(mContext)
+                .setMessage("加载中...")
+                .setCancelable(cancelable)
+                .setCancelOutside(false);
+        mLoadingDialog = loadBuilder.create();
+        mLoadingDialog.show();;
+    }
+
+    public void hideLoading() {
+        try {
+            if (mLoadingDialog != null && mLoadingDialog.isShowing() && !isFinishing()) {
+                mLoadingDialog.cancel();
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }

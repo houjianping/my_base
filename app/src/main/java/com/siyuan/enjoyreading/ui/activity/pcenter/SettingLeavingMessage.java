@@ -111,6 +111,6 @@ public class SettingLeavingMessage extends BaseListActivity {
     @Override
     protected void initTitle() {
         super.initTitle();
-        mTitleBar.setTitle("我的收藏");
+        mTitleBar.setTitle("我的关注");
     }
 }

@@ -8,7 +8,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import com.siyuan.enjoyreading.ui.fragment.common.AppWebFragment;
 
 public class IndexFragmentAdapter extends FragmentPagerAdapter {
-    private String[] tabs = {"推荐", "娱乐", "相亲", "H5"};
+    private String[] tabs = {"推荐", "热门", "最新", "H5"};
 
     public IndexFragmentAdapter(FragmentManager fm) {
         super(fm);

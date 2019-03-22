@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/activity_background"
     android:orientation="vertical">
 
     <LinearLayout
@@ -72,6 +73,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@color/white"
                 android:layout_below="@+id/rl_personal_info"
                 android:orientation="horizontal">
 
@@ -221,12 +223,12 @@
                     app:layout_scrollFlags="scroll">
 
                     <com.androidapp.widget.SettingItem
-                        android:id="@+id/setting_leaving_message"
+                        android:id="@+id/setting_follow"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         app:settingsIcon="@drawable/icon_settings_advance"
                         app:settingsShowTopDiv="true"
-                        app:settingsTitle="我的留言" />
+                        app:settingsTitle="关注" />
 
                     <com.androidapp.widget.SettingItem
                         android:id="@+id/setting_favorite"

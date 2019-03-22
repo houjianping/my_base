@@ -51,7 +51,7 @@ public class SmartTabLayout extends HorizontalScrollView {
     private InternalTabClickListener internalTabClickListener;
     private OnTabClickListener onTabClickListener;
     private boolean distributeEvenly;
-    private static final int FONT_MAX_HEIGHT = 15;
+    private static final int FONT_MAX_HEIGHT = 18;
     private static final int FONT_MIN_HEIGHT = 14;
 
     public SmartTabLayout(Context context) {

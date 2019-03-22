@@ -17,7 +17,7 @@
             android:layout_alignParentRight="true"
             android:gravity="center_vertical"
             android:orientation="horizontal">
-            <include layout="@layout/layout_header_recommend" />
+            <include layout="@layout/layout_header_right" />
         </LinearLayout>
 
         <LinearLayout

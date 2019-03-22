@@ -18,16 +18,19 @@ import com.androidapp.fragment.LazyLoadFragment;
 import com.androidapp.smartrefresh.layout.api.RefreshLayout;
 import com.androidapp.smartrefresh.layout.listener.OnLoadMoreListener;
 import com.androidapp.smartrefresh.layout.listener.OnRefreshListener;
+import com.androidapp.widget.AppGridView;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.siyuan.enjoyreading.R;
 import com.siyuan.enjoyreading.adapter.MultipleItemQuickAdapter;
+import com.siyuan.enjoyreading.adapter.SmallCategoryAdapter;
 import com.siyuan.enjoyreading.api.ApiConfig;
 import com.siyuan.enjoyreading.entity.AdItem;
 import com.siyuan.enjoyreading.entity.GridItem;
 import com.siyuan.enjoyreading.entity.HeaderItem;
 import com.siyuan.enjoyreading.entity.Movie;
 import com.siyuan.enjoyreading.entity.MultipleEntity;
+import com.siyuan.enjoyreading.entity.SmallCategoryItem;
 import com.siyuan.enjoyreading.ui.activity.VideoListActivity;
 import com.siyuan.enjoyreading.util.BannerImageLoader;
 
@@ -113,8 +116,15 @@ public class RecommendFragment extends LazyLoadFragment {
             banner.start();
 
             mAdapter.addHeaderView(banner, 0);
-            View fiveView = LayoutInflater.from(getContext()).inflate(R.layout.item_grid_column_5, recyclerView, false);
-            mAdapter.addHeaderView(fiveView, 1);
+            List<SmallCategoryItem> searchKeywords = new Gson().fromJson(ApiConfig.JSON_SMALL_CATEGORY, new TypeToken<ArrayList<SmallCategoryItem>>() {
+            }.getType());
+            SmallCategoryAdapter smallCategoryAdapter = new SmallCategoryAdapter(getContext(), searchKeywords);
+            AppGridView appGridView = new AppGridView(getContext());
+            appGridView.setNumColumns(5);
+            appGridView.setAdapter(smallCategoryAdapter);
+            appGridView.setHorizontalSpacing(10);
+            appGridView.setVerticalSpacing(10);
+            mAdapter.addHeaderView(appGridView, 1);
 
             mAdapter.openLoadAnimation();
             mAdapter.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {

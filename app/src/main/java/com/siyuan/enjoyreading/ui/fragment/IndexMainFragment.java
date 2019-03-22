@@ -10,7 +10,8 @@ import android.view.View;
 import com.androidapp.fragment.BaseTabFragment;
 import com.androidapp.smarttablayout.SmartTabLayout;
 import com.siyuan.enjoyreading.R;
-import com.siyuan.enjoyreading.ui.activity.index.ChannelActivity;
+import com.siyuan.enjoyreading.ui.activity.MessageActivity;
+import com.siyuan.enjoyreading.ui.activity.SearchKeyWordActivity;
 import com.siyuan.enjoyreading.ui.fragment.index.IndexFragmentAdapter;
 
 public class IndexMainFragment extends BaseTabFragment {
@@ -30,10 +31,16 @@ public class IndexMainFragment extends BaseTabFragment {
         mSmartTabLayout = view.findViewById(R.id.viewpagertab);
         mSmartTabLayout.setViewPager(mViewPager);
 
+        view.findViewById(R.id.search_view).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                doStartActivity(SearchKeyWordActivity.class, null);
+            }
+        });
         view.findViewById(R.id.chat_view).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getContext(), ChannelActivity.class));
+                startActivity(new Intent(getContext(), MessageActivity.class));
             }
         });
     }

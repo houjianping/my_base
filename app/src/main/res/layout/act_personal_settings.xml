@@ -103,13 +103,6 @@
                 app:layout_scrollFlags="scroll">
 
                 <com.androidapp.widget.SettingItem
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    app:settingsShowBottomDiv="true"
-                    app:settingsShowTopDiv="true"
-                    app:settingsTitle="我的笔记" />
-
-                <com.androidapp.widget.SettingItem
                     android:id="@+id/setting_share_control"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"

@@ -1,4 +1,4 @@
-package com.siyuan.enjoyreading.ui.activity.knwoledge;
+package com.siyuan.enjoyreading.ui.activity;
 
 import android.os.Bundle;
 import android.text.TextUtils;

@@ -88,7 +88,7 @@ public class PCenterFragment extends BaseTabFragment {
         view.findViewById(R.id.item_setting).setOnClickListener(mOnClickListener);
         view.findViewById(R.id.setting_download).setOnClickListener(mOnClickListener);
         view.findViewById(R.id.setting_favorite).setOnClickListener(mOnClickListener);
-        view.findViewById(R.id.setting_leaving_message).setOnClickListener(mOnClickListener);
+        view.findViewById(R.id.setting_follow).setOnClickListener(mOnClickListener);
         view.findViewById(R.id.setting_share_reward).setOnClickListener(mOnClickListener);
         view.findViewById(R.id.setting_inviting_friends).setOnClickListener(mOnClickListener);
         view.findViewById(R.id.ivSettingAvatar).setOnClickListener(mOnClickListener);
@@ -126,7 +126,7 @@ public class PCenterFragment extends BaseTabFragment {
                 case R.id.setting_favorite:
                     startActivity(new Intent(mContext, SettingFavorite.class));
                     break;
-                case R.id.setting_leaving_message:
+                case R.id.setting_follow:
                     startActivity(new Intent(mContext, SettingLeavingMessage.class));
                     break;
                 case R.id.setting_share_reward:
