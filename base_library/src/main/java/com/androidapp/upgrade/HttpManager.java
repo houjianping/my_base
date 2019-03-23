@@ -80,7 +80,7 @@ public interface HttpManager extends Serializable {
          *
          * @param result 结果
          */
-        void onResponse(String result);
+        void onResponse(com.lzy.okgo.model.Response<String> result);
 
         /**
          * 错误回调
@@ -88,5 +88,10 @@ public interface HttpManager extends Serializable {
          * @param error 错误提示
          */
         void onError(String error);
+
+        /**
+         * 结束请求
+         */
+        void onFinish();
     }
 }

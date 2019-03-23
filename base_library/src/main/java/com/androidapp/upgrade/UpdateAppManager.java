@@ -253,10 +253,10 @@ public class UpdateAppManager {
         if (isPost) {
             mHttpManager.asyncPost(mUpdateUrl, params, new HttpManager.Callback() {
                 @Override
-                public void onResponse(String result) {
+                public void onResponse(com.lzy.okgo.model.Response<String> result) {
                     callback.onAfter();
                     if (result != null) {
-                        processData(result, callback);
+                        processData(result.body(), callback);
                     }
                 }
 
@@ -264,22 +264,29 @@ public class UpdateAppManager {
                 public void onError(String error) {
                     callback.onAfter();
                     callback.noNewApp(error);
+                }
+
+                @Override
+                public void onFinish() {
+
                 }
             });
         } else {
             mHttpManager.asyncGet(mUpdateUrl, params, new HttpManager.Callback() {
                 @Override
-                public void onResponse(String result) {
+                public void onResponse(com.lzy.okgo.model.Response<String> result) {
                     callback.onAfter();
                     if (result != null) {
-                        processData(result, callback);
+                        processData(result.body(), callback);
                     }
                 }
-
                 @Override
                 public void onError(String error) {
                     callback.onAfter();
                     callback.noNewApp(error);
+                }
+                @Override
+                public void onFinish() {
                 }
             });
         }

@@ -19,8 +19,8 @@ import android.widget.TextView;
 
 import com.siyuan.enjoyreading.R;
 import com.siyuan.enjoyreading.entity.ChannelEntity;
-import com.siyuan.enjoyreading.helper.OnDragVHListener;
-import com.siyuan.enjoyreading.helper.OnItemMoveListener;
+import com.siyuan.enjoyreading.util.helper.OnDragVHListener;
+import com.siyuan.enjoyreading.util.helper.OnItemMoveListener;
 
 import java.util.List;
 

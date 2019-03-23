@@ -11,7 +11,7 @@ import com.androidapp.activity.BaseActivity;
 import com.siyuan.enjoyreading.R;
 import com.siyuan.enjoyreading.adapter.ChannelAdapter;
 import com.siyuan.enjoyreading.entity.ChannelEntity;
-import com.siyuan.enjoyreading.helper.ItemDragHelperCallback;
+import com.siyuan.enjoyreading.util.helper.ItemDragHelperCallback;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,10 +1,12 @@
 package com.siyuan.enjoyreading.util;
 
 import android.support.annotation.NonNull;
+import android.util.Log;
 
 import com.androidapp.upgrade.HttpManager;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.model.Progress;
+import com.lzy.okgo.model.Response;
 
 import java.io.File;
 import java.util.Map;
@@ -26,13 +28,29 @@ public class OkGoUpdateHttpUtil implements HttpManager {
         OkGo.<String>get(url).params(params).execute(new com.lzy.okgo.callback.StringCallback() {
             @Override
             public void onSuccess(com.lzy.okgo.model.Response<String> response) {
-                callBack.onResponse(response.body());
+                Log.e("","#################onSuccess################" + response.body() + ":::" + response.message());
+                callBack.onResponse(response);
             }
 
             @Override
             public void onError(com.lzy.okgo.model.Response<String> response) {
                 super.onError(response);
                 callBack.onError("异常");
+                Log.e("","################onError#################");
+            }
+
+            @Override
+            public void onCacheSuccess(Response<String> response) {
+                super.onCacheSuccess(response);
+                callBack.onResponse(response);
+                Log.e("","##############onCacheSuccess###################" + response.body() + ":::" + response.message());
+            }
+
+            @Override
+            public void onFinish() {
+                super.onFinish();
+                callBack.onFinish();
+                Log.e("","################onFinish#################");
             }
         });
     }
@@ -49,13 +67,25 @@ public class OkGoUpdateHttpUtil implements HttpManager {
         OkGo.<String>post(url).params(params).execute(new com.lzy.okgo.callback.StringCallback() {
             @Override
             public void onSuccess(com.lzy.okgo.model.Response<String> response) {
-                callBack.onResponse(response.body());
+                callBack.onResponse(response);
             }
 
             @Override
             public void onError(com.lzy.okgo.model.Response<String> response) {
                 super.onError(response);
                 callBack.onError("异常");
+            }
+
+            @Override
+            public void onCacheSuccess(Response<String> response) {
+                super.onCacheSuccess(response);
+                callBack.onResponse(response);
+            }
+
+            @Override
+            public void onFinish() {
+                super.onFinish();
+                callBack.onFinish();
             }
         });
     }

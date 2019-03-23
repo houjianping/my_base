@@ -1,4 +1,4 @@
-package com.siyuan.enjoyreading.helper;
+package com.siyuan.enjoyreading.util.helper;
 
 /**
  * Item移动后 触发
