@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/prasise_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <ImageView
+    <com.androidapp.widget.AppRoundImageView
         android:id="@+id/prasise_icon"
         android:layout_width="fill_parent"
         android:layout_height="100dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
+        android:layout_gravity="center_vertical"
         android:scaleType="fitXY"
-        android:src="@mipmap/image_movie_header_12981501221820220" />
+        tools:background="#fff0f0f0" />
 
     <TextView
         android:id="@+id/prasise_title"
@@ -20,7 +20,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
-        android:maxLength="2"
+        android:maxLines="2"
         android:text="天点灯"
         android:textColor="#333"
         android:textSize="@dimen/font_12" />

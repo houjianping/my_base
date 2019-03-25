@@ -95,7 +95,7 @@ public class NotificationFragment extends LazyLoadFragment {
 
     @Override
     protected int getLayoutId() {
-        return R.layout.fragment_tab;
+        return R.layout.fragment_list_layout;
     }
 
     class GriedViewItem extends PagedGridItem {

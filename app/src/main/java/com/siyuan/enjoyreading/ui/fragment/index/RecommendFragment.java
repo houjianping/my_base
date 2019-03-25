@@ -8,13 +8,14 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Toast;
 
 import com.androidapp.adapter.BaseQuickAdapter;
 import com.androidapp.banner.Banner;
+import com.androidapp.banner.BannerConfig;
 import com.androidapp.banner.listener.OnBannerListener;
 import com.androidapp.filter.single.view.DividerItemDecoration;
-import com.androidapp.fragment.LazyLoadFragment;
 import com.androidapp.smartrefresh.layout.api.RefreshLayout;
 import com.androidapp.smartrefresh.layout.listener.OnLoadMoreListener;
 import com.androidapp.smartrefresh.layout.listener.OnRefreshListener;
@@ -28,54 +29,97 @@ import com.siyuan.enjoyreading.api.ApiConfig;
 import com.siyuan.enjoyreading.entity.AdItem;
 import com.siyuan.enjoyreading.entity.GridItem;
 import com.siyuan.enjoyreading.entity.HeaderItem;
+import com.siyuan.enjoyreading.entity.IndexSection;
 import com.siyuan.enjoyreading.entity.Movie;
 import com.siyuan.enjoyreading.entity.MultipleEntity;
 import com.siyuan.enjoyreading.entity.SmallCategoryItem;
 import com.siyuan.enjoyreading.ui.activity.VideoListActivity;
+import com.siyuan.enjoyreading.ui.fragment.base.ViewPagerBaseFragment;
 import com.siyuan.enjoyreading.util.BannerImageLoader;
+import com.siyuan.enjoyreading.util.IntentUtil;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import ezy.ui.layout.LoadingLayout;
 
-public class RecommendFragment extends LazyLoadFragment {
 
-    List<MultipleEntity> movies = new ArrayList<>();
+public class RecommendFragment extends ViewPagerBaseFragment {
+
+    private List<MultipleEntity> movies = new ArrayList<>();
     private MultipleItemQuickAdapter mAdapter;
+    private RecyclerView mRecyclerView;
+    private LoadingLayout mLoadingLayout;
 
     @Override
     protected void loadData(boolean force) {
-        if (force) {
-            movies.clear();
-            HeaderItem headerItem1 = new HeaderItem();
-            headerItem1.setLeftTitle("好评栏目推荐1");
-            movies.add(headerItem1);
-            GridItem gridItem11 = new GridItem();
-            gridItem11.setColumn(2);
-            movies.add(gridItem11);
+        movies.clear();
+        //添加Header
+        mLoadingLayout.showContent();
+        View header = LayoutInflater.from(getContext()).inflate(R.layout.listitem_movie_header, mRecyclerView, false);
+        Banner banner = (Banner) header;
+        banner.setImageLoader(new BannerImageLoader());
+        banner.setIndicatorGravity(BannerConfig.RIGHT);
+        banner.setImages(ApiConfig.BANNER_ITEMS);
+        banner.setOnBannerListener(new OnBannerListener() {
+            @Override
+            public void OnBannerClick(int i) {
+                Toast.makeText(getContext(), "si=" + i, Toast.LENGTH_SHORT).show();
+            }
+        });
+        banner.start();
 
-            HeaderItem headerItem2 = new HeaderItem();
-            headerItem2.setLeftTitle("好评栏目推荐2");
-            movies.add(headerItem2);
-            GridItem gridItem2 = new GridItem();
-            gridItem2.setColumn(4);
-            movies.add(gridItem2);
+        mAdapter.addHeaderView(banner, 0);
+        List<SmallCategoryItem> searchKeywords = new Gson().fromJson(ApiConfig.JSON_SMALL_CATEGORY, new TypeToken<ArrayList<SmallCategoryItem>>() {
+        }.getType());
+        final SmallCategoryAdapter smallCategoryAdapter = new SmallCategoryAdapter(getContext(), searchKeywords);
+        AppGridView appGridView = new AppGridView(getContext());
+        appGridView.setNumColumns(5);
+        appGridView.setAdapter(smallCategoryAdapter);
+        appGridView.setHorizontalSpacing(10);
+        appGridView.setVerticalSpacing(10);
+        appGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                SmallCategoryItem smallCategoryItem = smallCategoryAdapter.getItem(position);
+                IntentUtil.startActivity(mContext, smallCategoryItem.getApp_jump());
+            }
+        });
+        mAdapter.addHeaderView(appGridView, 1);
 
-            HeaderItem headerItem3 = new HeaderItem();
-            headerItem3.setLeftTitle("热门频道");
-            movies.add(headerItem3);
-            List<MultipleEntity> lists = new Gson().fromJson(ApiConfig.JSON_MOVIES, new TypeToken<ArrayList<Movie>>() {
-            }.getType());
-            AdItem adItem = new AdItem();
-            adItem.setWidth(750);
-            adItem.setHeight(360);
-            adItem.setAction("{\"page\":\"SettingAbout\",\"type\":1}");
-            movies.add(adItem);
-            movies.addAll(lists);
-            mAdapter.replaceData(movies);
-        }
+        mAdapter.openLoadAnimation();
+        mAdapter.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
+            @Override
+            public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
+                doStartActivity(VideoListActivity.class, null);
+            }
+        });
+        IndexSection indexSection = new Gson().fromJson(ApiConfig.JSON_INDEX, new TypeToken<IndexSection>() {}.getType());
+        HeaderItem headerItem1 = indexSection.getHeader();
+        GridItem gridItem11 = indexSection.getData();
+        movies.add(headerItem1);
+        movies.add(gridItem11);
+
+        IndexSection indexSection2 = new Gson().fromJson(ApiConfig.JSON_INDEX_2, new TypeToken<IndexSection>() {}.getType());
+        HeaderItem headerItem2 = indexSection2.getHeader();
+        GridItem gridItem2 = indexSection2.getData();
+        movies.add(headerItem2);
+        movies.add(gridItem2);
+
+        HeaderItem headerItem3 = new HeaderItem();
+        headerItem3.setLeftTitle("热门频道");
+        movies.add(headerItem3);
+        List<MultipleEntity> lists = new Gson().fromJson(ApiConfig.JSON_MOVIES, new TypeToken<ArrayList<Movie>>() {
+        }.getType());
+        AdItem adItem = new AdItem();
+        adItem.setWidth(750);
+        adItem.setHeight(360);
+        adItem.setAction("{\"page\":\"SettingAbout\",\"type\":1}");
+        movies.add(adItem);
+        movies.addAll(lists);
+        mAdapter.replaceData(movies);
     }
 
     @Override
@@ -91,50 +135,20 @@ public class RecommendFragment extends LazyLoadFragment {
     @Override
     protected void initView(View view, Bundle savedInstanceState) {
         Log.e("", "------loadData----mAdapter----");
-        final RecyclerView recyclerView = view.findViewById(R.id.recyclerView);
+        mLoadingLayout = view.findViewById(com.androidapp.base.R.id.loading);
+        mRecyclerView = view.findViewById(R.id.recyclerView);
         final RefreshLayout refreshLayout = view.findViewById(R.id.refreshLayout);
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL_LIST);
         Map<Integer, Boolean> itemTYpes = new HashMap<>();
         itemTYpes.put(MultipleItemQuickAdapter.ITEM_TEST, true);
         dividerItemDecoration.setItemDividerType(itemTYpes);
 //        recyclerView.addItemDecoration(dividerItemDecoration);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         if (mAdapter == null) {
             Log.e("", "------loadData----mAdapter---1111-");
             mAdapter = new MultipleItemQuickAdapter();
-            //添加Header
-            View header = LayoutInflater.from(getContext()).inflate(R.layout.listitem_movie_header, recyclerView, false);
-            Banner banner = (Banner) header;
-            banner.setImageLoader(new BannerImageLoader());
-            banner.setImages(ApiConfig.BANNER_ITEMS);
-            banner.setOnBannerListener(new OnBannerListener() {
-                @Override
-                public void OnBannerClick(int i) {
-                    Toast.makeText(getContext(), "si=" + i, Toast.LENGTH_SHORT).show();
-                }
-            });
-            banner.start();
-
-            mAdapter.addHeaderView(banner, 0);
-            List<SmallCategoryItem> searchKeywords = new Gson().fromJson(ApiConfig.JSON_SMALL_CATEGORY, new TypeToken<ArrayList<SmallCategoryItem>>() {
-            }.getType());
-            SmallCategoryAdapter smallCategoryAdapter = new SmallCategoryAdapter(getContext(), searchKeywords);
-            AppGridView appGridView = new AppGridView(getContext());
-            appGridView.setNumColumns(5);
-            appGridView.setAdapter(smallCategoryAdapter);
-            appGridView.setHorizontalSpacing(10);
-            appGridView.setVerticalSpacing(10);
-            mAdapter.addHeaderView(appGridView, 1);
-
-            mAdapter.openLoadAnimation();
-            mAdapter.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
-                @Override
-                public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
-                    doStartActivity(VideoListActivity.class, null);
-                }
-            });
         }
-        recyclerView.setAdapter(mAdapter);
+        mRecyclerView.setAdapter(mAdapter);
         refreshLayout.setOnRefreshListener(new OnRefreshListener() {
             @Override
             public void onRefresh(@NonNull final RefreshLayout refreshLayout) {
@@ -156,6 +170,6 @@ public class RecommendFragment extends LazyLoadFragment {
 
     @Override
     protected int getLayoutId() {
-        return R.layout.fragment_tab;
+        return R.layout.fragment_list_layout;
     }
 }

@@ -4,6 +4,7 @@ public class HeaderItem extends MultipleEntity {
     private String leftTitle;
     private String rightTitle;
     private boolean showMoreItem;
+    private String action;
 
     public String getLeftTitle() {
         return leftTitle;
@@ -27,5 +28,13 @@ public class HeaderItem extends MultipleEntity {
 
     public void setShowMoreItem(boolean showMoreItem) {
         this.showMoreItem = showMoreItem;
+    }
+
+    public String getAction() {
+        return action;
+    }
+
+    public void setAction(String action) {
+        this.action = action;
     }
 }

@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import com.androidapp.activity.BaseActivity;
 import com.androidapp.banner.Banner;
+import com.androidapp.banner.BannerConfig;
 import com.androidapp.banner.listener.OnBannerListener;
 import com.androidapp.smartrefresh.layout.api.RefreshLayout;
 import com.androidapp.smartrefresh.layout.listener.OnLoadMoreListener;
@@ -52,6 +53,7 @@ public class PersonalWalletList extends BaseActivity {
             View header = LayoutInflater.from(this).inflate(R.layout.listitem_movie_header, mRecyclerView, false);
             Banner banner = (Banner) header;
             banner.setImageLoader(new BannerImageLoader());
+            banner.setIndicatorGravity(BannerConfig.RIGHT);
             banner.setImages(ApiConfig.BANNER_ITEMS);
             banner.setOnBannerListener(new OnBannerListener() {
                 @Override

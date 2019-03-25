@@ -13,9 +13,9 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.androidapp.banner.Banner;
+import com.androidapp.banner.BannerConfig;
 import com.androidapp.banner.listener.OnBannerListener;
 import com.androidapp.banner.loader.ImageLoader;
-import com.androidapp.fragment.LazyLoadFragment;
 import com.androidapp.pagedgridview.PagedGridItem;
 import com.androidapp.pagedgridview.PagedGridLayout;
 import com.androidapp.smartrefresh.layout.api.RefreshLayout;
@@ -29,23 +29,25 @@ import com.siyuan.enjoyreading.api.ApiConfig;
 import com.siyuan.enjoyreading.entity.BannerItem;
 import com.siyuan.enjoyreading.entity.OrderMovie;
 import com.siyuan.enjoyreading.ui.activity.knwoledge.KnowledgeChapterActivity;
+import com.siyuan.enjoyreading.ui.fragment.base.ViewPagerBaseFragment;
 import com.siyuan.enjoyreading.widget.HeaderView;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class OrderFragment extends LazyLoadFragment {
+import ezy.ui.layout.LoadingLayout;
+
+public class OrderFragment extends ViewPagerBaseFragment {
 
     final List<OrderMovie> movies = new Gson().fromJson(ApiConfig.JSON_MOVIES, new TypeToken<ArrayList<OrderMovie>>() {
     }.getType());
     private MultipleItemQuickAdapter mAdapter;
+    private LoadingLayout mLoadingLayout;
 
     @Override
     protected void loadData(boolean force) {
-        Log.e("", "------loadData--------" + force);
-        if (force) {
-            mAdapter.replaceData(movies);
-        }
+        mLoadingLayout.showContent();
+        mAdapter.replaceData(movies);
     }
 
     @Override
@@ -63,6 +65,7 @@ public class OrderFragment extends LazyLoadFragment {
     @Override
     protected void initView(View view, Bundle savedInstanceState) {
         Log.e("", "------loadData----mAdapter----");
+        mLoadingLayout = view.findViewById(com.androidapp.base.R.id.loading);
         final RecyclerView recyclerView = view.findViewById(R.id.recyclerView);
         final RefreshLayout refreshLayout = view.findViewById(R.id.refreshLayout);
 //        recyclerView.addItemDecoration(new DividerItemDecoration(getContext(), VERTICAL));
@@ -74,6 +77,7 @@ public class OrderFragment extends LazyLoadFragment {
             View headerLayout = LayoutInflater.from(getContext()).inflate(R.layout.listitem_movie_header, recyclerView, false);
             Banner banner = (Banner) headerLayout;
             banner.setImageLoader(new GlideImageLoader());
+            banner.setIndicatorGravity(BannerConfig.RIGHT);
             banner.setImages(ApiConfig.BANNER_ITEMS);
             banner.setOnBannerListener(new OnBannerListener() {
                 @Override
@@ -143,7 +147,7 @@ public class OrderFragment extends LazyLoadFragment {
 
     @Override
     protected int getLayoutId() {
-        return R.layout.fragment_tab;
+        return R.layout.fragment_list_layout;
     }
 
     public class GlideImageLoader extends ImageLoader {

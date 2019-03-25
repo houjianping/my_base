@@ -1,6 +1,5 @@
 package com.siyuan.enjoyreading.ui.fragment;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -10,12 +9,11 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.androidapp.banner.Banner;
+import com.androidapp.banner.BannerConfig;
 import com.androidapp.banner.listener.OnBannerListener;
-import com.androidapp.banner.loader.ImageLoader;
 import com.androidapp.adapter.BaseQuickAdapter;
 import com.androidapp.fragment.LazyLoadFragment;
 import com.androidapp.utils.ToastUtils;
@@ -29,7 +27,6 @@ import com.google.gson.reflect.TypeToken;
 import com.siyuan.enjoyreading.R;
 import com.siyuan.enjoyreading.adapter.MultipleItemQuickAdapter;
 import com.siyuan.enjoyreading.api.ApiConfig;
-import com.siyuan.enjoyreading.entity.BannerItem;
 import com.siyuan.enjoyreading.entity.Movie;
 import com.siyuan.enjoyreading.ui.activity.VideoListActivity;
 import com.siyuan.enjoyreading.util.BannerImageLoader;
@@ -79,6 +76,7 @@ public class TabFragment extends LazyLoadFragment {
             View header = LayoutInflater.from(getContext()).inflate(R.layout.listitem_movie_header, recyclerView, false);
             Banner banner = (Banner) header;
             banner.setImageLoader(new BannerImageLoader());
+            banner.setIndicatorGravity(BannerConfig.RIGHT);
             banner.setImages(ApiConfig.BANNER_ITEMS);
             banner.setOnBannerListener(new OnBannerListener() {
                 @Override
@@ -147,7 +145,7 @@ public class TabFragment extends LazyLoadFragment {
 
     @Override
     protected int getLayoutId() {
-        return R.layout.fragment_tab;
+        return R.layout.fragment_list_layout;
     }
 
     class GriedViewItem extends PagedGridItem {

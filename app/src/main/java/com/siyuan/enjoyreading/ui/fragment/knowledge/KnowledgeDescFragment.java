@@ -9,8 +9,9 @@ import android.widget.TextView;
 import com.androidapp.fragment.LazyLoadFragment;
 import com.androidapp.utils.ImageLoaderUtils;
 import com.siyuan.enjoyreading.R;
+import com.siyuan.enjoyreading.ui.fragment.base.ViewPagerBaseFragment;
 
-public class KnowledgeDescFragment extends LazyLoadFragment {
+public class KnowledgeDescFragment extends ViewPagerBaseFragment {
 
     private ImageView mIconView;
     private TextView mTitleTextView;

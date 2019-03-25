@@ -35,7 +35,7 @@ public class IndexGridItemProvider extends BaseItemProvider<MultipleEntity,BaseV
     public void convert(BaseViewHolder viewHolder, MultipleEntity multipleEntity, int position) {
         GridItem item = (GridItem) multipleEntity;
         RecommendPrasise recommendPrasise = new RecommendPrasise();
-        recommendPrasise.setTitle("如何一分钟聊到男神?");
+        recommendPrasise.setTitle("1如何2一分钟3聊到男神?");
         recommendPrasise.setIconurl("http://p1.meituan.net/movie/55c57c37c9baa412aa9351f385275ef861052.jpg");
         List<RecommendPrasise> prasises = new ArrayList<>();
         prasises.add(recommendPrasise);

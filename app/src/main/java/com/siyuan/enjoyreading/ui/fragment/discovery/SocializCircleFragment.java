@@ -9,7 +9,6 @@ import android.view.View;
 import android.widget.LinearLayout;
 
 import com.androidapp.adapter.BaseQuickAdapter;
-import com.androidapp.fragment.LazyLoadFragment;
 import com.androidapp.smartrefresh.layout.api.RefreshLayout;
 import com.androidapp.smartrefresh.layout.listener.OnLoadMoreListener;
 import com.androidapp.smartrefresh.layout.listener.OnRefreshListener;
@@ -19,29 +18,33 @@ import com.siyuan.enjoyreading.R;
 import com.siyuan.enjoyreading.adapter.MultipleItemQuickAdapter;
 import com.siyuan.enjoyreading.api.ApiConfig;
 import com.siyuan.enjoyreading.entity.circle.CircleItem;
+import com.siyuan.enjoyreading.ui.fragment.base.ViewPagerBaseFragment;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class SocializCircleFragment extends LazyLoadFragment {
+import ezy.ui.layout.LoadingLayout;
+
+public class SocializCircleFragment extends ViewPagerBaseFragment {
     private RecyclerView mRecyclerView;
     private MultipleItemQuickAdapter mAdapter;
+    private LoadingLayout mLoadingLayout;
 
     @Override
     protected void loadData(boolean force) {
-        if (force) {
-            final List<CircleItem> circleItems = new Gson().fromJson(ApiConfig.JSON_ZONE_LIST, new TypeToken<ArrayList<CircleItem>>() {
-            }.getType());
-            for (int i = 0; i < circleItems.size(); i++) {
-                circleItems.get(i).setPictures(ApiConfig.getRandomPhotoUrlString(new Random().nextInt(9)));
-            }
-            mAdapter.replaceData(circleItems);
+        mLoadingLayout.showContent();
+        final List<CircleItem> circleItems = new Gson().fromJson(ApiConfig.JSON_ZONE_LIST, new TypeToken<ArrayList<CircleItem>>() {
+        }.getType());
+        for (int i = 0; i < circleItems.size(); i++) {
+            circleItems.get(i).setPictures(ApiConfig.getRandomPhotoUrlString(new Random().nextInt(9)));
         }
+        mAdapter.replaceData(circleItems);
     }
 
     @Override
     protected void initView(View view, Bundle savedInstanceState) {
+        mLoadingLayout = view.findViewById(com.androidapp.base.R.id.loading);
         mRecyclerView = view.findViewById(R.id.recyclerView);
         final RefreshLayout refreshLayout = view.findViewById(R.id.refreshLayout);
         mRecyclerView.addItemDecoration(new DividerItemDecoration(getContext(), LinearLayout.VERTICAL));
@@ -77,6 +80,6 @@ public class SocializCircleFragment extends LazyLoadFragment {
 
     @Override
     protected int getLayoutId() {
-        return R.layout.fragment_tab;
+        return R.layout.fragment_list_layout;
     }
 }

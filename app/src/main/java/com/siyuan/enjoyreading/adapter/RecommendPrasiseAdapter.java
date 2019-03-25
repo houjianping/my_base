@@ -11,6 +11,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.androidapp.pagedgridview.PagedGridLayout;
+import com.androidapp.upgrade.utils.DrawableUtil;
+import com.androidapp.utils.ImageLoaderUtils;
 import com.bumptech.glide.Glide;
 import com.siyuan.enjoyreading.R;
 import com.siyuan.enjoyreading.entity.RecommendPrasise;
@@ -59,7 +61,7 @@ public class RecommendPrasiseAdapter extends BaseAdapter {
             holder = (ViewHolder) convertView.getTag();
         }
         if (!TextUtils.isEmpty(getItem(position).getIconurl())) {
-            Glide.with(mContext).load(getItem(position).getIconurl()).into(holder.iconView);
+            ImageLoaderUtils.display(mContext, holder.iconView, getItem(position).getIconurl());
         }
         if (holder.titleView != null) {
             if (!TextUtils.isEmpty(getItem(position).getTitle())) {

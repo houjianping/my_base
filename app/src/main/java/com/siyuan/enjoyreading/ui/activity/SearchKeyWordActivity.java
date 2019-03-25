@@ -57,7 +57,10 @@ public class SearchKeyWordActivity extends BaseActivity {
         mTitleBar.setListener(new CommonTitleBar.OnTitleBarListener() {
             @Override
             public void onClicked(View v, int action, String extra) {
-                if (action == CommonTitleBar.ACTION_SEARCH_SUBMIT) {
+                if (action == CommonTitleBar.ACTION_LEFT_BUTTON
+                        || action == CommonTitleBar.ACTION_LEFT_TEXT) {
+                    onBackPressed();
+                } else if (action == CommonTitleBar.ACTION_SEARCH_SUBMIT) {
                     if (!TextUtils.isEmpty(extra)) {
                         doUiUpdate(true);
                         ToastUtils.show(extra);

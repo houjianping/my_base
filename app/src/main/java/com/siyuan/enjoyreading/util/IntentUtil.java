@@ -3,24 +3,28 @@ package com.siyuan.enjoyreading.util;
 import android.content.Context;
 import android.content.Intent;
 import android.text.TextUtils;
+import android.util.Log;
 
 import com.androidapp.utils.JsonUtils;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
+import com.androidapp.utils.ToastUtils;
 import com.siyuan.enjoyreading.App;
+import com.siyuan.enjoyreading.api.ApiConfig;
 import com.siyuan.enjoyreading.ui.activity.pcenter.SettingAboutControl;
 
-import java.lang.reflect.Type;
-import java.util.HashMap;
 import java.util.Map;
 
 public class IntentUtil {
+
+    private static final String TAG = IntentUtil.class.getName();
 
     public static Intent getIntent(String json) {
         return getIntent(App.getInstance(), json);
     }
 
     private static Intent getIntent(Context context, String json) {
+        if (TextUtils.isEmpty(json)) {
+            return null;
+        }
         Map<String, Object> map = JsonUtils.getMap(json);
         Intent intent = new Intent();
         if (map.containsKey("page")) {
@@ -35,5 +39,23 @@ public class IntentUtil {
             }
         }
         return intent;
+    }
+
+    public static void startActivity(Context context, String json) {
+        if (TextUtils.isEmpty(json)) {
+            Log.e(TAG,"跳转页面为空");
+            if (ApiConfig.DEV_MODE) {
+                ToastUtils.show("跳转页面为空");
+            }
+            return;
+        }
+        try {
+            Intent intent = getIntent(json);
+            if (intent != null) {
+                context.startActivity(intent);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

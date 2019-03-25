@@ -8,6 +8,7 @@ import android.widget.Toast;
 import com.androidapp.adapter.BaseViewHolder;
 import com.androidapp.adapter.provider.BaseItemProvider;
 import com.androidapp.banner.Banner;
+import com.androidapp.banner.BannerConfig;
 import com.androidapp.banner.listener.OnBannerListener;
 import com.androidapp.banner.loader.ImageLoader;
 import com.siyuan.enjoyreading.R;
@@ -37,6 +38,7 @@ public class BannerItemProvider extends BaseItemProvider<MultipleEntity,BaseView
         banner.setImageLoader(new GlideImageLoader());
         banner.setImages(item.getBannerItems());
         banner.setOnBannerListener(mOnBannerListener);
+        banner.setIndicatorGravity(BannerConfig.RIGHT);
         banner.start();
     }
 

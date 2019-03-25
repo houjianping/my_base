@@ -7,7 +7,6 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 
-import com.androidapp.fragment.LazyLoadFragment;
 import com.androidapp.smartrefresh.layout.api.RefreshLayout;
 import com.androidapp.smartrefresh.layout.listener.OnLoadMoreListener;
 import com.androidapp.smartrefresh.layout.listener.OnRefreshListener;
@@ -17,15 +16,20 @@ import com.siyuan.enjoyreading.R;
 import com.siyuan.enjoyreading.adapter.MultipleItemQuickAdapter;
 import com.siyuan.enjoyreading.api.ApiConfig;
 import com.siyuan.enjoyreading.entity.Coupon;
+import com.siyuan.enjoyreading.ui.fragment.base.ViewPagerBaseFragment;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class CouponFragment extends LazyLoadFragment {
+import ezy.ui.layout.LoadingLayout;
+
+public class CouponFragment extends ViewPagerBaseFragment {
 
     private RecyclerView mRecyclerView;
     private RefreshLayout mRefreshLayout;
     private MultipleItemQuickAdapter mAdapter;
+    private LoadingLayout mLoadingLayout;
+
     final List<Coupon> coupons = new Gson().fromJson(ApiConfig.JSON_MOVIES, new TypeToken<ArrayList<Coupon>>() {
     }.getType());
 
@@ -33,12 +37,14 @@ public class CouponFragment extends LazyLoadFragment {
     protected void loadData(boolean force) {
         Log.e("", "------loadData--------" + force);
         if (force) {
+            mLoadingLayout.showContent();
             mAdapter.replaceData(coupons);
         }
     }
 
     @Override
     protected void initView(View view, Bundle savedInstanceState) {
+        mLoadingLayout = view.findViewById(com.androidapp.base.R.id.loading);
         mRecyclerView = view.findViewById(R.id.recyclerView);
         mRefreshLayout = view.findViewById(R.id.refreshLayout);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -74,6 +80,6 @@ public class CouponFragment extends LazyLoadFragment {
 
     @Override
     protected int getLayoutId() {
-        return R.layout.fragment_tab;
+        return R.layout.fragment_list_layout;
     }
 }

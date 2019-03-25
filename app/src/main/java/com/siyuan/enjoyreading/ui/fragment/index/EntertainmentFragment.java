@@ -17,7 +17,7 @@ import com.androidapp.adapter.BaseQuickAdapter;
 import com.androidapp.banner.Banner;
 import com.androidapp.banner.listener.OnBannerListener;
 import com.androidapp.banner.loader.ImageLoader;
-import com.androidapp.fragment.LazyLoadFragment;
+import com.androidapp.smartrefresh.layout.SmartRefreshLayout;
 import com.androidapp.smartrefresh.layout.api.RefreshLayout;
 import com.androidapp.smartrefresh.layout.listener.OnLoadMoreListener;
 import com.androidapp.smartrefresh.layout.listener.OnRefreshListener;
@@ -29,28 +29,46 @@ import com.siyuan.enjoyreading.api.ApiConfig;
 import com.siyuan.enjoyreading.entity.BannerItem;
 import com.siyuan.enjoyreading.entity.NewsItem;
 import com.siyuan.enjoyreading.ui.activity.currency.FullPagePlayerActivity;
+import com.siyuan.enjoyreading.ui.fragment.base.ViewPagerBaseFragment;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import ezy.ui.layout.LoadingLayout;
+
 import static android.support.v7.widget.DividerItemDecoration.VERTICAL;
 
-public class EntertainmentFragment extends LazyLoadFragment {
+public class EntertainmentFragment extends ViewPagerBaseFragment {
 
     private MultipleItemQuickAdapter mAdapter;
-
-    @Override
-    protected void loadData(boolean force) {
-        if (force) {
-            final List<NewsItem> circleItems = new Gson().fromJson(ApiConfig.JSON_VIDEO_LIST, new TypeToken<ArrayList<NewsItem>>() {
-            }.getType());
-            mAdapter.replaceData(circleItems);
-        }
-    }
+    private RecyclerView mRecyclerView;
+    private LoadingLayout mLoadingLayout;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+    }
+
+    @Override
+    protected void loadData(boolean force) {
+        mLoadingLayout.showContent();
+        final List<NewsItem> circleItems = new Gson().fromJson(ApiConfig.JSON_VIDEO_LIST, new TypeToken<ArrayList<NewsItem>>() {
+        }.getType());
+        //添加Header
+        View header = LayoutInflater.from(getContext()).inflate(R.layout.listitem_movie_header, mRecyclerView, false);
+        Banner banner = (Banner) header;
+        banner.setImageLoader(new GlideImageLoader());
+        banner.setImages(ApiConfig.BANNER_ITEMS);
+        banner.setOnBannerListener(new OnBannerListener() {
+            @Override
+            public void OnBannerClick(int i) {
+                Toast.makeText(getContext(), "si=" + i, Toast.LENGTH_SHORT).show();
+            }
+        });
+        banner.start();
+        mAdapter.addHeaderView(banner, 0);
+        mAdapter.openLoadAnimation();
+        mAdapter.replaceData(circleItems);
     }
 
     @Override
@@ -61,27 +79,14 @@ public class EntertainmentFragment extends LazyLoadFragment {
     @Override
     protected void initView(View view, Bundle savedInstanceState) {
         Log.e("", "------loadData----mAdapter----");
-        final RecyclerView recyclerView = view.findViewById(R.id.recyclerView);
-        final RefreshLayout refreshLayout = view.findViewById(R.id.refreshLayout);
-        recyclerView.addItemDecoration(new DividerItemDecoration(getContext(), VERTICAL));
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        mLoadingLayout = view.findViewById(com.androidapp.base.R.id.loading);
+        mRecyclerView = view.findViewById(R.id.recyclerView);
+        final SmartRefreshLayout refreshLayout = view.findViewById(R.id.refreshLayout);
+        mRecyclerView.addItemDecoration(new DividerItemDecoration(getContext(), VERTICAL));
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         if (mAdapter == null) {
             Log.e("", "------loadData----mAdapter---1111-");
             mAdapter = new MultipleItemQuickAdapter<NewsItem>();
-            //添加Header
-            View header = LayoutInflater.from(getContext()).inflate(R.layout.listitem_movie_header, recyclerView, false);
-            Banner banner = (Banner) header;
-            banner.setImageLoader(new GlideImageLoader());
-            banner.setImages(ApiConfig.BANNER_ITEMS);
-            banner.setOnBannerListener(new OnBannerListener() {
-                @Override
-                public void OnBannerClick(int i) {
-                    Toast.makeText(getContext(), "si=" + i, Toast.LENGTH_SHORT).show();
-                }
-            });
-            banner.start();
-            mAdapter.addHeaderView(banner, 0);
-            mAdapter.openLoadAnimation();
         }
         mAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
@@ -89,7 +94,7 @@ public class EntertainmentFragment extends LazyLoadFragment {
                 startActivity(FullPagePlayerActivity.getIntent(mContext, (NewsItem) mAdapter.getItem(position)));
             }
         });
-        recyclerView.setAdapter(mAdapter);
+        mRecyclerView.setAdapter(mAdapter);
         refreshLayout.setOnRefreshListener(new OnRefreshListener() {
             @Override
             public void onRefresh(@NonNull final RefreshLayout refreshLayout) {
@@ -111,7 +116,7 @@ public class EntertainmentFragment extends LazyLoadFragment {
 
     @Override
     protected int getLayoutId() {
-        return R.layout.fragment_tab;
+        return R.layout.fragment_list_layout;
     }
 
     public class GlideImageLoader extends ImageLoader {

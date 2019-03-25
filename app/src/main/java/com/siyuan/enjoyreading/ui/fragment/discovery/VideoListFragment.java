@@ -7,17 +7,11 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.androidapp.adapter.BaseQuickAdapter;
-import com.androidapp.banner.Banner;
-import com.androidapp.banner.listener.OnBannerListener;
 import com.androidapp.banner.loader.ImageLoader;
-import com.androidapp.fragment.LazyLoadFragment;
 import com.androidapp.smartrefresh.layout.api.RefreshLayout;
 import com.androidapp.smartrefresh.layout.listener.OnLoadMoreListener;
 import com.androidapp.smartrefresh.layout.listener.OnRefreshListener;
@@ -27,21 +21,24 @@ import com.siyuan.enjoyreading.adapter.MultipleItemQuickAdapter;
 import com.siyuan.enjoyreading.api.ApiConfig;
 import com.siyuan.enjoyreading.entity.BannerItem;
 import com.siyuan.enjoyreading.entity.VideoItem;
+import com.siyuan.enjoyreading.ui.fragment.base.ViewPagerBaseFragment;
 
 import java.util.List;
 
+import ezy.ui.layout.LoadingLayout;
+
 import static android.support.v7.widget.DividerItemDecoration.VERTICAL;
 
-public class VideoListFragment extends LazyLoadFragment {
+public class VideoListFragment extends ViewPagerBaseFragment {
 
     private MultipleItemQuickAdapter mAdapter;
+    private LoadingLayout mLoadingLayout;
 
     @Override
     protected void loadData(boolean force) {
-        if (force) {
-            final List<VideoItem> circleItems = ApiConfig.getVideoList();
-            mAdapter.replaceData(circleItems);
-        }
+        mLoadingLayout.showContent();
+        final List<VideoItem> circleItems = ApiConfig.getVideoList();
+        mAdapter.replaceData(circleItems);
     }
 
     @Override
@@ -51,6 +48,7 @@ public class VideoListFragment extends LazyLoadFragment {
 
     @Override
     protected void initView(View view, Bundle savedInstanceState) {
+        mLoadingLayout = view.findViewById(com.androidapp.base.R.id.loading);
         final RecyclerView recyclerView = view.findViewById(R.id.recyclerView);
         final RefreshLayout refreshLayout = view.findViewById(R.id.refreshLayout);
         recyclerView.addItemDecoration(new DividerItemDecoration(getContext(), VERTICAL));
@@ -87,7 +85,7 @@ public class VideoListFragment extends LazyLoadFragment {
 
     @Override
     protected int getLayoutId() {
-        return R.layout.fragment_tab;
+        return R.layout.fragment_list_layout;
     }
 
     public class GlideImageLoader extends ImageLoader {

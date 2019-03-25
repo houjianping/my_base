@@ -19,6 +19,7 @@ import com.androidapp.smartrefresh.layout.header.ClassicsHeader;
 import com.androidapp.utils.SPUtils;
 import com.androidapp.utils.ToastUtils;
 import com.facebook.stetho.Stetho;
+import com.siyuan.enjoyreading.api.ApiConfig;
 import com.siyuan.enjoyreading.api.request.HttpRequest;
 import com.siyuan.enjoyreading.ui.activity.MainActivity;
 import com.siyuan.enjoyreading.util.DynamicTimeFormat;
@@ -52,11 +53,11 @@ public class App extends Application {
         initCrash();
         ToastUtils.setContext(this);
         Stetho.initializeWithDefaults(this);
-        HttpRequest.initOkGo(this, true);
+        HttpRequest.initOkGo(this, ApiConfig.DEV_MODE);
         ShareConfig.onCreate(this);
         File cacheFile = new File(this.getCacheDir(), "webview_cache");
         CacheWebView.getCacheConfig().init(this, cacheFile.getAbsolutePath(), MAX_DISK_SIZE, MAX_RAM_SIZE)
-                .enableDebug(true);//100M 磁盘缓存空间,10M 内存缓存空间
+                .enableDebug(ApiConfig.DEV_MODE);//100M 磁盘缓存空间,10M 内存缓存空间
     }
 
     /**

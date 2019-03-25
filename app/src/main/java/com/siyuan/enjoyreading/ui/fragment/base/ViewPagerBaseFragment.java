@@ -1,12 +1,11 @@
 package com.siyuan.enjoyreading.ui.fragment.base;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 
-/**
- * Created by Administrator on 2016/7/25 0025.
- */
-public abstract class BaseFragment extends Fragment {
+import com.androidapp.fragment.BaseFragment;
+
+public abstract class ViewPagerBaseFragment extends BaseFragment {
+
     /**
      * Fragment是否已经绑定
      */
@@ -19,11 +18,6 @@ public abstract class BaseFragment extends Fragment {
      * 是否绑定数据
      */
     protected boolean isDataInitiated;
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
@@ -39,21 +33,9 @@ public abstract class BaseFragment extends Fragment {
         prepareFetchData();
     }
 
-    /**
-     * 是时候绑定数据了
-     */
-    public abstract void fetchData();
-
-    /**
-     * 是时候准备数据了     *     * @return
-     */
     public boolean prepareFetchData() {
-        return prepareFetchData(false);
-    }
-
-    public boolean prepareFetchData(boolean forceUpdate) {
-        if (isVisibleToUser && isViewInitiated && (!isDataInitiated || forceUpdate)) {
-            fetchData();
+        if (isVisibleToUser && isViewInitiated && (!isDataInitiated)) {
+            loadData(true);
             isDataInitiated = true;
             return true;
         }
