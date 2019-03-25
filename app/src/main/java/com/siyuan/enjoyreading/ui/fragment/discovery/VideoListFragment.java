@@ -25,7 +25,7 @@ import com.siyuan.enjoyreading.ui.fragment.base.ViewPagerBaseFragment;
 
 import java.util.List;
 
-import ezy.ui.layout.LoadingLayout;
+import com.androidapp.widget.LoadingLayout;
 
 import static android.support.v7.widget.DividerItemDecoration.VERTICAL;
 

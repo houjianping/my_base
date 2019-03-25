@@ -9,8 +9,8 @@ import com.androidapp.base.R;
 import com.androidapp.utils.StatusBarUtil;
 import com.androidapp.widget.CommonTitleBar;
 import com.androidapp.smartrefresh.layout.SmartRefreshLayout;
+import com.androidapp.widget.LoadingLayout;
 
-import ezy.ui.layout.LoadingLayout;
 
 public class BaseWebActivity extends BaseActivity {
 

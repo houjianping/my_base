@@ -43,7 +43,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import ezy.ui.layout.LoadingLayout;
+import com.androidapp.widget.LoadingLayout;
 
 
 public class RecommendFragment extends ViewPagerBaseFragment {

@@ -31,7 +31,6 @@ dependencies {
     //图片加载库 Glide
     compile dataDps.glide
     compile dataDps.gson
-    compile 'com.github.czy1121:loadinglayout:1.0.1'
     compile androidDps.recyclerView
     compile androidDps.supportDesign
     compile androidDps.cardview_v7

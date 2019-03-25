@@ -35,7 +35,7 @@ import com.siyuan.enjoyreading.widget.HeaderView;
 import java.util.ArrayList;
 import java.util.List;
 
-import ezy.ui.layout.LoadingLayout;
+import com.androidapp.widget.LoadingLayout;
 
 public class OrderFragment extends ViewPagerBaseFragment {
 

@@ -6,8 +6,8 @@ import android.widget.LinearLayout;
 
 import com.androidapp.base.R;
 import com.androidapp.smartrefresh.layout.SmartRefreshLayout;
+import com.androidapp.widget.LoadingLayout;
 
-import ezy.ui.layout.LoadingLayout;
 
 public class BaseWebFragment extends BaseFragment{
 

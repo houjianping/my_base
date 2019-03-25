@@ -21,7 +21,7 @@ import com.siyuan.enjoyreading.ui.fragment.base.ViewPagerBaseFragment;
 import java.util.ArrayList;
 import java.util.List;
 
-import ezy.ui.layout.LoadingLayout;
+import com.androidapp.widget.LoadingLayout;
 
 public class CouponFragment extends ViewPagerBaseFragment {
 

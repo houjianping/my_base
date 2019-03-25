@@ -14,7 +14,7 @@
         app:leftType="textView"
         app:centerType="textView"
         app:centerText=""/>
-    <ezy.ui.layout.LoadingLayout
+    <com.androidapp.widget.LoadingLayout
         android:id="@+id/loading"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -37,6 +37,6 @@
                 android:layout_height="match_parent">
             </LinearLayout>
         </com.androidapp.smartrefresh.layout.SmartRefreshLayout>
-    </ezy.ui.layout.LoadingLayout>
+    </com.androidapp.widget.LoadingLayout>
 
 </LinearLayout>

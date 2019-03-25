@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:orientation="vertical">
 
-    <ezy.ui.layout.LoadingLayout
+    <com.androidapp.widget.LoadingLayout
         android:id="@+id/loading"
         android:layout_height="match_parent"
         android:layout_width="match_parent">
@@ -36,7 +36,7 @@
                     android:orientation="vertical"></LinearLayout>
             </ScrollView>
         </com.androidapp.smartrefresh.layout.SmartRefreshLayout>
-    </ezy.ui.layout.LoadingLayout>
+    </com.androidapp.widget.LoadingLayout>
 
 </LinearLayout>
 

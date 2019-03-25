@@ -24,7 +24,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import ezy.ui.layout.LoadingLayout;
+import com.androidapp.widget.LoadingLayout;
 
 public class SocializCircleFragment extends ViewPagerBaseFragment {
     private RecyclerView mRecyclerView;
