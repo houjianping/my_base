@@ -28,7 +28,6 @@ import com.siyuan.enjoyreading.ui.activity.pcenter.SettingLeavingMessage;
 import com.siyuan.enjoyreading.ui.activity.pcenter.SettingsDownloadActivity;
 import com.siyuan.enjoyreading.ui.activity.pcenter.SettingsMyInfoActivity;
 import com.siyuan.enjoyreading.util.GlideCircleTransform;
-import com.siyuan.enjoyreading.util.OkGoUpdateHttpUtil;
 
 import java.util.List;
 

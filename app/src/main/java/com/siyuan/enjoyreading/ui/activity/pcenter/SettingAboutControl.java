@@ -5,11 +5,10 @@ import android.view.View;
 
 import com.androidapp.activity.BaseActivity;
 import com.androidapp.upgrade.UpdateAppManager;
-import com.androidapp.widget.LoadingDialog;
 import com.siyuan.enjoyreading.R;
 import com.siyuan.enjoyreading.api.Urls;
+import com.siyuan.enjoyreading.api.request.HttpRequest;
 import com.siyuan.enjoyreading.ui.activity.currency.AppWebActivity;
-import com.siyuan.enjoyreading.util.OkGoUpdateHttpUtil;
 
 public class SettingAboutControl extends BaseActivity {
 
@@ -40,7 +39,7 @@ public class SettingAboutControl extends BaseActivity {
                             .Builder()
                             .setActivity(SettingAboutControl.this)
                             .setUpdateUrl(mUpdateUrl)
-                            .setHttpManager(new OkGoUpdateHttpUtil())
+                            .setHttpManager(new HttpRequest())
                             .build()
                             .update();
                     break;

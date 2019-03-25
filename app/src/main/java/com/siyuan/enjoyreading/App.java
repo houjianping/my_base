@@ -19,10 +19,9 @@ import com.androidapp.smartrefresh.layout.header.ClassicsHeader;
 import com.androidapp.utils.SPUtils;
 import com.androidapp.utils.ToastUtils;
 import com.facebook.stetho.Stetho;
-import com.siyuan.enjoyreading.api.request.OkGoRequest;
+import com.siyuan.enjoyreading.api.request.HttpRequest;
 import com.siyuan.enjoyreading.ui.activity.MainActivity;
 import com.siyuan.enjoyreading.util.DynamicTimeFormat;
-import com.siyuan.enjoyreading.widget.MyRefreshLottieHeader;
 
 import java.io.File;
 
@@ -53,7 +52,7 @@ public class App extends Application {
         initCrash();
         ToastUtils.setContext(this);
         Stetho.initializeWithDefaults(this);
-        OkGoRequest.initOkGo(this, true);
+        HttpRequest.initOkGo(this, true);
         ShareConfig.onCreate(this);
         File cacheFile = new File(this.getCacheDir(), "webview_cache");
         CacheWebView.getCacheConfig().init(this, cacheFile.getAbsolutePath(), MAX_DISK_SIZE, MAX_RAM_SIZE)
