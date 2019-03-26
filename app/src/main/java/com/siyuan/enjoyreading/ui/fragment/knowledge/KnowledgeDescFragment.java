@@ -6,7 +6,6 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.androidapp.fragment.LazyLoadFragment;
 import com.androidapp.utils.ImageLoaderUtils;
 import com.siyuan.enjoyreading.R;
 import com.siyuan.enjoyreading.ui.fragment.base.ViewPagerBaseFragment;

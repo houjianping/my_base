@@ -20,6 +20,8 @@
     <color name="colorDivision">#33aaaaaa</color><!-- 用于未填写的字段提示和下级操作按钮-->
     <color name="white">#ffffff</color><!-- 用于反白文字-->
 
+    <color name="spaceArea">#ededed</color><!-- 用于空的段落间隔-->
+
     <!-- 背景色-->
     <color name="activity_background">#F8F8F8</color>
     <color name="transparent">@android:color/transparent</color>

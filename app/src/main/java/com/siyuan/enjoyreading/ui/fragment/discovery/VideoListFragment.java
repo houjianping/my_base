@@ -12,10 +12,13 @@ import android.widget.ImageView;
 
 import com.androidapp.adapter.BaseQuickAdapter;
 import com.androidapp.banner.loader.ImageLoader;
+import com.androidapp.filter.single.view.AppDividerItemDecoration;
 import com.androidapp.smartrefresh.layout.api.RefreshLayout;
 import com.androidapp.smartrefresh.layout.listener.OnLoadMoreListener;
 import com.androidapp.smartrefresh.layout.listener.OnRefreshListener;
 import com.androidapp.utils.ToastUtils;
+import com.shuyu.gsyvideoplayer.GSYVideoManager;
+import com.shuyu.gsyvideoplayer.video.StandardGSYVideoPlayer;
 import com.siyuan.enjoyreading.R;
 import com.siyuan.enjoyreading.adapter.MultipleItemQuickAdapter;
 import com.siyuan.enjoyreading.api.ApiConfig;
@@ -51,7 +54,9 @@ public class VideoListFragment extends ViewPagerBaseFragment {
         mLoadingLayout = view.findViewById(com.androidapp.base.R.id.loading);
         final RecyclerView recyclerView = view.findViewById(R.id.recyclerView);
         final RefreshLayout refreshLayout = view.findViewById(R.id.refreshLayout);
-        recyclerView.addItemDecoration(new DividerItemDecoration(getContext(), VERTICAL));
+        AppDividerItemDecoration decoration = new AppDividerItemDecoration(getContext(), VERTICAL);
+        decoration.setSpace(0);
+        recyclerView.addItemDecoration(decoration);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         if (mAdapter == null) {
             mAdapter = new MultipleItemQuickAdapter<VideoItem>();
@@ -88,10 +93,11 @@ public class VideoListFragment extends ViewPagerBaseFragment {
         return R.layout.fragment_list_layout;
     }
 
-    public class GlideImageLoader extends ImageLoader {
-        @Override
-        public void displayImage(Context context, Object path, ImageView imageView) {
-            imageView.setImageResource(((BannerItem) path).pic);
+    @Override
+    protected void onVisibleChange(boolean isVisibleToUser) {
+        super.onVisibleChange(isVisibleToUser);
+        if (!isVisibleToUser) {
+            GSYVideoManager.releaseAllVideos();
         }
     }
 }

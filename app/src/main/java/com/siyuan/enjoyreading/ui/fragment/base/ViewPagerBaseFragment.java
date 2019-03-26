@@ -1,6 +1,7 @@
 package com.siyuan.enjoyreading.ui.fragment.base;
 
 import android.os.Bundle;
+import android.util.Log;
 
 import com.androidapp.fragment.BaseFragment;
 
@@ -31,6 +32,7 @@ public abstract class ViewPagerBaseFragment extends BaseFragment {
         super.setUserVisibleHint(isVisibleToUser);
         this.isVisibleToUser = isVisibleToUser;
         prepareFetchData();
+        onVisibleChange(isVisibleToUser);
     }
 
     public boolean prepareFetchData() {
@@ -41,4 +43,19 @@ public abstract class ViewPagerBaseFragment extends BaseFragment {
         }
         return false;
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        Log.e("","#######onResume#########" + getClass().getSimpleName());
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        Log.e("","#######onPause#########" + getClass().getSimpleName());
+    }
+
+    protected void onVisibleChange(boolean isVisibleToUser) {
+    };
 }

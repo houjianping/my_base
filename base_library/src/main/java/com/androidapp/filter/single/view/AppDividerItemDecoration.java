@@ -1,43 +1,41 @@
 package com.androidapp.filter.single.view;
-/*
- * Copyright (C) 2014 The Android Open Source Project
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * limitations under the License.
- */
 
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
+import android.graphics.Paint;
 import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 
-import java.util.Map;
+import com.androidapp.base.R;
+import com.androidapp.utils.ScreenUtil;
 
-public class DividerItemDecoration extends RecyclerView.ItemDecoration {
+public class AppDividerItemDecoration extends RecyclerView.ItemDecoration {
 
     private static final int[] ATTRS = new int[]{
             android.R.attr.listDivider
     };
-
     public static final int HORIZONTAL_LIST = LinearLayoutManager.HORIZONTAL;
-
     public static final int VERTICAL_LIST = LinearLayoutManager.VERTICAL;
 
-    private Drawable mDivider;
+    private Paint dividerPaint;
 
     private int mOrientation;
+    private int mSpace = 1;
+    private int mPaddingLeft = 0;
+    private int mPaddingRight = 0;
 
-    private Map<Integer, Boolean> itemTYpes;
-
-    public DividerItemDecoration(Context context, int orientation) {
+    public AppDividerItemDecoration(Context context, int orientation) {
         final TypedArray a = context.obtainStyledAttributes(ATTRS);
-        mDivider = a.getDrawable(0);
+        dividerPaint = new Paint();
+        dividerPaint.setColor(context.getResources().getColor(R.color.divider));
         a.recycle();
         setOrientation(orientation);
+        mPaddingLeft = ScreenUtil.dip2px(context, 15);
+        mPaddingRight = ScreenUtil.dip2px(context, 15);
     }
 
     public void setOrientation(int orientation) {
@@ -47,8 +45,13 @@ public class DividerItemDecoration extends RecyclerView.ItemDecoration {
         mOrientation = orientation;
     }
 
-    public void setItemDividerType(Map<Integer, Boolean> itemDividerType) {
-        itemTYpes = itemDividerType;
+    public void setSpace(int space) {
+        mSpace = space;
+    }
+
+    public void setMargin(int marginLeft, int marginRight) {
+        mPaddingLeft = marginLeft;
+        mPaddingRight = marginRight;
     }
 
     @Override
@@ -61,9 +64,9 @@ public class DividerItemDecoration extends RecyclerView.ItemDecoration {
         }
     }
 
-    public void drawVertical(Canvas c, RecyclerView parent) {
-        final int left = parent.getPaddingLeft();
-        final int right = parent.getWidth() - parent.getPaddingRight();
+    private void drawVertical(Canvas c, RecyclerView parent) {
+        final int left = mPaddingLeft;
+        final int right = parent.getWidth() - mPaddingRight;
         final int childCount = parent.getChildCount();
         for (int i = 0; i < childCount; i++) {
             final View child = parent.getChildAt(i);
@@ -71,13 +74,12 @@ public class DividerItemDecoration extends RecyclerView.ItemDecoration {
             final RecyclerView.LayoutParams params = (RecyclerView.LayoutParams) child
                     .getLayoutParams();
             final int top = child.getBottom() + params.bottomMargin;
-            final int bottom = top + mDivider.getIntrinsicHeight();
-            mDivider.setBounds(left, top, right, bottom);
-            mDivider.draw(c);
+            final int bottom = top + 1;
+            c.drawRect(left, top, right, bottom, dividerPaint);
         }
     }
 
-    public void drawHorizontal(Canvas c, RecyclerView parent) {
+    private void drawHorizontal(Canvas c, RecyclerView parent) {
         final int top = parent.getPaddingTop();
         final int bottom = parent.getHeight() - parent.getPaddingBottom();
 
@@ -87,22 +89,19 @@ public class DividerItemDecoration extends RecyclerView.ItemDecoration {
             final RecyclerView.LayoutParams params = (RecyclerView.LayoutParams) child
                     .getLayoutParams();
             final int left = child.getRight() + params.rightMargin;
-            final int right = left + mDivider.getIntrinsicHeight();
-            mDivider.setBounds(left, top, right, bottom);
-            mDivider.draw(c);
+            final int right = left + 1;
+            c.drawRect(left, top, right, bottom, dividerPaint);
         }
     }
 
     @Override
     public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
-        if (itemTYpes == null || (itemTYpes != null && itemTYpes.containsKey(parent.getAdapter().getItemViewType(parent.getChildAdapterPosition(view))))) {
-            if (mOrientation == VERTICAL_LIST) {
-                outRect.set(0, 0, 0, mDivider.getIntrinsicHeight());
-            } else {
-                outRect.set(0, 0, mDivider.getIntrinsicWidth(), 0);
-            }
-        } else {
-            outRect.set(0, 0, 0, 0);
+        super.getItemOffsets(outRect, view, parent, state);
+        outRect.left = mSpace;
+        outRect.right = mSpace;
+        outRect.bottom = mSpace;
+        if (parent.getChildAdapterPosition(view) == 0) {
+            outRect.top = mSpace;
         }
     }
 }

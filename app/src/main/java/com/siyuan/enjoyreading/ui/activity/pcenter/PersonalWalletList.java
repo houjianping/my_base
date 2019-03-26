@@ -1,17 +1,15 @@
 package com.siyuan.enjoyreading.ui.activity.pcenter;
 
-import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Toast;
 
-import com.androidapp.activity.BaseActivity;
+import com.androidapp.activity.BaseListActivity;
+import com.androidapp.adapter.BaseQuickAdapter;
 import com.androidapp.banner.Banner;
-import com.androidapp.banner.BannerConfig;
 import com.androidapp.banner.listener.OnBannerListener;
 import com.androidapp.smartrefresh.layout.api.RefreshLayout;
 import com.androidapp.smartrefresh.layout.listener.OnLoadMoreListener;
@@ -22,77 +20,98 @@ import com.siyuan.enjoyreading.R;
 import com.siyuan.enjoyreading.adapter.MultipleItemQuickAdapter;
 import com.siyuan.enjoyreading.api.ApiConfig;
 import com.siyuan.enjoyreading.entity.WalletItem;
-import com.siyuan.enjoyreading.util.BannerImageLoader;
+import com.siyuan.enjoyreading.ui.activity.SocializCircleActivity;
+import com.siyuan.enjoyreading.util.GlideImageLoader;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static android.support.v7.widget.DividerItemDecoration.VERTICAL;
 
-public class PersonalWalletList extends BaseActivity {
+public class PersonalWalletList extends BaseListActivity {
 
     private MultipleItemQuickAdapter mAdapter;
-    private RefreshLayout mRefreshLayout;
-    private RecyclerView mRecyclerView;
+
     final List<WalletItem> mWalletListItems = new Gson().fromJson(ApiConfig.JSON_WALLET_LIST, new TypeToken<ArrayList<WalletItem>>() {
     }.getType());
 
     @Override
-    protected void initContentView(Bundle bundle) {
-        setContentView(R.layout.act_personal_wallet_list);
+    protected void initView() {
+        //添加Header
+        super.initView();
+        mRecyclerView.addItemDecoration(new DividerItemDecoration(mContext, VERTICAL));
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(mContext));
+        View header = LayoutInflater.from(mContext).inflate(R.layout.listitem_movie_header, mRecyclerView, false);
+        Banner banner = (Banner) header;
+        banner.setImageLoader(new GlideImageLoader());
+        banner.setImages(ApiConfig.BANNER_ITEMS);
+        banner.setOnBannerListener(new OnBannerListener() {
+            @Override
+            public void OnBannerClick(int i) {
+                Toast.makeText(mContext, "si=" + i, Toast.LENGTH_SHORT).show();
+            }
+        });
+        banner.start();
+        mAdapter.addHeaderView(banner, 0);
     }
 
     @Override
-    protected void initView() {
-        mRecyclerView = findViewById(R.id.recyclerView);
-        mRefreshLayout = findViewById(R.id.refreshLayout);
-        mRecyclerView.addItemDecoration(new DividerItemDecoration(mContext, VERTICAL));
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(mContext));
-        if (mAdapter == null) {
-            mAdapter = new MultipleItemQuickAdapter();
-            View header = LayoutInflater.from(this).inflate(R.layout.listitem_movie_header, mRecyclerView, false);
-            Banner banner = (Banner) header;
-            banner.setImageLoader(new BannerImageLoader());
-            banner.setIndicatorGravity(BannerConfig.RIGHT);
-            banner.setImages(ApiConfig.BANNER_ITEMS);
-            banner.setOnBannerListener(new OnBannerListener() {
-                @Override
-                public void OnBannerClick(int i) {
-                    Toast.makeText(PersonalWalletList.this, "si=" + i, Toast.LENGTH_SHORT).show();
-                }
-            });
-            banner.start();
-            mAdapter.addHeaderView(banner, 0);
-            mAdapter.openLoadAnimation();
-        }
-        mAdapter.replaceData(mWalletListItems);
-        mRecyclerView.setAdapter(mAdapter);
-        mRefreshLayout.setOnRefreshListener(new OnRefreshListener() {
+    protected OnRefreshListener getOnRefreshListener() {
+        return new OnRefreshListener() {
             @Override
             public void onRefresh(@NonNull final RefreshLayout refreshLayout) {
                 refreshLayout.getLayout().postDelayed(new Runnable() {
                     @Override
                     public void run() {
                         if (mAdapter.getItemCount() < 2) {
-                            List<WalletItem> items = new Gson().fromJson(ApiConfig.JSON_WALLET_LIST, new TypeToken<ArrayList<WalletItem>>() {
+                            List<WalletItem> movies = new Gson().fromJson(ApiConfig.JSON_WALLET_LIST, new TypeToken<ArrayList<WalletItem>>() {
                             }.getType());
-                            mAdapter.replaceData(items);
+                            mAdapter.replaceData(movies);
                         }
                         refreshLayout.finishRefresh();
                     }
                 }, 2000);
             }
-        });
-        mRefreshLayout.setOnLoadMoreListener(new OnLoadMoreListener() {
+        };
+    }
+
+    @Override
+    protected OnLoadMoreListener getOnLoadMoreListener() {
+        return new OnLoadMoreListener() {
             @Override
             public void onLoadMore(@NonNull RefreshLayout refreshLayout) {
-                mAdapter.addData(mWalletListItems);
+                final List<WalletItem> walletItems = new Gson().fromJson(ApiConfig.JSON_WALLET_LIST, new TypeToken<ArrayList<WalletItem>>() {
+                }.getType());
+                mAdapter.addData(walletItems);
                 refreshLayout.finishLoadMoreWithNoMoreData();
             }
-        });
+        };
+    }
+
+    @Override
+    protected BaseQuickAdapter getListViewAdapter() {
+        if (mAdapter == null) {
+            mAdapter = new MultipleItemQuickAdapter();
+            mAdapter.openLoadAnimation();
+            mAdapter.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
+                @Override
+                public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
+                    doStartActivity(SocializCircleActivity.class, null);
+                }
+            });
+        }
+        return mAdapter;
     }
 
     @Override
     protected void initData() {
+        mLoadingLayout.showContent();
+        mAdapter.replaceData(mWalletListItems);
+    }
+
+    @Override
+    protected void initTitle() {
+        super.initTitle();
+        mTitleBar.setTitle("账单");
     }
 }

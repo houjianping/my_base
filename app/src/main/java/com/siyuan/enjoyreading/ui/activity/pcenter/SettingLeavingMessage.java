@@ -105,6 +105,7 @@ public class SettingLeavingMessage extends BaseListActivity {
 
     @Override
     protected void initData() {
+        mLoadingLayout.showContent();
         mAdapter.replaceData(movies);
     }
 

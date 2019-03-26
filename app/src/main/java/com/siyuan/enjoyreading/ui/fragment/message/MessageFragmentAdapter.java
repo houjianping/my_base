@@ -4,8 +4,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import com.siyuan.enjoyreading.ui.fragment.TabFragment;
-
 public class MessageFragmentAdapter extends FragmentPagerAdapter {
     private String[] tabs = {"消息", "通知"};
 

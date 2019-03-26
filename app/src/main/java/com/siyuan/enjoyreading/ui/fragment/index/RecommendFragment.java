@@ -15,7 +15,7 @@ import com.androidapp.adapter.BaseQuickAdapter;
 import com.androidapp.banner.Banner;
 import com.androidapp.banner.BannerConfig;
 import com.androidapp.banner.listener.OnBannerListener;
-import com.androidapp.filter.single.view.DividerItemDecoration;
+import com.androidapp.filter.single.view.AppDividerItemDecoration;
 import com.androidapp.smartrefresh.layout.api.RefreshLayout;
 import com.androidapp.smartrefresh.layout.listener.OnLoadMoreListener;
 import com.androidapp.smartrefresh.layout.listener.OnRefreshListener;
@@ -128,20 +128,12 @@ public class RecommendFragment extends ViewPagerBaseFragment {
     }
 
     @Override
-    public void onResume() {
-        super.onResume();
-    }
-
-    @Override
     protected void initView(View view, Bundle savedInstanceState) {
         Log.e("", "------loadData----mAdapter----");
         mLoadingLayout = view.findViewById(com.androidapp.base.R.id.loading);
         mRecyclerView = view.findViewById(R.id.recyclerView);
         final RefreshLayout refreshLayout = view.findViewById(R.id.refreshLayout);
-        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL_LIST);
-        Map<Integer, Boolean> itemTYpes = new HashMap<>();
-        itemTYpes.put(MultipleItemQuickAdapter.ITEM_TEST, true);
-        dividerItemDecoration.setItemDividerType(itemTYpes);
+        AppDividerItemDecoration dividerItemDecoration = new AppDividerItemDecoration(getContext(), AppDividerItemDecoration.VERTICAL_LIST);
 //        recyclerView.addItemDecoration(dividerItemDecoration);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         if (mAdapter == null) {
