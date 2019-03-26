@@ -6,6 +6,7 @@ import com.siyuan.enjoyreading.adapter.provider.AdItemProvider;
 import com.siyuan.enjoyreading.adapter.provider.BannerItemProvider;
 import com.siyuan.enjoyreading.adapter.provider.CircleItemProvider;
 import com.siyuan.enjoyreading.adapter.provider.CouponProvider;
+import com.siyuan.enjoyreading.adapter.provider.FollowItemProvider;
 import com.siyuan.enjoyreading.adapter.provider.HeaderItemProvider;
 import com.siyuan.enjoyreading.adapter.provider.IndexGridItemProvider;
 import com.siyuan.enjoyreading.adapter.provider.KnowledgeListItemProvider;
@@ -18,6 +19,7 @@ import com.siyuan.enjoyreading.adapter.provider.WalletItemProvider;
 import com.siyuan.enjoyreading.entity.AdItem;
 import com.siyuan.enjoyreading.entity.BannerItemEntity;
 import com.siyuan.enjoyreading.entity.Coupon;
+import com.siyuan.enjoyreading.entity.FollowItem;
 import com.siyuan.enjoyreading.entity.GridItem;
 import com.siyuan.enjoyreading.entity.HeaderItem;
 import com.siyuan.enjoyreading.entity.KnowledgeListItem;
@@ -45,6 +47,7 @@ public class MultipleItemQuickAdapter<T extends MultipleEntity> extends Multiple
     public static final int ITEM_COUPON = 10;
     public static final int ITEM_NOTIFICATION = 11;
     public static final int ITEM_VIDEO_LIST = 12;
+    public static final int ITEM_FOLLOW = 13;
 
     public MultipleItemQuickAdapter() {
         super(null);
@@ -79,6 +82,8 @@ public class MultipleItemQuickAdapter<T extends MultipleEntity> extends Multiple
             return ITEM_NOTIFICATION;
         } else if (entity instanceof VideoItem) {
             return ITEM_VIDEO_LIST;
+        } else if (entity instanceof FollowItem) {
+            return ITEM_FOLLOW;
         }
         return ITEM_NEWS;
     }
@@ -99,6 +104,7 @@ public class MultipleItemQuickAdapter<T extends MultipleEntity> extends Multiple
             mProviderDelegate.registerProvider(new CouponProvider());
             mProviderDelegate.registerProvider(new NotificationItemProvider());
             mProviderDelegate.registerProvider(new VideoItemProvider());
+            mProviderDelegate.registerProvider(new FollowItemProvider());
         } catch (Exception e) {
             e.printStackTrace();
         }

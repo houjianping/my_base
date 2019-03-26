@@ -24,6 +24,7 @@ import com.siyuan.enjoyreading.ui.activity.pcenter.CouponActivity;
 import com.siyuan.enjoyreading.ui.activity.pcenter.PersonalWallet;
 import com.siyuan.enjoyreading.ui.activity.pcenter.SettingActivity;
 import com.siyuan.enjoyreading.ui.activity.pcenter.SettingFavorite;
+import com.siyuan.enjoyreading.ui.activity.pcenter.SettingFollowActivity;
 import com.siyuan.enjoyreading.ui.activity.pcenter.SettingLeavingMessage;
 import com.siyuan.enjoyreading.ui.activity.pcenter.SettingsDownloadActivity;
 import com.siyuan.enjoyreading.ui.activity.pcenter.SettingsMyInfoActivity;
@@ -126,7 +127,7 @@ public class PCenterFragment extends BaseTabFragment {
                     startActivity(new Intent(mContext, SettingFavorite.class));
                     break;
                 case R.id.setting_follow:
-                    startActivity(new Intent(mContext, SettingLeavingMessage.class));
+                    startActivity(new Intent(mContext, SettingFollowActivity.class));
                     break;
                 case R.id.setting_share_reward:
                     doStartActivity(AppWebActivity.class, AppWebActivity.getBundle(Urls.H5.INVITING_FRIENDS, "分享有赏"));

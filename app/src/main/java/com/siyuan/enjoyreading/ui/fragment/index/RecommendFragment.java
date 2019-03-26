@@ -44,6 +44,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.androidapp.widget.LoadingLayout;
+import com.siyuan.enjoyreading.widget.FlexibleView;
 
 
 public class RecommendFragment extends ViewPagerBaseFragment {
@@ -89,6 +90,9 @@ public class RecommendFragment extends ViewPagerBaseFragment {
         });
         mAdapter.addHeaderView(appGridView, 1);
 
+        FlexibleView flexibleView = new FlexibleView(getContext());
+        mAdapter.addHeaderView(flexibleView, 2);
+
         mAdapter.openLoadAnimation();
         mAdapter.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
             @Override
@@ -129,15 +133,11 @@ public class RecommendFragment extends ViewPagerBaseFragment {
 
     @Override
     protected void initView(View view, Bundle savedInstanceState) {
-        Log.e("", "------loadData----mAdapter----");
         mLoadingLayout = view.findViewById(com.androidapp.base.R.id.loading);
         mRecyclerView = view.findViewById(R.id.recyclerView);
         final RefreshLayout refreshLayout = view.findViewById(R.id.refreshLayout);
-        AppDividerItemDecoration dividerItemDecoration = new AppDividerItemDecoration(getContext(), AppDividerItemDecoration.VERTICAL_LIST);
-//        recyclerView.addItemDecoration(dividerItemDecoration);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         if (mAdapter == null) {
-            Log.e("", "------loadData----mAdapter---1111-");
             mAdapter = new MultipleItemQuickAdapter();
         }
         mRecyclerView.setAdapter(mAdapter);

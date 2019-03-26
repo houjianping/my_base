@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:paddingTop="@dimen/padding_common"
+    android:paddingBottom="@dimen/padding_common"
+    android:gravity="center_vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <ImageView
+        android:id="@+id/icon"
+        android:layout_marginLeft="15dp"
+        android:src="@mipmap/ic_launcher"
+        android:layout_width="50dp"
+        android:layout_height="50dp" />
+    <LinearLayout
+        android:layout_toRightOf="@+id/icon"
+        android:orientation="vertical"
+        android:layout_marginLeft="@dimen/padding_middle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/title"
+            android:text="图文频道"
+            android:textSize="@dimen/font_16"
+            android:textColor="@color/colorTextTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/content"
+            android:layout_marginTop="@dimen/padding_small"
+            android:text="示例: 个人图文展示频道"
+            android:textSize="@dimen/font_14"
+            android:textColor="@color/colorTextSummary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <ImageView
+        android:id="@+id/arrow"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:paddingRight="12dp"
+        android:scaleType="center"
+        android:src="@drawable/arrow" />
+</RelativeLayout>

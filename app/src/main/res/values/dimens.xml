@@ -13,4 +13,5 @@
     <dimen name="font_10">10sp</dimen>
     <dimen name="font_8">8sp</dimen>
     <dimen name="frame_radius_size">4dp</dimen>
+    <dimen name="corner_radius">4dp</dimen>
 </resources>
