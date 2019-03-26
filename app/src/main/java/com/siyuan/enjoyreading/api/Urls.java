@@ -2,8 +2,6 @@ package com.siyuan.enjoyreading.api;
 
 public class Urls {
 
-    private static boolean DEBUG_ = true;
-
     public static String BASE_URL = "";
 
     public static class H5 {

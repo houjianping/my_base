@@ -10,6 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -21,13 +22,16 @@ import com.androidapp.smartrefresh.layout.SmartRefreshLayout;
 import com.androidapp.smartrefresh.layout.api.RefreshLayout;
 import com.androidapp.smartrefresh.layout.listener.OnLoadMoreListener;
 import com.androidapp.smartrefresh.layout.listener.OnRefreshListener;
+import com.androidapp.widget.AppGridView;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.siyuan.enjoyreading.R;
 import com.siyuan.enjoyreading.adapter.MultipleItemQuickAdapter;
+import com.siyuan.enjoyreading.adapter.SmallCategoryAdapter;
 import com.siyuan.enjoyreading.api.ApiConfig;
 import com.siyuan.enjoyreading.entity.BannerItem;
 import com.siyuan.enjoyreading.entity.NewsItem;
+import com.siyuan.enjoyreading.entity.SmallCategoryItem;
 import com.siyuan.enjoyreading.ui.activity.currency.FullPagePlayerActivity;
 import com.siyuan.enjoyreading.ui.fragment.base.ViewPagerBaseFragment;
 
@@ -35,6 +39,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.androidapp.widget.LoadingLayout;
+import com.siyuan.enjoyreading.util.IntentUtil;
 
 import static android.support.v7.widget.DividerItemDecoration.VERTICAL;
 
@@ -52,9 +57,7 @@ public class EntertainmentFragment extends ViewPagerBaseFragment {
     @Override
     protected void loadData(boolean force) {
         mLoadingLayout.showContent();
-        final List<NewsItem> circleItems = new Gson().fromJson(ApiConfig.JSON_VIDEO_LIST, new TypeToken<ArrayList<NewsItem>>() {
-        }.getType());
-        //添加Header
+        final List<NewsItem> circleItems = new Gson().fromJson(ApiConfig.JSON_VIDEO_LIST, new TypeToken<ArrayList<NewsItem>>() {}.getType());
         View header = LayoutInflater.from(getContext()).inflate(R.layout.listitem_movie_header, mRecyclerView, false);
         Banner banner = (Banner) header;
         banner.setImageLoader(new GlideImageLoader());
@@ -67,6 +70,22 @@ public class EntertainmentFragment extends ViewPagerBaseFragment {
         });
         banner.start();
         mAdapter.addHeaderView(banner, 0);
+        List<SmallCategoryItem> searchKeywords = new Gson().fromJson(ApiConfig.JSON_SMALL_CATEGORY, new TypeToken<ArrayList<SmallCategoryItem>>() {
+        }.getType());
+        final SmallCategoryAdapter smallCategoryAdapter = new SmallCategoryAdapter(getContext(), searchKeywords);
+        AppGridView appGridView = new AppGridView(getContext());
+        appGridView.setNumColumns(5);
+        appGridView.setAdapter(smallCategoryAdapter);
+        appGridView.setHorizontalSpacing(10);
+        appGridView.setVerticalSpacing(10);
+        appGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                SmallCategoryItem smallCategoryItem = smallCategoryAdapter.getItem(position);
+                IntentUtil.startActivity(mContext, smallCategoryItem.getApp_jump());
+            }
+        });
+        mAdapter.addHeaderView(appGridView, 1);
         mAdapter.openLoadAnimation();
         mAdapter.replaceData(circleItems);
     }

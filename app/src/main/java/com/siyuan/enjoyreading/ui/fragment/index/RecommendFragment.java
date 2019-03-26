@@ -71,27 +71,9 @@ public class RecommendFragment extends ViewPagerBaseFragment {
             }
         });
         banner.start();
-
         mAdapter.addHeaderView(banner, 0);
-        List<SmallCategoryItem> searchKeywords = new Gson().fromJson(ApiConfig.JSON_SMALL_CATEGORY, new TypeToken<ArrayList<SmallCategoryItem>>() {
-        }.getType());
-        final SmallCategoryAdapter smallCategoryAdapter = new SmallCategoryAdapter(getContext(), searchKeywords);
-        AppGridView appGridView = new AppGridView(getContext());
-        appGridView.setNumColumns(5);
-        appGridView.setAdapter(smallCategoryAdapter);
-        appGridView.setHorizontalSpacing(10);
-        appGridView.setVerticalSpacing(10);
-        appGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                SmallCategoryItem smallCategoryItem = smallCategoryAdapter.getItem(position);
-                IntentUtil.startActivity(mContext, smallCategoryItem.getApp_jump());
-            }
-        });
-        mAdapter.addHeaderView(appGridView, 1);
-
         FlexibleView flexibleView = new FlexibleView(getContext());
-        mAdapter.addHeaderView(flexibleView, 2);
+        mAdapter.addHeaderView(flexibleView, 1);
 
         mAdapter.openLoadAnimation();
         mAdapter.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
