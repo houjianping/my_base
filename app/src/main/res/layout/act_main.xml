@@ -10,7 +10,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/tab_layout" />
-
     <com.androidapp.tablayout.CommonTabLayout
         android:id="@+id/tab_layout"
         android:layout_width="match_parent"
@@ -29,4 +28,12 @@
         tl:tl_underline_color="#d9d9d9"
         tl:tl_underline_gravity="TOP"
         tl:tl_underline_height="1px" />
+
+    <com.siyuan.enjoyreading.widget.AnimationActionView
+        android:id="@+id/anmation_show_send_button"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:visibility="gone" />
 </RelativeLayout>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll_bg"
+    android:layout_width="wrap_content"
+    android:layout_height="150dp">
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
+
+        <ImageView
+            android:id="@+id/ivIcon"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_centerHorizontal="true"
+            android:src="@mipmap/ic_launcher" />
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ivIcon"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:text="标题"
+            android:textColor="@color/gray_main"
+            android:textSize="@dimen/font_14"/>
+
+        <TextView
+            android:id="@+id/tvSubTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvTitle"
+            android:layout_marginTop="4dp"
+            android:gravity="center"
+            android:lines="2"
+            android:text="描述性信息...."
+            android:textColor="@color/colorTextSummary"
+            android:textSize="@dimen/font_12" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/llGuideDes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/relativeLayout2"
+        android:layout_centerHorizontal="true"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/tvDes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btn_round_red_22"
+            android:gravity="center"
+            android:maxLines="1"
+            android:maxWidth="150dp"
+            android:paddingBottom="2dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="2dp"
+            android:textColor="@color/white"
+            android:textSize="10dp"
+            android:visibility="visible" />
+        <View
+            android:layout_width="8dp"
+            android:layout_height="4dp"
+            android:background="@drawable/icon_red_triangle_down" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/ivGuideIcon"
+        android:layout_below="@+id/llGuideDes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="32dp"
+        android:maxHeight="12dp"
+        android:src="@drawable/icon_new" />
+</RelativeLayout>

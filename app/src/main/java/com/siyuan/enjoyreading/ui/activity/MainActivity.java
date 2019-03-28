@@ -14,23 +14,23 @@ import com.androidapp.tablayout.listener.OnTabSelectListener;
 import com.androidapp.utils.StatusBarUtil;
 import com.androidapp.utils.ToastUtils;
 import com.siyuan.enjoyreading.R;
-import com.siyuan.enjoyreading.ui.activity.index.ChannelActivity;
 import com.siyuan.enjoyreading.ui.fragment.IndexMainFragment;
 import com.siyuan.enjoyreading.ui.fragment.OrderMainFragment;
 import com.siyuan.enjoyreading.ui.fragment.PCenterFragment;
 import com.siyuan.enjoyreading.ui.fragment.RoomMainFragment;
+import com.siyuan.enjoyreading.widget.AnimationActionView;
 
 import java.util.ArrayList;
 
 public class  MainActivity extends BaseActivity {
 
-    private String[] mTitles = {"首页", "专栏", "发现", "个人中心"};
+    private String[] mTitles = {"首页", "专栏", "", "身边动态", "我的"};
 
     private int[] mIconUnselectIds = {
-            R.mipmap.ic_home_normal, R.mipmap.ic_column_normal, R.mipmap.ic_discover_normal, R.mipmap.ic_pcenter_normal};
+            R.mipmap.ic_home_normal, R.mipmap.ic_message_normal, R.mipmap.ic_action_normal, R.mipmap.ic_discover_normal, R.mipmap.ic_mycenter_normal};
 
     private int[] mIconSelectIds = {
-            R.mipmap.ic_home_selected, R.mipmap.ic_column_selected, R.mipmap.ic_discover_selected, R.mipmap.ic_pcenter_selected};
+            R.mipmap.ic_home_selected, R.mipmap.ic_message_selected, R.mipmap.ic_action_selected, R.mipmap.ic_discover_selected, R.mipmap.ic_mycenter_selected};
 
     private ArrayList<CustomTabEntity> mTabEntities = new ArrayList<>();
 
@@ -40,6 +40,7 @@ public class  MainActivity extends BaseActivity {
     private RoomMainFragment roomMainFragment;
     private PCenterFragment videoMainFragment;
     private int currentTabPosition = 0;
+    private AnimationActionView showSendButtonView;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -65,6 +66,7 @@ public class  MainActivity extends BaseActivity {
     protected void initContentView(Bundle bundle) {
         setContentView(R.layout.act_main);
         tabLayout = findViewById(R.id.tab_layout);
+        showSendButtonView = (AnimationActionView) findViewById(R.id.anmation_show_send_button);
         initTab();
         initFragment();
         //状态栏透明和间距处理
@@ -164,13 +166,20 @@ public class  MainActivity extends BaseActivity {
                     transaction.commitNowAllowingStateLoss();
                     break;
                 case 2:
+                    if (showSendButtonView.getVisibility() == View.VISIBLE) {
+                        showSendButtonView.hide();
+                    } else {
+                        showSendButtonView.show();
+                    }
+                    break;
+                case 3:
                     transaction.hide(mainFragment);
                     transaction.hide(mOrderMainFragment);
                     transaction.hide(videoMainFragment);
                     transaction.show(roomMainFragment);
                     transaction.commitAllowingStateLoss();
                     break;
-                case 3:
+                case 4:
                     transaction.hide(mainFragment);
                     transaction.hide(mOrderMainFragment);
                     transaction.hide(roomMainFragment);
@@ -252,6 +261,10 @@ public class  MainActivity extends BaseActivity {
 
     @Override
     public void onBackPressed() {
+        if (showSendButtonView.getVisibility() == View.VISIBLE) {
+            showSendButtonView.hide();
+            return;
+        }
         long secondTime = System.currentTimeMillis();
         if (secondTime - firstTime > 2000) {
             ToastUtils.show("再按一次退出程序");

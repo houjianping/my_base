@@ -9,19 +9,18 @@ import android.support.v7.app.AppCompatDelegate;
 
 import com.androidapp.activity.AppManager;
 import com.androidapp.cachewebviewlib.CacheWebView;
-import com.androidapp.crash.CaocConfig;
 import com.androidapp.share.ShareConfig;
 import com.androidapp.smartrefresh.layout.SmartRefreshLayout;
 import com.androidapp.smartrefresh.layout.api.DefaultRefreshHeaderCreator;
 import com.androidapp.smartrefresh.layout.api.RefreshHeader;
 import com.androidapp.smartrefresh.layout.api.RefreshLayout;
 import com.androidapp.smartrefresh.layout.header.ClassicsHeader;
+import com.androidapp.systemreport.SystemReport;
 import com.androidapp.utils.SPUtils;
 import com.androidapp.utils.ToastUtils;
 import com.facebook.stetho.Stetho;
 import com.siyuan.enjoyreading.api.ApiConfig;
 import com.siyuan.enjoyreading.api.request.HttpRequest;
-import com.siyuan.enjoyreading.ui.activity.MainActivity;
 import com.siyuan.enjoyreading.util.DynamicTimeFormat;
 
 import java.io.File;
@@ -49,8 +48,8 @@ public class App extends Application {
     public void onCreate() {
         super.onCreate();
         setApplication(this);
+        SystemReport.init(this, "", "", true);
         SPUtils.init(this);
-        initCrash();
         ToastUtils.setContext(this);
         Stetho.initializeWithDefaults(this);
         HttpRequest.initOkGo(this, ApiConfig.DEV_MODE);
@@ -88,10 +87,12 @@ public class App extends Application {
 
             @Override
             public void onActivityResumed(Activity activity) {
+                SystemReport.onPageStart(activity, activity.getClass().getSimpleName());
             }
 
             @Override
             public void onActivityPaused(Activity activity) {
+                SystemReport.onPageEnd(activity, activity.getClass().getSimpleName());
             }
 
             @Override
@@ -107,20 +108,5 @@ public class App extends Application {
                 AppManager.getAppManager().removeActivity(activity);
             }
         });
-    }
-
-    private void initCrash() {
-        CaocConfig.Builder.create()
-                .backgroundMode(CaocConfig.BACKGROUND_MODE_SILENT) //背景模式,开启沉浸式
-                .enabled(true) //是否启动全局异常捕获
-                .showErrorDetails(true) //是否显示错误详细信息
-                .showRestartButton(true) //是否显示重启按钮
-                .trackActivities(true) //是否跟踪Activity
-                .minTimeBetweenCrashesMs(2000) //崩溃的间隔时间(毫秒)
-                .errorDrawable(R.mipmap.ic_launcher) //错误图标
-                .restartActivity(MainActivity.class) //重新启动后的activity
-//                .errorActivity(YourCustomErrorActivity.class) //崩溃后的错误activity
-//                .eventListener(new YourCustomEventListener()) //崩溃后的错误监听
-                .apply();
     }
 }

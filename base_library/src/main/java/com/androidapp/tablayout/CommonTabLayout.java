@@ -14,6 +14,7 @@ import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
+import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.SparseArray;
 import android.util.TypedValue;
@@ -316,11 +317,15 @@ public class CommonTabLayout extends FrameLayout implements ValueAnimator.Animat
                 }
 
                 if (tabEntity.selectAble()) {
-                    iv_tab_icon.setLayoutParams(lp);
+                    if (!TextUtils.isEmpty(tabEntity.getTabTitle())) {
+                        iv_tab_icon.setLayoutParams(lp);
+                    }
                 } else {
                     tv_tab_title.setVisibility(View.GONE);
                     LinearLayout.LayoutParams llp = new LinearLayout.LayoutParams(tabEntity.getIconSize(), tabEntity.getIconSize());
-                    iv_tab_icon.setLayoutParams(llp);
+                    if (!TextUtils.isEmpty(tabEntity.getTabTitle())) {
+                        iv_tab_icon.setLayoutParams(llp);
+                    }
                 }
             } else {
                 iv_tab_icon.setVisibility(View.GONE);
