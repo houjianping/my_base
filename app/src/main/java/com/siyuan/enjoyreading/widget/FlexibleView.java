@@ -12,7 +12,7 @@ import com.siyuan.enjoyreading.R;
 
 public class FlexibleView extends RelativeLayout {
 
-    private View mBaseView, flexible_action1, flexible_action2, flexible_action3, flexible_action4, flexible_action5;
+    private View mBaseView;
     private TextView mFlexibleTitle1, mFlexibleTitle2, mFlexibleTitle3, mFlexibleTitle4, mFlexibleTitle5;
     private TextView mFlexibleSummary1, mFlexibleSummary2, mFlexibleSummary3;
 
@@ -30,11 +30,6 @@ public class FlexibleView extends RelativeLayout {
 
     private void initView() {
         mBaseView = LayoutInflater.from(getContext()).inflate(R.layout.view_flexible, this);
-        flexible_action1 = mBaseView.findViewById(R.id.flexible_action1);
-        flexible_action2 = mBaseView.findViewById(R.id.flexible_action2);
-        flexible_action3 = mBaseView.findViewById(R.id.flexible_action3);
-        flexible_action4 = mBaseView.findViewById(R.id.flexible_action4);
-        flexible_action5 = mBaseView.findViewById(R.id.flexible_action5);
         mFlexibleTitle1 = mBaseView.findViewById(R.id.flexible_action1_title);
         mFlexibleTitle2 = mBaseView.findViewById(R.id.flexible_action2_title);
         mFlexibleTitle3 = mBaseView.findViewById(R.id.flexible_action3_title);

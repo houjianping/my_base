@@ -11,6 +11,8 @@ import java.util.Random;
 
 public class ApiConfig {
 
+    public static final String EXT_NAME = "reading";
+
     public static boolean DEV_MODE = true;
     public static List<BannerItem> BANNER_ITEMS = new ArrayList<BannerItem>() {{
         add(new BannerItem("最后的骑士", R.mipmap.image_movie_header_48621499931969370));

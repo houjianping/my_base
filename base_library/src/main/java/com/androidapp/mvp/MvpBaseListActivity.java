@@ -19,6 +19,7 @@ import com.androidapp.smartrefresh.layout.api.RefreshLayout;
 import com.androidapp.smartrefresh.layout.listener.OnLoadMoreListener;
 import com.androidapp.smartrefresh.layout.listener.OnRefreshListener;
 import com.androidapp.widget.CommonTitleBar;
+import com.androidapp.widget.LoadingLayout;
 import com.trello.rxlifecycle.components.support.RxAppCompatActivity;
 
 import butterknife.ButterKnife;
@@ -31,6 +32,7 @@ public abstract class MvpBaseListActivity<M extends MvpBaseModel, P extends MvpB
     public Context mContext;
     protected CommonTitleBar mTitleBar;
     protected TextView mTvCenterTitle;
+    public LoadingLayout mLoadingLayout;
 
     protected P mPresenter;
     protected Unbinder unbinder;
@@ -74,6 +76,7 @@ public abstract class MvpBaseListActivity<M extends MvpBaseModel, P extends MvpB
     }
 
     private void initListView() {
+        mLoadingLayout = findViewById(R.id.loading);
         mRecyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         mRefreshLayout = (RefreshLayout) findViewById(R.id.refreshLayout);
         if (isDividerItemDecorationEnable())

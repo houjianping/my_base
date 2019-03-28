@@ -46,10 +46,10 @@ public class AppWebFragment extends BaseWebFragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         if (mWebView == null) {
-            mWebView = new AppWebView(getContext());
+            mWebView = new AppWebView(getActivity());
             mWebView.setWebviewCallback(new AppWebView.WebViewCallback() {
                 @Override
-                public void onPageFinished() {
+                public void onPageFinished(String url, String title) {
                     mLoadingLayout.showContent();
                     getFocus();
                 }

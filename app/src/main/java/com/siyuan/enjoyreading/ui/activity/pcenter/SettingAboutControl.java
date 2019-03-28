@@ -47,8 +47,8 @@ public class SettingAboutControl extends BaseActivity {
                     doStartActivity(AppWebActivity.class, AppWebActivity.getBundle(Urls.H5.CONTACT_US, "联系我们"));
                     break;
                 case R.id.settings_terms_of_service:
-                    doStartActivity(AppWebActivity.class, AppWebActivity.getBundle("http://192.168.3.249:3007/", "服务条款"));
-//                    doStartActivity(AppWebActivity.class, AppWebActivity.getBundle("http://m.54php.cn/demo/h5_upload", "服务条款"));
+//                    doStartActivity(AppWebActivity.class, AppWebActivity.getBundle("http://192.168.3.249:3007/", "服务条款"));
+                    doStartActivity(AppWebActivity.class, AppWebActivity.getBundle("http://m.54php.cn/demo/h5_upload", "服务条款"));
                     break;
             }
         }

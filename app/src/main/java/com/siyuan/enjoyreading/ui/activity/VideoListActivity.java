@@ -87,6 +87,7 @@ public class VideoListActivity extends MvpBaseListActivity<VideoListModelLogic, 
 
     @Override
     public void onVideoListUpdate(List<NewsItem> circleItemList) {
+        mLoadingLayout.showContent();
         mAdapter.replaceData(circleItemList);
     }
 

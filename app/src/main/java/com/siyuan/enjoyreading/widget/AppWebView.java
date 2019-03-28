@@ -1,8 +1,18 @@
 package com.siyuan.enjoyreading.widget;
 
+import android.annotation.TargetApi;
 import android.app.Activity;
+import android.content.ClipData;
+import android.content.ContentUris;
 import android.content.Context;
+import android.content.Intent;
+import android.database.Cursor;
+import android.net.Uri;
 import android.os.Build;
+import android.os.Environment;
+import android.provider.DocumentsContract;
+import android.provider.MediaStore;
+import android.support.annotation.RequiresApi;
 import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
 import android.util.AttributeSet;
@@ -10,6 +20,7 @@ import android.util.Log;
 import android.view.View;
 import android.webkit.JavascriptInterface;
 import android.webkit.JsResult;
+import android.webkit.ValueCallback;
 import android.webkit.WebChromeClient;
 import android.webkit.WebResourceError;
 import android.webkit.WebResourceRequest;
@@ -24,13 +35,16 @@ import com.androidapp.utils.ToastUtils;
 import com.androidapp.cachewebviewlib.CacheInterceptor;
 import com.androidapp.cachewebviewlib.CacheWebView;
 import com.androidapp.cachewebviewlib.WebViewCache;
+import com.siyuan.enjoyreading.api.ApiConfig;
+
+import java.io.File;
 
 public class AppWebView extends CacheWebView {
 
-    public static final String TAG = "AppWebView";
-    int lastX = 0;
-    int lastY = 0;
     private WebViewCallback mWebViewCallback;
+    private ValueCallback<Uri[]> mUploadCallbackAboveL;
+    private final static int FILECHOOSER_RESULTCODE = 1;// 表单的结果回调</span>
+    private Uri imageUri;
 
     public AppWebView(Context context) {
         super(context);
@@ -58,13 +72,18 @@ public class AppWebView extends CacheWebView {
     }
 
     private void initWebView() {
+        WebSettings webSettings = getSettings();
         addJavascriptInterface(this, "myjs");              // 执行JavaScript脚本
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) { //网页兼容https与非http混合使用
-            getSettings().setMixedContentMode(WebSettings.MIXED_CONTENT_ALWAYS_ALLOW);
+            webSettings.setMixedContentMode(WebSettings.MIXED_CONTENT_ALWAYS_ALLOW);
         }
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             setWebContentsDebuggingEnabled(true);
         }
+        webSettings.setAllowUniversalAccessFromFileURLs(true);
+        webSettings.setJavaScriptEnabled(true);
+        webSettings.setAllowFileAccess(true);
+        webSettings.setAllowFileAccessFromFileURLs(true);
         setCacheInterceptor(new CacheInterceptor() {
             public boolean canCache(String url) {
                 return true;
@@ -79,11 +98,9 @@ public class AppWebView extends CacheWebView {
             @Override
             public void onPageFinished(WebView view, String url) {
                 super.onPageFinished(view, url);
-                loadUrl("javascript:window.myjs.doAction(\"size\", '{width='+document.body.scrollWidth+',height='+document.documentElement.scrollHeight+'}');");
                 String title = view.getTitle();
-                Log.e(TAG, "========onPageFinished WebView title=" + title);
                 if (mWebViewCallback != null) {
-                    mWebViewCallback.onPageFinished();
+                    mWebViewCallback.onPageFinished(url, TextUtils.isEmpty(title) ? "" : title);
                 }
             }
 
@@ -110,9 +127,6 @@ public class AppWebView extends CacheWebView {
                 view.stopLoading();
                 view.clearView();
                 if (errorCode >= 400) {
-                    if (mWebViewCallback != null) {
-                        mWebViewCallback.onPageLoadError();
-                    }
                 } else {
                     super.onReceivedError(view, errorCode, description, failingUrl);
                 }
@@ -125,6 +139,19 @@ public class AppWebView extends CacheWebView {
 
     private void initWebChromeClient() {
         setWebChromeClient(new WebChromeClient() {
+            @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+            @Override
+            public boolean onShowFileChooser(WebView webView, ValueCallback<Uri[]> filePathCallback, FileChooserParams fileChooserParams) {
+                mUploadCallbackAboveL = filePathCallback;
+                String[] aqcceptTYpes = fileChooserParams.getAcceptTypes();
+                String type = "image/*";
+                if (aqcceptTYpes.length > 0) {
+                    type = aqcceptTYpes[0];
+                }
+                take(type);
+                return true;
+            }
+
             @Override
             public boolean onJsAlert(WebView view, String url, String message, JsResult result) {
                 Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
@@ -139,6 +166,8 @@ public class AppWebView extends CacheWebView {
                         && (title.toLowerCase().contains("403") || title.toLowerCase().contains("502") || title
                         .toLowerCase().contains("500"))) {
                     AppWebView.this.setVisibility(View.GONE);
+                    if (mWebViewCallback != null)
+                        mWebViewCallback.onPageLoadError();
                 }
             }
 
@@ -155,29 +184,6 @@ public class AppWebView extends CacheWebView {
 
     @JavascriptInterface
     public void doAction(String action, String json) {
-        /*if ("size".equals(action)) {
-            final int height = JsonUtils.getIntValue(json, "height");
-            if (height < 1) {
-                return;
-            }
-            if (getContext() instanceof Activity) {
-                ((Activity) getContext()).runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        setLayoutParams(new LinearLayout.LayoutParams(getResources().getDisplayMetrics().widthPixels, (int) (height * getResources().getDisplayMetrics().density)));
-                    }
-                });
-            } else if (getContext() instanceof FragmentActivity) {
-                ((FragmentActivity) getContext()).runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        setLayoutParams(new LinearLayout.LayoutParams(getResources().getDisplayMetrics().widthPixels, (int) (height * getResources().getDisplayMetrics().density)));
-                    }
-                });
-            } else {
-                ToastUtils.show("页面出错了");
-            }
-        }*/
     }
 
     public boolean onBackPress() {
@@ -189,8 +195,134 @@ public class AppWebView extends CacheWebView {
     }
 
     public interface WebViewCallback {
-        void onPageFinished();
-
+        void onPageFinished(String url, String title);
         void onPageLoadError();
+    }
+
+    private void take(String mimeType) {
+        File imageStorageDir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), ApiConfig.EXT_NAME);
+        if (!imageStorageDir.exists()) {
+            imageStorageDir.mkdirs();
+        }
+        File file = new File(imageStorageDir + File.separator + "IMG_" + String.valueOf(System.currentTimeMillis()) + ".jpg");
+        imageUri = Uri.fromFile(file);
+        Intent contentSelectionIntent = new Intent(Intent.ACTION_GET_CONTENT);
+        contentSelectionIntent.addCategory(Intent.CATEGORY_OPENABLE);
+        contentSelectionIntent.setType(mimeType);
+        Intent chooserIntent = new Intent(Intent.ACTION_CHOOSER);
+        chooserIntent.putExtra(Intent.EXTRA_INTENT, contentSelectionIntent);
+        chooserIntent.putExtra(Intent.EXTRA_TITLE, "Image Chooser");
+        if (getContext() instanceof Activity) {
+            Activity activity = (Activity) getContext();
+            activity.startActivityForResult(chooserIntent, FILECHOOSER_RESULTCODE);
+        }
+    }
+
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == FILECHOOSER_RESULTCODE) {
+            if (mUploadCallbackAboveL != null) {
+                onActivityResultAboveL(requestCode, resultCode, data);
+            }
+        }
+    }
+
+    public static boolean isExternalStorageDocument(Uri uri) {
+        return "com.android.externalstorage.documents".equals(uri.getAuthority());
+    }
+
+    public static boolean isDownloadsDocument(Uri uri) {
+        return "com.android.providers.downloads.documents".equals(uri.getAuthority());
+    }
+
+    public static boolean isMediaDocument(Uri uri) {
+        return "com.android.providers.media.documents".equals(uri.getAuthority());
+    }
+
+    public static String getDataColumn(Context context, Uri uri, String selection, String[] selectionArgs) {
+        Cursor cursor = null;
+        final String column = "_data";
+        final String[] projection = {column};
+        try {
+            cursor = context.getContentResolver().query(uri, projection, selection, selectionArgs, null);
+            if (cursor != null && cursor.moveToFirst()) {
+                final int column_index = cursor.getColumnIndexOrThrow(column);
+                return cursor.getString(column_index);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (cursor != null) cursor.close();
+        }
+        return null;
+    }
+
+    @TargetApi(Build.VERSION_CODES.KITKAT)
+    public static String getPath(final Context context, final Uri uri) {
+        final boolean isKitKat = Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT;
+        if (isKitKat && DocumentsContract.isDocumentUri(context, uri)) {
+            if (isExternalStorageDocument(uri)) {
+                final String docId = DocumentsContract.getDocumentId(uri);
+                final String[] split = docId.split(":");
+                final String type = split[0];
+                if ("primary".equalsIgnoreCase(type)) {
+                    return Environment.getExternalStorageDirectory() + "/" + split[1];
+                }
+            } else if (isDownloadsDocument(uri)) {
+                final String id = DocumentsContract.getDocumentId(uri);
+                final Uri contentUri = ContentUris.withAppendedId(Uri.parse("content://downloads/public_downloads"), Long.valueOf(id));
+                return getDataColumn(context, contentUri, null, null);
+            } else if (isMediaDocument(uri)) {
+                final String docId = DocumentsContract.getDocumentId(uri);
+                final String[] split = docId.split(":");
+                final String type = split[0];
+                Uri contentUri = null;
+                if ("image".equals(type)) {
+                    contentUri = MediaStore.Images.Media.EXTERNAL_CONTENT_URI;
+                } else if ("video".equals(type)) {
+                    contentUri = MediaStore.Video.Media.EXTERNAL_CONTENT_URI;
+                } else if ("audio".equals(type)) {
+                    contentUri = MediaStore.Audio.Media.EXTERNAL_CONTENT_URI;
+                }
+                final String selection = "_id=?";
+                final String[] selectionArgs = new String[]{split[1]};
+                return getDataColumn(context, contentUri, selection, selectionArgs);
+            }
+        } else if ("content".equalsIgnoreCase(uri.getScheme())) {
+            return getDataColumn(context, uri, null, null);
+        } else if ("file".equalsIgnoreCase(uri.getScheme())) {
+            return uri.getPath();
+        }
+        return null;
+    }
+
+    private void onActivityResultAboveL(int requestCode, int resultCode, Intent data) {
+        if (requestCode != FILECHOOSER_RESULTCODE || mUploadCallbackAboveL == null)
+            return;
+        Uri[] results = null;
+        if (resultCode == Activity.RESULT_OK) {
+            if (data == null) {
+                results = new Uri[]{imageUri};
+            } else {
+                String dataString = data.getDataString();
+                ClipData clipData = data.getClipData();
+                if (clipData != null) {
+                    results = new Uri[clipData.getItemCount()];
+                    for (int i = 0; i < clipData.getItemCount(); i++) {
+                        ClipData.Item item = clipData.getItemAt(i);
+                        results[i] = item.getUri();
+                    }
+                }
+                if (dataString != null)
+                    results = new Uri[]{Uri.parse(dataString)};
+            }
+        }
+        if (results != null) {
+            mUploadCallbackAboveL.onReceiveValue(results);
+            mUploadCallbackAboveL = null;
+        } else {
+            results = new Uri[]{imageUri};
+            mUploadCallbackAboveL.onReceiveValue(results);
+            mUploadCallbackAboveL = null;
+        }
     }
 }

@@ -87,7 +87,7 @@ public class ArticleDetailActivity extends BaseActivity {
             mWebView.loadUrl(articleUrl);
             mWebView.setWebviewCallback(new AppWebView.WebViewCallback() {
                 @Override
-                public void onPageFinished() {
+                public void onPageFinished(String url, String title) {
                     mWebView.loadUrl("javascript:initialArticle(" + JsonUtils.toJson(webInfo) + ")");
                 }
                 @Override
