@@ -36,8 +36,6 @@ public class KnowledgeListItemProvider extends BaseItemProvider<MultipleEntity,B
         videoItem.setCover("http://vimg3.ws.126.net/image/snapshot/2016/4/F/M/VBJLSB3FM.jpg");
         videoItem.setTitle("67名电信诈骗嫌疑人被押回国");
         mContext.startActivity(ArticleVideoDetailPlayer.getIntent(mContext, videoItem));
-//        mContext.startActivity(new Intent(mContext, VideoListActivity.class));
-//        mContext.startActivity(IntentUtil.getIntent("{\"page\":\"SettingAbout\",\"type\":1}"));
     }
 
     @Override

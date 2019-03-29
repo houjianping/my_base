@@ -54,7 +54,7 @@ public class App extends Application {
         Stetho.initializeWithDefaults(this);
         HttpRequest.initOkGo(this, ApiConfig.DEV_MODE);
         ShareConfig.onCreate(this);
-        File cacheFile = new File(this.getCacheDir(), "webview_cache");
+        File cacheFile = new File(this.getCacheDir(), ApiConfig.EXT_NAME);
         CacheWebView.getCacheConfig().init(this, cacheFile.getAbsolutePath(), MAX_DISK_SIZE, MAX_RAM_SIZE)
                 .enableDebug(ApiConfig.DEV_MODE);//100M 磁盘缓存空间,10M 内存缓存空间
     }

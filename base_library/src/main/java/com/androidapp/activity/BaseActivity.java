@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.TextView;
 
@@ -17,13 +18,13 @@ import com.androidapp.widget.LoadingDialog;
 public abstract class BaseActivity extends AppCompatActivity {
 
     private static final String TAG = "BaseActivity";
+    public boolean isInForeground;
 
     protected BaseActivity mContext;
-
     protected CommonTitleBar mTitleBar;
     protected TextView mTvCenterTitle;
-    public boolean isInForeground;
     private LoadingDialog mLoadingDialog;
+    private long mLastTouchUITime;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -57,7 +58,9 @@ public abstract class BaseActivity extends AppCompatActivity {
      * @param extras
      */
     protected void getBundleExtras(Bundle extras) {
-    };
+    }
+
+    ;
 
     protected void initTitle() {
         mTvCenterTitle = mTitleBar.getCenterTextView();
@@ -122,6 +125,10 @@ public abstract class BaseActivity extends AppCompatActivity {
         }
     }
 
+    protected void doStartActivity(Class<?> cls) {
+        doStartActivity(cls, null);
+    }
+
     /**
      * @param cls    目标Activity
      * @param bundle 数据
@@ -174,7 +181,8 @@ public abstract class BaseActivity extends AppCompatActivity {
                 .setCancelable(cancelable)
                 .setCancelOutside(false);
         mLoadingDialog = loadBuilder.create();
-        mLoadingDialog.show();;
+        mLoadingDialog.show();
+        ;
     }
 
     public void hideLoading() {
@@ -185,5 +193,22 @@ public abstract class BaseActivity extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+        if (ev.getAction() == MotionEvent.ACTION_DOWN) {
+            if (isFastDoubleClick()) {
+                return true;
+            }
+        }
+        return super.dispatchTouchEvent(ev);
+    }
+
+    public boolean isFastDoubleClick() {
+        long time = System.currentTimeMillis();
+        long timeD = time - mLastTouchUITime;
+        mLastTouchUITime = time;
+        return timeD <= 300;
     }
 }

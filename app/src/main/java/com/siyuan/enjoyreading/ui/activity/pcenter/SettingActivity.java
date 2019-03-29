@@ -39,13 +39,13 @@ public class SettingActivity extends BaseActivity {
         public void onClick(View v) {
             switch (v.getId()) {
                 case R.id.setting_account:
-                    startActivity(new Intent(mContext, SettingAccount.class));
+                    doStartActivity(SettingAccount.class);
                     break;
                 case R.id.setting_push_control:
-                    startActivity(new Intent(mContext, SettingPushControl.class));
+                    doStartActivity(SettingPushControl.class);
                     break;
                 case R.id.setting_download_control:
-                    startActivity(new Intent(mContext, SettingDownloadControl.class));
+                    doStartActivity(SettingDownloadControl.class);
                     break;
                 case R.id.setting_feedback_control:
                     doStartActivity(AppWebActivity.class, AppWebActivity.getBundle(FEEDBACK_CONTROL, "帮助与反馈"));
@@ -57,7 +57,7 @@ public class SettingActivity extends BaseActivity {
                     ShareUtil.share(SettingActivity.this);
                     break;
                 case R.id.setting_about_control:
-                    startActivity(new Intent(mContext, SettingAboutControl.class));
+                    doStartActivity(SettingAboutControl.class);
                     break;
             }
         }
