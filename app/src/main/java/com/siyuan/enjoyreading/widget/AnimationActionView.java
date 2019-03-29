@@ -6,24 +6,23 @@ import android.os.Handler;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.Interpolator;
 import android.view.animation.RotateAnimation;
 import android.view.animation.TranslateAnimation;
 import android.widget.LinearLayout;
 
-import com.androidapp.utils.JsonUtils;
 import com.androidapp.utils.ScreenUtil;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.siyuan.enjoyreading.App;
 import com.siyuan.enjoyreading.R;
 import com.siyuan.enjoyreading.api.ApiConfig;
+import com.siyuan.enjoyreading.entity.Movie;
 import com.siyuan.enjoyreading.entity.ShowSendItemInfo;
-import com.siyuan.enjoyreading.entity.SmallCategoryItem;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class AnimationActionView extends LinearLayout {
 
@@ -76,15 +75,13 @@ public class AnimationActionView extends LinearLayout {
 
 
     private void refData() {
-        ShowSendItemInfo showSendItemInfo1 = new Gson().fromJson("{\"icon\":\"https://i.3km.biz/static/plus/one@3x.png\",\"title\":\"快捷充值\",\"sub_title\":\"充值越多奖励越大\",\"des\":\"最高得10000奖励~\",\"guide_icon\":\"\",\"show_type\":\"0\",\"app_jump\":\"{\\\"type\\\":30}\",\"show_num\":\"-1\",\"title_color\":\"#666666\"}", new TypeToken<ShowSendItemInfo>() {}.getType());
-        ShowSendItemInfo showSendItemInfo2 = new Gson().fromJson("{\"icon\":\"https://i.3km.biz/static/plus/two@3x.png\",\"title\":\"发动态\",\"sub_title\":\"把自己show出来\",\"des\":\"20元红包\",\"guide_icon\":\"\",\"show_type\":\"0\",\"app_jump\":\"{\\\"type\\\":52}\",\"show_num\":\"-1\",\"title_color\":\"#666666\"}", new TypeToken<ShowSendItemInfo>() {}.getType());
-        ShowSendItemInfo showSendItemInfo3 = new Gson().fromJson("{\"icon\":\"https://i.3km.biz/static/plus/three@3x.png\",\"title\":\"约玩\",\"sub_title\":\"下个单 约人玩\",\"des\":\"首单免费\",\"guide_icon\":\"\",\"show_type\":\"0\",\"app_jump\":\"{\\\"type\\\":18}\",\"show_num\":\"-1\",\"title_color\":\"#666666\"}", new TypeToken<ShowSendItemInfo>() {}.getType());
-        ShowSendItemInfo showSendItemInfo4 = new Gson().fromJson("{\"icon\":\"https://i.3km.biz/static/plus/four@3x.png\",\"title\":\"陪玩\",\"sub_title\":\"陪人玩 赚钱花\",\"des\":\"\",\"guide_icon\":\"\",\"show_type\":\"0\",\"app_jump\":\"{\\\"type\\\":17}\",\"show_num\":\"-1\",\"title_color\":\"#666666\"}", new TypeToken<ShowSendItemInfo>() {}.getType());
+        List<ShowSendItemInfo> showSendItemInfos = new Gson().fromJson(ApiConfig.GET_ANIM_ACTION_DATA, new TypeToken<ArrayList<ShowSendItemInfo>>() {
+        }.getType());
         try {
-            itemOne.setData(this, showSendItemInfo1);
-            itemTwo.setData(this, showSendItemInfo2);
-            itemThree.setData(this, showSendItemInfo3);
-            itemFour.setData(this, showSendItemInfo4);
+            itemOne.setData(this, showSendItemInfos.get(0));
+            itemTwo.setData(this, showSendItemInfos.get(1));
+            itemThree.setData(this, showSendItemInfos.get(2));
+            itemFour.setData(this, showSendItemInfos.get(3));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -100,14 +97,6 @@ public class AnimationActionView extends LinearLayout {
             }
         }
     };
-
-    private void skipService() {
-        hide();
-    }
-
-    private void skipNeed() {
-        hide();
-    }
 
     public void show() {
         refData();
@@ -154,12 +143,6 @@ public class AnimationActionView extends LinearLayout {
 
         ;
     };
-
-    private AlphaAnimation getAlphaAnimation(float fromAlpha, float toAlpha, int animationDuration) {
-        AlphaAnimation anim = new AlphaAnimation(fromAlpha, toAlpha); // alpha的渐变动画
-        anim.setDuration(animationDuration);
-        return anim;
-    }
 
     private RotateAnimation getRotateAnimation(int fromDegrees, int toDegrees) {
         RotateAnimation rotateAnimation = new RotateAnimation(fromDegrees, toDegrees, Animation.RELATIVE_TO_SELF, 0.5f,
