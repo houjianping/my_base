@@ -1,6 +1,5 @@
 package com.siyuan.enjoyreading.ui.activity;
 
-import android.Manifest;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -11,18 +10,17 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Toast;
 
+import com.androidapp.permission.PermissionEnum;
 import com.androidapp.permission.PermissionUtils;
 import com.siyuan.enjoyreading.R;
 
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
 
 public class PermissionActivity extends AppCompatActivity implements View.OnClickListener {
 
     private Context mContext;
-    // 相机权限、多个权限
-    private final String PERMISSION_CAMERA = Manifest.permission.CAMERA;
-    private final String[] PERMISSIONS = new String[]{Manifest.permission.READ_EXTERNAL_STORAGE
-            , Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CAMERA};
+    private List<PermissionEnum> PERMISSIONS = new ArrayList<PermissionEnum>() {};
 
     // 打开相机请求Code，多个权限请求Code
     private final int REQUEST_CODE_CAMERA = 1, REQUEST_CODE_PERMISSIONS = 2;
@@ -32,6 +30,7 @@ public class PermissionActivity extends AppCompatActivity implements View.OnClic
         super.onCreate(savedInstanceState);
         mContext = this;
         setContentView(R.layout.test_permission);
+        PERMISSIONS.add(PermissionEnum.CAMERA);
     }
 
     @Override
@@ -55,7 +54,7 @@ public class PermissionActivity extends AppCompatActivity implements View.OnClic
 
     // 普通申请一个权限
     private void requestPermission() {
-        PermissionUtils.checkAndRequestPermission(mContext, PERMISSION_CAMERA, REQUEST_CODE_CAMERA,
+        PermissionUtils.checkAndRequestPermission(mContext, PermissionEnum.CAMERA, REQUEST_CODE_CAMERA,
                 new PermissionUtils.PermissionRequestSuccessCallBack() {
                     @Override
                     public void onHasPermission() {
@@ -67,7 +66,7 @@ public class PermissionActivity extends AppCompatActivity implements View.OnClic
 
     // 自定义申请一个权限
     private void requestPermission1() {
-        PermissionUtils.checkPermission(mContext, PERMISSION_CAMERA,
+        PermissionUtils.checkPermission(mContext, PermissionEnum.CAMERA,
                 new PermissionUtils.PermissionCheckCallBack() {
                     @Override
                     public void onHasPermission() {
@@ -75,18 +74,18 @@ public class PermissionActivity extends AppCompatActivity implements View.OnClic
                     }
 
                     @Override
-                    public void onUserHasAlreadyTurnedDown(String... permission) {
+                    public void onUserHasAlreadyTurnedDown(List<PermissionEnum> permission) {
                         showExplainDialog(permission, new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                PermissionUtils.requestPermission(mContext, PERMISSION_CAMERA, REQUEST_CODE_CAMERA);
+                                PermissionUtils.requestPermission(mContext, PermissionEnum.CAMERA, REQUEST_CODE_CAMERA);
                             }
                         });
                     }
 
                     @Override
-                    public void onUserHasAlreadyTurnedDownAndDontAsk(String... permission) {
-                        PermissionUtils.requestPermission(mContext, PERMISSION_CAMERA, REQUEST_CODE_CAMERA);
+                    public void onUserHasAlreadyTurnedDownAndDontAsk(List<PermissionEnum> permission) {
+                        PermissionUtils.requestPermission(mContext, PermissionEnum.CAMERA, REQUEST_CODE_CAMERA);
                     }
                 });
     }
@@ -112,7 +111,7 @@ public class PermissionActivity extends AppCompatActivity implements View.OnClic
             }
 
             @Override
-            public void onUserHasAlreadyTurnedDown(String... permission) {
+            public void onUserHasAlreadyTurnedDown(List<PermissionEnum> permission) {
                 showExplainDialog(permission, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -122,7 +121,7 @@ public class PermissionActivity extends AppCompatActivity implements View.OnClic
             }
 
             @Override
-            public void onUserHasAlreadyTurnedDownAndDontAsk(String... permission) {
+            public void onUserHasAlreadyTurnedDownAndDontAsk(List<PermissionEnum> permission) {
                 PermissionUtils.requestMorePermissions(mContext, PERMISSIONS, REQUEST_CODE_PERMISSIONS);
             }
         });
@@ -134,14 +133,13 @@ public class PermissionActivity extends AppCompatActivity implements View.OnClic
         startActivity(intent);
     }
 
-
     /**
      * 解释权限的dialog
      */
-    private void showExplainDialog(String[] permission, DialogInterface.OnClickListener onClickListener) {
+    private void showExplainDialog(List<PermissionEnum> permission, DialogInterface.OnClickListener onClickListener) {
         new AlertDialog.Builder(mContext)
                 .setTitle("申请权限")
-                .setMessage("我们需要" + Arrays.toString(permission) + "权限")
+                .setMessage("我们需要" + PermissionUtils.convertDesc(permission) + "权限")
                 .setPositiveButton("确定", onClickListener)
                 .show();
     }
@@ -170,7 +168,7 @@ public class PermissionActivity extends AppCompatActivity implements View.OnClic
                     // 权限申请成功
                     toCamera();
                 } else {
-                    Toast.makeText(mContext, "打开相机失败", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(mContext, "获取权限失败", Toast.LENGTH_SHORT).show();
                 }
                 break;
             case REQUEST_CODE_PERMISSIONS:
@@ -180,12 +178,12 @@ public class PermissionActivity extends AppCompatActivity implements View.OnClic
                         toCamera();
                     }
                     @Override
-                    public void onUserHasAlreadyTurnedDown(String... permission) {
-                        Toast.makeText(mContext, "我们需要" + Arrays.toString(permission) + "权限", Toast.LENGTH_SHORT).show();
+                    public void onUserHasAlreadyTurnedDown(List<PermissionEnum> permission) {
+                        Toast.makeText(mContext, "我们需要[" + PermissionUtils.convertDesc(permission) + "]权限, 才能保证程序正常运行", Toast.LENGTH_SHORT).show();
                     }
                     @Override
-                    public void onUserHasAlreadyTurnedDownAndDontAsk(String... permission) {
-                        Toast.makeText(mContext, "我们需要" + Arrays.toString(permission) + "权限", Toast.LENGTH_SHORT).show();
+                    public void onUserHasAlreadyTurnedDownAndDontAsk(List<PermissionEnum> permission) {
+                        Toast.makeText(mContext, "我们需要[" + PermissionUtils.convertDesc(permission) + "]权限, 才能保证程序正常运行", Toast.LENGTH_SHORT).show();
                         showToAppSettingDialog();
                     }
                 });
