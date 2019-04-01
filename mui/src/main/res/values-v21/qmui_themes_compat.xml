@@ -5,8 +5,8 @@
         <item name="android:colorPrimary">?attr/qmui_config_color_blue</item>
         <item name="android:colorPrimaryDark">?attr/qmui_config_color_blue</item>
         <item name="android:colorAccent">?attr/qmui_config_color_blue</item>
-        <item name="android:textColorPrimary">?attr/qmui_config_color_blue</item>
-        <item name="android:textColorSecondary">?attr/qmui_config_color_blue</item> <!--返回箭头也是用这个颜色-->
+        <item name="android:textColorPrimary">#333333</item>
+        <item name="android:textColorSecondary">#666666</item> <!--返回箭头也是用这个颜色-->
         <item name="android:windowBackground">@color/qmui_config_color_white</item>
         <item name="android:navigationBarColor">?attr/qmui_config_color_black</item>
         <item name="android:colorControlNormal">@color/qmui_config_color_white</item>

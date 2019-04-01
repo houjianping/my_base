@@ -60,8 +60,6 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected void getBundleExtras(Bundle extras) {
     }
 
-    ;
-
     protected void initTitle() {
         mTvCenterTitle = mTitleBar.getCenterTextView();
         mTitleBar.setListener(new CommonTitleBar.OnTitleBarListener() {
@@ -182,7 +180,6 @@ public abstract class BaseActivity extends AppCompatActivity {
                 .setCancelOutside(false);
         mLoadingDialog = loadBuilder.create();
         mLoadingDialog.show();
-        ;
     }
 
     public void hideLoading() {

@@ -10,6 +10,6 @@ import com.siyuan.enjoyreading.entity.BannerItem;
 public class BannerImageLoader extends ImageLoader {
     @Override
     public void displayImage(Context context, Object path, ImageView imageView) {
-        ImageLoaderUtils.display(context, imageView, ((BannerItem) path).pic);
+        ImageLoaderUtils.loadBanner(context, imageView, ((BannerItem) path).pic);
     }
 }

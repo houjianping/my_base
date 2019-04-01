@@ -3,6 +3,7 @@ package com.siyuan.enjoyreading.api.request;
 import android.text.TextUtils;
 
 import com.androidapp.utils.Convert;
+import com.lzy.okgo.OkGo;
 import com.lzy.okgo.callback.AbsCallback;
 import com.lzy.okgo.request.base.Request;
 
@@ -24,6 +25,10 @@ public abstract class JsonCallback<T> extends AbsCallback<T> {
         /*request.headers("header1", "HeaderValue1")//
                 .params("params1", "ParamsValue1")//
                 .params("token", "3215sdf13ad1f65asd4f3ads1f");*/
+//        OkGo.getInstance().getCommonParams().clear();
+//        OkGo.getInstance().addCommonParams(params);
+//        OkGo.getInstance().getCommonHeaders().clear();
+//        OkGo.getInstance().addCommonHeaders(headers);
     }
 
     /**

@@ -4,10 +4,8 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.androidapp.activity.BaseActivity;
-import com.androidapp.upgrade.UpdateAppManager;
 import com.siyuan.enjoyreading.R;
 import com.siyuan.enjoyreading.api.Urls;
-import com.siyuan.enjoyreading.api.request.HttpRequest;
 import com.siyuan.enjoyreading.ui.activity.currency.AppWebActivity;
 
 public class SettingAboutControl extends BaseActivity {
@@ -35,13 +33,6 @@ public class SettingAboutControl extends BaseActivity {
             switch (v.getId()) {
                 case R.id.settings_check_update:
                     showLoading(true);
-                    new UpdateAppManager
-                            .Builder()
-                            .setActivity(SettingAboutControl.this)
-                            .setUpdateUrl(mUpdateUrl)
-                            .setHttpManager(new HttpRequest())
-                            .build()
-                            .update();
                     break;
                 case R.id.settings_contact_us:
                     doStartActivity(AppWebActivity.class, AppWebActivity.getBundle(Urls.H5.CONTACT_US, "联系我们"));

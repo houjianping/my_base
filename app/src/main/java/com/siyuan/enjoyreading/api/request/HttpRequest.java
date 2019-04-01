@@ -2,19 +2,16 @@ package com.siyuan.enjoyreading.api.request;
 
 import android.app.Application;
 import android.support.annotation.NonNull;
-import android.util.Log;
 
-import com.androidapp.upgrade.HttpManager;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.cache.CacheEntity;
 import com.lzy.okgo.cache.CacheMode;
 import com.lzy.okgo.cookie.CookieJarImpl;
 import com.lzy.okgo.cookie.store.DBCookieStore;
 import com.lzy.okgo.interceptor.HttpLoggingInterceptor;
-import com.lzy.okgo.model.HttpHeaders;
-import com.lzy.okgo.model.HttpParams;
 import com.lzy.okgo.model.Progress;
 import com.lzy.okgo.model.Response;
+import com.lzy.okgo.request.base.Request;
 
 import java.io.File;
 import java.util.Map;
@@ -23,7 +20,7 @@ import java.util.logging.Level;
 
 import okhttp3.OkHttpClient;
 
-public class HttpRequest implements HttpManager {
+public class HttpRequest {
 
     /**
      * 初始化网络请求框架
@@ -49,60 +46,41 @@ public class HttpRequest implements HttpManager {
     }
 
     /**
-     * 全局公共头
-     *
-     * @param headers
-     */
-    public static void addCommonHeaders(HttpHeaders headers) {
-        OkGo.getInstance().getCommonHeaders().clear();
-        OkGo.getInstance().addCommonHeaders(headers);
-    }
-
-    /**
-     * 全局公共参数
-     *
-     * @param params
-     */
-    public static void addCommonParams(HttpParams params) {
-        OkGo.getInstance().getCommonParams().clear();
-        OkGo.getInstance().addCommonParams(params);
-    }
-
-    /**
      * 异步get
      *
      * @param url      get请求地址
      * @param params   get参数
      * @param callBack 回调
      */
-    @Override
-    public void asyncGet(@NonNull String url, @NonNull Map<String, String> params, @NonNull final Callback callBack) {
-        OkGo.<String>get(url).params(params).execute(new com.lzy.okgo.callback.StringCallback() {
+    public <T> void asyncGet(@NonNull String url, @NonNull Map<String, String> params, @NonNull final HttpRequestCallback.Callback callBack) {
+        OkGo.<T>get(url).params(params).execute(new JsonCallback<T>() {
             @Override
-            public void onSuccess(com.lzy.okgo.model.Response<String> response) {
-                Log.e("","#################onSuccess################" + response.body() + ":::" + response.message());
+            public void onStart(Request<T, ? extends Request> request) {
+                super.onStart(request);
+                callBack.onStart();
+            }
+
+            @Override
+            public void onSuccess(com.lzy.okgo.model.Response<T> response) {
                 callBack.onResponse(response);
             }
 
             @Override
-            public void onError(com.lzy.okgo.model.Response<String> response) {
+            public void onError(com.lzy.okgo.model.Response<T> response) {
                 super.onError(response);
                 callBack.onError("异常");
-                Log.e("","################onError#################");
             }
 
             @Override
-            public void onCacheSuccess(Response<String> response) {
+            public void onCacheSuccess(Response<T> response) {
                 super.onCacheSuccess(response);
                 callBack.onResponse(response);
-                Log.e("","##############onCacheSuccess###################" + response.body() + ":::" + response.message());
             }
 
             @Override
             public void onFinish() {
                 super.onFinish();
                 callBack.onFinish();
-                Log.e("","################onFinish#################");
             }
         });
     }
@@ -114,22 +92,27 @@ public class HttpRequest implements HttpManager {
      * @param params   post请求参数
      * @param callBack 回调
      */
-    @Override
-    public void asyncPost(@NonNull String url, @NonNull Map<String, String> params, @NonNull final Callback callBack) {
-        OkGo.<String>post(url).params(params).execute(new com.lzy.okgo.callback.StringCallback() {
+    public <T> void asyncPost(@NonNull String url, @NonNull Map<String, String> params, @NonNull final HttpRequestCallback.Callback callBack) {
+        OkGo.<T>post(url).params(params).execute(new JsonCallback<T>() {
             @Override
-            public void onSuccess(com.lzy.okgo.model.Response<String> response) {
+            public void onStart(Request<T, ? extends Request> request) {
+                super.onStart(request);
+                callBack.onStart();
+            }
+
+            @Override
+            public void onSuccess(com.lzy.okgo.model.Response<T> response) {
                 callBack.onResponse(response);
             }
 
             @Override
-            public void onError(com.lzy.okgo.model.Response<String> response) {
+            public void onError(com.lzy.okgo.model.Response<T> response) {
                 super.onError(response);
                 callBack.onError("异常");
             }
 
             @Override
-            public void onCacheSuccess(Response<String> response) {
+            public void onCacheSuccess(Response<T> response) {
                 super.onCacheSuccess(response);
                 callBack.onResponse(response);
             }
@@ -150,8 +133,7 @@ public class HttpRequest implements HttpManager {
      * @param fileName 文件名称
      * @param callback 回调
      */
-    @Override
-    public void download(@NonNull String url, @NonNull String path, @NonNull String fileName, @NonNull final FileCallback callback) {
+    public void download(@NonNull String url, @NonNull String path, @NonNull String fileName, @NonNull final HttpRequestCallback.FileCallback callback) {
         OkGo.<File>get(url).execute(new com.lzy.okgo.callback.FileCallback(path, fileName) {
             @Override
             public void onSuccess(com.lzy.okgo.model.Response<File> response) {
