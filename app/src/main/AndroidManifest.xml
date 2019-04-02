@@ -13,6 +13,12 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <!-- 设备编号权限 -->
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
     <application
         android:name="com.siyuan.enjoyreading.App"
         android:allowBackup="true"
@@ -158,6 +164,9 @@
         <activity android:name=".ui.activity.MessageActivity" />
         <activity android:name=".ui.activity.pcenter.SettingFollowActivity" />
         <activity android:name=".ui.activity.PermissionActivity" />
+        <meta-data
+            android:name="CHANNEL"
+            android:value="${CHANNEL_VALUE}" />
     </application>
 
 </manifest>

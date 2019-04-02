@@ -10,8 +10,6 @@ import com.lzy.okgo.cookie.CookieJarImpl;
 import com.lzy.okgo.cookie.store.DBCookieStore;
 import com.lzy.okgo.interceptor.HttpLoggingInterceptor;
 import com.lzy.okgo.model.Progress;
-import com.lzy.okgo.model.Response;
-import com.lzy.okgo.request.base.Request;
 
 import java.io.File;
 import java.util.Map;
@@ -52,37 +50,8 @@ public class HttpRequest {
      * @param params   get参数
      * @param callBack 回调
      */
-    public <T> void asyncGet(@NonNull String url, @NonNull Map<String, String> params, @NonNull final HttpRequestCallback.Callback callBack) {
-        OkGo.<T>get(url).params(params).execute(new JsonCallback<T>() {
-            @Override
-            public void onStart(Request<T, ? extends Request> request) {
-                super.onStart(request);
-                callBack.onStart();
-            }
-
-            @Override
-            public void onSuccess(com.lzy.okgo.model.Response<T> response) {
-                callBack.onResponse(response);
-            }
-
-            @Override
-            public void onError(com.lzy.okgo.model.Response<T> response) {
-                super.onError(response);
-                callBack.onError("异常");
-            }
-
-            @Override
-            public void onCacheSuccess(Response<T> response) {
-                super.onCacheSuccess(response);
-                callBack.onResponse(response);
-            }
-
-            @Override
-            public void onFinish() {
-                super.onFinish();
-                callBack.onFinish();
-            }
-        });
+    public <T> void asyncGet(@NonNull String url, @NonNull Map<String, String> params, @NonNull final JsonCallback<T> callBack) {
+        OkGo.<T>get(url).params(params).execute(callBack);
     }
 
     /**
@@ -92,37 +61,8 @@ public class HttpRequest {
      * @param params   post请求参数
      * @param callBack 回调
      */
-    public <T> void asyncPost(@NonNull String url, @NonNull Map<String, String> params, @NonNull final HttpRequestCallback.Callback callBack) {
-        OkGo.<T>post(url).params(params).execute(new JsonCallback<T>() {
-            @Override
-            public void onStart(Request<T, ? extends Request> request) {
-                super.onStart(request);
-                callBack.onStart();
-            }
-
-            @Override
-            public void onSuccess(com.lzy.okgo.model.Response<T> response) {
-                callBack.onResponse(response);
-            }
-
-            @Override
-            public void onError(com.lzy.okgo.model.Response<T> response) {
-                super.onError(response);
-                callBack.onError("异常");
-            }
-
-            @Override
-            public void onCacheSuccess(Response<T> response) {
-                super.onCacheSuccess(response);
-                callBack.onResponse(response);
-            }
-
-            @Override
-            public void onFinish() {
-                super.onFinish();
-                callBack.onFinish();
-            }
-        });
+    public <T> void asyncPost(@NonNull String url, @NonNull Map<String, String> params, @NonNull final JsonCallback<T> callBack) {
+        OkGo.<T>post(url).params(params).execute(callBack);
     }
 
     /**

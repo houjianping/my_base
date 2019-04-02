@@ -109,6 +109,7 @@ public class SocializCircleActivity extends MvpBaseListActivity<ZoneModelLogic, 
 
     @Override
     public void onCircleListUpdate(List<CircleItem> circleItemList) {
+        mLoadingLayout.showContent();
         mAdapter.replaceData(circleItemList);
     }
 

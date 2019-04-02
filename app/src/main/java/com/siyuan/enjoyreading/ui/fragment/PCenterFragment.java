@@ -9,7 +9,9 @@ import android.widget.ImageView;
 import com.androidapp.fragment.BaseTabFragment;
 import com.androidapp.upgrade.UpdateAppManager;
 import com.androidapp.utils.StatusBarUtil;
+import com.androidapp.widget.ActionSheet;
 import com.androidapp.widget.AppAlertDialog;
+import com.androidapp.widget.LoadingDialog;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.luck.picture.lib.PictureSelector;
@@ -104,21 +106,21 @@ public class PCenterFragment extends BaseTabFragment {
                     startActivity(new Intent(mContext, SettingActivity.class));
                     break;
                 case R.id.my_redpack:
-                    startActivity(new Intent(mContext, CouponActivity.class));
-                    /*ActionSheet.OnSheetItemClickListener listener = new ActionSheet.OnSheetItemClickListener() {
+//                    startActivity(new Intent(mContext, CouponActivity.class));
+                    ActionSheet.OnSheetItemClickListener listener = new ActionSheet.OnSheetItemClickListener() {
                         @Override
                         public void onClick(int which) {
 
                         }
                     };
                     ActionSheet actionSheet = new ActionSheet(getContext());
-                    actionSheet.builder().addSheetItem("你好", R.color.black, listener).addSheetItem("你好a", R.color.black, listener).setCancelable(false).show();*/
-                    /*LoadingDialog.Builder loadBuilder = new LoadingDialog.Builder(getContext())
-                            .setMessage("加载中...")
-                            .setCancelable(true)
-                            .setCancelOutside(true);
-                    LoadingDialog dialog = loadBuilder.create();
-                    dialog.show();*/
+                    actionSheet.builder().addSheetItem("你好", R.color.black, listener).addSheetItem("你好a", R.color.black, listener).setCancelable(false).show();
+//                    LoadingDialog.Builder loadBuilder = new LoadingDialog.Builder(getContext())
+//                            .setMessage("加载中...")
+//                            .setCancelable(true)
+//                            .setCancelOutside(true);
+//                    LoadingDialog dialog = loadBuilder.create();
+//                    dialog.show();
                     break;
                 case R.id.setting_download:
                     startActivity(new Intent(mContext, SettingsDownloadActivity.class));

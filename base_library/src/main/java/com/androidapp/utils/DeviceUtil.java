@@ -1,8 +1,11 @@
 package com.androidapp.utils;
 
+import android.Manifest;
 import android.content.Context;
+import android.content.pm.PackageManager;
 import android.os.Build;
 import android.provider.Settings;
+import android.support.v4.app.ActivityCompat;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 
@@ -17,7 +20,7 @@ import java.util.Enumeration;
 /**
  * @author: 范建海
  * @createTime: 2016/10/25 11:14
- * @className:  DeviceUtil
+ * @className: DeviceUtil
  * @description: 设备相关的工具类
  * @changed by:
  */
@@ -26,16 +29,16 @@ public class DeviceUtil {
      * 获得手机名称
      * @return 手机名称
      */
-    public static String getMobileName(){
-        return  Build.MANUFACTURER+" "+ Build.MODEL;
+    public static String getMobileName() {
+        return Build.MANUFACTURER + " " + Build.MODEL;
     }
 
     /**
      * 获得手机类型
      * @return 手机类型
      */
-    public static String getPhoneType(){
-        String phoneType=Build.MODEL;
+    public static String getPhoneType() {
+        String phoneType = Build.MODEL;
         return phoneType;
     }
 
@@ -43,7 +46,7 @@ public class DeviceUtil {
      * 获得系统版本号
      * @return 系统版本号
      */
-    public static int getOSVersion(){
+    public static int getOSVersion() {
         return Build.VERSION.SDK_INT;
     }
 
@@ -65,12 +68,20 @@ public class DeviceUtil {
      * @param context 上下文
      * @return IMEI号
      */
-    public static String getPhoneIMEI(Context context){
-        TelephonyManager mTelephonyMgr = (TelephonyManager) context
-                .getApplicationContext().getSystemService(
-                        Context.TELEPHONY_SERVICE);
-        String phoneImei = mTelephonyMgr.getDeviceId();
-        return TextUtils.isEmpty(phoneImei) ? "" : phoneImei;
+    public static String getPhoneIMEI(Context context) {
+        try {
+            TelephonyManager mTelephonyMgr = (TelephonyManager) context
+                    .getApplicationContext().getSystemService(
+                            Context.TELEPHONY_SERVICE);
+            if (ActivityCompat.checkSelfPermission(context, Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
+                return "";
+            }
+            String phoneImei = mTelephonyMgr != null ? mTelephonyMgr.getDeviceId() : "";
+            return TextUtils.isEmpty(phoneImei) ? "" : phoneImei;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "";
     }
 
     /**

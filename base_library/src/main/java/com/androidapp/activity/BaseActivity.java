@@ -1,23 +1,35 @@
 package com.androidapp.activity;
 
+import android.content.ActivityNotFoundException;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.androidapp.base.R;
+import com.androidapp.permission.PermissionEnum;
+import com.androidapp.permission.PermissionUtils;
 import com.androidapp.utils.StatusBarUtil;
 import com.androidapp.utils.ToastUtils;
 import com.androidapp.widget.CommonTitleBar;
 import com.androidapp.widget.LoadingDialog;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public abstract class BaseActivity extends AppCompatActivity {
 
     private static final String TAG = "BaseActivity";
+    final int REQUEST_CODE_PERMISSIONS = 110;
+
     public boolean isInForeground;
 
     protected BaseActivity mContext;
@@ -136,7 +148,11 @@ public abstract class BaseActivity extends AppCompatActivity {
         if (null != bundle) {
             intent.putExtras(bundle);
         }
-        startActivity(intent);
+        try {
+            startActivity(intent);
+        } catch (ActivityNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -149,7 +165,11 @@ public abstract class BaseActivity extends AppCompatActivity {
         if (null != bundle) {
             intent.putExtras(bundle);
         }
-        startActivityForResult(intent, requestCode);
+        try {
+            startActivityForResult(intent, requestCode);
+        } catch (ActivityNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -207,5 +227,98 @@ public abstract class BaseActivity extends AppCompatActivity {
         long timeD = time - mLastTouchUITime;
         mLastTouchUITime = time;
         return timeD <= 300;
+    }
+
+    //----------------------------------以下模块是处理权限校验的------------------------------------
+    public void doRequestPermission() {
+        requestMorePermissions();
+    }
+
+    // 自定义申请多个权限
+    private void requestMorePermissions() {
+        PermissionUtils.checkMorePermissions(mContext, getPermissionEnums(), new PermissionUtils.PermissionCheckCallBack() {
+            @Override
+            public void onHasPermission() {
+                if (getPermissionCallBack() != null) {
+                    getPermissionCallBack().onHasPermission();
+                }
+            }
+
+            @Override
+            public void onUserHasAlreadyTurnedDown(List<PermissionEnum> permission) {
+                showExplainDialog(permission, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        PermissionUtils.requestMorePermissions(mContext, getPermissionEnums(), REQUEST_CODE_PERMISSIONS);
+                    }
+                });
+            }
+
+            @Override
+            public void onUserHasAlreadyTurnedDownAndDontAsk(List<PermissionEnum> permission) {
+                PermissionUtils.requestMorePermissions(mContext, getPermissionEnums(), REQUEST_CODE_PERMISSIONS);
+            }
+        });
+    }
+
+    /**
+     * 解释权限的dialog
+     */
+    private void showExplainDialog(List<PermissionEnum> permission, DialogInterface.OnClickListener onClickListener) {
+        new AlertDialog.Builder(mContext)
+                .setTitle("申请权限")
+                .setMessage("我们需要" + PermissionUtils.convertDesc(permission) + "权限")
+                .setPositiveButton("确定", onClickListener)
+                .show();
+    }
+
+    /**
+     * 显示前往应用设置Dialog
+     */
+    private void showToAppSettingDialog() {
+        new AlertDialog.Builder(mContext)
+                .setTitle("需要权限")
+                .setMessage("我们需要相关权限，才能实现功能，点击前往，将转到应用的设置界面，请开启应用的相关权限。")
+                .setPositiveButton("前往", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        PermissionUtils.toAppSetting(mContext);
+                    }
+                })
+                .setNegativeButton("取消", null).show();
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        switch (requestCode) {
+            case REQUEST_CODE_PERMISSIONS:
+                PermissionUtils.onRequestMorePermissionsResult(mContext, getPermissionEnums(), new PermissionUtils.PermissionCheckCallBack() {
+                    @Override
+                    public void onHasPermission() {
+                        if (getPermissionCallBack() != null) {
+                            getPermissionCallBack().onHasPermission();
+                        }
+                    }
+
+                    @Override
+                    public void onUserHasAlreadyTurnedDown(List<PermissionEnum> permission) {
+                        Toast.makeText(mContext, "我们需要[" + PermissionUtils.convertDesc(permission) + "]权限, 才能保证程序正常运行", Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onUserHasAlreadyTurnedDownAndDontAsk(List<PermissionEnum> permission) {
+                        Toast.makeText(mContext, "我们需要[" + PermissionUtils.convertDesc(permission) + "]权限, 才能保证程序正常运行", Toast.LENGTH_SHORT).show();
+                        showToAppSettingDialog();
+                    }
+                });
+        }
+    }
+
+    protected List<PermissionEnum> getPermissionEnums() {
+        return new ArrayList<>();
+    }
+
+    protected PermissionUtils.PermissionRequestSuccessCallBack getPermissionCallBack() {
+        return null;
     }
 }

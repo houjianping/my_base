@@ -3,7 +3,7 @@
 
     <style name="AppConfigTheme.Compat" parent="AppBaseTheme.Compat" >
         <item name="android:colorPrimary">?attr/qmui_config_color_blue</item>
-        <item name="android:colorPrimaryDark">?attr/qmui_config_color_blue</item>
+        <item name="android:colorPrimaryDark">#fff</item>
         <item name="android:colorAccent">?attr/qmui_config_color_blue</item>
         <item name="android:textColorPrimary">#333333</item>
         <item name="android:textColorSecondary">#666666</item> <!--返回箭头也是用这个颜色-->

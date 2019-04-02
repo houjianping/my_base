@@ -9,6 +9,7 @@ import com.androidapp.utils.JsonUtils;
 import com.androidapp.utils.ToastUtils;
 import com.siyuan.enjoyreading.App;
 import com.siyuan.enjoyreading.api.ApiConfig;
+import com.siyuan.enjoyreading.api.Urls;
 import com.siyuan.enjoyreading.ui.activity.PermissionActivity;
 import com.siyuan.enjoyreading.ui.activity.pcenter.SettingAboutControl;
 
@@ -23,6 +24,7 @@ public class IntentUtil {
     }
 
     private static Intent getIntent(Context context, String json) {
+        Urls.test();
         if (TextUtils.isEmpty(json)) {
             return null;
         }

@@ -151,7 +151,7 @@ public class ActionSheet {
 
             // 字体颜色
             if (sheetItem.color > 0) {
-                textView.setTextColor(sheetItem.color);
+                textView.setTextColor(context.getResources().getColor(sheetItem.color));
             } else {
                 textView.setTextColor(context.getResources().getColor(R.color.actionsheet_theme));
             }

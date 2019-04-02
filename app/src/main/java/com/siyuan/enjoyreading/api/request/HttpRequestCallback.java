@@ -6,7 +6,7 @@ public class HttpRequestCallback {
     /**
      * 网络请求回调
      */
-    interface Callback {
+    public interface Callback {
 
         /**
          * 开始调用网络请求
@@ -35,7 +35,7 @@ public class HttpRequestCallback {
     /**
      * 下载回调
      */
-    interface FileCallback {
+    public interface FileCallback {
         /**
          * 进度
          *

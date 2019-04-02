@@ -9,6 +9,8 @@ import android.os.Build;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 
+import com.androidapp.utils.ToastUtils;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,10 +22,7 @@ public class PermissionUtils {
      * @return true：已授权； false：未授权；
      */
     public static boolean checkPermission(Context context, PermissionEnum permissionEnum) {
-        if (ContextCompat.checkSelfPermission(context, permissionEnum.getPermission()) == PackageManager.PERMISSION_GRANTED)
-            return true;
-        else
-            return false;
+        return ContextCompat.checkSelfPermission(context, permissionEnum.getPermission()) == PackageManager.PERMISSION_GRANTED;
     }
 
     /**
@@ -74,10 +73,7 @@ public class PermissionUtils {
      * -----------并在权限请求系统对话框中选择了 Don't ask again 选项，此方法将返回 false。
      */
     public static boolean judgePermission(Context context, String permission) {
-        if (ActivityCompat.shouldShowRequestPermissionRationale((Activity) context, permission))
-            return true;
-        else
-            return false;
+        return ActivityCompat.shouldShowRequestPermissionRationale((Activity) context, permission);
     }
 
     /**
@@ -99,8 +95,6 @@ public class PermissionUtils {
 
     /**
      * 检测权限
-     *
-     * @describe：具体实现由回调接口决定
      */
     public static void checkPermission(Context context, final PermissionEnum permissionEnum, PermissionCheckCallBack callBack) {
         if (checkPermission(context, permissionEnum)) { // 用户已授予权限
@@ -119,8 +113,6 @@ public class PermissionUtils {
 
     /**
      * 检测多个权限
-     *
-     * @describe：具体实现由回调接口决定
      */
     public static void checkMorePermissions(Context context, List<PermissionEnum> permissions, PermissionCheckCallBack callBack) {
         List<PermissionEnum> permissionList = checkMorePermissions(context, permissions);
@@ -157,7 +149,7 @@ public class PermissionUtils {
     /**
      * 检测并申请多个权限
      */
-    public static void checkAndRequestMorePermissions(Context context, List<PermissionEnum> permissions, int requestCode, PermissionRequestSuccessCallBack callBack) {
+    public static void checkAndRequestPermissions(Context context, List<PermissionEnum> permissions, int requestCode, PermissionRequestSuccessCallBack callBack) {
         List<PermissionEnum> permissionList = checkMorePermissions(context, permissions);
         if (permissionList.size() == 0) {  // 用户已授予权限
             callBack.onHasPermission();
@@ -170,11 +162,8 @@ public class PermissionUtils {
      * 判断权限是否申请成功
      */
     public static boolean isPermissionRequestSuccess(int[] grantResults) {
-        if (grantResults.length > 0
-                && grantResults[0] == PackageManager.PERMISSION_GRANTED)
-            return true;
-        else
-            return false;
+        return grantResults.length > 0
+                && grantResults[0] == PackageManager.PERMISSION_GRANTED;
     }
 
     /**
@@ -233,7 +222,12 @@ public class PermissionUtils {
             intent.setClassName("com.android.settings", "com.android.settings.InstalledAppDetails");
             intent.putExtra("com.android.settings.ApplicationPkgName", context.getPackageName());
         }
-        context.startActivity(intent);
+        try {
+            context.startActivity(intent);
+        } catch (Exception e) {
+            e.printStackTrace();
+            ToastUtils.show("权限设置页面跳转失败!");
+        }
     }
 
     public interface PermissionRequestSuccessCallBack {
@@ -251,14 +245,12 @@ public class PermissionUtils {
 
         /**
          * 用户已拒绝过权限
-         *
          * @param permission:被拒绝的权限
          */
         void onUserHasAlreadyTurnedDown(List<PermissionEnum> permission);
 
         /**
          * 用户已拒绝过并且已勾选不再询问选项、用户第一次申请权限;
-         *
          * @param permission:被拒绝的权限
          */
         void onUserHasAlreadyTurnedDownAndDontAsk(List<PermissionEnum> permission);
