@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatDelegate;
 
 import com.androidapp.activity.AppManager;
 import com.androidapp.cachewebviewlib.CacheWebView;
+import com.androidapp.map.MapApplication;
 import com.androidapp.share.ShareConfig;
 import com.androidapp.smartrefresh.layout.SmartRefreshLayout;
 import com.androidapp.smartrefresh.layout.api.DefaultRefreshHeaderCreator;
@@ -57,6 +58,7 @@ public class App extends Application {
         File cacheFile = new File(this.getCacheDir(), ApiConfig.EXT_NAME);
         CacheWebView.getCacheConfig().init(this, cacheFile.getAbsolutePath(), MAX_DISK_SIZE, MAX_RAM_SIZE)
                 .enableDebug(ApiConfig.DEV_MODE);//100M 磁盘缓存空间,10M 内存缓存空间
+        MapApplication.onCreate(this);
     }
 
     /**

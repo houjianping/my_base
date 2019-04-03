@@ -41,29 +41,15 @@ public class Urls {
     public static void test() {
         HttpRequest httpRequest = new HttpRequest();
         Map<String, String> params = new HashMap<>();
-        params.put("aaa", "as");
-        httpRequest.asyncGet("http://baike.baidu.com/api/openapi/BaikeLemmaCardApi?scope=103&format=json&appid=379020&bk_key=关键字&bk_length=600", params, new JsonCallback<Info>() {
+        params.put("scope", "103");
+        params.put("format", "json");
+        params.put("appid", "379020");
+        params.put("bk_key", "关键字关键字");
+        params.put("bk_length", "600");
+        httpRequest.asyncGet("http://baike.baidu.com/api/openapi/BaikeLemmaCardApi", params, new JsonCallback<Info>() {
             @Override
             public void onSuccess(Response<Info> response) {
                 Log.e("","#############onSuccess##############" + response.body().getErrno());
-            }
-
-            @Override
-            public void onStart(Request<Info, ? extends Request> request) {
-                super.onStart(request);
-                Log.e("","#############onStart##############");
-            }
-
-            @Override
-            public void onError(Response<Info> response) {
-                super.onError(response);
-                Log.e("","#############onError##############");
-            }
-
-            @Override
-            public void onFinish() {
-                super.onFinish();
-                Log.e("","#############onFinish##############");
             }
         });
     }

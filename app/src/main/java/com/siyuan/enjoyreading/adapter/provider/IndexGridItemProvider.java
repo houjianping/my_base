@@ -34,16 +34,8 @@ public class IndexGridItemProvider extends BaseItemProvider<MultipleEntity,BaseV
     @Override
     public void convert(BaseViewHolder viewHolder, MultipleEntity multipleEntity, int position) {
         GridItem item = (GridItem) multipleEntity;
-        RecommendPrasise recommendPrasise = new RecommendPrasise();
-        recommendPrasise.setTitle("1如何2一分钟3聊到男神?");
-        recommendPrasise.setIconurl("http://p1.meituan.net/movie/55c57c37c9baa412aa9351f385275ef861052.jpg");
-        List<RecommendPrasise> prasises = new ArrayList<>();
-        prasises.add(recommendPrasise);
-        prasises.add(recommendPrasise);
-        prasises.add(recommendPrasise);
-        prasises.add(recommendPrasise);
         PagedGridView pagedGridView = viewHolder.getView(R.id.praise_gridview);
-        RecommendPrasiseAdapter recommendPrasiseAdapter = new RecommendPrasiseAdapter(mContext, prasises);
+        RecommendPrasiseAdapter recommendPrasiseAdapter = new RecommendPrasiseAdapter(mContext, item.getRecommendPrasise());
         recommendPrasiseAdapter.setOnItemClick(new PagedGridLayout.OnGridItemClick() {
             @Override
             public void onGridItemClick(Object item) {
@@ -51,17 +43,7 @@ public class IndexGridItemProvider extends BaseItemProvider<MultipleEntity,BaseV
             }
         });
         pagedGridView.setAdapter(recommendPrasiseAdapter);
-        switch (item.getColumn()) {
-            case 4:
-                pagedGridView.setNumColumns(4);
-                break;
-            case 2:
-                pagedGridView.setNumColumns(2);
-                break;
-            default:
-                pagedGridView.setNumColumns(1);
-                break;
-        }
+        pagedGridView.setNumColumns(item.getColumn());
     }
 
     @Override

@@ -164,9 +164,20 @@
         <activity android:name=".ui.activity.MessageActivity" />
         <activity android:name=".ui.activity.pcenter.SettingFollowActivity" />
         <activity android:name=".ui.activity.PermissionActivity" />
+        <activity android:name=".map.MapUserActivity" />
+
         <meta-data
             android:name="CHANNEL"
             android:value="${CHANNEL_VALUE}" />
+        <!-- 百度定位SDK 开始 -->
+        <service
+            android:name="com.baidu.location.f"
+            android:enabled="true"
+            android:process=":core"/>
+
+        <meta-data
+            android:name="com.baidu.lbsapi.API_KEY"
+            android:value="@string/BAIDU_KEY" />
     </application>
 
 </manifest>

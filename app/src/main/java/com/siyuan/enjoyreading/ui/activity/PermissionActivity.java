@@ -5,9 +5,14 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.androidapp.activity.BaseActivity;
+import com.androidapp.map.LocationUpdateListener;
+import com.androidapp.map.bean.MapLocation;
+import com.androidapp.map.util.LocationFinder;
 import com.androidapp.permission.PermissionEnum;
 import com.androidapp.permission.PermissionUtils;
+import com.androidapp.utils.ToastUtils;
 import com.siyuan.enjoyreading.R;
+import com.siyuan.enjoyreading.map.MapUserActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +22,6 @@ public class PermissionActivity extends BaseActivity implements View.OnClickList
     @Override
     protected void initContentView(Bundle bundle) {
         setContentView(R.layout.test_permission);
-        mContext = this;
     }
 
     @Override
@@ -40,9 +44,9 @@ public class PermissionActivity extends BaseActivity implements View.OnClickList
         }
     }
 
-    private void toCamera() {
+    private void startMapActivity() {
         Intent intent = new Intent();
-        intent.setAction("android.media.action.STILL_IMAGE_CAMERA");
+        intent.setClass(this, MapUserActivity.class);
         startActivity(intent);
     }
 
@@ -51,7 +55,14 @@ public class PermissionActivity extends BaseActivity implements View.OnClickList
         return new PermissionUtils.PermissionRequestSuccessCallBack() {
             @Override
             public void onHasPermission() {
-                toCamera();
+                LocationFinder.getInstance().setCallBack(new LocationUpdateListener() {
+                    @Override
+                    public void onLocationUpdate(MapLocation location) {
+                        ToastUtils.show("$$$$$$$" + location.toString());
+                    }
+                });
+                LocationFinder.getInstance().startLocation();
+                startMapActivity();
             }
         };
     }

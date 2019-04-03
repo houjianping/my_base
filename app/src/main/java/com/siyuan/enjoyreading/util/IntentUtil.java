@@ -11,7 +11,6 @@ import com.siyuan.enjoyreading.App;
 import com.siyuan.enjoyreading.api.ApiConfig;
 import com.siyuan.enjoyreading.api.Urls;
 import com.siyuan.enjoyreading.ui.activity.PermissionActivity;
-import com.siyuan.enjoyreading.ui.activity.pcenter.SettingAboutControl;
 
 import java.util.Map;
 
