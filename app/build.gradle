@@ -20,6 +20,9 @@ android {
         //百度
         resValue "string", "BAIDU_KEY", "0OyhZP2QRRLN6wdqudXdwzk6lf0gIHYS"
         manifestPlaceholders = [CHANNEL_VALUE    : "360"]
+        ndk {
+            abiFilters 'armeabi'
+        }
     }
     signingConfigs {
         release {

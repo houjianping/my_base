@@ -30,6 +30,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.androidapp.widget.LoadingLayout;
+import com.siyuan.enjoyreading.util.BannerUtil;
 
 import static android.support.v7.widget.DividerItemDecoration.VERTICAL;
 
@@ -43,19 +44,8 @@ public class KnowledgeListFragment extends ViewPagerBaseFragment {
     protected void loadData(boolean force) {
         Log.e("", "------loadData--------" + force);
         if (force) {
-            //添加Header
             mLoadingLayout.showContent();
-            View header = LayoutInflater.from(getContext()).inflate(R.layout.listitem_movie_header, mRecyclerView, false);
-            Banner banner = (Banner) header;
-            banner.setImageLoader(new GlideImageLoader());
-            banner.setImages(ApiConfig.BANNER_ITEMS);
-            banner.setOnBannerListener(new OnBannerListener() {
-                @Override
-                public void OnBannerClick(int i) {
-                    Toast.makeText(getContext(), "si=" + i, Toast.LENGTH_SHORT).show();
-                }
-            });
-            banner.start();
+            Banner banner = BannerUtil.getBannerView(getContext(), ApiConfig.BANNER_ITEMS, mRecyclerView, false);
             mAdapter.addHeaderView(banner, 0);
             mAdapter.openLoadAnimation();
 

@@ -32,6 +32,7 @@ import com.siyuan.enjoyreading.entity.SmallCategoryItem;
 import com.siyuan.enjoyreading.ui.activity.currency.FullPagePlayerActivity;
 import com.siyuan.enjoyreading.ui.fragment.base.ViewPagerBaseFragment;
 import com.siyuan.enjoyreading.util.BannerImageLoader;
+import com.siyuan.enjoyreading.util.BannerUtil;
 import com.siyuan.enjoyreading.util.IntentUtil;
 
 import java.util.ArrayList;
@@ -54,17 +55,7 @@ public class EntertainmentFragment extends ViewPagerBaseFragment {
     protected void loadData(boolean force) {
         mLoadingLayout.showContent();
         final List<NewsItem> circleItems = new Gson().fromJson(ApiConfig.JSON_VIDEO_LIST, new TypeToken<ArrayList<NewsItem>>() {}.getType());
-        View header = LayoutInflater.from(getContext()).inflate(R.layout.listitem_movie_header, mRecyclerView, false);
-        Banner banner = (Banner) header;
-        banner.setImageLoader(new BannerImageLoader());
-        banner.setImages(ApiConfig.BANNER_ITEMS);
-        banner.setOnBannerListener(new OnBannerListener() {
-            @Override
-            public void OnBannerClick(int i) {
-                Toast.makeText(getContext(), "si=" + i, Toast.LENGTH_SHORT).show();
-            }
-        });
-        banner.start();
+        Banner banner = BannerUtil.getBannerView(getContext(), ApiConfig.BANNER_ITEMS, mRecyclerView, false);
         mAdapter.addHeaderView(banner, 0);
         List<SmallCategoryItem> searchKeywords = new Gson().fromJson(ApiConfig.JSON_SMALL_CATEGORY, new TypeToken<ArrayList<SmallCategoryItem>>() {
         }.getType());

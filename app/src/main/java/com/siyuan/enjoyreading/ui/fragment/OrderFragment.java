@@ -30,6 +30,7 @@ import com.siyuan.enjoyreading.entity.BannerItem;
 import com.siyuan.enjoyreading.entity.OrderMovie;
 import com.siyuan.enjoyreading.ui.activity.knwoledge.KnowledgeChapterActivity;
 import com.siyuan.enjoyreading.ui.fragment.base.ViewPagerBaseFragment;
+import com.siyuan.enjoyreading.util.BannerUtil;
 import com.siyuan.enjoyreading.widget.HeaderView;
 
 import java.util.ArrayList;
@@ -68,28 +69,13 @@ public class OrderFragment extends ViewPagerBaseFragment {
         mLoadingLayout = view.findViewById(com.androidapp.base.R.id.loading);
         final RecyclerView recyclerView = view.findViewById(R.id.recyclerView);
         final RefreshLayout refreshLayout = view.findViewById(R.id.refreshLayout);
-//        recyclerView.addItemDecoration(new DividerItemDecoration(getContext(), VERTICAL));
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         if (mAdapter == null) {
             Log.e("", "------loadData----mAdapter---1111-");
             mAdapter = new MultipleItemQuickAdapter();
-            //添加Header
-            View headerLayout = LayoutInflater.from(getContext()).inflate(R.layout.listitem_movie_header, recyclerView, false);
-            Banner banner = (Banner) headerLayout;
-            banner.setImageLoader(new GlideImageLoader());
-            banner.setIndicatorGravity(BannerConfig.RIGHT);
-            banner.setImages(ApiConfig.BANNER_ITEMS);
-            banner.setOnBannerListener(new OnBannerListener() {
-                @Override
-                public void OnBannerClick(int i) {
-                    Toast.makeText(getContext(), "si=" + i, Toast.LENGTH_SHORT).show();
-                }
-            });
-            banner.start();
             PagedGridLayout pagedGridLayout = new PagedGridLayout(getActivity(), new PagedGridLayout.OnGridItemClick() {
                 @Override
                 public void onGridItemClick(Object item) {
-                    GriedViewItem item1 = (GriedViewItem) item;
                     mContext.startActivity(KnowledgeChapterActivity.getIntent(mContext));
                 }
             });
@@ -108,6 +94,7 @@ public class OrderFragment extends ViewPagerBaseFragment {
             }};
             pagedGridLayout.setEnableBigItem(true);
             pagedGridLayout.setData(list, 5, 2);
+            Banner banner = BannerUtil.getBannerView(getContext(), ApiConfig.BANNER_ITEMS, recyclerView, false);
             mAdapter.addHeaderView(banner, 0);
             HeaderView categoryHeader = new HeaderView(getContext());
             categoryHeader.setTitle("热点专栏");

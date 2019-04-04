@@ -11,6 +11,7 @@ import com.siyuan.enjoyreading.App;
 import com.siyuan.enjoyreading.api.ApiConfig;
 import com.siyuan.enjoyreading.api.Urls;
 import com.siyuan.enjoyreading.ui.activity.PermissionActivity;
+import com.siyuan.enjoyreading.ui.coll.ActCollapsingToolBar;
 
 import java.util.Map;
 
@@ -32,7 +33,8 @@ public class IntentUtil {
         if (map.containsKey("page")) {
             String page = (String) map.get("page");
             if (page.equals("SettingAbout")) {
-                intent.setClass(context, PermissionActivity.class);
+//                intent.setClass(context, PermissionActivity.class);
+                intent.setClass(context, ActCollapsingToolBar.class);
             }
             for (Object key : map.keySet()) {
                 if (!intent.hasExtra(key.toString())) {

@@ -37,6 +37,7 @@ import com.siyuan.enjoyreading.entity.SmallCategoryItem;
 import com.siyuan.enjoyreading.ui.activity.VideoListActivity;
 import com.siyuan.enjoyreading.ui.fragment.base.ViewPagerBaseFragment;
 import com.siyuan.enjoyreading.util.BannerImageLoader;
+import com.siyuan.enjoyreading.util.BannerUtil;
 import com.siyuan.enjoyreading.util.IntentUtil;
 
 import java.util.ArrayList;
@@ -58,20 +59,8 @@ public class RecommendFragment extends ViewPagerBaseFragment {
     @Override
     protected void loadData(boolean force) {
         movies.clear();
-        //添加Header
         mLoadingLayout.showContent();
-        View header = LayoutInflater.from(getContext()).inflate(R.layout.listitem_movie_header, mRecyclerView, false);
-        Banner banner = (Banner) header;
-        banner.setImageLoader(new BannerImageLoader());
-        banner.setIndicatorGravity(BannerConfig.RIGHT);
-        banner.setImages(ApiConfig.BANNER_ITEMS);
-        banner.setOnBannerListener(new OnBannerListener() {
-            @Override
-            public void OnBannerClick(int i) {
-                Toast.makeText(getContext(), "si=" + i, Toast.LENGTH_SHORT).show();
-            }
-        });
-        banner.start();
+        Banner banner = BannerUtil.getBannerView(getContext(), ApiConfig.BANNER_ITEMS, mRecyclerView, false);
         mAdapter.addHeaderView(banner, 0);
         FlexibleView flexibleView = new FlexibleView(getContext());
         mAdapter.addHeaderView(flexibleView, 1);

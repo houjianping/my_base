@@ -3,26 +3,21 @@ package com.siyuan.enjoyreading.ui.activity.pcenter;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.Toast;
 
 import com.androidapp.activity.BaseListActivity;
 import com.androidapp.adapter.BaseQuickAdapter;
 import com.androidapp.banner.Banner;
-import com.androidapp.banner.listener.OnBannerListener;
 import com.androidapp.smartrefresh.layout.api.RefreshLayout;
 import com.androidapp.smartrefresh.layout.listener.OnLoadMoreListener;
 import com.androidapp.smartrefresh.layout.listener.OnRefreshListener;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.siyuan.enjoyreading.R;
 import com.siyuan.enjoyreading.adapter.MultipleItemQuickAdapter;
 import com.siyuan.enjoyreading.api.ApiConfig;
-import com.siyuan.enjoyreading.entity.BannerItem;
 import com.siyuan.enjoyreading.entity.Movie;
 import com.siyuan.enjoyreading.ui.activity.SocializCircleActivity;
-import com.siyuan.enjoyreading.util.GlideImageLoader;
+import com.siyuan.enjoyreading.util.BannerUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -85,21 +80,10 @@ public class SettingLeavingMessage extends BaseListActivity {
 
     @Override
     protected void initView() {
-        //添加Header
         super.initView();
         mRecyclerView.addItemDecoration(new DividerItemDecoration(mContext, VERTICAL));
         mRecyclerView.setLayoutManager(new LinearLayoutManager(mContext));
-        View header = LayoutInflater.from(mContext).inflate(R.layout.listitem_movie_header, mRecyclerView, false);
-        Banner banner = (Banner) header;
-        banner.setImageLoader(new GlideImageLoader());
-        banner.setImages(ApiConfig.BANNER_ITEMS);
-        banner.setOnBannerListener(new OnBannerListener() {
-            @Override
-            public void OnBannerClick(int i) {
-                Toast.makeText(mContext, "si=" + i, Toast.LENGTH_SHORT).show();
-            }
-        });
-        banner.start();
+        Banner banner = BannerUtil.getBannerView(mContext, ApiConfig.BANNER_ITEMS, mRecyclerView, false);
         mAdapter.addHeaderView(banner, 0);
     }
 
