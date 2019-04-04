@@ -31,8 +31,10 @@ import com.baidu.mapapi.search.geocode.GeoCoder;
 import com.baidu.mapapi.search.geocode.ReverseGeoCodeOption;
 import com.siyuan.enjoyreading.R;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class MapUserActivity extends BaseActivity {
     private static final String LOG_CAT = "net_work";
@@ -175,10 +177,6 @@ public class MapUserActivity extends BaseActivity {
                 builder.target(ll).zoom(18.0f);
                 mBaiduMap.animateMapStatus(MapStatusUpdateFactory.newMapStatus(builder.build()));
                 //判断如果定位点为百度地图的默认值,就去弹窗要求用户去开启GPS
-                String lag_lng = latitude + "," + longitude;
-                if (lag_lng.equals("4.9E-324,4.9E-324")) {
-                    NetUtil.initGPS(MapUserActivity.this);
-                }
                 if (!isLocation) {
                     isLocation = true;
                     // 反Geo搜索
@@ -191,7 +189,7 @@ public class MapUserActivity extends BaseActivity {
 
     private void loadMapPoint(String vir_point) {
         for (int i = 0; i < urlList.size(); i++) {
-            String lagLng = NetUtil.getLagLng(vir_point);
+            String lagLng = getLagLng(vir_point);
             addMarker(lagLng, urlList.get(i));
         }
     }
@@ -269,7 +267,7 @@ public class MapUserActivity extends BaseActivity {
         if (TextUtils.isEmpty(link)) {
             loadBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.iv_default_photo);
         } else {
-            loadBitmap = showImage.loadBitmap(link, true, false, R.drawable.iv_default_photo);
+            loadBitmap = MapIconLoader.loadBitmap(link, true, false, R.drawable.iv_default_photo);
         }
         img_head.setImageBitmap(loadBitmap);
         BitmapDescriptor descriptor = BitmapDescriptorFactory.fromView(view);
@@ -280,5 +278,33 @@ public class MapUserActivity extends BaseActivity {
             loadBitmap.isRecycled();
             loadBitmap = null;
         }
+    }
+
+    private static DecimalFormat df1 = new DecimalFormat("0.00000000000000");//格式化小数
+    public static String getLagLng(String vir_point){
+        String[] spt = vir_point.split(",");
+        Double latitude = Double.parseDouble(spt[0]);
+        Double longitude = Double.parseDouble(spt[1]);
+        Random random = new Random();
+        int a = random.nextInt(10);
+        Double fff = Double.parseDouble(df1.format(a));
+        double fdf = fff / 4000;//专门给纬度用
+        int a1 = random.nextInt(10);
+        Double fff1 = Double.parseDouble(df1.format(a1));
+        double fdf1 = fff1 / 4000;//专门给经度用
+        int nextInt = random.nextInt(2) + 1;
+        if (nextInt % 2 == 0) {
+            latitude = latitude + fdf;
+        } else {
+            latitude = latitude - fdf;
+        }
+        int anInt = random.nextInt(2) + 1;
+        if (anInt % 2 == 0) {
+            longitude = longitude + fdf1;
+        } else {
+            longitude = longitude - fdf1;
+        }
+        String draw_vir_point = latitude + "," + longitude;
+        return draw_vir_point;
     }
 }

@@ -59,16 +59,11 @@ public class CircleImageView extends android.support.v7.widget.AppCompatImageVie
     public CircleImageView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         super.setScaleType(SCALE_TYPE);
-
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.CircleImageView, defStyle, 0);
-
         mBorderWidth = a.getDimensionPixelSize(R.styleable.CircleImageView_border_width, DEFAULT_BORDER_WIDTH);
         mBorderColor = a.getColor(R.styleable.CircleImageView_border_color, DEFAULT_BORDER_COLOR);
-
         a.recycle();
-
         mReady = true;
-
         if (mSetupPending) {
             setup();
             mSetupPending = false;
@@ -92,7 +87,6 @@ public class CircleImageView extends android.support.v7.widget.AppCompatImageVie
         if (getDrawable() == null) {
             return;
         }
-
         canvas.drawCircle(getWidth() / 2, getHeight() / 2, mDrawableRadius, mBitmapPaint);
         canvas.drawCircle(getWidth() / 2, getHeight() / 2, mBorderRadius, mBorderPaint);
     }
@@ -125,7 +119,6 @@ public class CircleImageView extends android.support.v7.widget.AppCompatImageVie
         if (borderWidth == mBorderWidth) {
             return;
         }
-
         mBorderWidth = borderWidth;
         setup();
     }
@@ -155,20 +148,16 @@ public class CircleImageView extends android.support.v7.widget.AppCompatImageVie
         if (drawable == null) {
             return null;
         }
-
         if (drawable instanceof BitmapDrawable) {
             return ((BitmapDrawable) drawable).getBitmap();
         }
-
         try {
             Bitmap bitmap;
-
             if (drawable instanceof ColorDrawable) {
                 bitmap = Bitmap.createBitmap(COLORDRAWABLE_DIMENSION, COLORDRAWABLE_DIMENSION, BITMAP_CONFIG);
             } else {
                 bitmap = Bitmap.createBitmap(drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight(), BITMAP_CONFIG);
             }
-
             Canvas canvas = new Canvas(bitmap);
             drawable.setBounds(0, 0, canvas.getWidth(), canvas.getHeight());
             drawable.draw(canvas);
@@ -183,30 +172,22 @@ public class CircleImageView extends android.support.v7.widget.AppCompatImageVie
             mSetupPending = true;
             return;
         }
-
         if (mBitmap == null) {
             return;
         }
-
         mBitmapShader = new BitmapShader(mBitmap, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
-
         mBitmapPaint.setAntiAlias(true);
         mBitmapPaint.setShader(mBitmapShader);
-
         mBorderPaint.setStyle(Paint.Style.STROKE);
         mBorderPaint.setAntiAlias(true);
         mBorderPaint.setColor(mBorderColor);
         mBorderPaint.setStrokeWidth(mBorderWidth);
-
         mBitmapHeight = mBitmap.getHeight();
         mBitmapWidth = mBitmap.getWidth();
-
         mBorderRect.set(0, 0, getWidth(), getHeight());
         mBorderRadius = Math.min((mBorderRect.height() - mBorderWidth) / 2, (mBorderRect.width() - mBorderWidth) / 2);
-
         mDrawableRect.set(mBorderWidth, mBorderWidth, mBorderRect.width() - mBorderWidth, mBorderRect.height() - mBorderWidth);
         mDrawableRadius = Math.min(mDrawableRect.height() / 2, mDrawableRect.width() / 2);
-
         updateShaderMatrix();
         invalidate();
     }
@@ -215,9 +196,7 @@ public class CircleImageView extends android.support.v7.widget.AppCompatImageVie
         float scale;
         float dx = 0;
         float dy = 0;
-
         mShaderMatrix.set(null);
-
         if (mBitmapWidth * mDrawableRect.height() > mDrawableRect.width() * mBitmapHeight) {
             scale = mDrawableRect.height() / (float) mBitmapHeight;
             dx = (mDrawableRect.width() - mBitmapWidth * scale) * 0.5f;
@@ -225,10 +204,8 @@ public class CircleImageView extends android.support.v7.widget.AppCompatImageVie
             scale = mDrawableRect.width() / (float) mBitmapWidth;
             dy = (mDrawableRect.height() - mBitmapHeight * scale) * 0.5f;
         }
-
         mShaderMatrix.setScale(scale, scale);
         mShaderMatrix.postTranslate((int) (dx + 0.5f) + mBorderWidth, (int) (dy + 0.5f) + mBorderWidth);
-
         mBitmapShader.setLocalMatrix(mShaderMatrix);
     }
 
@@ -237,42 +214,26 @@ public class CircleImageView extends android.support.v7.widget.AppCompatImageVie
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
         int desiredWidth = 100;
         int desiredHeight = 100;
-
         int widthMode = MeasureSpec.getMode(widthMeasureSpec);
         int widthSize = MeasureSpec.getSize(widthMeasureSpec);
         int heightMode = MeasureSpec.getMode(heightMeasureSpec);
         int heightSize = MeasureSpec.getSize(heightMeasureSpec);
-
         int width;
         int height;
-
-        //Measure Width
         if (widthMode == MeasureSpec.EXACTLY) {
-            //Must be this size
             width = widthSize;
         } else if (widthMode == MeasureSpec.AT_MOST) {
-            //Can't be bigger than...
             width = Math.min(desiredWidth, widthSize);
         } else {
-            //Be whatever you want
             width = desiredWidth;
         }
-
-        //Measure Height
         if (heightMode == MeasureSpec.EXACTLY) {
-            //Must be this size
             height = heightSize;
         } else if (heightMode == MeasureSpec.AT_MOST) {
-            //Can't be bigger than...
             height = Math.min(desiredHeight, heightSize);
         } else {
-            //Be whatever you want
             height = desiredHeight;
         }
-
-        //MUST CALL THIS
         setMeasuredDimension(width, height);
     }
-
 }
-
