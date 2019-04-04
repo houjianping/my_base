@@ -33,7 +33,6 @@
         android:id="@+id/anmation_show_send_button"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:background="@color/white"
         android:orientation="vertical"
         android:visibility="gone" />
 </RelativeLayout>

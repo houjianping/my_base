@@ -50,8 +50,6 @@ public class AnimationActionView extends LinearLayout {
 
     public AnimationActionView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
-        setBackgroundResource(R.color.white);
-        getBackground().setAlpha(255);
         buttonView = this;
         initView();
     }

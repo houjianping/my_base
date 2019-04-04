@@ -3,15 +3,14 @@
     android:id="@+id/ll_bg"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ffffff">
+    android:background="#F7FFFFFF">
 
     <LinearLayout
+        android:id="@+id/ll_dissmiss"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_weight="1"
         android:addStatesFromChildren="true"
-        android:clickable="true"
         android:gravity="center_horizontal|bottom"
         android:orientation="vertical">
         <View
@@ -25,8 +24,8 @@
 
     <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="fill_parent"
-        android:layout_alignParentTop="true"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:gravity="center"
         android:orientation="horizontal">
@@ -77,4 +76,42 @@
                 android:visibility="visible" />
         </LinearLayout>
     </LinearLayout>
+    <RelativeLayout
+        android:paddingLeft="@dimen/padding_common"
+        android:paddingRight="@dimen/padding_common"
+        android:paddingTop="50dp"
+        android:paddingBottom="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <TextView
+                android:text="02"
+                android:textSize="40sp"
+                android:textColor="@color/colorTextTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_marginLeft="@dimen/padding_common"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:text="周二"
+                    android:textColor="@color/colorTextContent"
+                    android:textSize="@dimen/font_16"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:text="04/2019"
+                    android:textColor="@color/colorTextContent"
+                    android:textSize="@dimen/font_16"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
 </RelativeLayout>

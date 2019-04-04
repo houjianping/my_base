@@ -14,8 +14,7 @@
             android:id="@+id/ivIcon"
             android:layout_width="64dp"
             android:layout_height="64dp"
-            android:layout_centerHorizontal="true"
-            android:src="@mipmap/ic_launcher" />
+            android:layout_centerHorizontal="true"/>
 
         <TextView
             android:id="@+id/tvTitle"
@@ -24,7 +23,6 @@
             android:layout_below="@+id/ivIcon"
             android:layout_centerHorizontal="true"
             android:gravity="center"
-            android:text="标题"
             android:textColor="@color/gray_main"
             android:textSize="@dimen/font_14"/>
 
@@ -36,7 +34,6 @@
             android:layout_marginTop="4dp"
             android:gravity="center"
             android:lines="2"
-            android:text="描述性信息...."
             android:textColor="@color/colorTextSummary"
             android:textSize="@dimen/font_12" />
     </RelativeLayout>
