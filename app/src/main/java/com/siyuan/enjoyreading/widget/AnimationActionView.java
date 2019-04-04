@@ -18,7 +18,6 @@ import com.google.gson.reflect.TypeToken;
 import com.siyuan.enjoyreading.App;
 import com.siyuan.enjoyreading.R;
 import com.siyuan.enjoyreading.api.ApiConfig;
-import com.siyuan.enjoyreading.entity.Movie;
 import com.siyuan.enjoyreading.entity.ShowSendItemInfo;
 
 import java.util.ArrayList;
@@ -28,10 +27,11 @@ public class AnimationActionView extends LinearLayout {
 
     public AnimationActionView buttonView;
     private View closeView, rlSendNeed, rlSendServie;
-    private ShowSendItemView itemOne, itemTwo, itemThree, itemFour;
+    private ShowSendItemView viewItem1, viewItem2, viewItem3, viewItem4;
+    private ShowSendItemView viewItem5, viewItem6, viewItem7, viewItem8;
 
-    private int animationDuration = 300;
-    private int height = ScreenUtil.dip2px(App.getInstance(),350);
+    private int animationDuration = 200;
+    private int height = ScreenUtil.dip2px(App.getInstance(),100);
 
     private TranslateAnimation showAnimation1 = getTranslateAnimation(height, 0, animationDuration + 100, true);
     private TranslateAnimation showAnimation2 = getTranslateAnimation(height, 0, animationDuration + 100, true);
@@ -58,10 +58,16 @@ public class AnimationActionView extends LinearLayout {
         View mView;
         mView = LayoutInflater.from(getContext()).inflate(R.layout.show_send_view_male, this);
         closeView = mView.findViewById(R.id.send_type_msg_bar);
-        itemOne = (ShowSendItemView) mView.findViewById(R.id.itemOne);
-        itemTwo = (ShowSendItemView) mView.findViewById(R.id.itemTwo);
-        itemThree = (ShowSendItemView) mView.findViewById(R.id.itemThree);
-        itemFour = (ShowSendItemView) mView.findViewById(R.id.itemFour);
+        viewItem1 = (ShowSendItemView) mView.findViewById(R.id.item1);
+        viewItem2 = (ShowSendItemView) mView.findViewById(R.id.item2);
+        viewItem3 = (ShowSendItemView) mView.findViewById(R.id.item3);
+        viewItem4 = (ShowSendItemView) mView.findViewById(R.id.item4);
+
+        viewItem5 = (ShowSendItemView) mView.findViewById(R.id.item5);
+        viewItem6 = (ShowSendItemView) mView.findViewById(R.id.item6);
+        viewItem7 = (ShowSendItemView) mView.findViewById(R.id.item7);
+        viewItem8 = (ShowSendItemView) mView.findViewById(R.id.item8);
+
         rlSendNeed = mView.findViewById(R.id.ll_left);
         rlSendServie = mView.findViewById(R.id.ll_right);
         setOnClickListener(onClickListener);
@@ -76,10 +82,15 @@ public class AnimationActionView extends LinearLayout {
         List<ShowSendItemInfo> showSendItemInfos = new Gson().fromJson(ApiConfig.GET_ANIM_ACTION_DATA, new TypeToken<ArrayList<ShowSendItemInfo>>() {
         }.getType());
         try {
-            itemOne.setData(this, showSendItemInfos.get(0));
-            itemTwo.setData(this, showSendItemInfos.get(1));
-            itemThree.setData(this, showSendItemInfos.get(2));
-            itemFour.setData(this, showSendItemInfos.get(3));
+            viewItem1.setData(this, showSendItemInfos.get(0));
+            viewItem2.setData(this, showSendItemInfos.get(1));
+            viewItem3.setData(this, showSendItemInfos.get(2));
+            viewItem4.setData(this, showSendItemInfos.get(3));
+
+            viewItem5.setData(this, showSendItemInfos.get(0));
+            viewItem6.setData(this, showSendItemInfos.get(1));
+            viewItem7.setData(this, showSendItemInfos.get(2));
+            viewItem8.setData(this, showSendItemInfos.get(3));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -100,9 +111,6 @@ public class AnimationActionView extends LinearLayout {
         refData();
         setVisibility(VISIBLE);
         handler.sendEmptyMessageDelayed(1, 0);
-        RotateAnimation rotateAnimation = new RotateAnimation(0, 90 + 45);
-        rotateAnimation.setDuration(animationDuration);
-        rotateAnimation.setFillAfter(true);
     }
 
     public void hide() {
@@ -118,7 +126,7 @@ public class AnimationActionView extends LinearLayout {
                     rlSendNeed.setVisibility(View.VISIBLE);
                     rlSendNeed.startAnimation(showAnimation1);
                     closeView.startAnimation(showAnimation5);
-                    sendEmptyMessageDelayed(2, 100);
+                    sendEmptyMessageDelayed(2, 20);
                     break;
                 case 2:
                     rlSendServie.setVisibility(View.VISIBLE);

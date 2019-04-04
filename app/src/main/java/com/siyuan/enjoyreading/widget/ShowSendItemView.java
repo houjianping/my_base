@@ -73,10 +73,14 @@ public class ShowSendItemView extends LinearLayout {
                 }
             }
             tvTitle.setText(showSendItemInfo.getTitle());
-            tvSubTitle.setText(showSendItemInfo.getSub_title());
             int color = Color.parseColor(showSendItemInfo.getTitle_color());
             tvTitle.setTextColor(color);
-            tvSubTitle.setTextColor(color);
+            tvSubTitle.setVisibility(View.GONE);
+            if (!TextUtils.isEmpty(showSendItemInfo.getSub_title())) {
+                tvSubTitle.setVisibility(View.VISIBLE);
+                tvSubTitle.setText(showSendItemInfo.getSub_title());
+                tvSubTitle.setTextColor(color);
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }

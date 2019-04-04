@@ -23,32 +23,50 @@
     </LinearLayout>
 
     <LinearLayout
+        android:layout_above="@+id/ll_dissmiss"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:gravity="center"
-        android:orientation="horizontal">
+        android:layout_marginLeft="@dimen/padding_middle"
+        android:layout_marginRight="@dimen/padding_middle"
+        android:paddingBottom="20dp"
+        android:orientation="vertical">
 
         <LinearLayout
             android:id="@+id/ll_left"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:layout_marginRight="5dp"
             android:layout_weight="1"
             android:gravity="bottom|right"
-            android:orientation="vertical"
-            android:paddingBottom="90dp">
+            android:visibility="gone"
+            android:orientation="horizontal">
 
             <com.siyuan.enjoyreading.widget.ShowSendItemView
-                android:id="@+id/itemOne"
+                android:id="@+id/item1"
+                android:layout_weight="1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:visibility="visible" />
 
             <com.siyuan.enjoyreading.widget.ShowSendItemView
-                android:id="@+id/itemThree"
+                android:id="@+id/item2"
+                android:layout_weight="1"
                 android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="visible" />
+
+            <com.siyuan.enjoyreading.widget.ShowSendItemView
+                android:id="@+id/item3"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="visible" />
+
+            <com.siyuan.enjoyreading.widget.ShowSendItemView
+                android:id="@+id/item4"
+                android:layout_width="wrap_content"
+                android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:visibility="visible" />
         </LinearLayout>
@@ -57,21 +75,37 @@
             android:id="@+id/ll_right"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:layout_marginLeft="5dp"
             android:layout_weight="1"
             android:gravity="bottom"
-            android:orientation="vertical"
-            android:paddingBottom="90dp">
+            android:visibility="gone"
+            android:orientation="horizontal">
+
 
             <com.siyuan.enjoyreading.widget.ShowSendItemView
-                android:id="@+id/itemTwo"
+                android:id="@+id/item5"
+                android:layout_weight="1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:visibility="visible" />
 
             <com.siyuan.enjoyreading.widget.ShowSendItemView
-                android:id="@+id/itemFour"
+                android:id="@+id/item6"
                 android:layout_width="wrap_content"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:visibility="visible" />
+
+            <com.siyuan.enjoyreading.widget.ShowSendItemView
+                android:id="@+id/item7"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="visible" />
+
+            <com.siyuan.enjoyreading.widget.ShowSendItemView
+                android:id="@+id/item8"
+                android:layout_width="wrap_content"
+                android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:visibility="visible" />
         </LinearLayout>
