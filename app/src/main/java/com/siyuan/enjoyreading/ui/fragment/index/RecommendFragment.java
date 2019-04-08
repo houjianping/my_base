@@ -92,6 +92,7 @@ public class RecommendFragment extends ViewPagerBaseFragment {
         AdItem adItem = new AdItem();
         adItem.setWidth(750);
         adItem.setHeight(360);
+        adItem.setImageUrl("https://i.3km.biz/uploads/disk4/banner/6d/3ed/6d3edbae44c5903cb701dc3724d44db8.jpg");
         adItem.setAction("{\"page\":\"SettingAbout\",\"type\":1}");
         movies.add(adItem);
         movies.addAll(lists);

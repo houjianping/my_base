@@ -32,7 +32,7 @@ public class AdItemProvider extends BaseItemProvider<MultipleEntity, BaseViewHol
         AdItem item = (AdItem) multipleEntity;
         ImageView ivAdImageView = viewHolder.getView(R.id.iv_ad);
         setSizeByADSize(ivAdImageView, item.getWidth(), item.getHeight());
-        ImageLoaderUtils.display(mContext, ivAdImageView, R.mipmap.image_movie_header_48621499931969370);
+        ImageLoaderUtils.display(mContext, ivAdImageView, item.getImageUrl());
     }
 
     /**

@@ -1,8 +1,6 @@
 package com.siyuan.enjoyreading.adapter.provider;
 
-import android.content.Context;
-import android.view.View;
-import android.widget.ImageView;
+import android.support.v7.widget.RecyclerView;
 import android.widget.Toast;
 
 import com.androidapp.adapter.BaseViewHolder;
@@ -10,14 +8,12 @@ import com.androidapp.adapter.provider.BaseItemProvider;
 import com.androidapp.banner.Banner;
 import com.androidapp.banner.BannerConfig;
 import com.androidapp.banner.listener.OnBannerListener;
-import com.androidapp.banner.loader.ImageLoader;
+import com.androidapp.utils.ScreenUtil;
 import com.siyuan.enjoyreading.R;
 import com.siyuan.enjoyreading.adapter.MultipleItemQuickAdapter;
-import com.siyuan.enjoyreading.entity.BannerItem;
 import com.siyuan.enjoyreading.entity.BannerItemEntity;
-import com.siyuan.enjoyreading.entity.HeaderItem;
 import com.siyuan.enjoyreading.entity.MultipleEntity;
-import com.siyuan.enjoyreading.ui.fragment.OrderFragment;
+import com.siyuan.enjoyreading.util.BannerImageLoader;
 
 public class BannerItemProvider extends BaseItemProvider<MultipleEntity,BaseViewHolder> {
 
@@ -35,7 +31,12 @@ public class BannerItemProvider extends BaseItemProvider<MultipleEntity,BaseView
     public void convert(BaseViewHolder viewHolder, MultipleEntity multipleEntity, int position) {
         BannerItemEntity item = (BannerItemEntity) multipleEntity;
         Banner banner = viewHolder.getView(R.id.banner);
-        banner.setImageLoader(new GlideImageLoader());
+        if (banner.getLayoutParams() instanceof RecyclerView.LayoutParams) {
+            RecyclerView.LayoutParams params = (RecyclerView.LayoutParams) banner.getLayoutParams();
+            params.height = ScreenUtil.dip2px(mContext, 100);
+            banner.setLayoutParams(params);
+        }
+        banner.setImageLoader(new BannerImageLoader());
         banner.setImages(item.getBannerItems());
         banner.setOnBannerListener(mOnBannerListener);
         banner.setIndicatorGravity(BannerConfig.RIGHT);
@@ -48,11 +49,4 @@ public class BannerItemProvider extends BaseItemProvider<MultipleEntity,BaseView
             Toast.makeText(mContext, "si=" + position, Toast.LENGTH_SHORT).show();
         }
     };
-
-    public class GlideImageLoader extends ImageLoader {
-        @Override
-        public void displayImage(Context context, Object path, ImageView imageView) {
-            imageView.setImageResource(((BannerItem) path).pic);
-        }
-    }
 }

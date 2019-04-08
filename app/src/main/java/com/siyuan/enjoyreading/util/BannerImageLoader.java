@@ -12,6 +12,6 @@ public class BannerImageLoader extends ImageLoader {
     @Override
     public void displayImage(Context context, Object path, ImageView imageView) {
         BannerItem bannerItem = ((BannerItem) path);
-        ImageLoaderUtils.loadBanner(context, imageView, bannerItem.pic);
+        ImageLoaderUtils.loadBanner(context, imageView, bannerItem.getUrl());
     }
 }

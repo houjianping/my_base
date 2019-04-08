@@ -70,14 +70,14 @@ public class ImageLoaderUtils {
         Glide.with(context).load(id).apply(options).into(imageView);
     }
 
-    public static void loadBanner(Context context, ImageView imageView, int id) {
+    public static void loadBanner(Context context, ImageView imageView, String url) {
         if (imageView == null) {
             throw new IllegalArgumentException("argument error");
         }
         RequestOptions options = new RequestOptions()
                 .priority(Priority.HIGH)
                 .diskCacheStrategy(DiskCacheStrategy.ALL);
-        Glide.with(context).load(id).apply(options).into(imageView);
+        Glide.with(context).load(url).apply(options).into(imageView);
     }
 
     public static void displayRound(Context context, ImageView imageView, String url) {

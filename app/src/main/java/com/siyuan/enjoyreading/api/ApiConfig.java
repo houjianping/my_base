@@ -15,9 +15,9 @@ public class ApiConfig {
 
     public static boolean DEV_MODE = true;
     public static List<BannerItem> BANNER_ITEMS = new ArrayList<BannerItem>() {{
-        add(new BannerItem("最后的骑士", R.mipmap.image_movie_header_48621499931969370));
-        add(new BannerItem("三生三世十里桃花", R.mipmap.image_movie_header_12981501221820220));
-        add(new BannerItem("豆福传", R.mipmap.image_movie_header_12231501221682438));
+        add(new BannerItem("最后的骑士", "https://i.3km.biz/uploads/disk4/banner/6d/3ed/6d3edbae44c5903cb701dc3724d44db8.jpg"));
+        add(new BannerItem("三生三世十里桃花", "https://i.3km.biz/uploads/disk4/banner/6d/3ed/6d3edbae44c5903cb701dc3724d44db8.jpg"));
+        add(new BannerItem("豆福传", "https://i.3km.biz/uploads/disk4/banner/6d/3ed/6d3edbae44c5903cb701dc3724d44db8.jpg"));
     }};
 
     public static String JSON_INDEX = "{\"header\":{\"leftTitle\":\"好评栏目推荐1\",\"rightTitle\":\"查看更多\",\"showMoreItem\":true,\"action\":\"{\\\"page\\\":\\\"SettingAbout\\\",\\\"type\\\":1}\"},\"data\":{\"column\":2,\"recommendPrasise\":[{\"title\":\"如何一分钟聊到男神?\",\"iconurl\":\"http://p1.meituan.net/movie/55c57c37c9baa412aa9351f385275ef861052.jpg\"},{\"title\":\"如何一分钟聊到男神?\",\"iconurl\":\"http://p1.meituan.net/movie/55c57c37c9baa412aa9351f385275ef861052.jpg\"},{\"title\":\"如何一分钟聊到男神?\",\"iconurl\":\"http://p1.meituan.net/movie/55c57c37c9baa412aa9351f385275ef861052.jpg\"},{\"title\":\"如何一分钟聊到男神?\",\"iconurl\":\"http://p1.meituan.net/movie/55c57c37c9baa412aa9351f385275ef861052.jpg\"}]}}";
