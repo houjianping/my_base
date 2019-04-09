@@ -1,24 +1,18 @@
 package com.androidapp.utils;
 
-import android.graphics.Color;
-import android.support.annotation.RequiresApi;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
+import android.graphics.Color;
 import android.os.Build;
-import android.support.annotation.FloatRange;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 
-import com.androidapp.base.R;
-
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
-import java.util.regex.Pattern;
 
 /**
  * 状态栏透明
@@ -29,6 +23,7 @@ import java.util.regex.Pattern;
 public class StatusBarUtil {
 
     public static final int MIN_API = 19;
+
     public static void immersive(Activity activity) {
         darkMode(activity);
     }
@@ -84,7 +79,7 @@ public class StatusBarUtil {
             localLayoutParams.flags = (WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS | localLayoutParams.flags);
         }
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {//android6.0以后可以对状态栏文字颜色和图标进行修改
-            activity.getWindow().getDecorView().setSystemUiVisibility( View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN|View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+            activity.getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
         }
     }
 

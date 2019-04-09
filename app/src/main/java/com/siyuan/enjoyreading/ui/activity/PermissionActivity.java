@@ -40,7 +40,6 @@ public class PermissionActivity extends BaseActivity implements View.OnClickList
             case R.id.btn_main_request_permissions1:
                 doRequestPermission();
                 break;
-
         }
     }
 

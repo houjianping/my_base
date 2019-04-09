@@ -27,7 +27,6 @@ import java.util.List;
 
 public abstract class BaseActivity extends AppCompatActivity {
 
-    private static final String TAG = "BaseActivity";
     final int REQUEST_CODE_PERMISSIONS = 110;
 
     public boolean isInForeground;
@@ -106,7 +105,6 @@ public abstract class BaseActivity extends AppCompatActivity {
         super.onDestroy();
     }
 
-
     protected void showToast(int stringId) {
         ToastUtils.show(stringId);
     }
@@ -152,6 +150,7 @@ public abstract class BaseActivity extends AppCompatActivity {
             startActivity(intent);
         } catch (ActivityNotFoundException e) {
             e.printStackTrace();
+            ToastUtils.show("页面不存在!");
         }
     }
 
