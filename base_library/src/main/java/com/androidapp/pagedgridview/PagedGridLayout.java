@@ -12,6 +12,7 @@ import com.androidapp.base.R;
 import com.androidapp.utils.CollectionUtils;
 import com.androidapp.utils.ScreenUtil;
 import com.androidapp.indicator.CirclePageIndicator;
+import com.androidapp.widget.AppViewPager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +21,7 @@ public class PagedGridLayout<T extends PagedGridItem> extends LinearLayout {
 
     private static final int NUM_COLUMNS = 4;
     private CirclePageIndicator mCirclePageIndicator;
-    private PagedViewPager mViewPager;
+    private AppViewPager mViewPager;
     private LinearLayout mContainer;
     private OnGridItemClick onGridItemClick;
     private Activity mContext;

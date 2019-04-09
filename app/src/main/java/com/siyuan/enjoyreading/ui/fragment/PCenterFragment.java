@@ -7,11 +7,9 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.androidapp.fragment.BaseTabFragment;
-import com.androidapp.upgrade.UpdateAppManager;
 import com.androidapp.utils.StatusBarUtil;
 import com.androidapp.widget.ActionSheet;
 import com.androidapp.widget.AppAlertDialog;
-import com.androidapp.widget.LoadingDialog;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.luck.picture.lib.PictureSelector;
@@ -19,15 +17,13 @@ import com.luck.picture.lib.config.PictureConfig;
 import com.luck.picture.lib.entity.LocalMedia;
 import com.siyuan.enjoyreading.R;
 import com.siyuan.enjoyreading.api.Urls;
-import com.siyuan.enjoyreading.ui.activity.SocializCircleActivity;
+import com.siyuan.enjoyreading.ui.activity.SocializeCircleActivity;
 import com.siyuan.enjoyreading.ui.activity.currency.AppWebActivity;
 import com.siyuan.enjoyreading.ui.activity.login.PassWordLoginActivity;
-import com.siyuan.enjoyreading.ui.activity.pcenter.CouponActivity;
 import com.siyuan.enjoyreading.ui.activity.pcenter.PersonalWallet;
 import com.siyuan.enjoyreading.ui.activity.pcenter.SettingActivity;
 import com.siyuan.enjoyreading.ui.activity.pcenter.SettingFavorite;
 import com.siyuan.enjoyreading.ui.activity.pcenter.SettingFollowActivity;
-import com.siyuan.enjoyreading.ui.activity.pcenter.SettingLeavingMessage;
 import com.siyuan.enjoyreading.ui.activity.pcenter.SettingsDownloadActivity;
 import com.siyuan.enjoyreading.ui.activity.pcenter.SettingsMyInfoActivity;
 import com.siyuan.enjoyreading.util.GlideCircleTransform;
@@ -80,7 +76,7 @@ public class PCenterFragment extends BaseTabFragment {
         view.findViewById(R.id.socializcircle).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(mContext, SocializCircleActivity.class));
+                startActivity(new Intent(mContext, SocializeCircleActivity.class));
             }
         });
         Glide.with(getContext())

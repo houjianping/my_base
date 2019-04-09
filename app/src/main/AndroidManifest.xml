@@ -51,7 +51,7 @@
             android:name=".ui.activity.currency.AppWebActivity"
             android:configChanges="orientation|keyboardHidden|screenSize" />
         <activity
-            android:name=".ui.activity.SocializCircleActivity"
+            android:name=".ui.activity.SocializeCircleActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait" />
         <activity

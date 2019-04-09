@@ -4,28 +4,31 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-import com.androidapp.mvp.MvpBaseActivity;
-import com.androidapp.mvp.MvpBaseView;
+import com.androidapp.activity.BaseActivity;
 import com.siyuan.enjoyreading.R;
-import com.siyuan.enjoyreading.entity.UserInfo;
-import com.siyuan.enjoyreading.model.user.LoginModelLogic;
-import com.siyuan.enjoyreading.presenter.user.LoginPresenterImpl;
-import com.siyuan.enjoyreading.presenter.user.interfaces.ILoginPresenter;
 
-import java.util.List;
-
-public class PassWordLoginActivity extends MvpBaseActivity<LoginModelLogic, LoginPresenterImpl> implements ILoginPresenter.View {
+public class PassWordLoginActivity extends BaseActivity {
 
     private TextView mCreateAccountTextView;
 
+    private View.OnClickListener mOnClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            if (v == mTitleBar.getRightTextView()) {
+                doStartActivity(SecretLoginActivity.class, null);
+            } else if (v == mCreateAccountTextView) {
+                doStartActivity(CreateAccountActivity.class, null);
+            }
+        }
+    };
+
     @Override
-    protected int getLayoutId() {
-        return R.layout.act_account_login_pwd;
+    protected void initContentView(Bundle bundle) {
+        setContentView(R.layout.act_account_login_pwd);
     }
 
     @Override
-    protected void onInitView(Bundle bundle) {
-        mPresenter.getHomeCate("");
+    protected void initView() {
         if (mTitleBar != null) {
             mTitleBar.getRightTextView().setOnClickListener(mOnClickListener);
         }
@@ -34,26 +37,7 @@ public class PassWordLoginActivity extends MvpBaseActivity<LoginModelLogic, Logi
     }
 
     @Override
-    protected void onEvent() {
-    }
+    protected void initData() {
 
-    @Override
-    protected MvpBaseView getView() {
-        return this;
     }
-
-    @Override
-    public void getOtherList(List<UserInfo> homeCates) {
-    }
-
-    private View.OnClickListener mOnClickListener = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            if (v ==  mTitleBar.getRightTextView()) {
-                doStartActivity(SecretLoginActivity.class, null);
-            } else if (v == mCreateAccountTextView) {
-                doStartActivity(CreateAccountActivity.class, null);
-            }
-        }
-    };
 }

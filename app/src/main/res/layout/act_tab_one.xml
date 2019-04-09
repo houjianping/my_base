@@ -43,7 +43,7 @@
         android:layout_below="@+id/view_header"
         android:background="#2D000000" />
 
-    <android.support.v4.view.ViewPager
+    <com.androidapp.widget.AppViewPager
         android:id="@+id/viewpager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

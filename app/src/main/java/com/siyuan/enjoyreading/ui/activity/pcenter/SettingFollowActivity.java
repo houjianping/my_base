@@ -16,7 +16,7 @@ import com.google.gson.reflect.TypeToken;
 import com.siyuan.enjoyreading.adapter.MultipleItemQuickAdapter;
 import com.siyuan.enjoyreading.api.ApiConfig;
 import com.siyuan.enjoyreading.entity.FollowItem;
-import com.siyuan.enjoyreading.ui.activity.SocializCircleActivity;
+import com.siyuan.enjoyreading.ui.activity.SocializeCircleActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -65,7 +65,7 @@ public class SettingFollowActivity extends BaseListActivity {
             mAdapter.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
                 @Override
                 public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
-                    doStartActivity(SocializCircleActivity.class, null);
+                    doStartActivity(SocializeCircleActivity.class, null);
                 }
             });
         }

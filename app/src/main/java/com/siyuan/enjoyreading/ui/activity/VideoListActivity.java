@@ -2,26 +2,26 @@ package com.siyuan.enjoyreading.ui.activity;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.v7.widget.LinearLayoutManager;
 
+import com.androidapp.activity.BaseListActivity;
 import com.androidapp.adapter.BaseQuickAdapter;
-import com.androidapp.mvp.MvpBaseListActivity;
-import com.androidapp.mvp.MvpBaseView;
 import com.androidapp.smartrefresh.layout.api.RefreshLayout;
 import com.androidapp.smartrefresh.layout.listener.OnLoadMoreListener;
 import com.androidapp.smartrefresh.layout.listener.OnRefreshListener;
-import com.siyuan.enjoyreading.adapter.MultipleItemQuickAdapter;
-import com.siyuan.enjoyreading.entity.NewsItem;
-import com.siyuan.enjoyreading.model.user.VideoListModelLogic;
-import com.siyuan.enjoyreading.presenter.user.VideoListPresenterImpl;
-import com.siyuan.enjoyreading.presenter.user.interfaces.IVideoListPresenter;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.shuyu.gsyvideoplayer.GSYVideoManager;
+import com.siyuan.enjoyreading.adapter.MultipleItemQuickAdapter;
+import com.siyuan.enjoyreading.api.ApiConfig;
+import com.siyuan.enjoyreading.entity.NewsItem;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class VideoListActivity extends MvpBaseListActivity<VideoListModelLogic, VideoListPresenterImpl> implements IVideoListPresenter.View {
+public class VideoListActivity extends BaseListActivity {
+
+    private MultipleItemQuickAdapter mAdapter;
 
     @Override
     protected OnRefreshListener getOnRefreshListener() {
@@ -57,38 +57,24 @@ public class VideoListActivity extends MvpBaseListActivity<VideoListModelLogic, 
         return mAdapter;
     }
 
-    private MultipleItemQuickAdapter mAdapter;
-
     @Override
-    protected int getLayoutId() {
-        return 0;
+    protected void initView() {
+        super.initView();
     }
 
     @Override
-    protected void onInitView(Bundle bundle) {
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(mContext));
-        mPresenter.getVideoListItems(1);
-    }
-
-    @Override
-    protected void onEvent() {
-    }
-
-    @Override
-    protected MvpBaseView getView() {
-        return this;
+    protected void initData() {
+        super.initData();
+        mLoadingLayout.showContent();
+        final List<NewsItem> circleItems = new Gson().fromJson(ApiConfig.JSON_VIDEO_LIST, new TypeToken<ArrayList<NewsItem>>() {
+        }.getType());
+        mAdapter.replaceData(circleItems);
     }
 
     @Override
     protected void initTitle() {
         super.initTitle();
         mTitleBar.setTitle("列表页");
-    }
-
-    @Override
-    public void onVideoListUpdate(List<NewsItem> circleItemList) {
-        mLoadingLayout.showContent();
-        mAdapter.replaceData(circleItemList);
     }
 
     @Override
@@ -100,11 +86,6 @@ public class VideoListActivity extends MvpBaseListActivity<VideoListModelLogic, 
     protected void onDestroy() {
         super.onDestroy();
         GSYVideoManager.releaseAllVideos();
-    }
-
-    @Override
-    protected boolean isDividerItemDecorationEnable() {
-        return false;
     }
 
     public static Intent getIntent(Context context) {

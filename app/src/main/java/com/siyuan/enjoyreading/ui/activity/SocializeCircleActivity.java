@@ -1,13 +1,11 @@
-package com.siyuan.enjoyreading.ui.activity.pcenter;
+package com.siyuan.enjoyreading.ui.activity;
 
 import android.support.annotation.NonNull;
-import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.View;
 
 import com.androidapp.activity.BaseListActivity;
 import com.androidapp.adapter.BaseQuickAdapter;
-import com.androidapp.banner.Banner;
 import com.androidapp.smartrefresh.layout.api.RefreshLayout;
 import com.androidapp.smartrefresh.layout.listener.OnLoadMoreListener;
 import com.androidapp.smartrefresh.layout.listener.OnRefreshListener;
@@ -15,31 +13,17 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.siyuan.enjoyreading.adapter.MultipleItemQuickAdapter;
 import com.siyuan.enjoyreading.api.ApiConfig;
-import com.siyuan.enjoyreading.entity.WalletItem;
-import com.siyuan.enjoyreading.ui.activity.SocializeCircleActivity;
-import com.siyuan.enjoyreading.util.BannerUtil;
+import com.siyuan.enjoyreading.entity.circle.CircleItem;
+import com.siyuan.enjoyreading.widget.ZoneHeaderView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
-import static android.support.v7.widget.DividerItemDecoration.VERTICAL;
+public class SocializeCircleActivity extends BaseListActivity {
 
-public class PersonalWalletList extends BaseListActivity {
-
+    ZoneHeaderView zoneHeaderView;
     private MultipleItemQuickAdapter mAdapter;
-
-    final List<WalletItem> mWalletListItems = new Gson().fromJson(ApiConfig.JSON_WALLET_LIST, new TypeToken<ArrayList<WalletItem>>() {
-    }.getType());
-
-    @Override
-    protected void initView() {
-        //添加Header
-        super.initView();
-        mRecyclerView.addItemDecoration(new DividerItemDecoration(mContext, VERTICAL));
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(mContext));
-        Banner banner = BannerUtil.getBannerView(mContext, ApiConfig.BANNER_ITEMS, mRecyclerView, false);
-        mAdapter.addHeaderView(banner, 0);
-    }
 
     @Override
     protected OnRefreshListener getOnRefreshListener() {
@@ -49,11 +33,7 @@ public class PersonalWalletList extends BaseListActivity {
                 refreshLayout.getLayout().postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        if (mAdapter.getItemCount() < 2) {
-                            List<WalletItem> movies = new Gson().fromJson(ApiConfig.JSON_WALLET_LIST, new TypeToken<ArrayList<WalletItem>>() {
-                            }.getType());
-                            mAdapter.replaceData(movies);
-                        }
+                        mAdapter.replaceData(getCircles());
                         refreshLayout.finishRefresh();
                     }
                 }, 2000);
@@ -66,9 +46,6 @@ public class PersonalWalletList extends BaseListActivity {
         return new OnLoadMoreListener() {
             @Override
             public void onLoadMore(@NonNull RefreshLayout refreshLayout) {
-                final List<WalletItem> walletItems = new Gson().fromJson(ApiConfig.JSON_WALLET_LIST, new TypeToken<ArrayList<WalletItem>>() {
-                }.getType());
-                mAdapter.addData(walletItems);
                 refreshLayout.finishLoadMoreWithNoMoreData();
             }
         };
@@ -90,14 +67,38 @@ public class PersonalWalletList extends BaseListActivity {
     }
 
     @Override
-    protected void initData() {
-        mLoadingLayout.showContent();
-        mAdapter.replaceData(mWalletListItems);
+    protected void initTitle() {
+        super.initTitle();
+        mTitleBar.setTitle("我的动态");
     }
 
     @Override
-    protected void initTitle() {
-        super.initTitle();
-        mTitleBar.setTitle("账单");
+    protected void initView() {
+        super.initView();
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(mContext));
+        zoneHeaderView = new ZoneHeaderView(this);
+        zoneHeaderView.setData("测试用户名", "http://d.hiphotos.baidu.com/image/pic/item/e4dde71190ef76c6e453882a9f16fdfaaf516729.jpg");
+        mAdapter.addHeaderView(zoneHeaderView, 0);
+        updateNotReadNewsCount(10, null);
+    }
+
+    @Override
+    protected void initData() {
+        super.initData();
+        mLoadingLayout.showContent();
+        mAdapter.replaceData(getCircles());
+    }
+
+    public void updateNotReadNewsCount(int count, String icon) {
+        zoneHeaderView.setNotReadMsgData(count, icon);
+    }
+
+    private List<CircleItem> getCircles() {
+        final List<CircleItem> circleItems = new Gson().fromJson(ApiConfig.JSON_ZONE_LIST, new TypeToken<ArrayList<CircleItem>>() {
+        }.getType());
+        for (int i = 0; i < circleItems.size(); i++) {
+            circleItems.get(i).setPictures(ApiConfig.getRandomPhotoUrlString(new Random().nextInt(9)));
+        }
+        return circleItems;
     }
 }
