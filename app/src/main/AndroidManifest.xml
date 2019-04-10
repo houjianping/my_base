@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     package="com.siyuan.enjoyreading">
 
     <!-- 读取SD卡权限 -->
@@ -178,6 +177,15 @@
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
             android:value="@string/BAIDU_KEY" />
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="${applicationId}.fileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_apk_paths" />
+        </provider>
     </application>
 
 </manifest>

@@ -26,6 +26,7 @@ public class IndexMainFragment extends BaseTabFragment {
     @Override
     protected void initView(View view, Bundle savedInstanceState) {
         mViewPager = view.findViewById(R.id.viewpager);
+        mViewPager.setNeedMeasure(false);
         mViewPager.setAdapter(new IndexFragmentAdapter(getFragmentManager()));
         mSmartTabLayout = view.findViewById(R.id.viewpagertab);
         mSmartTabLayout.setViewPager(mViewPager);

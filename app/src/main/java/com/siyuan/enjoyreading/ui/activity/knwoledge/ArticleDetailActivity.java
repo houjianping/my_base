@@ -112,4 +112,5 @@ public class ArticleDetailActivity extends BaseActivity {
         intent.putExtra(ARTICLE_URL, url);
         return intent;
     }
+
 }

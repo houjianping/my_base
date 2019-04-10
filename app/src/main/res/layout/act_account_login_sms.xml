@@ -36,13 +36,14 @@
         app:statusBarColor="@color/transparent"
         app:titleBarColor="@color/transparent" />
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_below="@+id/iv_login_bg"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical">
 
         <LinearLayout
+            android:id="@+id/input_area"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/padding_common"
@@ -134,6 +135,8 @@
         </LinearLayout>
 
         <Button
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/input_area"
             android:id="@+id/bt_login"
             android:layout_width="wrap_content"
             android:layout_height="40dip"
@@ -150,8 +153,9 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
+            android:layout_marginBottom="@dimen/padding_common"
             android:gravity="center"
+            android:layout_alignParentBottom="true"
             android:orientation="horizontal">
 
             <TextView
@@ -180,5 +184,5 @@
                 android:textColor="@color/colorPrimary"
                 android:textSize="12sp" />
         </LinearLayout>
-    </LinearLayout>
+    </RelativeLayout>
 </RelativeLayout>

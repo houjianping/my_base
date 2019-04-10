@@ -9,6 +9,7 @@ import android.view.View;
 public class AppViewPager extends ViewPager {
 
     private boolean mScrollable = true;
+    private boolean mNeedMeasure = true;
 
     public boolean isScrollable() {
         return mScrollable;
@@ -16,6 +17,14 @@ public class AppViewPager extends ViewPager {
 
     public void setScrollable(boolean scrollable) {
         this.mScrollable = scrollable;
+    }
+
+    public boolean isNeedMeasure() {
+        return mNeedMeasure;
+    }
+
+    public void setNeedMeasure(boolean needMeasure) {
+        this.mNeedMeasure = needMeasure;
     }
 
     public AppViewPager(Context context) {
@@ -28,15 +37,16 @@ public class AppViewPager extends ViewPager {
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-
-        int height = 0;
-        for (int i = 0; i < getChildCount(); i++) {
-            View child = getChildAt(i);
-            child.measure(widthMeasureSpec, MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED));
-            int h = child.getMeasuredHeight();
-            if (h > height) height = h;
+        if (mNeedMeasure) {
+            int height = 0;
+            for (int i = 0; i < getChildCount(); i++) {
+                View child = getChildAt(i);
+                child.measure(widthMeasureSpec, MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED));
+                int h = child.getMeasuredHeight();
+                if (h > height) height = h;
+            }
+            heightMeasureSpec = MeasureSpec.makeMeasureSpec(height, MeasureSpec.EXACTLY);
         }
-        heightMeasureSpec = MeasureSpec.makeMeasureSpec(height, MeasureSpec.EXACTLY);
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
     }
 
